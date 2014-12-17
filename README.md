@@ -5,7 +5,7 @@ Created for my Senior Capstone project at the University of Maine.
 
 AR for the Oculus Rift using two Playstation 3 Eye cameras. See versionNotes.txt for specific information.
 
-Press ~ to show/hide the GUI. Left and right brackets ([ / ]) change the page. ESC to quit.
+Press ESC to quit.
 
 Created with OpenFrameworks 0.8.4 using:
 - [OpenFrameworks 64-bit OSX branch](https://github.com/NickHardeman/openframeworks_osx_64) by Nick Hardeman

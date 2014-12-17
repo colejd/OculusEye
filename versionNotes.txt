@@ -10,19 +10,17 @@ Refactored lots of code into the new CVEye class.
 -- v0.1.6 (11/25/14) -------------------
 Lots of improvements between this iteration and the last one. Wrote them all down somewhere... but I can't remember where. Anyway, I've offloaded YUV422 to RGB color space conversion to another thread using TBB. It needs a lot of optimization, but the potential is there and I already have an appreciable speed gain. I may want to offload this to the GPU through OpenCL. The codebase has been switched over to a 64-bit fork of OpenFrameworks; this allows me to use memory more effectively, and also allowed me to upgrade to the OpenCV 3.0 beta. The project is now faster and more portable for it.
 
-----------------------------------------
-
 -- v0.2.0 (12/15/14) -------------------
-- We now use lookup tables for YUV422 computation. I thought I was offloading it to another processor core, but it turns out that it was not (specifying a range of 1 means the process is run on the same core). The cost incurred by actually multithreading the conversion was greater than not using it (for canny); therefore, other optimizations had to be done. The use of lookup tables is one such optimization.
-- Began the development of specialized classes for performance testing (see CVPerformance.h). This will be useful for changing the downsampling rate of OpenCV on the fly for performance reasons.
-As always, the program has seen daily work. Perhaps I am optimizing my program prematurely -- this is at the front of my mind as I work. However, it's something I need to be thinking about, as this program is so performance-critical. My work on color conversion is basically done; I could do some wacky shader business for color conversion rather than using a LUT, but it's fast enough.
+We now use lookup tables for YUV422 computation. I thought I was offloading it to another processor core, but it turns out that it was not (specifying a range of 1 means the process is run on the same core). The cost incurred by actually multithreading the conversion was greater than not using it (for canny); therefore, other optimizations had to be done. The use of lookup tables is one such optimization.
+I've begun the development of specialized classes for performance testing (see CVPerformance.h). This will be useful for changing the downsampling rate of OpenCV on the fly for performance reasons.
+As always, the program has seen daily work. Perhaps I am optimizing my program prematurely -- this is at the front of my mind as I work. However, it's something I need to be thinking about, as this program is so performance-critical. My work on color conversion is basically done; I could do some wacky shader business for color conversion rather than using LUTs, but it's fast enough.
 OpenCV remains difficult to work with on the GPU. Further development of the libraries should fix the issues I'm having eventually. I need to run some camera calibration to get the camera intrinsics so that I might reduce the cameras' distortion, as it is rather jarring right now.
-----------------------------------------
 
--- v0.2.1 (12/17/14) -------------------
+-- v0.2.2 (12/17/14) -------------------
 The program now supports multithreading of contour detection (controlled by "imageSubdivisions" in CVEye.h). Canny and contour detection would be run simultaneously in an ideal implementation, but Canny is currently bugged in this version of OpenCV. It remains that this yields a significant speedup.
 I've converted the GUI to a completely new system called AntTweakBar (via ofxTweakBar). The switch was made to get around a bug concerning the old GUI system that couldn't be fixed without some significant development. I've been meaning to switch to this for a while. AntTweakBar is much faster (~200 FPS speedup!), and is much easier to work with. I'm very happy with the result.
 The program now displays a test image when cameras are not connected, for testing purposes.
+
 ----------------------------------------
 
 to do:
