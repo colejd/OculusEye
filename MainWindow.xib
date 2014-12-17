@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+    <dependencies>
+        <deployment version="1050" defaultVersion="1060" identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
+            <connections>
+                <outlet property="delegate" destination="287" id="290"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application"/>
+        <menu title="MainMenu" systemMenu="main" id="3" userLabel="MainMenu">
+            <items>
+                <menuItem title="Mega Super Awesome App" id="8">
+                    <menu key="submenu" title="Mega Super Awesome App" systemMenu="apple" id="18">
+                        <items>
+                            <menuItem title="Hide" keyEquivalent="h" id="275">
+                                <connections>
+                                    <action selector="hide:" target="-2" id="289"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Hide Others" keyEquivalent="h" id="21">
+                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                <connections>
+                                    <action selector="hideOtherApplications:" target="-2" id="38"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Show All" id="19">
+                                <connections>
+                                    <action selector="unhideAllApplications:" target="-2" id="39"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="20">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
+                            <menuItem title="Quit" keyEquivalent="q" id="23">
+                                <connections>
+                                    <action selector="terminate:" target="-2" id="40"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+            </items>
+        </menu>
+        <window title="Oculus Eye" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hasShadow="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="5" userLabel="Window (GLWindow)" customClass="GLWindow">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES" unifiedTitleAndToolbar="YES"/>
+            <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="35" y="497" width="1254" height="733"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
+            <view key="contentView" autoresizesSubviews="NO" canDrawConcurrently="YES" id="6">
+                <rect key="frame" x="0.0" y="0.0" width="1254" height="733"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <customView id="7" customClass="GLView">
+                        <rect key="frame" x="0.0" y="46" width="1254" height="687"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </customView>
+                    <button verticalHuggingPriority="750" id="296">
+                        <rect key="frame" x="14" y="13" width="96" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="push" title="Play" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="297">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="startAnimation:" target="287" id="309"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" id="298">
+                        <rect key="frame" x="110" y="13" width="96" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="push" title="Pause" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="299">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="stopAnimation:" target="287" id="308"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" id="300">
+                        <rect key="frame" x="206" y="13" width="113" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="push" title="Toggle Play" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="301">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="toggleAnimation:" target="287" id="307"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" id="302">
+                        <rect key="frame" x="1127" y="13" width="113" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="push" title="Fullscreen" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="303">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="goFullscreen:" target="287" id="306"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+        </window>
+        <customObject id="287" customClass="AppDelegate">
+            <connections>
+                <outlet property="StatusMenu" destination="lZj-a9-lnK" id="hb0-Dk-AJb"/>
+                <outlet property="_glView" destination="7" id="295"/>
+                <outlet property="_glWindow" destination="5" id="294"/>
+            </connections>
+        </customObject>
+        <menu id="lZj-a9-lnK">
+            <items>
+                <menuItem title="Show/Hide" id="09b-Ne-CGd">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="menuToggleShowHide:" target="287" id="Pgh-co-NJo"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Enter Full Screen" keyEquivalent="f" id="q5Q-nY-MpI">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="toggleFullscreen:" target="287" id="EKf-kQ-3NF"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="HH2-sj-gjP"/>
+                <menuItem title="Help" id="zkU-zE-SPi">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Help" systemMenu="help" id="71i-qP-e8u">
+                        <items>
+                            <menuItem title="Application Help" keyEquivalent="?" id="8x7-kl-FbL">
+                                <connections>
+                                    <action selector="showHelp:" target="-1" id="96U-kg-Hwu"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Application" id="kNn-5m-5mb">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Application" id="gal-of-nrV">
+                        <items>
+                            <menuItem title="About Application" id="uW0-fz-FUd">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="orderFrontStandardAboutPanel:" target="-1" id="qA7-ds-0cg"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="FuG-Hf-BuX"/>
+                            <menuItem title="Preferences…" keyEquivalent="," id="ZUI-Nq-ulL"/>
+                            <menuItem isSeparatorItem="YES" id="3fo-vu-ccs"/>
+                            <menuItem title="Services" id="FED-g6-CXH">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Services" systemMenu="services" id="DNT-K0-n65"/>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="1EX-Ld-hrw"/>
+                            <menuItem title="Hide Application" keyEquivalent="h" id="2YX-0H-xwG">
+                                <connections>
+                                    <action selector="hide:" target="-1" id="K9U-L6-vmd"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Hide Others" keyEquivalent="h" id="NHC-3R-uvN">
+                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                <connections>
+                                    <action selector="hideOtherApplications:" target="-1" id="WF1-TY-NV2"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Show All" id="FN9-oc-dsl">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="unhideAllApplications:" target="-1" id="bHF-r1-8WY"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="8uj-Uh-COB"/>
+                            <menuItem title="Quit Application" keyEquivalent="q" id="S0b-dE-EuA">
+                                <connections>
+                                    <action selector="terminate:" target="-1" id="uDc-R0-qBI"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="GEv-En-K3O"/>
+                <menuItem title="Quit" id="JKW-CH-Yad">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+            </items>
+        </menu>
+    </objects>
+</document>

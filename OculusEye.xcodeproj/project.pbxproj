@@ -1,0 +1,1327 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0447D77DCBBC396B8E7ADF7A /* OVR_FileFILE.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 35DD1DDDD306A542780A46B4 /* OVR_FileFILE.cpp */; };
+		0538DE67F54C0980855968A7 /* OVR_ThreadsPthread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A734911384841F0247999ED4 /* OVR_ThreadsPthread.cpp */; };
+		06729FD5689FE192A8EFC9FD /* OVR_ThreadCommandQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6BF6D892346786D35C682F2B /* OVR_ThreadCommandQueue.cpp */; };
+		09F71BFCFBBBB8957D8FAC2D /* OVR_DeviceImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 31E6845D410A9E6B51EF3AF4 /* OVR_DeviceImpl.cpp */; };
+		0A637AB87BA8E5D37AD460EC /* Util_LatencyTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 512E51B07409C0E5995CEED8 /* Util_LatencyTest.cpp */; };
+		21380FD12928F259439C0117 /* OVR_Math.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 471BEBB921AF2881801A567F /* OVR_Math.cpp */; };
+		2A1B50697072AF5D7CFFF174 /* OVR_DeviceHandle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D8EBF61F26CDF34294C7958 /* OVR_DeviceHandle.cpp */; };
+		2C24A6A86A4754A885E0F7C4 /* Util_MagCalibration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A08E457397FCCEFF03F0C909 /* Util_MagCalibration.cpp */; };
+		43A8B018A1EB0103240F3CE5 /* Util_Render_Stereo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9F1AAB6F7B118A35962B39F0 /* Util_Render_Stereo.cpp */; };
+		4EBCBD676B31AF4D2F88E053 /* OVR_Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C106C983203B40BC30D3BD4 /* OVR_Timer.cpp */; };
+		519909391A23B2BD008021BE /* CVEye.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5199092C1A23B2BD008021BE /* CVEye.cpp */; };
+		5199093A1A23B2BD008021BE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5199092E1A23B2BD008021BE /* main.cpp */; };
+		5199093B1A23B2BD008021BE /* mainApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5199092F1A23B2BD008021BE /* mainApp.cpp */; };
+		5199093C1A23B2BD008021BE /* OFCVBridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 519909311A23B2BD008021BE /* OFCVBridge.cpp */; };
+		5199093D1A23B2BD008021BE /* ps3eye.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 519909351A23B2BD008021BE /* ps3eye.cpp */; };
+		5199093E1A23B2BD008021BE /* screenConfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 519909371A23B2BD008021BE /* screenConfig.cpp */; };
+		519909411A23B2E8008021BE /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5199093F1A23B2E8008021BE /* Quartz.framework */; };
+		519909421A23B2E8008021BE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 519909401A23B2E8008021BE /* QuartzCore.framework */; };
+		5199094D1A23C582008021BE /* libusb-1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5199094C1A23C582008021BE /* libusb-1.0.0.dylib */; };
+		5199095F1A23C5C3008021BE /* libopencv_calib3d.3.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5199094E1A23C5C3008021BE /* libopencv_calib3d.3.0.0.dylib */; };
+		519909601A23C5C3008021BE /* libopencv_core.3.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5199094F1A23C5C3008021BE /* libopencv_core.3.0.0.dylib */; };
+		519909611A23C5C3008021BE /* libopencv_features2d.3.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 519909501A23C5C3008021BE /* libopencv_features2d.3.0.0.dylib */; };
+		519909621A23C5C3008021BE /* libopencv_flann.3.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 519909511A23C5C3008021BE /* libopencv_flann.3.0.0.dylib */; };
+		519909631A23C5C3008021BE /* libopencv_highgui.3.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 519909521A23C5C3008021BE /* libopencv_highgui.3.0.0.dylib */; };
+		519909641A23C5C3008021BE /* libopencv_imgcodecs.3.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 519909531A23C5C3008021BE /* libopencv_imgcodecs.3.0.0.dylib */; };
+		519909651A23C5C3008021BE /* libopencv_imgproc.3.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 519909541A23C5C3008021BE /* libopencv_imgproc.3.0.0.dylib */; };
+		519909661A23C5C3008021BE /* libopencv_ml.3.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 519909551A23C5C3008021BE /* libopencv_ml.3.0.0.dylib */; };
+		519909671A23C5C3008021BE /* libopencv_objdetect.3.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 519909561A23C5C3008021BE /* libopencv_objdetect.3.0.0.dylib */; };
+		519909681A23C5C3008021BE /* libopencv_photo.3.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 519909571A23C5C3008021BE /* libopencv_photo.3.0.0.dylib */; };
+		519909691A23C5C3008021BE /* libopencv_shape.3.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 519909581A23C5C3008021BE /* libopencv_shape.3.0.0.dylib */; };
+		5199096A1A23C5C3008021BE /* libopencv_stitching.3.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 519909591A23C5C3008021BE /* libopencv_stitching.3.0.0.dylib */; };
+		5199096B1A23C5C3008021BE /* libopencv_superres.3.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5199095A1A23C5C3008021BE /* libopencv_superres.3.0.0.dylib */; };
+		5199096C1A23C5C3008021BE /* libopencv_ts.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5199095B1A23C5C3008021BE /* libopencv_ts.a */; };
+		5199096D1A23C5C3008021BE /* libopencv_video.3.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5199095C1A23C5C3008021BE /* libopencv_video.3.0.0.dylib */; };
+		5199096E1A23C5C3008021BE /* libopencv_videoio.3.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5199095D1A23C5C3008021BE /* libopencv_videoio.3.0.0.dylib */; };
+		5199096F1A23C5C3008021BE /* libopencv_videostab.3.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5199095E1A23C5C3008021BE /* libopencv_videostab.3.0.0.dylib */; };
+		5199097E1A23C85E008021BE /* DIN.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 519909731A23C741008021BE /* DIN.otf */; };
+		5199097F1A23C85E008021BE /* HmdDistort.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 519909751A23C741008021BE /* HmdDistort.vert */; };
+		519909801A23C85E008021BE /* HmdWarp.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 519909761A23C741008021BE /* HmdWarp.frag */; };
+		519909811A23C85E008021BE /* HmdWarp.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 519909771A23C741008021BE /* HmdWarp.vert */; };
+		519909951A25A49A008021BE /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 519909941A25A49A008021BE /* OpenCL.framework */; };
+		519909991A25A534008021BE /* Canny.cl in Sources */ = {isa = PBXBuildFile; fileRef = 519909981A25A534008021BE /* Canny.cl */; };
+		5199099C1A2CC246008021BE /* NoCameraFound.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5199099B1A2CC243008021BE /* NoCameraFound.png */; };
+		51A88EB81A41F87B00D73FA2 /* libAntTweakBar.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A88EB71A41F87B00D73FA2 /* libAntTweakBar.dylib */; };
+		51A88EE91A41FB0200D73FA2 /* libAntTweakBar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A88EBF1A41FB0200D73FA2 /* libAntTweakBar.a */; };
+		51A88EEB1A41FB0200D73FA2 /* ofxTweakbar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51A88EC41A41FB0200D73FA2 /* ofxTweakbar.cpp */; };
+		51A88EEC1A41FB0200D73FA2 /* ofxTweakbars.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51A88EC61A41FB0200D73FA2 /* ofxTweakbars.cpp */; };
+		51A88EED1A41FB0200D73FA2 /* ofxTweakbarSimpleStorage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51A88EC91A41FB0200D73FA2 /* ofxTweakbarSimpleStorage.cpp */; };
+		51A88EEE1A41FB0200D73FA2 /* ofxTweakbarStorage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51A88ECB1A41FB0200D73FA2 /* ofxTweakbarStorage.cpp */; };
+		51A88EEF1A41FB0200D73FA2 /* ofxTweakbarBarData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51A88ECE1A41FB0200D73FA2 /* ofxTweakbarBarData.cpp */; };
+		51A88EF01A41FB0200D73FA2 /* ofxTweakbarBool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51A88ED01A41FB0200D73FA2 /* ofxTweakbarBool.cpp */; };
+		51A88EF11A41FB0200D73FA2 /* ofxTweakbarButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51A88ED21A41FB0200D73FA2 /* ofxTweakbarButton.cpp */; };
+		51A88EF21A41FB0200D73FA2 /* ofxTweakbarColor3f.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51A88ED41A41FB0200D73FA2 /* ofxTweakbarColor3f.cpp */; };
+		51A88EF31A41FB0200D73FA2 /* ofxTweakbarFiles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51A88ED61A41FB0200D73FA2 /* ofxTweakbarFiles.cpp */; };
+		51A88EF41A41FB0200D73FA2 /* ofxTweakbarFloat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51A88ED81A41FB0200D73FA2 /* ofxTweakbarFloat.cpp */; };
+		51A88EF51A41FB0200D73FA2 /* ofxTweakbarInt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51A88EDA1A41FB0200D73FA2 /* ofxTweakbarInt.cpp */; };
+		51A88EF61A41FB0200D73FA2 /* ofxTweakbarList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51A88EDC1A41FB0200D73FA2 /* ofxTweakbarList.cpp */; };
+		51A88EF71A41FB0200D73FA2 /* ofxTweakbarQuat4f.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51A88EDE1A41FB0200D73FA2 /* ofxTweakbarQuat4f.cpp */; };
+		51A88EF81A41FB0200D73FA2 /* ofxTweakbarSeparator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51A88EE01A41FB0200D73FA2 /* ofxTweakbarSeparator.cpp */; };
+		51A88EF91A41FB0200D73FA2 /* ofxTweakbarString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51A88EE21A41FB0200D73FA2 /* ofxTweakbarString.cpp */; };
+		51A88EFA1A41FB0200D73FA2 /* ofxTweakbarType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51A88EE41A41FB0200D73FA2 /* ofxTweakbarType.cpp */; };
+		51A88EFB1A41FB0200D73FA2 /* ofxTweakbarVec3f.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51A88EE71A41FB0200D73FA2 /* ofxTweakbarVec3f.cpp */; };
+		54F752BB245910B19D290DC4 /* OVR_String.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4F22083BE25612FC2BFC0D9 /* OVR_String.cpp */; };
+		5A4349E9754D6FA14C0F2A3A /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC5DA1C87211D4F6377DA719 /* tinyxmlparser.cpp */; };
+		5CB760F5113B261811063F01 /* OVR_String_FormatUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50629A910B87008E8F8430D5 /* OVR_String_FormatUtil.cpp */; };
+		63B57AC5BF4EF088491E0317 /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50DF87D612C5AAE17AAFA6C0 /* ofxXmlSettings.cpp */; };
+		6C62F88217934FFAFBAF82F6 /* OVR_String_PathUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 473B321C8A9AC7F4D1622C97 /* OVR_String_PathUtil.cpp */; };
+		7D6ECCFBADFFF2166B60BA19 /* OVR_UTF8Util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A866158617F464ACDE4A2EC /* OVR_UTF8Util.cpp */; };
+		8A951CA6419CB54153EBE287 /* OVR_SensorFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 33A7EFC0E60854EEAF434AB2 /* OVR_SensorFilter.cpp */; };
+		8B1A5C12F72F72EEA6DF64A4 /* OVR_File.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7BAEDE1701D65AAA49D7CA89 /* OVR_File.cpp */; };
+		933A2227713C720CEFF80FD9 /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2B40EDA85BEB63E46785BC29 /* tinyxml.cpp */; };
+		9661FB48455AE0A1EA8DAA05 /* OVR_LatencyTestImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 493C297A45566F4D4EABED8B /* OVR_LatencyTestImpl.cpp */; };
+		9D44DC88EF9E7991B4A09951 /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 832BDC407620CDBA568B713D /* tinyxmlerror.cpp */; };
+		AE54BC78396F06EC720FC55C /* OVR_Allocator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 563455B613A53219177E2A4E /* OVR_Allocator.cpp */; };
+		AFBBF5C1EA25D1E42335DCED /* OVR_OSX_DeviceManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6D6031C34E49E2B59E178853 /* OVR_OSX_DeviceManager.cpp */; };
+		B2C33EDF6BC78B292440FD9D /* OVR_Log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D080299FB319E35B254E142 /* OVR_Log.cpp */; };
+		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		BE0AA8E6C0ECA0E79CBB1ADC /* OVR_SensorImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 29F2AB31E88FB89F9715EB2F /* OVR_SensorImpl.cpp */; };
+		BE0E4C85086BF42237E786E3 /* OVR_OSX_SensorDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4559255C4B217A68D36E7699 /* OVR_OSX_SensorDevice.cpp */; };
+		C0C79797EA45D37EF18C4C7D /* tinyxml2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BB97B94797A16D64A60B8AA4 /* tinyxml2.cpp */; };
+		C4972011ADA6B9E8D1EDB5AF /* OVR_OSX_HMDDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 837FB7D4184AE864FC8A2DC8 /* OVR_OSX_HMDDevice.cpp */; };
+		C93AC922A96A87E7389090C5 /* OVR_Atomic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F89304DC2296747F70C8020 /* OVR_Atomic.cpp */; };
+		D53BB62F01C90D26D9EB4D8D /* OVR_System.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3852E0057150A2D60FD7E473 /* OVR_System.cpp */; };
+		D7FCBF24172EFE611529B203 /* OVR_OSX_HIDDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D986E69CEEA37DB2DB15B68 /* OVR_OSX_HIDDevice.cpp */; };
+		E265AB18747CABBD0826BAC4 /* ofxOculusRift.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 801E4844823B5DEA137AFF86 /* ofxOculusRift.cpp */; };
+		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
+		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
+		E45BE97C0E8CC7DD009D7055 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */; };
+		E45BE97D0E8CC7DD009D7055 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9730E8CC7DD009D7055 /* AudioToolbox.framework */; };
+		E45BE97E0E8CC7DD009D7055 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9740E8CC7DD009D7055 /* Carbon.framework */; };
+		E45BE97F0E8CC7DD009D7055 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9750E8CC7DD009D7055 /* CoreAudio.framework */; };
+		E45BE9800E8CC7DD009D7055 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9760E8CC7DD009D7055 /* CoreFoundation.framework */; };
+		E45BE9810E8CC7DD009D7055 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9770E8CC7DD009D7055 /* CoreServices.framework */; };
+		E45BE9830E8CC7DD009D7055 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9790E8CC7DD009D7055 /* OpenGL.framework */; };
+		E45BE9840E8CC7DD009D7055 /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */; };
+		E4C2424710CC5A17004149E2 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424410CC5A17004149E2 /* AppKit.framework */; };
+		E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
+		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
+		E577C1C0DE6D59FC654014DF /* OVR_Std.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74675DD9B1A2CC7F5121F104 /* OVR_Std.cpp */; };
+		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
+		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
+		E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F985F515E0DE99003869B5 /* Accelerate.framework */; };
+		E9318504429658979B37A4D5 /* OVR_Alg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 63009164EADB7EE361C8B9DB /* OVR_Alg.cpp */; };
+		EBD4E9A13DA155452B335F8D /* OVR_RefCount.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6EEAB380FBCC16F2A566B48 /* OVR_RefCount.cpp */; };
+		F1A8D474F00A578B222B98C3 /* OVR_SysFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8EC3C74DA2B99AB0726B731 /* OVR_SysFile.cpp */; };
+		F6DB846EE4B1DEF1FB5D0761 /* OVR_SensorFusion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C7BC84CECEEE058B4A248005 /* OVR_SensorFusion.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5199092A1A23AE9A008021BE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2EBB524A1891BAEF0009E903;
+			remoteInfo = openFrameworksNoFMOD;
+		};
+		E4328147138ABC890047C5CB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E4B27C1510CBEB8E00536013;
+			remoteInfo = openFrameworks;
+		};
+		E4EEB9AB138B136A00A80321 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = E4B27C1410CBEB8E00536013;
+			remoteInfo = openFrameworks;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5199097D1A23C84C008021BE /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = data/shaders;
+			dstSubfolderSpec = 16;
+			files = (
+				5199097E1A23C85E008021BE /* DIN.otf in CopyFiles */,
+				5199097F1A23C85E008021BE /* HmdDistort.vert in CopyFiles */,
+				519909801A23C85E008021BE /* HmdWarp.frag in CopyFiles */,
+				519909811A23C85E008021BE /* HmdWarp.vert in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5199099A1A2CC232008021BE /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+				5199099C1A2CC246008021BE /* NoCameraFound.png in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E4C2427710CC5ABF004149E2 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		01CA955257F9F4662071E60A /* OVR_KeyCodes.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVR_KeyCodes.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_KeyCodes.h; sourceTree = SOURCE_ROOT; };
+		01DCC0911400F9ACF5B65578 /* ofxXmlSettings.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxXmlSettings.h; path = ../../../addons/ofxXmlSettings/src/ofxXmlSettings.h; sourceTree = SOURCE_ROOT; };
+		0219538C708E4F1E6C0BA972 /* OVR_Math.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVR_Math.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_Math.h; sourceTree = SOURCE_ROOT; };
+		0465F1FEA0206392F51C24EA /* Util_MagCalibration.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = Util_MagCalibration.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Util/Util_MagCalibration.h; sourceTree = SOURCE_ROOT; };
+		05CADDE12E1761E502833DFF /* OVR_Log.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVR_Log.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_Log.h; sourceTree = SOURCE_ROOT; };
+		0C106C983203B40BC30D3BD4 /* OVR_Timer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OVR_Timer.cpp; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_Timer.cpp; sourceTree = SOURCE_ROOT; };
+		0D080299FB319E35B254E142 /* OVR_Log.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OVR_Log.cpp; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_Log.cpp; sourceTree = SOURCE_ROOT; };
+		1F89304DC2296747F70C8020 /* OVR_Atomic.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OVR_Atomic.cpp; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_Atomic.cpp; sourceTree = SOURCE_ROOT; };
+		220FBF672FB39FA4EB0A3F8C /* OVR_Hash.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVR_Hash.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_Hash.h; sourceTree = SOURCE_ROOT; };
+		2467FDB376945DD8B60C9F0D /* OVR_DeviceImpl.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVR_DeviceImpl.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/OVR_DeviceImpl.h; sourceTree = SOURCE_ROOT; };
+		29F2AB31E88FB89F9715EB2F /* OVR_SensorImpl.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OVR_SensorImpl.cpp; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/OVR_SensorImpl.cpp; sourceTree = SOURCE_ROOT; };
+		2A866158617F464ACDE4A2EC /* OVR_UTF8Util.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OVR_UTF8Util.cpp; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_UTF8Util.cpp; sourceTree = SOURCE_ROOT; };
+		2B40EDA85BEB63E46785BC29 /* tinyxml.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = tinyxml.cpp; path = ../../../addons/ofxXmlSettings/libs/tinyxml.cpp; sourceTree = SOURCE_ROOT; };
+		2EB240E87AE226F3580CE2CC /* OVR_LatencyTestImpl.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVR_LatencyTestImpl.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/OVR_LatencyTestImpl.h; sourceTree = SOURCE_ROOT; };
+		31E6845D410A9E6B51EF3AF4 /* OVR_DeviceImpl.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OVR_DeviceImpl.cpp; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/OVR_DeviceImpl.cpp; sourceTree = SOURCE_ROOT; };
+		33A7EFC0E60854EEAF434AB2 /* OVR_SensorFilter.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OVR_SensorFilter.cpp; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/OVR_SensorFilter.cpp; sourceTree = SOURCE_ROOT; };
+		35DD1DDDD306A542780A46B4 /* OVR_FileFILE.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OVR_FileFILE.cpp; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_FileFILE.cpp; sourceTree = SOURCE_ROOT; };
+		3852E0057150A2D60FD7E473 /* OVR_System.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OVR_System.cpp; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_System.cpp; sourceTree = SOURCE_ROOT; };
+		39C4D10A54BE6062F1CF5B4F /* Util_Render_Stereo.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = Util_Render_Stereo.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Util/Util_Render_Stereo.h; sourceTree = SOURCE_ROOT; };
+		3D986E69CEEA37DB2DB15B68 /* OVR_OSX_HIDDevice.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OVR_OSX_HIDDevice.cpp; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/OVR_OSX_HIDDevice.cpp; sourceTree = SOURCE_ROOT; };
+		4559255C4B217A68D36E7699 /* OVR_OSX_SensorDevice.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OVR_OSX_SensorDevice.cpp; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/OVR_OSX_SensorDevice.cpp; sourceTree = SOURCE_ROOT; };
+		471BEBB921AF2881801A567F /* OVR_Math.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OVR_Math.cpp; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_Math.cpp; sourceTree = SOURCE_ROOT; };
+		473B321C8A9AC7F4D1622C97 /* OVR_String_PathUtil.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OVR_String_PathUtil.cpp; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_String_PathUtil.cpp; sourceTree = SOURCE_ROOT; };
+		48CB6F0F4DBFFC28D85E7DA1 /* Util_LatencyTest.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = Util_LatencyTest.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Util/Util_LatencyTest.h; sourceTree = SOURCE_ROOT; };
+		493C297A45566F4D4EABED8B /* OVR_LatencyTestImpl.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OVR_LatencyTestImpl.cpp; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/OVR_LatencyTestImpl.cpp; sourceTree = SOURCE_ROOT; };
+		4F0F0F3EA74C0CB761F3ABC8 /* OVR_HIDDevice.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVR_HIDDevice.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/OVR_HIDDevice.h; sourceTree = SOURCE_ROOT; };
+		4F5C9AC00D17B738C34B4C05 /* OVR_OSX_DeviceManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVR_OSX_DeviceManager.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/OVR_OSX_DeviceManager.h; sourceTree = SOURCE_ROOT; };
+		50629A910B87008E8F8430D5 /* OVR_String_FormatUtil.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OVR_String_FormatUtil.cpp; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_String_FormatUtil.cpp; sourceTree = SOURCE_ROOT; };
+		50DF87D612C5AAE17AAFA6C0 /* ofxXmlSettings.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxXmlSettings.cpp; path = ../../../addons/ofxXmlSettings/src/ofxXmlSettings.cpp; sourceTree = SOURCE_ROOT; };
+		512E51B07409C0E5995CEED8 /* Util_LatencyTest.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = Util_LatencyTest.cpp; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Util/Util_LatencyTest.cpp; sourceTree = SOURCE_ROOT; };
+		5199092C1A23B2BD008021BE /* CVEye.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CVEye.cpp; sourceTree = "<group>"; };
+		5199092D1A23B2BD008021BE /* CVEye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVEye.h; sourceTree = "<group>"; };
+		5199092E1A23B2BD008021BE /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		5199092F1A23B2BD008021BE /* mainApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mainApp.cpp; sourceTree = "<group>"; };
+		519909301A23B2BD008021BE /* mainApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mainApp.h; sourceTree = "<group>"; };
+		519909311A23B2BD008021BE /* OFCVBridge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OFCVBridge.cpp; sourceTree = "<group>"; };
+		519909321A23B2BD008021BE /* OFCVBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OFCVBridge.h; sourceTree = "<group>"; };
+		519909341A23B2BD008021BE /* libusb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libusb.h; sourceTree = "<group>"; };
+		519909351A23B2BD008021BE /* ps3eye.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ps3eye.cpp; sourceTree = "<group>"; };
+		519909361A23B2BD008021BE /* ps3eye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ps3eye.h; sourceTree = "<group>"; };
+		519909371A23B2BD008021BE /* screenConfig.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = screenConfig.cpp; sourceTree = "<group>"; };
+		519909381A23B2BD008021BE /* screenConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = screenConfig.h; sourceTree = "<group>"; };
+		5199093F1A23B2E8008021BE /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
+		519909401A23B2E8008021BE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		519909461A23BE0D008021BE /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		5199094C1A23C582008021BE /* libusb-1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libusb-1.0.0.dylib"; path = "/usr/local/Cellar/libusb/1.0.19/lib/libusb-1.0.0.dylib"; sourceTree = "<absolute>"; };
+		5199094E1A23C5C3008021BE /* libopencv_calib3d.3.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_calib3d.3.0.0.dylib; path = /usr/local/lib/libopencv_calib3d.3.0.0.dylib; sourceTree = "<absolute>"; };
+		5199094F1A23C5C3008021BE /* libopencv_core.3.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_core.3.0.0.dylib; path = /usr/local/lib/libopencv_core.3.0.0.dylib; sourceTree = "<absolute>"; };
+		519909501A23C5C3008021BE /* libopencv_features2d.3.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_features2d.3.0.0.dylib; path = /usr/local/lib/libopencv_features2d.3.0.0.dylib; sourceTree = "<absolute>"; };
+		519909511A23C5C3008021BE /* libopencv_flann.3.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_flann.3.0.0.dylib; path = /usr/local/lib/libopencv_flann.3.0.0.dylib; sourceTree = "<absolute>"; };
+		519909521A23C5C3008021BE /* libopencv_highgui.3.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_highgui.3.0.0.dylib; path = /usr/local/lib/libopencv_highgui.3.0.0.dylib; sourceTree = "<absolute>"; };
+		519909531A23C5C3008021BE /* libopencv_imgcodecs.3.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_imgcodecs.3.0.0.dylib; path = /usr/local/lib/libopencv_imgcodecs.3.0.0.dylib; sourceTree = "<absolute>"; };
+		519909541A23C5C3008021BE /* libopencv_imgproc.3.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_imgproc.3.0.0.dylib; path = /usr/local/lib/libopencv_imgproc.3.0.0.dylib; sourceTree = "<absolute>"; };
+		519909551A23C5C3008021BE /* libopencv_ml.3.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_ml.3.0.0.dylib; path = /usr/local/lib/libopencv_ml.3.0.0.dylib; sourceTree = "<absolute>"; };
+		519909561A23C5C3008021BE /* libopencv_objdetect.3.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_objdetect.3.0.0.dylib; path = /usr/local/lib/libopencv_objdetect.3.0.0.dylib; sourceTree = "<absolute>"; };
+		519909571A23C5C3008021BE /* libopencv_photo.3.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_photo.3.0.0.dylib; path = /usr/local/lib/libopencv_photo.3.0.0.dylib; sourceTree = "<absolute>"; };
+		519909581A23C5C3008021BE /* libopencv_shape.3.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_shape.3.0.0.dylib; path = /usr/local/lib/libopencv_shape.3.0.0.dylib; sourceTree = "<absolute>"; };
+		519909591A23C5C3008021BE /* libopencv_stitching.3.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_stitching.3.0.0.dylib; path = /usr/local/lib/libopencv_stitching.3.0.0.dylib; sourceTree = "<absolute>"; };
+		5199095A1A23C5C3008021BE /* libopencv_superres.3.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_superres.3.0.0.dylib; path = /usr/local/lib/libopencv_superres.3.0.0.dylib; sourceTree = "<absolute>"; };
+		5199095B1A23C5C3008021BE /* libopencv_ts.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopencv_ts.a; path = /usr/local/lib/libopencv_ts.a; sourceTree = "<absolute>"; };
+		5199095C1A23C5C3008021BE /* libopencv_video.3.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_video.3.0.0.dylib; path = /usr/local/lib/libopencv_video.3.0.0.dylib; sourceTree = "<absolute>"; };
+		5199095D1A23C5C3008021BE /* libopencv_videoio.3.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_videoio.3.0.0.dylib; path = /usr/local/lib/libopencv_videoio.3.0.0.dylib; sourceTree = "<absolute>"; };
+		5199095E1A23C5C3008021BE /* libopencv_videostab.3.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_videostab.3.0.0.dylib; path = /usr/local/lib/libopencv_videostab.3.0.0.dylib; sourceTree = "<absolute>"; };
+		519909731A23C741008021BE /* DIN.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DIN.otf; sourceTree = "<group>"; };
+		519909751A23C741008021BE /* HmdDistort.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = HmdDistort.vert; sourceTree = "<group>"; };
+		519909761A23C741008021BE /* HmdWarp.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = HmdWarp.frag; sourceTree = "<group>"; };
+		519909771A23C741008021BE /* HmdWarp.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = HmdWarp.vert; sourceTree = "<group>"; };
+		519909821A2581B1008021BE /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
+		519909841A2581B1008021BE /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.md; sourceTree = "<group>"; };
+		519909851A2581B1008021BE /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		519909861A2581B1008021BE /* notes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = notes.txt; sourceTree = "<group>"; };
+		519909871A2581B2008021BE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		519909891A2581B2008021BE /* menu_icon_32x32.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = menu_icon_32x32.icns; sourceTree = "<group>"; };
+		5199098A1A2581B2008021BE /* MenuBarIcon_16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuBarIcon_16.png; sourceTree = "<group>"; };
+		5199098B1A2581B2008021BE /* MenuBarIcon_32.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = MenuBarIcon_32.icns; sourceTree = "<group>"; };
+		5199098C1A2581B2008021BE /* MenuBarIcon_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuBarIcon_32.png; sourceTree = "<group>"; };
+		5199098D1A2581B2008021BE /* MenuBarIcon_32_Alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuBarIcon_32_Alt.png; sourceTree = "<group>"; };
+		5199098E1A2581B2008021BE /* versionNotes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = versionNotes.txt; sourceTree = "<group>"; };
+		519909931A2588CB008021BE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = OculusEye/Images.xcassets; sourceTree = SOURCE_ROOT; };
+		519909941A25A49A008021BE /* OpenCL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenCL.framework; path = System/Library/Frameworks/OpenCL.framework; sourceTree = SDKROOT; };
+		519909981A25A534008021BE /* Canny.cl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.opencl; path = Canny.cl; sourceTree = "<group>"; };
+		5199099B1A2CC243008021BE /* NoCameraFound.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NoCameraFound.png; sourceTree = "<group>"; };
+		51A88EB51A3F7EEF00D73FA2 /* CVPerformance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CVPerformance.h; sourceTree = "<group>"; };
+		51A88EB71A41F87B00D73FA2 /* libAntTweakBar.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libAntTweakBar.dylib; path = /usr/local/lib/libAntTweakBar.dylib; sourceTree = "<absolute>"; };
+		51A88EBB1A41FB0200D73FA2 /* AntTweakBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AntTweakBar.h; sourceTree = "<group>"; };
+		51A88EBC1A41FB0200D73FA2 /* AntTweakBarOld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AntTweakBarOld.h; sourceTree = "<group>"; };
+		51A88EBF1A41FB0200D73FA2 /* libAntTweakBar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAntTweakBar.a; sourceTree = "<group>"; };
+		51A88EC11A41FB0200D73FA2 /* AntTweakBar.dll */ = {isa = PBXFileReference; lastKnownFileType = file; path = AntTweakBar.dll; sourceTree = "<group>"; };
+		51A88EC21A41FB0200D73FA2 /* AntTweakBar.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AntTweakBar.lib; sourceTree = "<group>"; };
+		51A88EC31A41FB0200D73FA2 /* ofxTweak.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTweak.h; sourceTree = "<group>"; };
+		51A88EC41A41FB0200D73FA2 /* ofxTweakbar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTweakbar.cpp; sourceTree = "<group>"; };
+		51A88EC51A41FB0200D73FA2 /* ofxTweakbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTweakbar.h; sourceTree = "<group>"; };
+		51A88EC61A41FB0200D73FA2 /* ofxTweakbars.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTweakbars.cpp; sourceTree = "<group>"; };
+		51A88EC71A41FB0200D73FA2 /* ofxTweakbars.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTweakbars.h; sourceTree = "<group>"; };
+		51A88EC91A41FB0200D73FA2 /* ofxTweakbarSimpleStorage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTweakbarSimpleStorage.cpp; sourceTree = "<group>"; };
+		51A88ECA1A41FB0200D73FA2 /* ofxTweakbarSimpleStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTweakbarSimpleStorage.h; sourceTree = "<group>"; };
+		51A88ECB1A41FB0200D73FA2 /* ofxTweakbarStorage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTweakbarStorage.cpp; sourceTree = "<group>"; };
+		51A88ECC1A41FB0200D73FA2 /* ofxTweakbarStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTweakbarStorage.h; sourceTree = "<group>"; };
+		51A88ECE1A41FB0200D73FA2 /* ofxTweakbarBarData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTweakbarBarData.cpp; sourceTree = "<group>"; };
+		51A88ECF1A41FB0200D73FA2 /* ofxTweakbarBarData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTweakbarBarData.h; sourceTree = "<group>"; };
+		51A88ED01A41FB0200D73FA2 /* ofxTweakbarBool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTweakbarBool.cpp; sourceTree = "<group>"; };
+		51A88ED11A41FB0200D73FA2 /* ofxTweakbarBool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTweakbarBool.h; sourceTree = "<group>"; };
+		51A88ED21A41FB0200D73FA2 /* ofxTweakbarButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTweakbarButton.cpp; sourceTree = "<group>"; };
+		51A88ED31A41FB0200D73FA2 /* ofxTweakbarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTweakbarButton.h; sourceTree = "<group>"; };
+		51A88ED41A41FB0200D73FA2 /* ofxTweakbarColor3f.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTweakbarColor3f.cpp; sourceTree = "<group>"; };
+		51A88ED51A41FB0200D73FA2 /* ofxTweakbarColor3f.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTweakbarColor3f.h; sourceTree = "<group>"; };
+		51A88ED61A41FB0200D73FA2 /* ofxTweakbarFiles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTweakbarFiles.cpp; sourceTree = "<group>"; };
+		51A88ED71A41FB0200D73FA2 /* ofxTweakbarFiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTweakbarFiles.h; sourceTree = "<group>"; };
+		51A88ED81A41FB0200D73FA2 /* ofxTweakbarFloat.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTweakbarFloat.cpp; sourceTree = "<group>"; };
+		51A88ED91A41FB0200D73FA2 /* ofxTweakbarFloat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTweakbarFloat.h; sourceTree = "<group>"; };
+		51A88EDA1A41FB0200D73FA2 /* ofxTweakbarInt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTweakbarInt.cpp; sourceTree = "<group>"; };
+		51A88EDB1A41FB0200D73FA2 /* ofxTweakbarInt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTweakbarInt.h; sourceTree = "<group>"; };
+		51A88EDC1A41FB0200D73FA2 /* ofxTweakbarList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTweakbarList.cpp; sourceTree = "<group>"; };
+		51A88EDD1A41FB0200D73FA2 /* ofxTweakbarList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTweakbarList.h; sourceTree = "<group>"; };
+		51A88EDE1A41FB0200D73FA2 /* ofxTweakbarQuat4f.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTweakbarQuat4f.cpp; sourceTree = "<group>"; };
+		51A88EDF1A41FB0200D73FA2 /* ofxTweakbarQuat4f.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTweakbarQuat4f.h; sourceTree = "<group>"; };
+		51A88EE01A41FB0200D73FA2 /* ofxTweakbarSeparator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTweakbarSeparator.cpp; sourceTree = "<group>"; };
+		51A88EE11A41FB0200D73FA2 /* ofxTweakbarSeparator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTweakbarSeparator.h; sourceTree = "<group>"; };
+		51A88EE21A41FB0200D73FA2 /* ofxTweakbarString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTweakbarString.cpp; sourceTree = "<group>"; };
+		51A88EE31A41FB0200D73FA2 /* ofxTweakbarString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTweakbarString.h; sourceTree = "<group>"; };
+		51A88EE41A41FB0200D73FA2 /* ofxTweakbarType.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTweakbarType.cpp; sourceTree = "<group>"; };
+		51A88EE51A41FB0200D73FA2 /* ofxTweakbarType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTweakbarType.h; sourceTree = "<group>"; };
+		51A88EE61A41FB0200D73FA2 /* ofxTweakbarTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTweakbarTypes.h; sourceTree = "<group>"; };
+		51A88EE71A41FB0200D73FA2 /* ofxTweakbarVec3f.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTweakbarVec3f.cpp; sourceTree = "<group>"; };
+		51A88EE81A41FB0200D73FA2 /* ofxTweakbarVec3f.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTweakbarVec3f.h; sourceTree = "<group>"; };
+		51B2FDD21A3109BA00246487 /* OculusEyeDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OculusEyeDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		55821212F7FA211ED39462E1 /* OVR_HIDDeviceBase.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVR_HIDDeviceBase.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/OVR_HIDDeviceBase.h; sourceTree = SOURCE_ROOT; };
+		563455B613A53219177E2A4E /* OVR_Allocator.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OVR_Allocator.cpp; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_Allocator.cpp; sourceTree = SOURCE_ROOT; };
+		57765DD2192B1D9F84802EAE /* OVR_Atomic.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVR_Atomic.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_Atomic.h; sourceTree = SOURCE_ROOT; };
+		5784A63095801FCE6B018A5D /* OVR_Array.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVR_Array.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_Array.h; sourceTree = SOURCE_ROOT; };
+		579B2E9C418F4915B064C67F /* OVR_Allocator.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVR_Allocator.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_Allocator.h; sourceTree = SOURCE_ROOT; };
+		5A802CF18FDF5791D2B3E018 /* OVR_DeviceConstants.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVR_DeviceConstants.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/OVR_DeviceConstants.h; sourceTree = SOURCE_ROOT; };
+		5CC237B444594C86CDE7C9C7 /* OVR.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVR.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Include/OVR.h; sourceTree = SOURCE_ROOT; };
+		5FE4E63F56625A4759A31A70 /* OVR_Threads.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVR_Threads.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_Threads.h; sourceTree = SOURCE_ROOT; };
+		609C79F3C319D61875AF5EB4 /* OVR_SensorFusion.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVR_SensorFusion.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/OVR_SensorFusion.h; sourceTree = SOURCE_ROOT; };
+		63009164EADB7EE361C8B9DB /* OVR_Alg.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OVR_Alg.cpp; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_Alg.cpp; sourceTree = SOURCE_ROOT; };
+		6503944FDDABDF4C1B2625B1 /* OVR_DeviceMessages.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVR_DeviceMessages.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/OVR_DeviceMessages.h; sourceTree = SOURCE_ROOT; };
+		6BF6D892346786D35C682F2B /* OVR_ThreadCommandQueue.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OVR_ThreadCommandQueue.cpp; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/OVR_ThreadCommandQueue.cpp; sourceTree = SOURCE_ROOT; };
+		6D6031C34E49E2B59E178853 /* OVR_OSX_DeviceManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OVR_OSX_DeviceManager.cpp; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/OVR_OSX_DeviceManager.cpp; sourceTree = SOURCE_ROOT; };
+		6E3650CAD6BB1F0588DEB973 /* OVR_String.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVR_String.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_String.h; sourceTree = SOURCE_ROOT; };
+		73A7002C6262279F4C82833B /* OVR_ContainerAllocator.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVR_ContainerAllocator.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_ContainerAllocator.h; sourceTree = SOURCE_ROOT; };
+		74675DD9B1A2CC7F5121F104 /* OVR_Std.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OVR_Std.cpp; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_Std.cpp; sourceTree = SOURCE_ROOT; };
+		7751194E34FABDFDB27664E5 /* OVR_ThreadCommandQueue.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVR_ThreadCommandQueue.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/OVR_ThreadCommandQueue.h; sourceTree = SOURCE_ROOT; };
+		7A4BF656246C10093481D887 /* OVR_Std.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVR_Std.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_Std.h; sourceTree = SOURCE_ROOT; };
+		7BAEDE1701D65AAA49D7CA89 /* OVR_File.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OVR_File.cpp; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_File.cpp; sourceTree = SOURCE_ROOT; };
+		801E4844823B5DEA137AFF86 /* ofxOculusRift.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxOculusRift.cpp; path = ../../../addons/ofxOculusRift/src/ofxOculusRift.cpp; sourceTree = SOURCE_ROOT; };
+		801FE286EB550E579DA1943E /* OVR_Timer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVR_Timer.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_Timer.h; sourceTree = SOURCE_ROOT; };
+		832BDC407620CDBA568B713D /* tinyxmlerror.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = tinyxmlerror.cpp; path = ../../../addons/ofxXmlSettings/libs/tinyxmlerror.cpp; sourceTree = SOURCE_ROOT; };
+		837FB7D4184AE864FC8A2DC8 /* OVR_OSX_HMDDevice.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OVR_OSX_HMDDevice.cpp; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/OVR_OSX_HMDDevice.cpp; sourceTree = SOURCE_ROOT; };
+		87AA60D4BD5EC75017661A5E /* OVR_Color.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVR_Color.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_Color.h; sourceTree = SOURCE_ROOT; };
+		8D8EBF61F26CDF34294C7958 /* OVR_DeviceHandle.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OVR_DeviceHandle.cpp; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/OVR_DeviceHandle.cpp; sourceTree = SOURCE_ROOT; };
+		989DF2418CD71D8784EC02DF /* OVR_DeviceHandle.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVR_DeviceHandle.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/OVR_DeviceHandle.h; sourceTree = SOURCE_ROOT; };
+		9D34E5DA90732FB55F4F1929 /* OVR_StringHash.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVR_StringHash.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_StringHash.h; sourceTree = SOURCE_ROOT; };
+		9E69D79EC3265C6D79DEEA6E /* OVR_Types.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVR_Types.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_Types.h; sourceTree = SOURCE_ROOT; };
+		9F1AAB6F7B118A35962B39F0 /* Util_Render_Stereo.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = Util_Render_Stereo.cpp; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Util/Util_Render_Stereo.cpp; sourceTree = SOURCE_ROOT; };
+		9F5E87DCF78C385017C5329F /* OVR_HIDDeviceImpl.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVR_HIDDeviceImpl.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/OVR_HIDDeviceImpl.h; sourceTree = SOURCE_ROOT; };
+		A08E457397FCCEFF03F0C909 /* Util_MagCalibration.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = Util_MagCalibration.cpp; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Util/Util_MagCalibration.cpp; sourceTree = SOURCE_ROOT; };
+		A3E49BD3D0A3E5C2FF0455D7 /* OVR_UTF8Util.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVR_UTF8Util.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_UTF8Util.h; sourceTree = SOURCE_ROOT; };
+		A734911384841F0247999ED4 /* OVR_ThreadsPthread.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OVR_ThreadsPthread.cpp; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_ThreadsPthread.cpp; sourceTree = SOURCE_ROOT; };
+		ABC699D85AF88A1700A4D5E9 /* OVR_SysFile.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVR_SysFile.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_SysFile.h; sourceTree = SOURCE_ROOT; };
+		ACF4A0D5565653814EBEE4B3 /* OVR_SensorImpl.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVR_SensorImpl.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/OVR_SensorImpl.h; sourceTree = SOURCE_ROOT; };
+		AD180209CF5D8726552E629D /* OVRVersion.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVRVersion.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Include/OVRVersion.h; sourceTree = SOURCE_ROOT; };
+		AEF2FCFA9D5D42AC23525AE0 /* OVR_SensorFilter.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVR_SensorFilter.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/OVR_SensorFilter.h; sourceTree = SOURCE_ROOT; };
+		B21E7E5F548EEA92F368040B /* tinyxml.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = tinyxml.h; path = ../../../addons/ofxXmlSettings/libs/tinyxml.h; sourceTree = SOURCE_ROOT; };
+		B28567779F0B1649DDCAF1EE /* ofxOculusRift.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxOculusRift.h; path = ../../../addons/ofxOculusRift/src/ofxOculusRift.h; sourceTree = SOURCE_ROOT; };
+		B5B30D4768B61DCC924B4B10 /* OVR_File.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVR_File.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_File.h; sourceTree = SOURCE_ROOT; };
+		B7F0A7EFA37F0A304499142F /* tinyxml2.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = tinyxml2.h; path = ../../../addons/ofxOculusRift/libs/3rdParty/TinyXml/tinyxml2.h; sourceTree = SOURCE_ROOT; };
+		BA8AF49B024B00D1B9AC8D80 /* OVR_RefCount.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVR_RefCount.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_RefCount.h; sourceTree = SOURCE_ROOT; };
+		BB97B94797A16D64A60B8AA4 /* tinyxml2.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = tinyxml2.cpp; path = ../../../addons/ofxOculusRift/libs/3rdParty/TinyXml/tinyxml2.cpp; sourceTree = SOURCE_ROOT; };
+		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
+		C3F2408FEC84D70AD4894DCB /* OVR_OSX_HMDDevice.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVR_OSX_HMDDevice.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/OVR_OSX_HMDDevice.h; sourceTree = SOURCE_ROOT; };
+		C7BC84CECEEE058B4A248005 /* OVR_SensorFusion.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OVR_SensorFusion.cpp; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/OVR_SensorFusion.cpp; sourceTree = SOURCE_ROOT; };
+		D3671FDA80DE05E0AF1910E9 /* OVR_Device.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVR_Device.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/OVR_Device.h; sourceTree = SOURCE_ROOT; };
+		D4F22083BE25612FC2BFC0D9 /* OVR_String.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OVR_String.cpp; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_String.cpp; sourceTree = SOURCE_ROOT; };
+		D6EEAB380FBCC16F2A566B48 /* OVR_RefCount.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OVR_RefCount.cpp; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_RefCount.cpp; sourceTree = SOURCE_ROOT; };
+		D8EC3C74DA2B99AB0726B731 /* OVR_SysFile.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OVR_SysFile.cpp; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_SysFile.cpp; sourceTree = SOURCE_ROOT; };
+		DABA356F80AC573F4636ED63 /* OVR_System.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVR_System.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_System.h; sourceTree = SOURCE_ROOT; };
+		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
+		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
+		E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
+		E45BE9730E8CC7DD009D7055 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = /System/Library/Frameworks/AudioToolbox.framework; sourceTree = "<absolute>"; };
+		E45BE9740E8CC7DD009D7055 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		E45BE9750E8CC7DD009D7055 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = /System/Library/Frameworks/CoreAudio.framework; sourceTree = "<absolute>"; };
+		E45BE9760E8CC7DD009D7055 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
+		E45BE9770E8CC7DD009D7055 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = /System/Library/Frameworks/CoreServices.framework; sourceTree = "<absolute>"; };
+		E45BE9790E8CC7DD009D7055 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
+		E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
+		E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
+		E4C2424410CC5A17004149E2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		E4C2424510CC5A17004149E2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		E4C2424610CC5A17004149E2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
+		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
+		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		E5D8D2DD3F6D1925502E57EF /* OVR_Alg.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVR_Alg.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_Alg.h; sourceTree = SOURCE_ROOT; };
+		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
+		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
+		E7F985F515E0DE99003869B5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
+		ED68FBF2F9F9DDDA3ED4AE65 /* OVR_OSX_HIDDevice.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVR_OSX_HIDDevice.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/OVR_OSX_HIDDevice.h; sourceTree = SOURCE_ROOT; };
+		F1FCC6F53B74775A48E3DF87 /* OVR_List.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVR_List.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_List.h; sourceTree = SOURCE_ROOT; };
+		FC5DA1C87211D4F6377DA719 /* tinyxmlparser.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = tinyxmlparser.cpp; path = ../../../addons/ofxXmlSettings/libs/tinyxmlparser.cpp; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E4B69B590A3A1756003C02F2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				51A88EB81A41F87B00D73FA2 /* libAntTweakBar.dylib in Frameworks */,
+				519909951A25A49A008021BE /* OpenCL.framework in Frameworks */,
+				5199095F1A23C5C3008021BE /* libopencv_calib3d.3.0.0.dylib in Frameworks */,
+				519909601A23C5C3008021BE /* libopencv_core.3.0.0.dylib in Frameworks */,
+				519909611A23C5C3008021BE /* libopencv_features2d.3.0.0.dylib in Frameworks */,
+				519909621A23C5C3008021BE /* libopencv_flann.3.0.0.dylib in Frameworks */,
+				519909631A23C5C3008021BE /* libopencv_highgui.3.0.0.dylib in Frameworks */,
+				519909641A23C5C3008021BE /* libopencv_imgcodecs.3.0.0.dylib in Frameworks */,
+				519909651A23C5C3008021BE /* libopencv_imgproc.3.0.0.dylib in Frameworks */,
+				519909661A23C5C3008021BE /* libopencv_ml.3.0.0.dylib in Frameworks */,
+				519909671A23C5C3008021BE /* libopencv_objdetect.3.0.0.dylib in Frameworks */,
+				519909681A23C5C3008021BE /* libopencv_photo.3.0.0.dylib in Frameworks */,
+				519909691A23C5C3008021BE /* libopencv_shape.3.0.0.dylib in Frameworks */,
+				5199096A1A23C5C3008021BE /* libopencv_stitching.3.0.0.dylib in Frameworks */,
+				5199096B1A23C5C3008021BE /* libopencv_superres.3.0.0.dylib in Frameworks */,
+				5199096C1A23C5C3008021BE /* libopencv_ts.a in Frameworks */,
+				5199096D1A23C5C3008021BE /* libopencv_video.3.0.0.dylib in Frameworks */,
+				5199096E1A23C5C3008021BE /* libopencv_videoio.3.0.0.dylib in Frameworks */,
+				51A88EE91A41FB0200D73FA2 /* libAntTweakBar.a in Frameworks */,
+				5199096F1A23C5C3008021BE /* libopencv_videostab.3.0.0.dylib in Frameworks */,
+				5199094D1A23C582008021BE /* libusb-1.0.0.dylib in Frameworks */,
+				E45BE97E0E8CC7DD009D7055 /* Carbon.framework in Frameworks */,
+				519909411A23B2E8008021BE /* Quartz.framework in Frameworks */,
+				519909421A23B2E8008021BE /* QuartzCore.framework in Frameworks */,
+				E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */,
+				E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */,
+				E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */,
+				E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */,
+				E45BE97C0E8CC7DD009D7055 /* ApplicationServices.framework in Frameworks */,
+				E45BE97D0E8CC7DD009D7055 /* AudioToolbox.framework in Frameworks */,
+				E45BE97F0E8CC7DD009D7055 /* CoreAudio.framework in Frameworks */,
+				E45BE9800E8CC7DD009D7055 /* CoreFoundation.framework in Frameworks */,
+				E45BE9810E8CC7DD009D7055 /* CoreServices.framework in Frameworks */,
+				E45BE9830E8CC7DD009D7055 /* OpenGL.framework in Frameworks */,
+				E45BE9840E8CC7DD009D7055 /* QuickTime.framework in Frameworks */,
+				E4C2424710CC5A17004149E2 /* AppKit.framework in Frameworks */,
+				E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */,
+				E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */,
+				E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		02A90211F23BC1D23B3BBF2D /* LibOVR */ = {
+			isa = PBXGroup;
+			children = (
+				0C700258691DA3A75029EF70 /* Include */,
+				4B4E51B55700523122AFBD04 /* Src */,
+			);
+			name = LibOVR;
+			sourceTree = "<group>";
+		};
+		0C700258691DA3A75029EF70 /* Include */ = {
+			isa = PBXGroup;
+			children = (
+				5CC237B444594C86CDE7C9C7 /* OVR.h */,
+				AD180209CF5D8726552E629D /* OVRVersion.h */,
+			);
+			name = Include;
+			sourceTree = "<group>";
+		};
+		1F4FB5C423662B96ADFDCC0B /* ofxXmlSettings */ = {
+			isa = PBXGroup;
+			children = (
+				6ECEF0D76BC33727823EADFF /* src */,
+				6E54289412D2D94F45A05113 /* libs */,
+			);
+			name = ofxXmlSettings;
+			sourceTree = "<group>";
+		};
+		24C9CB50C6C11DD4AE3DB647 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				512E51B07409C0E5995CEED8 /* Util_LatencyTest.cpp */,
+				48CB6F0F4DBFFC28D85E7DA1 /* Util_LatencyTest.h */,
+				A08E457397FCCEFF03F0C909 /* Util_MagCalibration.cpp */,
+				0465F1FEA0206392F51C24EA /* Util_MagCalibration.h */,
+				9F1AAB6F7B118A35962B39F0 /* Util_Render_Stereo.cpp */,
+				39C4D10A54BE6062F1CF5B4F /* Util_Render_Stereo.h */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
+		35F901D2695D5133E0693C6D /* TinyXml */ = {
+			isa = PBXGroup;
+			children = (
+				BB97B94797A16D64A60B8AA4 /* tinyxml2.cpp */,
+				B7F0A7EFA37F0A304499142F /* tinyxml2.h */,
+			);
+			name = TinyXml;
+			sourceTree = "<group>";
+		};
+		48B7CCA74FF7DC1D290B2D8E /* Kernel */ = {
+			isa = PBXGroup;
+			children = (
+				63009164EADB7EE361C8B9DB /* OVR_Alg.cpp */,
+				E5D8D2DD3F6D1925502E57EF /* OVR_Alg.h */,
+				563455B613A53219177E2A4E /* OVR_Allocator.cpp */,
+				579B2E9C418F4915B064C67F /* OVR_Allocator.h */,
+				5784A63095801FCE6B018A5D /* OVR_Array.h */,
+				1F89304DC2296747F70C8020 /* OVR_Atomic.cpp */,
+				57765DD2192B1D9F84802EAE /* OVR_Atomic.h */,
+				87AA60D4BD5EC75017661A5E /* OVR_Color.h */,
+				73A7002C6262279F4C82833B /* OVR_ContainerAllocator.h */,
+				7BAEDE1701D65AAA49D7CA89 /* OVR_File.cpp */,
+				B5B30D4768B61DCC924B4B10 /* OVR_File.h */,
+				35DD1DDDD306A542780A46B4 /* OVR_FileFILE.cpp */,
+				220FBF672FB39FA4EB0A3F8C /* OVR_Hash.h */,
+				01CA955257F9F4662071E60A /* OVR_KeyCodes.h */,
+				F1FCC6F53B74775A48E3DF87 /* OVR_List.h */,
+				0D080299FB319E35B254E142 /* OVR_Log.cpp */,
+				05CADDE12E1761E502833DFF /* OVR_Log.h */,
+				471BEBB921AF2881801A567F /* OVR_Math.cpp */,
+				0219538C708E4F1E6C0BA972 /* OVR_Math.h */,
+				D6EEAB380FBCC16F2A566B48 /* OVR_RefCount.cpp */,
+				BA8AF49B024B00D1B9AC8D80 /* OVR_RefCount.h */,
+				74675DD9B1A2CC7F5121F104 /* OVR_Std.cpp */,
+				7A4BF656246C10093481D887 /* OVR_Std.h */,
+				D4F22083BE25612FC2BFC0D9 /* OVR_String.cpp */,
+				6E3650CAD6BB1F0588DEB973 /* OVR_String.h */,
+				50629A910B87008E8F8430D5 /* OVR_String_FormatUtil.cpp */,
+				473B321C8A9AC7F4D1622C97 /* OVR_String_PathUtil.cpp */,
+				9D34E5DA90732FB55F4F1929 /* OVR_StringHash.h */,
+				D8EC3C74DA2B99AB0726B731 /* OVR_SysFile.cpp */,
+				ABC699D85AF88A1700A4D5E9 /* OVR_SysFile.h */,
+				3852E0057150A2D60FD7E473 /* OVR_System.cpp */,
+				DABA356F80AC573F4636ED63 /* OVR_System.h */,
+				5FE4E63F56625A4759A31A70 /* OVR_Threads.h */,
+				A734911384841F0247999ED4 /* OVR_ThreadsPthread.cpp */,
+				0C106C983203B40BC30D3BD4 /* OVR_Timer.cpp */,
+				801FE286EB550E579DA1943E /* OVR_Timer.h */,
+				9E69D79EC3265C6D79DEEA6E /* OVR_Types.h */,
+				2A866158617F464ACDE4A2EC /* OVR_UTF8Util.cpp */,
+				A3E49BD3D0A3E5C2FF0455D7 /* OVR_UTF8Util.h */,
+			);
+			name = Kernel;
+			sourceTree = "<group>";
+		};
+		4B4E51B55700523122AFBD04 /* Src */ = {
+			isa = PBXGroup;
+			children = (
+				48B7CCA74FF7DC1D290B2D8E /* Kernel */,
+				D3671FDA80DE05E0AF1910E9 /* OVR_Device.h */,
+				5A802CF18FDF5791D2B3E018 /* OVR_DeviceConstants.h */,
+				8D8EBF61F26CDF34294C7958 /* OVR_DeviceHandle.cpp */,
+				989DF2418CD71D8784EC02DF /* OVR_DeviceHandle.h */,
+				31E6845D410A9E6B51EF3AF4 /* OVR_DeviceImpl.cpp */,
+				2467FDB376945DD8B60C9F0D /* OVR_DeviceImpl.h */,
+				6503944FDDABDF4C1B2625B1 /* OVR_DeviceMessages.h */,
+				4F0F0F3EA74C0CB761F3ABC8 /* OVR_HIDDevice.h */,
+				55821212F7FA211ED39462E1 /* OVR_HIDDeviceBase.h */,
+				9F5E87DCF78C385017C5329F /* OVR_HIDDeviceImpl.h */,
+				493C297A45566F4D4EABED8B /* OVR_LatencyTestImpl.cpp */,
+				2EB240E87AE226F3580CE2CC /* OVR_LatencyTestImpl.h */,
+				6D6031C34E49E2B59E178853 /* OVR_OSX_DeviceManager.cpp */,
+				4F5C9AC00D17B738C34B4C05 /* OVR_OSX_DeviceManager.h */,
+				3D986E69CEEA37DB2DB15B68 /* OVR_OSX_HIDDevice.cpp */,
+				ED68FBF2F9F9DDDA3ED4AE65 /* OVR_OSX_HIDDevice.h */,
+				837FB7D4184AE864FC8A2DC8 /* OVR_OSX_HMDDevice.cpp */,
+				C3F2408FEC84D70AD4894DCB /* OVR_OSX_HMDDevice.h */,
+				4559255C4B217A68D36E7699 /* OVR_OSX_SensorDevice.cpp */,
+				33A7EFC0E60854EEAF434AB2 /* OVR_SensorFilter.cpp */,
+				AEF2FCFA9D5D42AC23525AE0 /* OVR_SensorFilter.h */,
+				C7BC84CECEEE058B4A248005 /* OVR_SensorFusion.cpp */,
+				609C79F3C319D61875AF5EB4 /* OVR_SensorFusion.h */,
+				29F2AB31E88FB89F9715EB2F /* OVR_SensorImpl.cpp */,
+				ACF4A0D5565653814EBEE4B3 /* OVR_SensorImpl.h */,
+				6BF6D892346786D35C682F2B /* OVR_ThreadCommandQueue.cpp */,
+				7751194E34FABDFDB27664E5 /* OVR_ThreadCommandQueue.h */,
+				24C9CB50C6C11DD4AE3DB647 /* Util */,
+			);
+			name = Src;
+			sourceTree = "<group>";
+		};
+		519909331A23B2BD008021BE /* ps3Eye */ = {
+			isa = PBXGroup;
+			children = (
+				519909341A23B2BD008021BE /* libusb.h */,
+				519909351A23B2BD008021BE /* ps3eye.cpp */,
+				519909361A23B2BD008021BE /* ps3eye.h */,
+			);
+			path = ps3Eye;
+			sourceTree = "<group>";
+		};
+		519909711A23C741008021BE /* ext */ = {
+			isa = PBXGroup;
+			children = (
+				51A88EB91A41FB0200D73FA2 /* ofxTweakBar */,
+				519909721A23C741008021BE /* Fonts */,
+				519909741A23C741008021BE /* Shaders */,
+			);
+			path = ext;
+			sourceTree = "<group>";
+		};
+		519909721A23C741008021BE /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				519909731A23C741008021BE /* DIN.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		519909741A23C741008021BE /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				519909751A23C741008021BE /* HmdDistort.vert */,
+				519909761A23C741008021BE /* HmdWarp.frag */,
+				519909771A23C741008021BE /* HmdWarp.vert */,
+			);
+			path = Shaders;
+			sourceTree = "<group>";
+		};
+		519909881A2581B2008021BE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5199099B1A2CC243008021BE /* NoCameraFound.png */,
+				519909931A2588CB008021BE /* Images.xcassets */,
+				519909891A2581B2008021BE /* menu_icon_32x32.icns */,
+				5199098A1A2581B2008021BE /* MenuBarIcon_16.png */,
+				5199098B1A2581B2008021BE /* MenuBarIcon_32.icns */,
+				5199098C1A2581B2008021BE /* MenuBarIcon_32.png */,
+				5199098D1A2581B2008021BE /* MenuBarIcon_32_Alt.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		51A88EB91A41FB0200D73FA2 /* ofxTweakBar */ = {
+			isa = PBXGroup;
+			children = (
+				51A88EBA1A41FB0200D73FA2 /* include */,
+				51A88EBD1A41FB0200D73FA2 /* lib */,
+				51A88EC31A41FB0200D73FA2 /* ofxTweak.h */,
+				51A88EC41A41FB0200D73FA2 /* ofxTweakbar.cpp */,
+				51A88EC51A41FB0200D73FA2 /* ofxTweakbar.h */,
+				51A88EC61A41FB0200D73FA2 /* ofxTweakbars.cpp */,
+				51A88EC71A41FB0200D73FA2 /* ofxTweakbars.h */,
+				51A88EC81A41FB0200D73FA2 /* storage */,
+				51A88ECD1A41FB0200D73FA2 /* types */,
+			);
+			name = ofxTweakBar;
+			path = AntTweakBar;
+			sourceTree = "<group>";
+		};
+		51A88EBA1A41FB0200D73FA2 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				51A88EBB1A41FB0200D73FA2 /* AntTweakBar.h */,
+				51A88EBC1A41FB0200D73FA2 /* AntTweakBarOld.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		51A88EBD1A41FB0200D73FA2 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				51A88EBE1A41FB0200D73FA2 /* mac */,
+				51A88EC01A41FB0200D73FA2 /* win */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		51A88EBE1A41FB0200D73FA2 /* mac */ = {
+			isa = PBXGroup;
+			children = (
+				51A88EBF1A41FB0200D73FA2 /* libAntTweakBar.a */,
+			);
+			path = mac;
+			sourceTree = "<group>";
+		};
+		51A88EC01A41FB0200D73FA2 /* win */ = {
+			isa = PBXGroup;
+			children = (
+				51A88EC11A41FB0200D73FA2 /* AntTweakBar.dll */,
+				51A88EC21A41FB0200D73FA2 /* AntTweakBar.lib */,
+			);
+			path = win;
+			sourceTree = "<group>";
+		};
+		51A88EC81A41FB0200D73FA2 /* storage */ = {
+			isa = PBXGroup;
+			children = (
+				51A88EC91A41FB0200D73FA2 /* ofxTweakbarSimpleStorage.cpp */,
+				51A88ECA1A41FB0200D73FA2 /* ofxTweakbarSimpleStorage.h */,
+				51A88ECB1A41FB0200D73FA2 /* ofxTweakbarStorage.cpp */,
+				51A88ECC1A41FB0200D73FA2 /* ofxTweakbarStorage.h */,
+			);
+			path = storage;
+			sourceTree = "<group>";
+		};
+		51A88ECD1A41FB0200D73FA2 /* types */ = {
+			isa = PBXGroup;
+			children = (
+				51A88ECE1A41FB0200D73FA2 /* ofxTweakbarBarData.cpp */,
+				51A88ECF1A41FB0200D73FA2 /* ofxTweakbarBarData.h */,
+				51A88ED01A41FB0200D73FA2 /* ofxTweakbarBool.cpp */,
+				51A88ED11A41FB0200D73FA2 /* ofxTweakbarBool.h */,
+				51A88ED21A41FB0200D73FA2 /* ofxTweakbarButton.cpp */,
+				51A88ED31A41FB0200D73FA2 /* ofxTweakbarButton.h */,
+				51A88ED41A41FB0200D73FA2 /* ofxTweakbarColor3f.cpp */,
+				51A88ED51A41FB0200D73FA2 /* ofxTweakbarColor3f.h */,
+				51A88ED61A41FB0200D73FA2 /* ofxTweakbarFiles.cpp */,
+				51A88ED71A41FB0200D73FA2 /* ofxTweakbarFiles.h */,
+				51A88ED81A41FB0200D73FA2 /* ofxTweakbarFloat.cpp */,
+				51A88ED91A41FB0200D73FA2 /* ofxTweakbarFloat.h */,
+				51A88EDA1A41FB0200D73FA2 /* ofxTweakbarInt.cpp */,
+				51A88EDB1A41FB0200D73FA2 /* ofxTweakbarInt.h */,
+				51A88EDC1A41FB0200D73FA2 /* ofxTweakbarList.cpp */,
+				51A88EDD1A41FB0200D73FA2 /* ofxTweakbarList.h */,
+				51A88EDE1A41FB0200D73FA2 /* ofxTweakbarQuat4f.cpp */,
+				51A88EDF1A41FB0200D73FA2 /* ofxTweakbarQuat4f.h */,
+				51A88EE01A41FB0200D73FA2 /* ofxTweakbarSeparator.cpp */,
+				51A88EE11A41FB0200D73FA2 /* ofxTweakbarSeparator.h */,
+				51A88EE21A41FB0200D73FA2 /* ofxTweakbarString.cpp */,
+				51A88EE31A41FB0200D73FA2 /* ofxTweakbarString.h */,
+				51A88EE41A41FB0200D73FA2 /* ofxTweakbarType.cpp */,
+				51A88EE51A41FB0200D73FA2 /* ofxTweakbarType.h */,
+				51A88EE61A41FB0200D73FA2 /* ofxTweakbarTypes.h */,
+				51A88EE71A41FB0200D73FA2 /* ofxTweakbarVec3f.cpp */,
+				51A88EE81A41FB0200D73FA2 /* ofxTweakbarVec3f.h */,
+			);
+			path = types;
+			sourceTree = "<group>";
+		};
+		6E54289412D2D94F45A05113 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				2B40EDA85BEB63E46785BC29 /* tinyxml.cpp */,
+				B21E7E5F548EEA92F368040B /* tinyxml.h */,
+				832BDC407620CDBA568B713D /* tinyxmlerror.cpp */,
+				FC5DA1C87211D4F6377DA719 /* tinyxmlparser.cpp */,
+			);
+			name = libs;
+			sourceTree = "<group>";
+		};
+		6ECEF0D76BC33727823EADFF /* src */ = {
+			isa = PBXGroup;
+			children = (
+				50DF87D612C5AAE17AAFA6C0 /* ofxXmlSettings.cpp */,
+				01DCC0911400F9ACF5B65578 /* ofxXmlSettings.h */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		919F149B651029FC2CC0E22E /* src */ = {
+			isa = PBXGroup;
+			children = (
+				801E4844823B5DEA137AFF86 /* ofxOculusRift.cpp */,
+				B28567779F0B1649DDCAF1EE /* ofxOculusRift.h */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		B70FDB1AD46AB58F514E40EB /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				DD516B67B4974B396308C499 /* 3rdParty */,
+				02A90211F23BC1D23B3BBF2D /* LibOVR */,
+			);
+			name = libs;
+			sourceTree = "<group>";
+		};
+		BB4B014C10F69532006C3DED /* addons */ = {
+			isa = PBXGroup;
+			children = (
+				1F4FB5C423662B96ADFDCC0B /* ofxXmlSettings */,
+				DCD46EAAB39931819E40F820 /* ofxOculusRift */,
+			);
+			name = addons;
+			sourceTree = "<group>";
+		};
+		BBAB23C913894ECA00AA2426 /* system frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				519909941A25A49A008021BE /* OpenCL.framework */,
+				5199093F1A23B2E8008021BE /* Quartz.framework */,
+				519909401A23B2E8008021BE /* QuartzCore.framework */,
+				E7F985F515E0DE99003869B5 /* Accelerate.framework */,
+				E4C2424410CC5A17004149E2 /* AppKit.framework */,
+				E4C2424510CC5A17004149E2 /* Cocoa.framework */,
+				E4C2424610CC5A17004149E2 /* IOKit.framework */,
+				E45BE9710E8CC7DD009D7055 /* AGL.framework */,
+				E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */,
+				E45BE9730E8CC7DD009D7055 /* AudioToolbox.framework */,
+				E45BE9740E8CC7DD009D7055 /* Carbon.framework */,
+				E45BE9750E8CC7DD009D7055 /* CoreAudio.framework */,
+				E45BE9760E8CC7DD009D7055 /* CoreFoundation.framework */,
+				E45BE9770E8CC7DD009D7055 /* CoreServices.framework */,
+				E45BE9790E8CC7DD009D7055 /* OpenGL.framework */,
+				E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */,
+				E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */,
+				E7E077E715D3B6510020DFD4 /* QTKit.framework */,
+			);
+			name = "system frameworks";
+			sourceTree = "<group>";
+		};
+		BBAB23CA13894EDB00AA2426 /* 3rd party frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BBAB23BE13894E4700AA2426 /* GLUT.framework */,
+			);
+			name = "3rd party frameworks";
+			sourceTree = "<group>";
+		};
+		DCD46EAAB39931819E40F820 /* ofxOculusRift */ = {
+			isa = PBXGroup;
+			children = (
+				919F149B651029FC2CC0E22E /* src */,
+				B70FDB1AD46AB58F514E40EB /* libs */,
+			);
+			name = ofxOculusRift;
+			sourceTree = "<group>";
+		};
+		DD516B67B4974B396308C499 /* 3rdParty */ = {
+			isa = PBXGroup;
+			children = (
+				35F901D2695D5133E0693C6D /* TinyXml */,
+			);
+			name = 3rdParty;
+			sourceTree = "<group>";
+		};
+		E4328144138ABC890047C5CB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E4328148138ABC890047C5CB /* openFrameworksDebug.a */,
+				5199092B1A23AE9A008021BE /* openFrameworksNoFMODDebug.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E45BE5980E8CC70C009D7055 /* frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				51A88EB71A41F87B00D73FA2 /* libAntTweakBar.dylib */,
+				5199094E1A23C5C3008021BE /* libopencv_calib3d.3.0.0.dylib */,
+				5199094F1A23C5C3008021BE /* libopencv_core.3.0.0.dylib */,
+				519909501A23C5C3008021BE /* libopencv_features2d.3.0.0.dylib */,
+				519909511A23C5C3008021BE /* libopencv_flann.3.0.0.dylib */,
+				519909521A23C5C3008021BE /* libopencv_highgui.3.0.0.dylib */,
+				519909531A23C5C3008021BE /* libopencv_imgcodecs.3.0.0.dylib */,
+				519909541A23C5C3008021BE /* libopencv_imgproc.3.0.0.dylib */,
+				519909551A23C5C3008021BE /* libopencv_ml.3.0.0.dylib */,
+				519909561A23C5C3008021BE /* libopencv_objdetect.3.0.0.dylib */,
+				519909571A23C5C3008021BE /* libopencv_photo.3.0.0.dylib */,
+				519909581A23C5C3008021BE /* libopencv_shape.3.0.0.dylib */,
+				519909591A23C5C3008021BE /* libopencv_stitching.3.0.0.dylib */,
+				5199095A1A23C5C3008021BE /* libopencv_superres.3.0.0.dylib */,
+				5199095B1A23C5C3008021BE /* libopencv_ts.a */,
+				5199095C1A23C5C3008021BE /* libopencv_video.3.0.0.dylib */,
+				5199095D1A23C5C3008021BE /* libopencv_videoio.3.0.0.dylib */,
+				5199095E1A23C5C3008021BE /* libopencv_videostab.3.0.0.dylib */,
+				5199094C1A23C582008021BE /* libusb-1.0.0.dylib */,
+				519909461A23BE0D008021BE /* libc++.dylib */,
+				BBAB23CA13894EDB00AA2426 /* 3rd party frameworks */,
+				BBAB23C913894ECA00AA2426 /* system frameworks */,
+			);
+			name = frameworks;
+			sourceTree = "<group>";
+		};
+		E4B69B4A0A3A1720003C02F2 = {
+			isa = PBXGroup;
+			children = (
+				519909861A2581B1008021BE /* notes.txt */,
+				5199098E1A2581B2008021BE /* versionNotes.txt */,
+				519909841A2581B1008021BE /* LICENSE.md */,
+				519909871A2581B2008021BE /* README.md */,
+				519909821A2581B1008021BE /* Credits.rtf */,
+				519909851A2581B1008021BE /* MainWindow.xib */,
+				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
+				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
+				E4B69E1C0A3A1BDC003C02F2 /* src */,
+				519909881A2581B2008021BE /* Resources */,
+				E4EEC9E9138DF44700A80321 /* openFrameworks */,
+				BB4B014C10F69532006C3DED /* addons */,
+				E45BE5980E8CC70C009D7055 /* frameworks */,
+				519909711A23C741008021BE /* ext */,
+				51B2FDD21A3109BA00246487 /* OculusEyeDebug.app */,
+			);
+			sourceTree = "<group>";
+		};
+		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				519909331A23B2BD008021BE /* ps3Eye */,
+				5199092E1A23B2BD008021BE /* main.cpp */,
+				519909301A23B2BD008021BE /* mainApp.h */,
+				5199092F1A23B2BD008021BE /* mainApp.cpp */,
+				5199092D1A23B2BD008021BE /* CVEye.h */,
+				5199092C1A23B2BD008021BE /* CVEye.cpp */,
+				519909321A23B2BD008021BE /* OFCVBridge.h */,
+				519909311A23B2BD008021BE /* OFCVBridge.cpp */,
+				519909381A23B2BD008021BE /* screenConfig.h */,
+				519909371A23B2BD008021BE /* screenConfig.cpp */,
+				51A88EB51A3F7EEF00D73FA2 /* CVPerformance.h */,
+				519909981A25A534008021BE /* Canny.cl */,
+			);
+			path = src;
+			sourceTree = SOURCE_ROOT;
+		};
+		E4EEC9E9138DF44700A80321 /* openFrameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */,
+				E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */,
+			);
+			name = openFrameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E4B69B5A0A3A1756003C02F2 /* OculusEye */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "OculusEye" */;
+			buildPhases = (
+				E4B69B580A3A1756003C02F2 /* Sources */,
+				E4B69B590A3A1756003C02F2 /* Frameworks */,
+				E4B6FFFD0C3F9AB9008CF71C /* ShellScript */,
+				E4C2427710CC5ABF004149E2 /* CopyFiles */,
+				5199097C1A23C7D1008021BE /* ShellScript */,
+				5199097D1A23C84C008021BE /* CopyFiles */,
+				5199099A1A2CC232008021BE /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E4EEB9AC138B136A00A80321 /* PBXTargetDependency */,
+			);
+			name = OculusEye;
+			productName = myOFApp;
+			productReference = 51B2FDD21A3109BA00246487 /* OculusEyeDebug.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+			};
+			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "OculusEye" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = E4B69B4A0A3A1720003C02F2;
+			productRefGroup = E4B69B4A0A3A1720003C02F2;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = E4328144138ABC890047C5CB /* Products */;
+					ProjectRef = E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				E4B69B5A0A3A1756003C02F2 /* OculusEye */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		5199092B1A23AE9A008021BE /* openFrameworksNoFMODDebug.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = openFrameworksNoFMODDebug.a;
+			remoteRef = 5199092A1A23AE9A008021BE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E4328148138ABC890047C5CB /* openFrameworksDebug.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = openFrameworksDebug.a;
+			remoteRef = E4328147138ABC890047C5CB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5199097C1A23C7D1008021BE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+		};
+		E4B6FFFD0C3F9AB9008CF71C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cp -f ../../../libs/fmodex/lib/osx/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/libfmodex.dylib\"; install_name_tool -change ./libfmodex.dylib @executable_path/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";\nmkdir -p \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\ncp -f \"$ICON_FILE\" \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E4B69B580A3A1756003C02F2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63B57AC5BF4EF088491E0317 /* ofxXmlSettings.cpp in Sources */,
+				933A2227713C720CEFF80FD9 /* tinyxml.cpp in Sources */,
+				9D44DC88EF9E7991B4A09951 /* tinyxmlerror.cpp in Sources */,
+				5A4349E9754D6FA14C0F2A3A /* tinyxmlparser.cpp in Sources */,
+				5199093D1A23B2BD008021BE /* ps3eye.cpp in Sources */,
+				51A88EF21A41FB0200D73FA2 /* ofxTweakbarColor3f.cpp in Sources */,
+				E265AB18747CABBD0826BAC4 /* ofxOculusRift.cpp in Sources */,
+				51A88EEB1A41FB0200D73FA2 /* ofxTweakbar.cpp in Sources */,
+				C0C79797EA45D37EF18C4C7D /* tinyxml2.cpp in Sources */,
+				E9318504429658979B37A4D5 /* OVR_Alg.cpp in Sources */,
+				AE54BC78396F06EC720FC55C /* OVR_Allocator.cpp in Sources */,
+				C93AC922A96A87E7389090C5 /* OVR_Atomic.cpp in Sources */,
+				51A88EF31A41FB0200D73FA2 /* ofxTweakbarFiles.cpp in Sources */,
+				8B1A5C12F72F72EEA6DF64A4 /* OVR_File.cpp in Sources */,
+				0447D77DCBBC396B8E7ADF7A /* OVR_FileFILE.cpp in Sources */,
+				51A88EEE1A41FB0200D73FA2 /* ofxTweakbarStorage.cpp in Sources */,
+				B2C33EDF6BC78B292440FD9D /* OVR_Log.cpp in Sources */,
+				21380FD12928F259439C0117 /* OVR_Math.cpp in Sources */,
+				51A88EF71A41FB0200D73FA2 /* ofxTweakbarQuat4f.cpp in Sources */,
+				EBD4E9A13DA155452B335F8D /* OVR_RefCount.cpp in Sources */,
+				E577C1C0DE6D59FC654014DF /* OVR_Std.cpp in Sources */,
+				51A88EED1A41FB0200D73FA2 /* ofxTweakbarSimpleStorage.cpp in Sources */,
+				54F752BB245910B19D290DC4 /* OVR_String.cpp in Sources */,
+				5CB760F5113B261811063F01 /* OVR_String_FormatUtil.cpp in Sources */,
+				5199093B1A23B2BD008021BE /* mainApp.cpp in Sources */,
+				6C62F88217934FFAFBAF82F6 /* OVR_String_PathUtil.cpp in Sources */,
+				F1A8D474F00A578B222B98C3 /* OVR_SysFile.cpp in Sources */,
+				D53BB62F01C90D26D9EB4D8D /* OVR_System.cpp in Sources */,
+				0538DE67F54C0980855968A7 /* OVR_ThreadsPthread.cpp in Sources */,
+				519909391A23B2BD008021BE /* CVEye.cpp in Sources */,
+				4EBCBD676B31AF4D2F88E053 /* OVR_Timer.cpp in Sources */,
+				7D6ECCFBADFFF2166B60BA19 /* OVR_UTF8Util.cpp in Sources */,
+				2A1B50697072AF5D7CFFF174 /* OVR_DeviceHandle.cpp in Sources */,
+				09F71BFCFBBBB8957D8FAC2D /* OVR_DeviceImpl.cpp in Sources */,
+				9661FB48455AE0A1EA8DAA05 /* OVR_LatencyTestImpl.cpp in Sources */,
+				51A88EF81A41FB0200D73FA2 /* ofxTweakbarSeparator.cpp in Sources */,
+				AFBBF5C1EA25D1E42335DCED /* OVR_OSX_DeviceManager.cpp in Sources */,
+				5199093C1A23B2BD008021BE /* OFCVBridge.cpp in Sources */,
+				D7FCBF24172EFE611529B203 /* OVR_OSX_HIDDevice.cpp in Sources */,
+				51A88EFB1A41FB0200D73FA2 /* ofxTweakbarVec3f.cpp in Sources */,
+				51A88EFA1A41FB0200D73FA2 /* ofxTweakbarType.cpp in Sources */,
+				C4972011ADA6B9E8D1EDB5AF /* OVR_OSX_HMDDevice.cpp in Sources */,
+				BE0E4C85086BF42237E786E3 /* OVR_OSX_SensorDevice.cpp in Sources */,
+				5199093A1A23B2BD008021BE /* main.cpp in Sources */,
+				51A88EF41A41FB0200D73FA2 /* ofxTweakbarFloat.cpp in Sources */,
+				8A951CA6419CB54153EBE287 /* OVR_SensorFilter.cpp in Sources */,
+				51A88EF51A41FB0200D73FA2 /* ofxTweakbarInt.cpp in Sources */,
+				F6DB846EE4B1DEF1FB5D0761 /* OVR_SensorFusion.cpp in Sources */,
+				51A88EEF1A41FB0200D73FA2 /* ofxTweakbarBarData.cpp in Sources */,
+				BE0AA8E6C0ECA0E79CBB1ADC /* OVR_SensorImpl.cpp in Sources */,
+				519909991A25A534008021BE /* Canny.cl in Sources */,
+				51A88EF61A41FB0200D73FA2 /* ofxTweakbarList.cpp in Sources */,
+				06729FD5689FE192A8EFC9FD /* OVR_ThreadCommandQueue.cpp in Sources */,
+				0A637AB87BA8E5D37AD460EC /* Util_LatencyTest.cpp in Sources */,
+				2C24A6A86A4754A885E0F7C4 /* Util_MagCalibration.cpp in Sources */,
+				51A88EF91A41FB0200D73FA2 /* ofxTweakbarString.cpp in Sources */,
+				43A8B018A1EB0103240F3CE5 /* Util_Render_Stereo.cpp in Sources */,
+				51A88EF01A41FB0200D73FA2 /* ofxTweakbarBool.cpp in Sources */,
+				51A88EEC1A41FB0200D73FA2 /* ofxTweakbars.cpp in Sources */,
+				5199093E1A23B2BD008021BE /* screenConfig.cpp in Sources */,
+				51A88EF11A41FB0200D73FA2 /* ofxTweakbarButton.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E4EEB9AC138B136A00A80321 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = openFrameworks;
+			targetProxy = E4EEB9AB138B136A00A80321 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		E4B69B4E0A3A1720003C02F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4EB6923138AFD0F00A09F29 /* Project.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/bin/";
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				GCC_AUTO_VECTORIZATION = YES;
+				GCC_ENABLE_SSE3_EXTENSIONS = YES;
+				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
+				GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = NO;
+				GCC_WARN_ALLOW_INCOMPLETE_PROTOCOL = NO;
+				GCC_WARN_UNINITIALIZED_AUTOS = NO;
+				GCC_WARN_UNUSED_VALUE = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					../../../addons/ofxXmlSettings/libs,
+					../../../addons/ofxXmlSettings/src,
+					../../../addons/ofxMSAInteractiveObject/libs,
+					../../../addons/ofxMSAInteractiveObject/src,
+					../../../addons/ofxOculusRift/libs,
+					../../../addons/ofxOculusRift/libs/3rdParty,
+					../../../addons/ofxOculusRift/libs/3rdParty/TinyXml,
+					../../../addons/ofxOculusRift/libs/LibOVR,
+					../../../addons/ofxOculusRift/libs/LibOVR/Include,
+					../../../addons/ofxOculusRift/libs/LibOVR/Lib,
+					../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS,
+					../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Debug,
+					../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Release,
+					../../../addons/ofxOculusRift/libs/LibOVR/Lib/Win32,
+					../../../addons/ofxOculusRift/libs/LibOVR/Lib/x64,
+					../../../addons/ofxOculusRift/libs/LibOVR/Projects,
+					../../../addons/ofxOculusRift/libs/LibOVR/Projects/Win32,
+					../../../addons/ofxOculusRift/libs/LibOVR/Src,
+					../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel,
+					../../../addons/ofxOculusRift/libs/LibOVR/Src/Util,
+					../../../addons/ofxOculusRift/src,
+					../../../addons/ofxSimpleGuiToo/libs,
+					../../../addons/ofxSimpleGuiToo/src,
+					../../../addons/ofxSimpleGuiToo/src/Controls,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				OTHER_CPLUSPLUSFLAGS = (
+					"-D__MACOSX_CORE__",
+					"-lpthread",
+					"-mtune=native",
+				);
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		E4B69B4F0A3A1720003C02F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4EB6923138AFD0F00A09F29 /* Project.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/bin/";
+				COPY_PHASE_STRIP = YES;
+				DEAD_CODE_STRIPPING = YES;
+				GCC_AUTO_VECTORIZATION = YES;
+				GCC_ENABLE_SSE3_EXTENSIONS = YES;
+				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = fast;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_UNROLL_LOOPS = YES;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
+				GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = NO;
+				GCC_WARN_ALLOW_INCOMPLETE_PROTOCOL = NO;
+				GCC_WARN_UNINITIALIZED_AUTOS = NO;
+				GCC_WARN_UNUSED_VALUE = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					../../../addons/ofxXmlSettings/libs,
+					../../../addons/ofxXmlSettings/src,
+					../../../addons/ofxMSAInteractiveObject/libs,
+					../../../addons/ofxMSAInteractiveObject/src,
+					../../../addons/ofxOculusRift/libs,
+					../../../addons/ofxOculusRift/libs/3rdParty,
+					../../../addons/ofxOculusRift/libs/3rdParty/TinyXml,
+					../../../addons/ofxOculusRift/libs/LibOVR,
+					../../../addons/ofxOculusRift/libs/LibOVR/Include,
+					../../../addons/ofxOculusRift/libs/LibOVR/Lib,
+					../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS,
+					../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Debug,
+					../../../addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Release,
+					../../../addons/ofxOculusRift/libs/LibOVR/Lib/Win32,
+					../../../addons/ofxOculusRift/libs/LibOVR/Lib/x64,
+					../../../addons/ofxOculusRift/libs/LibOVR/Projects,
+					../../../addons/ofxOculusRift/libs/LibOVR/Projects/Win32,
+					../../../addons/ofxOculusRift/libs/LibOVR/Src,
+					../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel,
+					../../../addons/ofxOculusRift/libs/LibOVR/Src/Util,
+					../../../addons/ofxOculusRift/src,
+					../../../addons/ofxSimpleGuiToo/libs,
+					../../../addons/ofxSimpleGuiToo/src,
+					../../../addons/ofxSimpleGuiToo/src/Controls,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				OTHER_CPLUSPLUSFLAGS = (
+					"-D__MACOSX_CORE__",
+					"-lpthread",
+					"-mtune=native",
+				);
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		E4B69B600A3A1757003C02F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LIBRARY = "libstdc++";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/glut/lib/osx\"";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = NONE;
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					../../../addons/ofxXmlSettings/libs,
+					../../../addons/ofxXmlSettings/src,
+					../../../addons/ofxMSAInteractiveObject/libs,
+					../../../addons/ofxMSAInteractiveObject/src,
+					../../../addons/ofxOculusRift/libs/LibOVR/Include,
+					../../../addons/ofxSimpleGuiToo/src,
+					../../../addons/ofxOculusRift/libs/LibOVR/Src,
+					../../../addons/ofxOculusRift/libs/LibOVR/Src/Util,
+					../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel,
+					../../../addons/ofxOculusRift/src,
+					../../../addons/ofxSimpleGuiToo/libs,
+					../../../addons/ofxSimpleGuiToo/src/Controls,
+					"$(PROJECT_DIR)/ext/AntTweakBar/include/**",
+				);
+				ICON = "$(ICON_NAME_DEBUG)";
+				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
+				INFOPLIST_FILE = "openFrameworks-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(OPENCV_LIBS)",
+					"$(PROJECT_DIR)/src/ps3Eye",
+					/usr/local/Cellar/libusb/1.0.19/lib,
+					"$(PROJECT_DIR)/ext/AntTweakBar/lib/mac",
+					"$(PROJECT_DIR)/ext/AntTweakBar/lib/win",
+				);
+				LLVM_LTO = NO;
+				OPENCV_HEADERS = /usr/local/include;
+				OPENCV_LIBS = /usr/local/lib;
+				PRODUCT_NAME = "$(TARGET_NAME)Debug";
+				USER_HEADERS = "\"$(OPENCV_HEADERS)\"";
+				USER_HEADER_SEARCH_PATHS = "$(OPENCV_HEADERS)";
+				USER_LIBS = "\"$(OPENCV_LIBS)\"";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E4B69B610A3A1757003C02F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LIBRARY = "libstdc++";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/glut/lib/osx\"";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = NONE;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					../../../addons/ofxXmlSettings/libs,
+					../../../addons/ofxXmlSettings/src,
+					../../../addons/ofxMSAInteractiveObject/libs,
+					../../../addons/ofxMSAInteractiveObject/src,
+					../../../addons/ofxOculusRift/libs/LibOVR/Include,
+					../../../addons/ofxSimpleGuiToo/src,
+					../../../addons/ofxOculusRift/libs/LibOVR/Src,
+					../../../addons/ofxOculusRift/libs/LibOVR/Src/Util,
+					../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel,
+					../../../addons/ofxOculusRift/src,
+					../../../addons/ofxSimpleGuiToo/libs,
+					../../../addons/ofxSimpleGuiToo/src/Controls,
+					"$(PROJECT_DIR)/ext/AntTweakBar/include/**",
+				);
+				ICON = "$(ICON_NAME_RELEASE)";
+				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
+				INFOPLIST_FILE = "openFrameworks-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(OPENCV_LIBS)",
+					"$(PROJECT_DIR)/src/ps3Eye",
+					/usr/local/Cellar/libusb/1.0.19/lib,
+					"$(PROJECT_DIR)/ext/AntTweakBar/lib/mac",
+					"$(PROJECT_DIR)/ext/AntTweakBar/lib/win",
+				);
+				LLVM_LTO = NO;
+				OPENCV_HEADERS = /usr/local/include;
+				OPENCV_LIBS = /usr/local/lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADERS = "\"$(OPENCV_HEADERS)\"";
+				USER_HEADER_SEARCH_PATHS = "$(OPENCV_HEADERS)";
+				USER_LIBS = "\"$(OPENCV_LIBS)\"";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "OculusEye" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E4B69B4E0A3A1720003C02F2 /* Debug */,
+				E4B69B4F0A3A1720003C02F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "OculusEye" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E4B69B600A3A1757003C02F2 /* Debug */,
+				E4B69B610A3A1757003C02F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E4B69B4C0A3A1720003C02F2 /* Project object */;
+}

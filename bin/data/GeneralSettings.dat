@@ -1,0 +1,21 @@
+adaptive_downsampling	0
+bardata_opened	1
+bardata_position	9	50
+bardata_size	400	300
+bardata_valueswidth	103
+canny_edge_detection	1
+canny_min_threshold	54.65
+canny_ratio	3
+dilution_iterations	1
+downsampling_ratio	0.5
+draw_contours	0
+draw_guides	0
+edge_color	1	0	0
+edge_thickness	1
+erosion_dilution	0
+erosion_iterations	1
+interpupillary____	65
+rift_distortion	0
+show_edges_only	0
+subdivisions__cores_used_	4
+swapeyes	0
