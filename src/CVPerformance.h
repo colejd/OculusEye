@@ -2,7 +2,7 @@
 //  CVPerformance.h
 //  OculusEye
 //
-//  Created by VEMILab on 12/15/14.
+//  Created by Jonathan Cole on 12/15/14.
 //
 //
 

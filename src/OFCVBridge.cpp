@@ -1,6 +1,6 @@
 //
 //  OFCVBridge.cpp
-//  ofCV
+//  OculusEye
 //
 //  Created by Jonathan Cole on 9/22/14.
 //

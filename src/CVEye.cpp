@@ -1,6 +1,6 @@
 //
 //  CVEye.cpp
-//  ofCV
+//  OculusEye
 //
 //  Created by Jonathan Cole on 9/25/14.
 //

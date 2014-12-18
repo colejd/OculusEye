@@ -1,3 +1,11 @@
+//
+//  mainApp.h
+//  OculusEye
+//
+//  Created by Jonathan Cole on 9/25/14.
+//
+//
+
 #pragma once
 
 #include "ofMain.h"

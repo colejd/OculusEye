@@ -1,3 +1,11 @@
+//
+//  main.cpp
+//  OculusEye
+//
+//  Created by Jonathan Cole on 9/25/14.
+//
+//
+
 #include "ofMain.h"
 #include "mainApp.h"
 #include "ofAppGlutWindow.h"

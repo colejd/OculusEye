@@ -1,8 +1,8 @@
 //
 //  CVEye.h
-//  ofCV
+//  OculusEye
 //
-//  Created by VEMILab on 9/25/14.
+//  Created by Jonathan Cole on 9/25/14.
 //
 //
 
