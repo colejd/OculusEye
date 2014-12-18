@@ -9,18 +9,16 @@
 #include "CVEye.h"
 
 //Constructor
-CVEye::CVEye(const int _width, const int _height, const int _index){
+CVEye::CVEye(const int _index){
     camIndex = _index;
-    width = _width;
-    height = _height;
     
-    finalImage.allocate(_width, _height, OF_IMAGE_COLOR);
+    finalImage.allocate(CAMERA_WIDTH, CAMERA_HEIGHT, OF_IMAGE_COLOR);
     //finalImage.loadImage("NoCameraFound.jpg");
     //finalImage.setImageType(OF_IMAGE_COLOR);
-    rawPixelData = (unsigned char*)malloc(_width*_height*3*sizeof(unsigned char));
+    rawPixelData = (unsigned char*)malloc(CAMERA_WIDTH*CAMERA_HEIGHT*3*sizeof(unsigned char));
     
     //Initialize the camera, print results
-    cout << (init(_width, _height) ? "Camera created.\n" : "Camera not found.\n");
+    cout << (init(CAMERA_WIDTH, CAMERA_HEIGHT) ? "Camera created.\n" : "Camera not found.\n");
     //thread.start();
     
     yuvData = YUVBuffer();
@@ -49,16 +47,12 @@ bool CVEye::init(const int _width, const int _height){
     using namespace ps3eye;
     // list out the devices
     std::vector<PS3EYECam::PS3EYERef> devices( PS3EYECam::getDevices(true) );
-    //printf("Eye cameras detected: %lu\n", devices.size());
     if(0 < devices.size() && camIndex < devices.size())
     {
         //threadUpdate.stop();
         eyeRef = devices.at(camIndex);
-        bool res = eyeRef->init(width, height, 60);
+        bool res = eyeRef->init(CAMERA_WIDTH, CAMERA_HEIGHT, 60);
         eyeRef->start();
-        
-        width = eyeRef->getWidth();
-        height = eyeRef->getHeight();
         
         //Populate GUI fields with default hardware values
         autoWhiteBalance = eyeRef->getAutoWhiteBalance();
@@ -89,15 +83,15 @@ bool CVEye::init(const int _width, const int _height){
     using namespace cv;
     
     int matType = CV_MAKE_TYPE(CV_8U, 3);
-    src_tmp = Mat(cv::Size(width, height), matType, rawPixelData);
-    src.create(cv::Size(width, height), matType);
-    src_gray.create(cv::Size(width, height), CV_8U);
+    src_tmp = Mat(cv::Size(CAMERA_WIDTH, CAMERA_HEIGHT), matType, rawPixelData);
+    src.create(cv::Size(CAMERA_WIDTH, CAMERA_HEIGHT), matType);
+    src_gray.create(cv::Size(CAMERA_WIDTH, CAMERA_HEIGHT), CV_8U);
     src_tmp.copyTo(src);
     cvtColor(src, src_gray, COLOR_RGB2GRAY);
     src.copyTo(dest);
     
-    canny_output.create(cv::Size(width, height), CV_8U);
-    contour_output.create(cv::Size(width, height), CV_8UC3);
+    canny_output.create(cv::Size(CAMERA_WIDTH, CAMERA_HEIGHT), CV_8U);
+    contour_output.create(cv::Size(CAMERA_WIDTH, CAMERA_HEIGHT), CV_8UC3);
     
     
     return initialized;
@@ -129,8 +123,9 @@ void CVEye::update(){
     if(eyeRef || dummyImage)
     {
         bool pass = dummyImage;
-        //Copy image data into VideoImage when there's a new image from the camera hardware.
+        //Copy image data into finalImage when there's a new image from the camera hardware.
         if(eyeRef) pass = eyeRef->isNewFrame();
+        
         if(pass)
         {
             
@@ -153,12 +148,12 @@ void CVEye::update(){
                 //computeFrame = !computeFrame;
                 
                 //Do last
-                finalImage.setFromPixels(dest.getMat(NULL).data, width, height, OF_IMAGE_COLOR);
+                finalImage.setFromPixels(dest.getMat(NULL).data, CAMERA_WIDTH, CAMERA_HEIGHT, OF_IMAGE_COLOR);
                 
             }
             //If no effects are applied, just put the raw video in the output image.
             else{
-                finalImage.setFromPixels(src_tmp.data, width, height, OF_IMAGE_COLOR);
+                finalImage.setFromPixels(src_tmp.data, CAMERA_WIDTH, CAMERA_HEIGHT, OF_IMAGE_COLOR);
             }
             
         }
@@ -290,7 +285,7 @@ void CVEye::ApplyCanny(cv::UMat &src, cv::UMat &src_gray, cv::UMat &dest){
         
         //Upsample contour_output image to the size of dest
         if(downsampleRatio < 1.0f)
-            resize(contour_output, contour_output, cv::Size(640, 480), 0, 0, INTER_NEAREST);
+            resize(contour_output, contour_output, cv::Size(CAMERA_WIDTH, CAMERA_HEIGHT), 0, 0, INTER_NEAREST);
         
         //Overlay the detected contours onto the final image
         //cvtColor(contour_output, contour_output, COLOR_RGB2GRAY);
@@ -299,7 +294,7 @@ void CVEye::ApplyCanny(cv::UMat &src, cv::UMat &src_gray, cv::UMat &dest){
     }
     //Just draw the edges from canny_output to the final image
     else{
-        resize(canny_output, canny_output, cv::Size(640, 480), 0, 0, INTER_NEAREST);
+        resize(canny_output, canny_output, cv::Size(CAMERA_WIDTH, CAMERA_HEIGHT), 0, 0, INTER_NEAREST);
         dest.setTo(guiLineColor, canny_output);
     }
     
@@ -375,9 +370,7 @@ void ParallelContourDetector::operator ()(const cv::Range &range) const{
     for(int i = range.start; i < range.end; i++){
         vector< vector<cv::Point> > contourData;
         vector<Vec4i> contourHierarchy;
-        //printf("%i\n", );
         cv::UMat in(src_gray, cv::Rect(0, (src_gray.rows/subsections)*i, src_gray.cols, src_gray.rows/subsections));
-        
         cv::UMat out(out_gray, cv::Rect(0, (out_gray.rows/subsections)*i, out_gray.cols, out_gray.rows/subsections));
         try{
             findContours( in, contourData, contourHierarchy, RETR_EXTERNAL, CHAIN_APPROX_TC89_KCOS, cv::Point(0, 0) );
@@ -387,14 +380,13 @@ void ParallelContourDetector::operator ()(const cv::Range &range) const{
             drawContours(out, contourData, -1, color, eye.edgeThickness, 8, contourHierarchy);
         }
         catch(Exception e){
-            printf("Error\n");
+            //printf("Contour Detector Error\n");
         }
         
         in.release();
         out.release();
     }
     
-    //resize(src_gray, src_gray, cv::Size(640, 480), 0, 0, INTER_NEAREST);
 }
 
 ParallelContourDetector::~ParallelContourDetector(){ }

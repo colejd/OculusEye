@@ -1,24 +1,5 @@
 #include "mainApp.h"
 
-// Settings ----------------------------------------------------
-//Do stretched fullscreen? (Resolution changes from DEFAULT_RES to TARGET_RES
-#define SYSTEM_FULLSCREEN false
-//Native screen resolution
-#define DEFAULT_RES_X 1280
-#define DEFAULT_RES_Y 800
-//Target screen resolution
-#define TARGET_RES_X 1280
-#define TARGET_RES_Y 800
-
-#define DESIRED_FRAMERATE 1000 //9999
-#define VSYNC false
-#define USE_OPENCL false
-
-
-//Returns trueText if bool is true or falseText if bool is false.
-#define _YESNO(bool, trueText, falseText) (string)(((bool) > (0)) ? trueText : falseText)
-
-//--------------------------------------------------------------
 
 
 /**
@@ -28,8 +9,6 @@ void mainApp::setup(){
     
     //Set the minimum type of log that is printed (lower priority logs will be ignored)
     ofSetLogLevel( OF_LOG_NOTICE );
-    
-    
     
     char pathBuf[ PATH_MAX ];
     printf("CWD: %s\n", getcwd(pathBuf, 512));
@@ -53,8 +32,8 @@ void mainApp::setup(){
     clGetDeviceInfo(gpu, CL_DEVICE_NAME, 128, name, NULL);
     fprintf(stdout, "Created a dispatch queue using the %s\n", name);
     
-    ofLog(OF_LOG_NOTICE, " OpenCL acceleration is " + _YESNO(cv::ocl::haveOpenCL(), "available", "not available"));
-    ofLog(OF_LOG_NOTICE, " OpenCL acceleration " + _YESNO(USE_OPENCL, "requested", "not requested"));
+    ofLog(OF_LOG_NOTICE, " OpenCL acceleration is %s ", cv::ocl::haveOpenCL() ? "available" : "not available");
+    ofLog(OF_LOG_NOTICE, " OpenCL acceleration %s ", USE_OPENCL ? "requested" : "not requested");
     cv::ocl::setUseOpenCL(USE_OPENCL);
     if(USE_OPENCL){
         printf("Using OpenCL: %s\n", cv::ocl::useOpenCL() ? "true" : "false");
@@ -73,17 +52,17 @@ void mainApp::setup(){
     ofLog(OF_LOG_NOTICE, " Threads available: %2.i", cv::getNumThreads());
     
     #if SYSTEM_FULLSCREEN
-        //Set fullscreen and change resolution.
-        ofSetFullscreen(true);
         //TODO: Why does the camera fps go down when I use this?
         changeScreenRes(TARGET_RES_X, TARGET_RES_Y);
+        //Set fullscreen and change resolution.
+        ofSetFullscreen(true);
     #endif
     
-    ofSetFrameRate(DESIRED_FRAMERATE);
-    ofLog(OF_LOG_NOTICE, " Target framerate set to %i", DESIRED_FRAMERATE);
+    ofSetFrameRate(TARGET_FRAMERATE);
+    ofLog(OF_LOG_NOTICE, " Target framerate set to %i", TARGET_FRAMERATE);
     
-    ofSetVerticalSync(VSYNC);
-    ofLog(OF_LOG_NOTICE, " Vertical sync is " + _YESNO(VSYNC, "on", "off"));
+    ofSetVerticalSync(ENABLE_VSYNC);
+    ofLog(OF_LOG_NOTICE, " Vertical sync is %s ", ENABLE_VSYNC ? "on" : "off");
     
     oculusRift.init( TARGET_RES_X, TARGET_RES_Y, 0 ); //1280, 800, 4
 	oculusRift.setPosition(0, 0, 0);
@@ -93,6 +72,8 @@ void mainApp::setup(){
     
     //Set up Oculus Rift
     oculusRift.interOcularDistance = -0.65f; //IPD of 0.65 is average
+    
+    graph = PerformanceGraph("Eye FPS", ofGetWidth() - 70, ofGetHeight() - 15);
     
     InitEyes();
     
@@ -241,15 +222,15 @@ void mainApp::draw()
     //Draw debug text in top-right
     string str = "app fps: ";
 	str += ofToString(ofGetFrameRate(), 2) + "\n";
-    if(leftEye->initialized || leftEye->dummyImage) str += "left eye fps: " + ofToString(leftEye->camFps, 2) + "\n";
-    if(rightEye->initialized || leftEye->dummyImage) str += "right eye fps: " + ofToString(rightEye->camFps, 2) + "\n";
+    //if(leftEye->initialized || leftEye->dummyImage) str += "left eye fps: " + ofToString(leftEye->camFps, 2) + "\n";
+    //if(rightEye->initialized || leftEye->dummyImage) str += "right eye fps: " + ofToString(rightEye->camFps, 2) + "\n";
     ofDrawBitmapString(str, 10, 15);
     
     //Draw downsampling information to screen
     if(adaptiveDownsampling){
-        string drLabel = "Downsample Ratio: ";
-        drLabel += ofToString(leftEye->adaptedDownsampleRatio, 2) + "\n";
-        ofDrawBitmapString(drLabel, 10, ofGetHeight() - 10);
+        string dsLabel = "Downsample Ratio: ";
+        dsLabel += ofToString(leftEye->adaptedDownsampleRatio, 2) + "\n";
+        ofDrawBitmapString(dsLabel, 10, ofGetHeight() - 10);
     }
     
     //Draw vertical/horizontal guides for checking eye alignment at a glance
@@ -264,6 +245,9 @@ void mainApp::draw()
         hLine.addVertex(ofGetWidth(), ofGetHeight()/2.0f);
         hLine.draw();
     }
+    
+    graph.Enqueue((leftEye->camFps + rightEye->camFps) / 2.0f);
+    graph.Draw();
     
     //mainFBO.end();
     //mainFBO.draw(0, 0, ofGetWidth(), ofGetHeight());
@@ -302,8 +286,8 @@ void mainApp::InitEyes(){
     std::vector<ps3eye::PS3EYECam::PS3EYERef> devices( ps3eye::PS3EYECam::getDevices(true) );
     printf("Eye cameras detected: %lu\n", devices.size());
     
-    leftEye = new CVEye(640, 480, 0);
-    rightEye = new CVEye(640, 480, 1);
+    leftEye = new CVEye(0);
+    rightEye = new CVEye(1);
     
     if(devices.size() > 0){
         threadUpdate.start();

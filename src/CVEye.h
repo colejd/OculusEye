@@ -14,6 +14,7 @@
 
 #include "ps3Eye/ps3eye.h"
 #include "OFCVBridge.h"
+#include "programSettings.h"
 
 #include <opencv/cv.h>
 #include <opencv/cv.hpp>
@@ -30,11 +31,10 @@
 
 //#include <boost/numeric/ublas/vector.hpp>
 
-class CVEye
-{
+class CVEye {
 public:
 	
-    CVEye(const int _width, const int _height, const int _index);
+    CVEye(const int _index);
     ~CVEye();
 	
     bool init(const int _width, const int _height);
@@ -44,7 +44,6 @@ public:
     
     //PS3 Eye stuff
     ps3eye::PS3EYECam::PS3EYERef eyeRef;
-    int width, height;
     
     //FPS variables
     int camFrameCount = 0;

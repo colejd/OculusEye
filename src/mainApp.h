@@ -1,27 +1,23 @@
 #pragma once
 
 #include "ofMain.h"
-//#include "ofxOpenCv.h"
-//#include "ofxSimpleGuiToo.h"
 #include "ofxOculusRift.h"
+#include "ofxTweak.h"
 
 #include "ps3Eye/ps3eye.h"
+#include "CVEye.h"
+#include "programSettings.h"
 #include "screenConfig.h"
-//#include "OFCVBridge.h"
+#include "CVPerformance.h"
 
 #include <opencv2/core.hpp>
 #include <opencv2/core/utility.hpp>
 #include "opencv2/core/core.hpp"
 #include <opencv2/core/ocl.hpp>
-//#include "opencv2/gpu/gpu.hpp"
 
 #include <OpenCL/opencl.h>
 
-#include "ofxTweak.h"
-
-#include "CVEye.h"
-
-class ps3eyeUpdate : public ofThread{
+class ps3eyeUpdate : public ofThread {
     
 public:
     ps3eyeUpdate(){
@@ -52,7 +48,7 @@ public:
     }
 };
 
-class mainApp : public ofBaseApp{
+class mainApp : public ofBaseApp {
 public:
     //OpenFrameworks------------------------------
     void setup();
@@ -139,6 +135,8 @@ public:
     
     ofxTweakbar *ps3EyeSettings;
     ofxTweakbarSimpleStorage *ps3EyeSettingsStorage;
+    
+    PerformanceGraph graph = PerformanceGraph("Left Eye", 0.0f, 0.0f);
     
 private:
     string GetStdoutFromCommand(string cmd);

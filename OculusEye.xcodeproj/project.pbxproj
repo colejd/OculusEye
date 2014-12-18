@@ -69,6 +69,7 @@
 		51A88EF91A41FB0200D73FA2 /* ofxTweakbarString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51A88EE21A41FB0200D73FA2 /* ofxTweakbarString.cpp */; };
 		51A88EFA1A41FB0200D73FA2 /* ofxTweakbarType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51A88EE41A41FB0200D73FA2 /* ofxTweakbarType.cpp */; };
 		51A88EFB1A41FB0200D73FA2 /* ofxTweakbarVec3f.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51A88EE71A41FB0200D73FA2 /* ofxTweakbarVec3f.cpp */; };
+		51E1B39F1A42778F00D6BCA7 /* CVPerformance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51E1B39E1A42778F00D6BCA7 /* CVPerformance.cpp */; };
 		54F752BB245910B19D290DC4 /* OVR_String.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4F22083BE25612FC2BFC0D9 /* OVR_String.cpp */; };
 		5A4349E9754D6FA14C0F2A3A /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC5DA1C87211D4F6377DA719 /* tinyxmlparser.cpp */; };
 		5CB760F5113B261811063F01 /* OVR_String_FormatUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50629A910B87008E8F8430D5 /* OVR_String_FormatUtil.cpp */; };
@@ -302,6 +303,8 @@
 		51A88EE71A41FB0200D73FA2 /* ofxTweakbarVec3f.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTweakbarVec3f.cpp; sourceTree = "<group>"; };
 		51A88EE81A41FB0200D73FA2 /* ofxTweakbarVec3f.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTweakbarVec3f.h; sourceTree = "<group>"; };
 		51B2FDD21A3109BA00246487 /* OculusEyeDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OculusEyeDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		51E1B39D1A424B9F00D6BCA7 /* programSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = programSettings.h; sourceTree = "<group>"; };
+		51E1B39E1A42778F00D6BCA7 /* CVPerformance.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CVPerformance.cpp; sourceTree = "<group>"; };
 		55821212F7FA211ED39462E1 /* OVR_HIDDeviceBase.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVR_HIDDeviceBase.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/OVR_HIDDeviceBase.h; sourceTree = SOURCE_ROOT; };
 		563455B613A53219177E2A4E /* OVR_Allocator.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OVR_Allocator.cpp; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_Allocator.cpp; sourceTree = SOURCE_ROOT; };
 		57765DD2192B1D9F84802EAE /* OVR_Atomic.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OVR_Atomic.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_Atomic.h; sourceTree = SOURCE_ROOT; };
@@ -878,6 +881,8 @@
 				519909381A23B2BD008021BE /* screenConfig.h */,
 				519909371A23B2BD008021BE /* screenConfig.cpp */,
 				51A88EB51A3F7EEF00D73FA2 /* CVPerformance.h */,
+				51E1B39E1A42778F00D6BCA7 /* CVPerformance.cpp */,
+				51E1B39D1A424B9F00D6BCA7 /* programSettings.h */,
 				519909981A25A534008021BE /* Canny.cl */,
 			);
 			path = src;
@@ -1043,6 +1048,7 @@
 				D7FCBF24172EFE611529B203 /* OVR_OSX_HIDDevice.cpp in Sources */,
 				51A88EFB1A41FB0200D73FA2 /* ofxTweakbarVec3f.cpp in Sources */,
 				51A88EFA1A41FB0200D73FA2 /* ofxTweakbarType.cpp in Sources */,
+				51E1B39F1A42778F00D6BCA7 /* CVPerformance.cpp in Sources */,
 				C4972011ADA6B9E8D1EDB5AF /* OVR_OSX_HMDDevice.cpp in Sources */,
 				BE0E4C85086BF42237E786E3 /* OVR_OSX_SensorDevice.cpp in Sources */,
 				5199093A1A23B2BD008021BE /* main.cpp in Sources */,
@@ -1208,6 +1214,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_MODEL_TUNING = NONE;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
 					../../../addons/ofxXmlSettings/libs,
