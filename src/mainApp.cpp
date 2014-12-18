@@ -67,22 +67,19 @@ void mainApp::setup(){
     oculusRift.init( TARGET_RES_X, TARGET_RES_Y, 0 ); //1280, 800, 4
 	oculusRift.setPosition(0, 0, 0);
     
-    //Set up GUI
-    CreateGUI();
-    
     //Set up Oculus Rift
     oculusRift.interOcularDistance = -0.65f; //IPD of 0.65 is average
     
-    graph = PerformanceGraph("Eye FPS", ofGetWidth() - 70, ofGetHeight() - 15);
+    eyeFPSGraph = PerformanceGraph("Eye FPS", ofGetWidth() - 70, ofGetHeight() - 15);
+    
+    //Set up GUI
+    CreateGUI();
     
     InitEyes();
     
 }
 
 void mainApp::CreateGUI(){
-    //TwInit(TW_OPENGL, NULL);
-    //TwWindowSize(1280, 800);
-    //bar = TwNewBar("Settings");
     
     //GUI page 1
     generalSettingsBar = ofxTweakbars::create("General Settings", "General Settings");
@@ -152,6 +149,7 @@ void mainApp::CreateGUI(){
     gui.setPage(1);
     gui.show();
      */
+    
 }
 
 /**
@@ -246,8 +244,8 @@ void mainApp::draw()
         hLine.draw();
     }
     
-    graph.Enqueue((leftEye->camFps + rightEye->camFps) / 2.0f);
-    graph.Draw();
+    eyeFPSGraph.Enqueue((leftEye->camFps + rightEye->camFps) / 2.0f);
+    eyeFPSGraph.Draw();
     
     //mainFBO.end();
     //mainFBO.draw(0, 0, ofGetWidth(), ofGetHeight());
@@ -306,13 +304,13 @@ void mainApp::InitEyes(){
         blueBalance = leftEye->eyeRef->getBlueBalance();
         redBalance = leftEye->eyeRef->getRedBalance();
         
-        UpdateEyeValues(leftEye);
         UpdateEyeCamera(leftEye);
     }
+    UpdateEyeValues(leftEye);
     if(rightEye->initialized){
-        UpdateEyeValues(rightEye);
         UpdateEyeCamera(rightEye);
     }
+    UpdateEyeValues(rightEye);
     
 }
 

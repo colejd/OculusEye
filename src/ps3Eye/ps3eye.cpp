@@ -1,4 +1,4 @@
-
+/* !!! Not written by Jon !!! */
 #include "ps3eye.h"
 
 #if defined WIN32 || defined _WIN32 || defined WINCE

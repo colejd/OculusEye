@@ -1,3 +1,5 @@
+/* !!! Not written by Jon !!! */
+
 /*
  * Public libusbx header file
  * Copyright © 2001 Johannes Erdfelt <johannes@erdfelt.com>

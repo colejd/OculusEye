@@ -136,7 +136,7 @@ public:
     ofxTweakbar *ps3EyeSettings;
     ofxTweakbarSimpleStorage *ps3EyeSettingsStorage;
     
-    PerformanceGraph graph = PerformanceGraph("Left Eye", 0.0f, 0.0f);
+    PerformanceGraph eyeFPSGraph = PerformanceGraph("Left Eye", 0.0f, 0.0f);
     
 private:
     string GetStdoutFromCommand(string cmd);

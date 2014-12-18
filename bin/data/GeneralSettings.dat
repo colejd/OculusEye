@@ -1,6 +1,6 @@
 adaptive_downsampling	0
 bardata_opened	1
-bardata_position	13	56
+bardata_position	18	32
 bardata_size	400	300
 bardata_valueswidth	103
 canny_edge_detection	0
@@ -15,7 +15,7 @@ edge_thickness	2
 erosion_dilution	0
 erosion_iterations	1
 interpupillary____	65
-rift_distortion	1
+rift_distortion	0
 show_edges_only	0
 subdivisions__cores_used_	4
 swapeyes	0

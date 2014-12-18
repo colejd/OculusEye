@@ -1,3 +1,4 @@
+/* !!! Not written by Jon !!! */
 #ifndef PS3EYECAM_H
 #define PS3EYECAM_H
 
