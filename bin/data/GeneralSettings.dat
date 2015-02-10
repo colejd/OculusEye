@@ -1,11 +1,12 @@
 adaptive_downsampling	0
-bardata_opened	1
+bardata_opened	0
 bardata_position	119	451
 bardata_size	400	300
 bardata_valueswidth	183
 canny_edge_detection	1
 canny_min_threshold	50
 canny_ratio	3
+correctcameradistortion	0
 dilution_iterations	3
 downsampling_ratio	0.5
 draw_contours	1

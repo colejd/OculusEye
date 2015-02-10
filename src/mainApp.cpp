@@ -117,6 +117,7 @@ void mainApp::CreateGUI(){
     generalSettingsBar -> addBool("swapEyes", swapEyes) -> setLabel("Swap Eyes");
     generalSettingsBar -> addBool("showPerformanceGraph", showPerformanceGraph) -> setLabel("Show Performace Graph");
     generalSettingsBar -> addBool("useVSync", useVSync) -> setLabel("Use VSync (caps at 60 FPS)");
+    generalSettingsBar -> addBool("correctCameraDistortion", correctCameraDistortion) -> setLabel("Correct Camera Distortion");
     
     generalSettingsStorage -> retrieve();
     generalSettingsBar -> load();

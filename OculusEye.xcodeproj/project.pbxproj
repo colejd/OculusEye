@@ -535,13 +535,14 @@
 			name = Src;
 			sourceTree = "<group>";
 		};
-		519909331A23B2BD008021BE /* ps3Eye */ = {
+		519909331A23B2BD008021BE /* PS3EYEDRIVER */ = {
 			isa = PBXGroup;
 			children = (
 				519909341A23B2BD008021BE /* libusb.h */,
 				519909351A23B2BD008021BE /* ps3eye.cpp */,
 				519909361A23B2BD008021BE /* ps3eye.h */,
 			);
+			name = PS3EYEDRIVER;
 			path = ps3Eye;
 			sourceTree = "<group>";
 		};
@@ -801,7 +802,7 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				519909331A23B2BD008021BE /* ps3Eye */,
+				519909331A23B2BD008021BE /* PS3EYEDRIVER */,
 				5199092E1A23B2BD008021BE /* main.cpp */,
 				519909301A23B2BD008021BE /* mainApp.h */,
 				5199092F1A23B2BD008021BE /* mainApp.cpp */,

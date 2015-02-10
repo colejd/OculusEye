@@ -30,7 +30,8 @@ I've also implemented a basic camera calibration procedure to counteract lens di
 The PS3 Eye driver code has been updated to the newest version, which includes additional options for framerate targets.
 This marks the first version with the 3d-printed mount for the cameras as well. The space between the center of the lenses is at or about 65 millimeters, making the need for IPD adjustment in software reduced or unnecessary, though it is left in.
 
-
+Bug fixes:
+- AntTweakBar no longer causes screen blanking when the GUI windows are all minimized (incidentally fixed by the move to Yosemite)
 
 ----------------------------------------
 
@@ -58,6 +59,7 @@ done:
 - Recompile OpenCV with TBB and IPP
 - Show placeholder images when the cameras aren't connected
 - Write logic for camera calibration
+- Fix AntTweakBar integration (whole window is gray when all GUI windows are minimized)
 
 future:
 - Offload initial YUV422 to RGB conversion to Raspberry Pi located on hardware

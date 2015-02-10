@@ -152,6 +152,7 @@ public:
     bool calibrating = false;
     void BeginCameraCalibration();
     void EndCameraCalibration();
+    bool correctCameraDistortion;
     
     //ofImage calibrationCheckerboard;
     
