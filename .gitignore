@@ -19,7 +19,7 @@ DerivedData
 UserInterfaceState.xcuserstate
 *~
 *~.nib
-*~.xib 
+*~.xib
 .DS_Store
 
 
@@ -45,7 +45,7 @@ UserInterfaceState.xcuserstate
 # Compiled Static libraries
 *.lai
 *.la
-*.a
+#*.a
 *.lib
 
 # Executables

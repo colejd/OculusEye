@@ -31,8 +31,6 @@
 		46F4514F1A89C6AB00DD172A /* SampleImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 46F4514E1A89C6AB00DD172A /* SampleImage.png */; };
 		46F451531A89C91D00DD172A /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 46F451521A89C91D00DD172A /* .gitignore */; };
 		46F452051A89D00100DD172A /* libAntTweakBar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F4515A1A89D00100DD172A /* libAntTweakBar.a */; };
-		46F452061A89D00100DD172A /* AntTweakBar.dll in Resources */ = {isa = PBXBuildFile; fileRef = 46F4515C1A89D00100DD172A /* AntTweakBar.dll */; };
-		46F452071A89D00100DD172A /* AntTweakBar.lib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F4515D1A89D00100DD172A /* AntTweakBar.lib */; };
 		46F452081A89D00100DD172A /* ofxTweakbar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F4515F1A89D00100DD172A /* ofxTweakbar.cpp */; };
 		46F452091A89D00100DD172A /* ofxTweakbars.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F451611A89D00100DD172A /* ofxTweakbars.cpp */; };
 		46F4520A1A89D00100DD172A /* ofxTweakbarSimpleStorage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F451641A89D00100DD172A /* ofxTweakbarSimpleStorage.cpp */; };
@@ -95,7 +93,6 @@
 		5199093E1A23B2BD008021BE /* screenConfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 519909371A23B2BD008021BE /* screenConfig.cpp */; };
 		519909991A25A534008021BE /* Canny.cl in Sources */ = {isa = PBXBuildFile; fileRef = 519909981A25A534008021BE /* Canny.cl */; };
 		51E1B39F1A42778F00D6BCA7 /* CVPerformance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51E1B39E1A42778F00D6BCA7 /* CVPerformance.cpp */; };
-		51E1B3B21A66EAD400D6BCA7 /* libAntTweakBar.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E1B3A01A66EAD300D6BCA7 /* libAntTweakBar.dylib */; };
 		51E1B3B31A66EAD400D6BCA7 /* libopencv_calib3d.3.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E1B3A11A66EAD300D6BCA7 /* libopencv_calib3d.3.0.0.dylib */; };
 		51E1B3B41A66EAD400D6BCA7 /* libopencv_core.3.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E1B3A21A66EAD300D6BCA7 /* libopencv_core.3.0.0.dylib */; };
 		51E1B3B51A66EAD400D6BCA7 /* libopencv_features2d.3.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E1B3A31A66EAD300D6BCA7 /* libopencv_features2d.3.0.0.dylib */; };
@@ -204,8 +201,6 @@
 		46F451561A89D00100DD172A /* AntTweakBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AntTweakBar.h; sourceTree = "<group>"; };
 		46F451571A89D00100DD172A /* AntTweakBarOld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AntTweakBarOld.h; sourceTree = "<group>"; };
 		46F4515A1A89D00100DD172A /* libAntTweakBar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAntTweakBar.a; sourceTree = "<group>"; };
-		46F4515C1A89D00100DD172A /* AntTweakBar.dll */ = {isa = PBXFileReference; lastKnownFileType = file; path = AntTweakBar.dll; sourceTree = "<group>"; };
-		46F4515D1A89D00100DD172A /* AntTweakBar.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AntTweakBar.lib; sourceTree = "<group>"; };
 		46F4515E1A89D00100DD172A /* ofxTweak.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTweak.h; sourceTree = "<group>"; };
 		46F4515F1A89D00100DD172A /* ofxTweakbar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTweakbar.cpp; sourceTree = "<group>"; };
 		46F451601A89D00100DD172A /* ofxTweakbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTweakbar.h; sourceTree = "<group>"; };
@@ -348,7 +343,6 @@
 		51B2FDD21A3109BA00246487 /* OculusEyeDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OculusEyeDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51E1B39D1A424B9F00D6BCA7 /* programSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = programSettings.h; sourceTree = "<group>"; };
 		51E1B39E1A42778F00D6BCA7 /* CVPerformance.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CVPerformance.cpp; sourceTree = "<group>"; };
-		51E1B3A01A66EAD300D6BCA7 /* libAntTweakBar.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libAntTweakBar.dylib; path = lib/libAntTweakBar.dylib; sourceTree = "<group>"; };
 		51E1B3A11A66EAD300D6BCA7 /* libopencv_calib3d.3.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_calib3d.3.0.0.dylib; path = lib/libopencv_calib3d.3.0.0.dylib; sourceTree = "<group>"; };
 		51E1B3A21A66EAD300D6BCA7 /* libopencv_core.3.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_core.3.0.0.dylib; path = lib/libopencv_core.3.0.0.dylib; sourceTree = "<group>"; };
 		51E1B3A31A66EAD300D6BCA7 /* libopencv_features2d.3.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_features2d.3.0.0.dylib; path = lib/libopencv_features2d.3.0.0.dylib; sourceTree = "<group>"; };
@@ -380,7 +374,6 @@
 			files = (
 				E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */,
 				46F450F91A8937FC00DD172A /* CoreVideo.framework in Frameworks */,
-				46F452071A89D00100DD172A /* AntTweakBar.lib in Frameworks */,
 				46F450F71A8937F600DD172A /* QuickTime.framework in Frameworks */,
 				46F450F51A8937F000DD172A /* OpenGL.framework in Frameworks */,
 				46F450F31A8937E800DD172A /* CoreServices.framework in Frameworks */,
@@ -400,7 +393,6 @@
 				46F450D91A89378100DD172A /* OpenCL.framework in Frameworks */,
 				46F452C21A89D06000DD172A /* libovr.a in Frameworks */,
 				46F452C31A89D06000DD172A /* libovr.a in Frameworks */,
-				51E1B3B21A66EAD400D6BCA7 /* libAntTweakBar.dylib in Frameworks */,
 				51E1B3B31A66EAD400D6BCA7 /* libopencv_calib3d.3.0.0.dylib in Frameworks */,
 				51E1B3B41A66EAD400D6BCA7 /* libopencv_core.3.0.0.dylib in Frameworks */,
 				51E1B3B51A66EAD400D6BCA7 /* libopencv_features2d.3.0.0.dylib in Frameworks */,
@@ -510,7 +502,6 @@
 			isa = PBXGroup;
 			children = (
 				46F451591A89D00100DD172A /* mac */,
-				46F4515B1A89D00100DD172A /* win */,
 			);
 			path = lib;
 			sourceTree = "<group>";
@@ -521,15 +512,6 @@
 				46F4515A1A89D00100DD172A /* libAntTweakBar.a */,
 			);
 			path = mac;
-			sourceTree = "<group>";
-		};
-		46F4515B1A89D00100DD172A /* win */ = {
-			isa = PBXGroup;
-			children = (
-				46F4515C1A89D00100DD172A /* AntTweakBar.dll */,
-				46F4515D1A89D00100DD172A /* AntTweakBar.lib */,
-			);
-			path = win;
 			sourceTree = "<group>";
 		};
 		46F451631A89D00100DD172A /* storage */ = {
@@ -877,7 +859,6 @@
 		51E1B3C41A66EB1C00D6BCA7 /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				51E1B3A01A66EAD300D6BCA7 /* libAntTweakBar.dylib */,
 				51E1B3A11A66EAD300D6BCA7 /* libopencv_calib3d.3.0.0.dylib */,
 				51E1B3A21A66EAD300D6BCA7 /* libopencv_core.3.0.0.dylib */,
 				51E1B3A31A66EAD300D6BCA7 /* libopencv_features2d.3.0.0.dylib */,
@@ -1096,7 +1077,6 @@
 				46F451531A89C91D00DD172A /* .gitignore in Resources */,
 				46F451331A89C1A000DD172A /* icon-debug.icns in Resources */,
 				46F451341A89C1A000DD172A /* icon.icns in Resources */,
-				46F452061A89D00100DD172A /* AntTweakBar.dll in Resources */,
 				46F4514F1A89C6AB00DD172A /* SampleImage.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
