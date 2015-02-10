@@ -36,7 +36,7 @@ UserInterfaceState.xcuserstate
 
 # Compiled Dynamic libraries
 *.so
-*.dylib
+#*.dylib
 *.dll
 
 # Fortran module files
@@ -46,7 +46,7 @@ UserInterfaceState.xcuserstate
 *.lai
 *.la
 *.a
-#*.lib
+*.lib
 
 # Executables
 *.exe
