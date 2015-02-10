@@ -16,7 +16,7 @@ edge_thickness	2
 erosion_dilution	0
 erosion_iterations	3
 interpupillary____	0
-rift_distortion	0
+rift_distortion	1
 show_edges_only	0
 showperformancegraph	1
 subdivisions__cores_used_	2

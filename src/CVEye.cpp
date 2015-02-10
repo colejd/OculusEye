@@ -74,7 +74,7 @@ bool CVEye::init(const int _width, const int _height){
         ofLog(OF_LOG_WARNING, "Displaying sample image");
         //If we've gotten here, the camera was not found or couldn't be initialized.
         //printf("Image %s\n", ( access( "../../../data/NoCameraFound.png", F_OK ) != -1 ) ? "exists" : "does not exist");
-        rawPixelData = cv::imread("../../../data/SampleImage.png", cv::IMREAD_COLOR).data;
+        rawPixelData = cv::imread("../../../data/images/SampleImage.png", cv::IMREAD_COLOR).data;
         dummyImage = true;
     }
     
@@ -210,7 +210,7 @@ void CVEye::update(){
                         image_points.push_back(corners);
                         object_points.push_back(obj);
                         
-                        ofLog(OF_LOG_VERBOSE, "Keyframe captured\n");
+                        ofLog(OF_LOG_VERBOSE, "Keyframe %i captured\n", successes);
                         successes++;
                     }
                 }

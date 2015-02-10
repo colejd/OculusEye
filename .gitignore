@@ -54,6 +54,6 @@ UserInterfaceState.xcuserstate
 *.app
 
 ### Jon ###
-notes.txt
 *.make
 Makefile
+bin
