@@ -34,6 +34,9 @@
 		46F450F71A8937F600DD172A /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F450F61A8937F600DD172A /* QuickTime.framework */; };
 		46F450F91A8937FC00DD172A /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F450F81A8937FC00DD172A /* CoreVideo.framework */; };
 		46F451011A89817D00DD172A /* NoCameraFound.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5199099B1A2CC243008021BE /* NoCameraFound.png */; };
+		46F451041A89985E00DD172A /* MenuBarIcon_32.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5199098B1A2581B2008021BE /* MenuBarIcon_32.icns */; };
+		46F4510F1A89A68C00DD172A /* icon-debug.icns in Resources */ = {isa = PBXBuildFile; fileRef = 46F4510D1A89A68C00DD172A /* icon-debug.icns */; };
+		46F451101A89A68C00DD172A /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 46F4510E1A89A68C00DD172A /* icon.icns */; };
 		4EBCBD676B31AF4D2F88E053 /* OVR_Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C106C983203B40BC30D3BD4 /* OVR_Timer.cpp */; };
 		519909391A23B2BD008021BE /* CVEye.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5199092C1A23B2BD008021BE /* CVEye.cpp */; };
 		5199093A1A23B2BD008021BE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5199092E1A23B2BD008021BE /* main.cpp */; };
@@ -207,6 +210,8 @@
 		46F450F61A8937F600DD172A /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/QuickTime.framework; sourceTree = DEVELOPER_DIR; };
 		46F450F81A8937FC00DD172A /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/CoreVideo.framework; sourceTree = DEVELOPER_DIR; };
 		46F450FF1A897F8800DD172A /* CalibrationCheckerboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CalibrationCheckerboard.png; sourceTree = "<group>"; };
+		46F4510D1A89A68C00DD172A /* icon-debug.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "icon-debug.icns"; path = "../bin/data/icon-debug.icns"; sourceTree = "<group>"; };
+		46F4510E1A89A68C00DD172A /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = icon.icns; path = ../bin/data/icon.icns; sourceTree = "<group>"; };
 		471BEBB921AF2881801A567F /* OVR_Math.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OVR_Math.cpp; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_Math.cpp; sourceTree = SOURCE_ROOT; };
 		473B321C8A9AC7F4D1622C97 /* OVR_String_PathUtil.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OVR_String_PathUtil.cpp; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Kernel/OVR_String_PathUtil.cpp; sourceTree = SOURCE_ROOT; };
 		48CB6F0F4DBFFC28D85E7DA1 /* Util_LatencyTest.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = Util_LatencyTest.h; path = ../../../addons/ofxOculusRift/libs/LibOVR/Src/Util/Util_LatencyTest.h; sourceTree = SOURCE_ROOT; };
@@ -243,7 +248,6 @@
 		5199098C1A2581B2008021BE /* MenuBarIcon_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuBarIcon_32.png; sourceTree = "<group>"; };
 		5199098D1A2581B2008021BE /* MenuBarIcon_32_Alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuBarIcon_32_Alt.png; sourceTree = "<group>"; };
 		5199098E1A2581B2008021BE /* versionNotes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = versionNotes.txt; sourceTree = "<group>"; };
-		519909931A2588CB008021BE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = OculusEye/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		519909981A25A534008021BE /* Canny.cl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.opencl; path = Canny.cl; sourceTree = "<group>"; };
 		5199099B1A2CC243008021BE /* NoCameraFound.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NoCameraFound.png; sourceTree = "<group>"; };
 		51A88EB51A3F7EEF00D73FA2 /* CVPerformance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CVPerformance.h; sourceTree = "<group>"; };
@@ -581,9 +585,10 @@
 		519909881A2581B2008021BE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				46F4510D1A89A68C00DD172A /* icon-debug.icns */,
+				46F4510E1A89A68C00DD172A /* icon.icns */,
 				46F450FF1A897F8800DD172A /* CalibrationCheckerboard.png */,
 				5199099B1A2CC243008021BE /* NoCameraFound.png */,
-				519909931A2588CB008021BE /* Images.xcassets */,
 				519909891A2581B2008021BE /* menu_icon_32x32.icns */,
 				5199098A1A2581B2008021BE /* MenuBarIcon_16.png */,
 				5199098B1A2581B2008021BE /* MenuBarIcon_32.icns */,
@@ -850,6 +855,7 @@
 				5199097C1A23C7D1008021BE /* ShellScript */,
 				5199097D1A23C84C008021BE /* CopyFiles */,
 				5199099A1A2CC232008021BE /* CopyFiles */,
+				46F451031A89985700DD172A /* Resources */,
 			);
 			buildRules = (
 			);
@@ -911,6 +917,19 @@
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		46F451031A89985700DD172A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46F4510F1A89A68C00DD172A /* icon-debug.icns in Resources */,
+				46F451101A89A68C00DD172A /* icon.icns in Resources */,
+				46F451041A89985E00DD172A /* MenuBarIcon_32.icns in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		5199097C1A23C7D1008021BE /* ShellScript */ = {
@@ -1137,7 +1156,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LIBRARY = "libstdc++";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
@@ -1193,7 +1211,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LIBRARY = "libstdc++";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;

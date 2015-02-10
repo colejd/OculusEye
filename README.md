@@ -9,7 +9,7 @@ AR software for the Oculus Rift DK1 via two Playstation 3 Eye cameras. See versi
 
 Press ESC to quit.
 
-Created with [OpenFrameworks 64-bit OSX branch](https://github.com/NickHardeman/openframeworks_osx_64) by Nick Hardeman using:
+Created with [OpenFrameworks 64-bit OSX branch](https://github.com/NickHardeman/openframeworks_osx_64) using:
 - [PS3EYEDriver](https://github.com/inspirit/PS3EYEDriver)
 - [ofxOculusRift](https://github.com/andreasmuller/ofxOculusRift)
 - [ofxTweakBar](https://github.com/roxlu/ofxTweakbar)
