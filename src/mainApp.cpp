@@ -153,6 +153,23 @@ void mainApp::CreateGUI(){
     ps3EyeSettings -> setColor(44, 44, 44, 180);
     ps3EyeSettings -> setFontSize(2);
     
+    otherSettings = ofxTweakbars::create("Other Settings", "Other Settings");
+    otherSettingsStorage = new ofxTweakbarSimpleStorage(otherSettings);
+    
+    otherSettings -> addBool("computeDisparityMap", computeDisparityMap) -> setLabel("Compute Disparity Map");
+    otherSettings -> addBool("showDisparityMap", showDisparityMap) -> setLabel("Show Disparity Map");
+    otherSettings -> addInt("stereo_lowThreshold", stereoMapper.lowThreshold) -> setLabel("Low Threshold") -> setMin("0") -> setMax("255");
+    otherSettings -> addInt("stereo_highThreshold", stereoMapper.highThreshold) -> setLabel("High Threshold") -> setMin("0") -> setMax("255");
+    
+    otherSettingsStorage -> retrieve();
+    otherSettings -> load();
+    otherSettingsStorage -> store();
+    otherSettings -> close();
+    
+    otherSettings -> setSize(400, 300);
+    otherSettings -> setColor(44, 44, 44, 180);
+    otherSettings -> setFontSize(2);
+    
     /*
     //GUI page 3
     gui.addPage("Oculus Settings");
@@ -195,12 +212,32 @@ void mainApp::exit(){
  */
 void mainApp::update()
 {
+    //Update each CVEye (no synchronization)
     leftEye->update();
     rightEye->update();
     
-    //Figure out if cameras have been successfully calibrated
+    //Check for synchronization
+    if(leftEye->sync_update == rightEye->sync_update){
+        SynchronizedUpdate();
+        
+        //Reset for the next loop
+        leftEye->sync_update = false;
+        rightEye->sync_update = false;
+    }
+    
+    //End camera calibration if it is running and both cameras have been successfully calibrated
     if(calibrating && (leftEye->calibrated && rightEye->calibrated)){
         EndCameraCalibration();
+    }
+    
+}
+
+/**
+ * Called when both CVEye objects have a new frame ready.
+ */
+void mainApp::SynchronizedUpdate(){
+    if(computeDisparityMap){
+        stereoMapper.CalculateStereoMap(leftEye->src_gray.getMat(NULL), rightEye->src_gray.getMat(NULL), swapEyes);
     }
 }
 
@@ -212,6 +249,7 @@ void mainApp::draw()
 {
     //mainFBO.begin();
     
+    // STEP 1: DRAW CAMERA OUTPUT --------------------------------------------
     //Perform OpenCV operations on each eye and queue the results
     //to be drawn on their respective sides
     if((leftEye->initialized || leftEye->dummyImage) && renderLeftEye){
@@ -237,11 +275,20 @@ void mainApp::draw()
     ofSetColor( 255 );
     oculusRift.draw( ofVec2f(0,0), ofVec2f( ofGetWidth(), ofGetHeight() ) );
     
+    // STEP 2: DRAW USER GRAPHICS --------------------------------------------
+
+    if(showDisparityMap){
+        DrawCVMat(stereoMapper.stereoMap, OF_IMAGE_GRAYSCALE, 0, 0, "Disparity Map");
+    }
+    
     //Draw the checkerboard if we're calibrating.
     //if(calibrating){
     //    calibrationCheckerboard.draw(0, 0);
     //}
     
+    
+    // STEP 3: DRAW DEBUG (topmost layer) ------------------------------------
+
     //Draw debug text in top-right
     string str = "app fps: ";
 	str += ofToString(ofGetFrameRate(), 2) + "\n";
@@ -341,6 +388,30 @@ void mainApp::InitEyes(){
     }
     UpdateEyeValues(rightEye);
     
+}
+
+void mainApp::DrawCVMat(const cv::Mat& mat, ofImageType type, int x, int y, string caption){
+    DrawCVMat(mat, type, x, y, mat.cols, mat.rows, caption);
+}
+
+void mainApp::DrawCVMat(const cv::Mat& mat, ofImageType type, int x, int y, int w, int h, string caption){
+    
+    //Draw background box
+    int borderWidth = 2;
+    ofSetColor(255, 255, 255); //Box color
+    ofDrawPlane(x-borderWidth, y-borderWidth, w + (borderWidth*2), h + (borderWidth*2) + 10);
+    
+    //Draw image from mat
+    ofImage output;
+    output.allocate(mat.cols, mat.rows, type);
+    output.setFromPixels(mat.data, mat.cols, mat.rows, type);
+    output.draw(x, y, w, h);
+    
+    //Draw the caption if available
+    ofSetColor(255, 255, 255); //Text color
+    if(caption != ""){
+        ofDrawBitmapString(caption, x, y + h + 10);
+    }
 }
 
 

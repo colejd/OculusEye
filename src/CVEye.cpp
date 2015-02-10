@@ -160,16 +160,22 @@ void CVEye::update(){
     if(eyeRef || dummyImage)
     {
         //Do we have camera data or a default image to display?
-        bool pass = dummyImage;
-        //Copy image data into finalImage when there's a new image from the camera hardware.
-        if(eyeRef) pass = eyeRef->isNewFrame();
+        bool computeFrame = dummyImage;
+        if(eyeRef){
+            //Continue if the camera hardware says it has a new frame
+            computeFrame = eyeRef->isNewFrame();
+            //Mark this CVEye as updated
+            sync_update = eyeRef->isNewFrame();
+        }
         
-        if(pass)
+        //Continue if we have new camera data or a default image to display
+        if(computeFrame)
         {
             
             PullData();
             src_tmp.data = rawPixelData;
             
+            //Apply distortion from calibration to the source image
             if(calibrated){
                 cv::Mat src_tmp_undistorted;
                 src_tmp.copyTo(src_tmp_undistorted);
@@ -177,7 +183,7 @@ void CVEye::update(){
             }
             
             if(doCanny && !calibrating){
-                
+                //Move src_tmp (cv::Mat) into src (cv::UMat). A better way of doing this doesn't exist yet (February 2015)
                 src_tmp.copyTo(src);
                 cvtColor(src, src_gray, cv::COLOR_RGB2GRAY);
                 src.copyTo(dest);
@@ -231,7 +237,7 @@ void CVEye::update(){
         }
         
         //FPS counting stuff
-        camFrameCount += pass ? 1: 0;
+        camFrameCount += computeFrame ? 1: 0;
         float timeNow = ofGetElapsedTimeMillis();
         if( timeNow > camFpsLastSampleTime + 1000 ){
             uint32_t framesPassed = camFrameCount - camFpsLastSampleFrame;

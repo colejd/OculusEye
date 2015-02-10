@@ -85,6 +85,7 @@
 		46F452E91A89D06000DD172A /* license.md in Sources */ = {isa = PBXBuildFile; fileRef = 46F452BC1A89D06000DD172A /* license.md */; };
 		46F452EA1A89D06000DD172A /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 46F452BD1A89D06000DD172A /* README.md */; };
 		46F452EB1A89D06000DD172A /* ofxOculusRift.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F452BF1A89D06000DD172A /* ofxOculusRift.cpp */; };
+		46F452F01A89E49E00DD172A /* StereoDepthMapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F452EE1A89E49E00DD172A /* StereoDepthMapper.cpp */; };
 		519909391A23B2BD008021BE /* CVEye.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5199092C1A23B2BD008021BE /* CVEye.cpp */; };
 		5199093A1A23B2BD008021BE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5199092E1A23B2BD008021BE /* main.cpp */; };
 		5199093B1A23B2BD008021BE /* mainApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5199092F1A23B2BD008021BE /* mainApp.cpp */; };
@@ -319,6 +320,8 @@
 		46F452BD1A89D06000DD172A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		46F452BF1A89D06000DD172A /* ofxOculusRift.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOculusRift.cpp; sourceTree = "<group>"; };
 		46F452C01A89D06000DD172A /* ofxOculusRift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOculusRift.h; sourceTree = "<group>"; };
+		46F452EE1A89E49E00DD172A /* StereoDepthMapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StereoDepthMapper.cpp; sourceTree = "<group>"; };
+		46F452EF1A89E49E00DD172A /* StereoDepthMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StereoDepthMapper.h; sourceTree = "<group>"; };
 		5199092C1A23B2BD008021BE /* CVEye.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CVEye.cpp; sourceTree = "<group>"; };
 		5199092D1A23B2BD008021BE /* CVEye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVEye.h; sourceTree = "<group>"; };
 		5199092E1A23B2BD008021BE /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -980,6 +983,8 @@
 				51E1B39E1A42778F00D6BCA7 /* CVPerformance.cpp */,
 				51E1B39D1A424B9F00D6BCA7 /* programSettings.h */,
 				519909981A25A534008021BE /* Canny.cl */,
+				46F452EF1A89E49E00DD172A /* StereoDepthMapper.h */,
+				46F452EE1A89E49E00DD172A /* StereoDepthMapper.cpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -1132,6 +1137,7 @@
 				519909391A23B2BD008021BE /* CVEye.cpp in Sources */,
 				46F452111A89D00100DD172A /* ofxTweakbarFloat.cpp in Sources */,
 				46F452EA1A89D06000DD172A /* README.md in Sources */,
+				46F452F01A89E49E00DD172A /* StereoDepthMapper.cpp in Sources */,
 				46F452C51A89D06000DD172A /* OVR_Allocator.cpp in Sources */,
 				46F452101A89D00100DD172A /* ofxTweakbarFiles.cpp in Sources */,
 				46F452E01A89D06000DD172A /* OVR_ThreadCommandQueue.cpp in Sources */,

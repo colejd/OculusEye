@@ -135,6 +135,8 @@ public:
     
     string screenMessage = "";
     
+    bool sync_update = false;
+    
 private:
     int camIndex;
     YUVBuffer yuvData;

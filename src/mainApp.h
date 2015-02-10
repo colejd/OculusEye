@@ -17,6 +17,7 @@
 #include "programSettings.h"
 #include "screenConfig.h"
 #include "CVPerformance.h"
+#include "StereoDepthMapper.h"
 
 #include <opencv2/core.hpp>
 #include <opencv2/core/utility.hpp>
@@ -146,6 +147,9 @@ public:
     ofxTweakbar *ps3EyeSettings;
     ofxTweakbarSimpleStorage *ps3EyeSettingsStorage;
     
+    ofxTweakbar *otherSettings;
+    ofxTweakbarSimpleStorage *otherSettingsStorage;
+    
     PerformanceGraph eyeFPSGraph = PerformanceGraph("Left Eye", 0.0f, 0.0f);
     bool showPerformanceGraph = false;
     
@@ -155,6 +159,15 @@ public:
     bool correctCameraDistortion;
     
     //ofImage calibrationCheckerboard;
+    
+    StereoDepthMapper stereoMapper;
+    bool computeDisparityMap = false;
+    bool showDisparityMap = false;
+    
+    void SynchronizedUpdate();
+    
+    void DrawCVMat(const cv::Mat &mat, ofImageType type, int x, int y, string caption = "");
+    void DrawCVMat(const cv::Mat &mat, ofImageType type, int x, int y, int w, int h, string caption = "");
     
 private:
     string GetStdoutFromCommand(string cmd);
