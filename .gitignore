@@ -56,4 +56,4 @@ UserInterfaceState.xcuserstate
 ### Jon ###
 *.make
 Makefile
-/[Bb]in
+[Bb]in/
