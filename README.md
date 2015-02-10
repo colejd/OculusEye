@@ -5,7 +5,7 @@ Created for my Senior Capstone project at the University of Maine.
 
 AR for the Oculus Rift DK1 using two Playstation 3 Eye cameras. See versionNotes.txt for specific information.
 
-[Photo of prototype](http://i.imgur.com/MxHzK2b.jpg)
+![Photo of prototype](http://i.imgur.com/MxHzK2b.jpg)
 
 Press ESC to quit.
 
