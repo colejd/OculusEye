@@ -21,9 +21,12 @@ StereoDepthMapper::~StereoDepthMapper(){
 void StereoDepthMapper::CalculateStereoMap(const Mat &left, const Mat &right, bool swapSides){
     stereoMapRaw = Mat( left.rows, left.cols, CV_16S );
     stereoMap = Mat( left.rows, left.cols, CV_8UC1 );
-    //printf("Left size:   %i, %i\n", left.rows, left.cols);
-    //printf("Right size:  %i, %i\n", right.rows, right.cols);
-    //printf("Stereo size: %i, %i\n", stereoMap.rows, stereoMap.cols);
+    
+    /*
+    printf("Left size:   %i, %i\n", left.rows, left.cols);
+    printf("Right size:  %i, %i\n", right.rows, right.cols);
+    printf("Stereo size: %i, %i\n", stereoMap.rows, stereoMap.cols);
+     */
     
     //Swap image sides to match actual camera alignment if desired
     if(swapSides)

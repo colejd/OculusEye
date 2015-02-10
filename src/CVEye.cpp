@@ -51,7 +51,7 @@ bool CVEye::init(const int _width, const int _height){
     {
         //threadUpdate.stop();
         eyeRef = devices.at(camIndex);
-        bool res = eyeRef->init(CAMERA_WIDTH, CAMERA_HEIGHT, CAMERA_FPS);
+        bool eyeDidInit = eyeRef->init(CAMERA_WIDTH, CAMERA_HEIGHT, CAMERA_FPS);
         eyeRef->start();
         
         //Populate GUI fields with default hardware values
@@ -66,7 +66,7 @@ bool CVEye::init(const int _width, const int _height){
         blueBalance = eyeRef->getBlueBalance();
         redBalance = eyeRef->getRedBalance();
         
-        initialized = res;
+        initialized = eyeDidInit;
     }
     
     //If no cameras are detected, a sample image is loaded.

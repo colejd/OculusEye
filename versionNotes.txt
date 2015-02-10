@@ -36,6 +36,9 @@ Bug fixes:
 -- v1.1.0 (2/10/15) ---------------------
 In this version, I've added a class for creating and handling disparity maps (StereoDepthMapper). I need to do a lot of research to get it doing something interesting. I've also added a few convenience functions, such as one for drawing OpenCV Mats directly to the screen. Finally, I've refactored the camera calibration code into its own class (CameraCalibrator).
 
+Bugs:
+- In working on other stuff after making StereoDepthMapper, it now isn't working. Images won't display in the window they should be in.
+
 ----------------------------------------
 
 

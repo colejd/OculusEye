@@ -40,7 +40,6 @@ public:
     StereoDepthMapper();
     ~StereoDepthMapper();
     
-    StereoDepthMapper(int rows, int cols);
     void CalculateStereoMap(const Mat &left, const Mat &right, bool swapSides = false);
     
 private:

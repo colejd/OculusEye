@@ -110,9 +110,6 @@ public:
     cv::UMat src, src_gray, dest;
     cv::UMat canny_output, contour_output;
     
-    //cv::Mat tmp;
-    //cv::Mat src, src_gray, dst;
-    
     string screenMessage = "";
     
     bool sync_update = false;

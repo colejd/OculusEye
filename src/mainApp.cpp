@@ -81,13 +81,6 @@ void mainApp::setup(){
     
     eyeFPSGraph = PerformanceGraph("Eye FPS", ofGetWidth() - 70, ofGetHeight() - 15);
     
-    //calibrationCheckerboard.allocate(1052, 744, OF_IMAGE_COLOR_ALPHA);
-    //ofLoadImage(calibrationCheckerboard, "CalibrationCheckerboard.bmp");
-    //calibrationCheckerboard.update();
-    
-    //printf(GetStdoutFromCommand("ls -la").c_str());
-    //checkerboard = cv::imread("../../../data/images/SampleImage.png", cv::IMREAD_ANYCOLOR);
-    
     //Set up GUI
     CreateGUI();
     
@@ -283,12 +276,6 @@ void mainApp::draw()
     if(showDisparityMap){
         DrawCVMat(stereoMapper.stereoMap, OF_IMAGE_GRAYSCALE, 0, 0, "Disparity Map");
     }
-    
-    //Draw the checkerboard if we're calibrating.
-    //if(calibrating){
-    //    calibrationCheckerboard.draw(0, 0);
-    //}
-    
     
     // STEP 3: DRAW DEBUG (topmost layer) ------------------------------------
 

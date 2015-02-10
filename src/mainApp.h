@@ -158,8 +158,6 @@ public:
     void EndCameraCalibration(bool stopEarly = false);
     bool correctCameraDistortion;
     
-    //ofImage calibrationCheckerboard;
-    
     StereoDepthMapper stereoMapper;
     bool computeDisparityMap = false;
     bool showDisparityMap = false;
