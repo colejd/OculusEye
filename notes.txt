@@ -1,0 +1,57 @@
+File paths in OF are relative to /bin/data/ when loading resources. See build phases.
+
+Screen resolution changer makes the camera update loop slower for some reason.
+
+
+OpenCV 3.0 needs to be recompiled with libstdc++ to work properly with OpenFrameworks. Otherwise,
+you'll get weird linker errors talking about vtables or some hogwash.
+See http://www.magicandlove.com/blog/2014/02/26/build-opencv-2-4-8-in-mac-osx-10-9/ or http://stackoverflow.com/questions/19626854/opencv-cuda-osx-maverick
+  in CMakeCache.txt:
+    CMAKE_CXX_FLAGS:STRING=-stdlib=libstdc++
+    CMAKE_EXE_LINKER_FLAGS:STRING=-stdlib=libstdc++
+If you do it in CMake, make sure to turn on the "advanced" toggle.
+WITH_TBB should be turned on.
+
+To get OpenFrameworks working on OSX 10.9+:
+http://forum.openframeworks.cc/t/xcode6-compile-issue/16507/5
+
+CUDA install guide:
+https://gist.github.com/mlhales/5785725
+
+
+For OpenCV 3.0.0 beta:
+There was a comma in CMakeCache.txt "-Wl,-" which wasn't supposed to be there. Deleting this let the CUDA modules build.
+Fixed bug in canny.cpp manually; see https://github.com/Itseez/opencv/commit/184b6e314c236ba9c57ff583d49b27ac6d401e23#diff-0
+
+
+In the build directory of OpenCV, make install puts files where they need to be, and make uninstall gets rid of the files.
+
+
+http://answers.opencv.org/question/1451/smoothing-image-better-way-of-doing-that/
+http://answers.opencv.org/question/755/object-detection-slow/#760
+
+
+AntTweakBar
+- I removed the system GLUT reference from the project to implement this. The program uses the GLUT framework included with OpenFrameworks.
+
+I should be using SIMD instructions to convert the source from YUV422 to RGB.
+
+http://forum.openframeworks.cc/t/fullscreen-dual-screen/693/2
+
+
+INFORMATION:
+http://nuigroup.com/forums/viewthread/2921/
+
+- 4 channel audio input:16 bits/channel, 48kHz, SNR 90db 
+- 56º or 75º Field of View zoom lens 
+- 2.1 F-stop, <1% distortion, fixed focus (25cm to 8 at 75º FOV) 
+- 640 x 480 at 60 frames/second 
+- 320 x 240 at 120 frames/second 
+- USB.0 high-speed data transfer 
+
+The camera currently streams video in YUYV format, therefore each frame is 640*480*2 bytes. 
+At 30fps this amounts to about 17.5MB/s which is pretty low in comparison to the total USB 2.0 bandwidth. 
+At 60fps the amount of data gets higher and it could be affected by other peripherals connected to the USB host controller. 
+This is why it is recommended that the camera be the only device connected to the USB host controller. 
+Most of the CPU overhead that I currently have is the color conversion code that is implemented in straight C/C++ without any SIMD optimizations. 
+For real (MT) applications this code will go away, since we will be extracting raw grayscale image (every second byte of YUYV).
