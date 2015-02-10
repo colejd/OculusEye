@@ -9,7 +9,7 @@
 #include "CVEye.h"
 
 //Constructor
-CVEye::CVEye(const int _index){
+CVEye::CVEye(const int _index) {
     camIndex = _index;
     
     finalImage.allocate(CAMERA_WIDTH, CAMERA_HEIGHT, OF_IMAGE_COLOR);
@@ -93,45 +93,9 @@ bool CVEye::init(const int _width, const int _height){
     canny_output.create(cv::Size(CAMERA_WIDTH, CAMERA_HEIGHT), CV_8U);
     contour_output.create(cv::Size(CAMERA_WIDTH, CAMERA_HEIGHT), CV_8UC3);
     
+    calibrator = new CameraCalibrator(src_tmp, src_gray, dest);
     
     return initialized;
-}
-
-void CVEye::BeginCalibration(){
-    calibrating = true;
-    screenMessage = "Calibrating...";
-    
-    numSquares = numCornersHor * numCornersVer;
-    board_sz = cv::Size(numCornersHor, numCornersVer);
-    
-    for(int j=0;j<numSquares;j++){
-        obj.push_back(cv::Point3f(j/numCornersHor, j%numCornersHor, 0.0f));
-    }
-    
-    intrinsic = cv::Mat(3, 3, CV_32FC1);
-    //Assumes the camera has an aspect ratio of 1
-    //Elements (0,0) and (1,1) are the focal lengths along the X and Y axis.
-    //See http://www.aishack.in/tutorials/calibrating-undistorting-with-opencv-in-c-oh-yeah/
-    intrinsic.ptr<float>(0)[0] = 1;
-    intrinsic.ptr<float>(1)[1] = 1;
-    
-    printf("\n===BEGIN CALIBRATION===\n");
-    printf("Boards: %i\n", numBoards);
-    printf("Corners (horizontal): %i\n", numCornersHor);
-    printf("Corners (vertical): %i\n", numCornersVer);
-    printf("Squares: %i\n", numSquares);
-}
-
-void CVEye::EndCalibration(){
-    calibrating = false;
-    screenMessage = "";
-    
-    if(calibrated){
-        calibrateCamera(object_points, image_points, src.size(), intrinsic, distCoeffs, rvecs, tvecs);
-    }
-    
-    printf("\n===END CALIBRATION===\n");
-    
 }
 
 /**
@@ -176,13 +140,13 @@ void CVEye::update(){
             src_tmp.data = rawPixelData;
             
             //Apply distortion from calibration to the source image
-            if(calibrated){
+            if(calibrator->calibrated){
                 cv::Mat src_tmp_undistorted;
                 src_tmp.copyTo(src_tmp_undistorted);
-                undistort(src_tmp_undistorted, src_tmp, intrinsic, distCoeffs);
+                undistort(src_tmp_undistorted, src_tmp, calibrator->intrinsic, calibrator->distCoeffs);
             }
             
-            if(doCanny && !calibrating){
+            if(doCanny && !calibrator->calibrating){
                 //Move src_tmp (cv::Mat) into src (cv::UMat). A better way of doing this doesn't exist yet (February 2015)
                 src_tmp.copyTo(src);
                 cvtColor(src, src_gray, cv::COLOR_RGB2GRAY);
@@ -201,30 +165,12 @@ void CVEye::update(){
                 finalImage.setFromPixels(dest.getMat(NULL).data, CAMERA_WIDTH, CAMERA_HEIGHT, OF_IMAGE_COLOR);
                 
             }
-            else if(calibrating){
+            else if(calibrator->calibrating){
                 src_tmp.copyTo(src);
                 cvtColor(src, src_gray, cv::COLOR_RGB2GRAY);
                 src.copyTo(dest);
                 
-                if(successes < numBoards){
-                    bool found = findChessboardCorners(src_tmp, board_sz, corners, CV_CALIB_CB_ADAPTIVE_THRESH+CV_CALIB_CB_NORMALIZE_IMAGE);
-                    if(found) {
-                        screenMessage = "Calibrating... (found chessboard)";
-                        cornerSubPix(src_gray, corners, cv::Size(11, 11), cv::Size(-1, -1), cvTermCriteria(CV_TERMCRIT_EPS | CV_TERMCRIT_ITER, 30, 0.1));
-                        drawChessboardCorners(dest, board_sz, corners, found);
-                        
-                        image_points.push_back(corners);
-                        object_points.push_back(obj);
-                        
-                        ofLog(OF_LOG_VERBOSE, "Keyframe %i captured\n", successes);
-                        successes++;
-                    }
-                }
-                //If we have enough samples fjklajlkads;jksa
-                else{
-                    calibrated = true;
-                    EndCalibration();
-                }
+                calibrator->Update();
                 
                 //Do last
                 finalImage.setFromPixels(dest.getMat(NULL).data, CAMERA_WIDTH, CAMERA_HEIGHT, OF_IMAGE_COLOR);

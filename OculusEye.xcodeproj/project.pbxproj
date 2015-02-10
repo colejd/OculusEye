@@ -86,6 +86,9 @@
 		46F452EA1A89D06000DD172A /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 46F452BD1A89D06000DD172A /* README.md */; };
 		46F452EB1A89D06000DD172A /* ofxOculusRift.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F452BF1A89D06000DD172A /* ofxOculusRift.cpp */; };
 		46F452F01A89E49E00DD172A /* StereoDepthMapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F452EE1A89E49E00DD172A /* StereoDepthMapper.cpp */; };
+		46F452F31A8A7F1400DD172A /* CameraCalibrator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F452F11A8A7F1400DD172A /* CameraCalibrator.cpp */; };
+		46F452F61A8AC42900DD172A /* mountingback.stl in Resources */ = {isa = PBXBuildFile; fileRef = 46F452F41A8AC42900DD172A /* mountingback.stl */; };
+		46F452F71A8AC42900DD172A /* mountingbracket.stl in Resources */ = {isa = PBXBuildFile; fileRef = 46F452F51A8AC42900DD172A /* mountingbracket.stl */; };
 		519909391A23B2BD008021BE /* CVEye.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5199092C1A23B2BD008021BE /* CVEye.cpp */; };
 		5199093A1A23B2BD008021BE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5199092E1A23B2BD008021BE /* main.cpp */; };
 		5199093B1A23B2BD008021BE /* mainApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5199092F1A23B2BD008021BE /* mainApp.cpp */; };
@@ -187,7 +190,6 @@
 		46F451171A89C0B500DD172A /* MenuBarIcon_32.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = MenuBarIcon_32.icns; sourceTree = "<group>"; };
 		46F451181A89C0B500DD172A /* MenuBarIcon_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuBarIcon_32.png; sourceTree = "<group>"; };
 		46F451191A89C0B500DD172A /* MenuBarIcon_32_Alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuBarIcon_32_Alt.png; sourceTree = "<group>"; };
-		46F4511B1A89C0B500DD172A /* CalibrationCheckerboard.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = CalibrationCheckerboard.bmp; sourceTree = "<group>"; };
 		46F4511C1A89C0B500DD172A /* CalibrationCheckerboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CalibrationCheckerboard.png; sourceTree = "<group>"; };
 		46F4511D1A89C0B500DD172A /* NoCameraFound.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NoCameraFound.png; sourceTree = "<group>"; };
 		46F4511F1A89C0B500DD172A /* HmdDistort.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = HmdDistort.vert; sourceTree = "<group>"; };
@@ -322,6 +324,10 @@
 		46F452C01A89D06000DD172A /* ofxOculusRift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOculusRift.h; sourceTree = "<group>"; };
 		46F452EE1A89E49E00DD172A /* StereoDepthMapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StereoDepthMapper.cpp; sourceTree = "<group>"; };
 		46F452EF1A89E49E00DD172A /* StereoDepthMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StereoDepthMapper.h; sourceTree = "<group>"; };
+		46F452F11A8A7F1400DD172A /* CameraCalibrator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CameraCalibrator.cpp; sourceTree = "<group>"; };
+		46F452F21A8A7F1400DD172A /* CameraCalibrator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraCalibrator.h; sourceTree = "<group>"; };
+		46F452F41A8AC42900DD172A /* mountingback.stl */ = {isa = PBXFileReference; lastKnownFileType = file; path = mountingback.stl; sourceTree = "<group>"; };
+		46F452F51A8AC42900DD172A /* mountingbracket.stl */ = {isa = PBXFileReference; lastKnownFileType = file; path = mountingbracket.stl; sourceTree = "<group>"; };
 		5199092C1A23B2BD008021BE /* CVEye.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CVEye.cpp; sourceTree = "<group>"; };
 		5199092D1A23B2BD008021BE /* CVEye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVEye.h; sourceTree = "<group>"; };
 		5199092E1A23B2BD008021BE /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -422,6 +428,8 @@
 		46F451021A89953400DD172A /* models */ = {
 			isa = PBXGroup;
 			children = (
+				46F452F41A8AC42900DD172A /* mountingback.stl */,
+				46F452F51A8AC42900DD172A /* mountingbracket.stl */,
 				46F451111A89C08300DD172A /* model_notes.txt */,
 			);
 			path = models;
@@ -456,7 +464,6 @@
 			isa = PBXGroup;
 			children = (
 				46F4514E1A89C6AB00DD172A /* SampleImage.png */,
-				46F4511B1A89C0B500DD172A /* CalibrationCheckerboard.bmp */,
 				46F4511C1A89C0B500DD172A /* CalibrationCheckerboard.png */,
 				46F4511D1A89C0B500DD172A /* NoCameraFound.png */,
 			);
@@ -985,6 +992,8 @@
 				519909981A25A534008021BE /* Canny.cl */,
 				46F452EF1A89E49E00DD172A /* StereoDepthMapper.h */,
 				46F452EE1A89E49E00DD172A /* StereoDepthMapper.cpp */,
+				46F452F21A8A7F1400DD172A /* CameraCalibrator.h */,
+				46F452F11A8A7F1400DD172A /* CameraCalibrator.cpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -1081,8 +1090,10 @@
 			files = (
 				46F451531A89C91D00DD172A /* .gitignore in Resources */,
 				46F451331A89C1A000DD172A /* icon-debug.icns in Resources */,
+				46F452F61A8AC42900DD172A /* mountingback.stl in Resources */,
 				46F451341A89C1A000DD172A /* icon.icns in Resources */,
 				46F4514F1A89C6AB00DD172A /* SampleImage.png in Resources */,
+				46F452F71A8AC42900DD172A /* mountingbracket.stl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1159,6 +1170,7 @@
 				46F452D11A89D06000DD172A /* OVR_System.cpp in Sources */,
 				46F4520E1A89D00100DD172A /* ofxTweakbarButton.cpp in Sources */,
 				46F452C41A89D06000DD172A /* OVR_Alg.cpp in Sources */,
+				46F452F31A8A7F1400DD172A /* CameraCalibrator.cpp in Sources */,
 				46F452151A89D00100DD172A /* ofxTweakbarSeparator.cpp in Sources */,
 				46F452C91A89D06000DD172A /* OVR_Log.cpp in Sources */,
 				51E1B39F1A42778F00D6BCA7 /* CVPerformance.cpp in Sources */,

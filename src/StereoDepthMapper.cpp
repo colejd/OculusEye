@@ -32,7 +32,6 @@ void StereoDepthMapper::CalculateStereoMap(const Mat &left, const Mat &right, bo
         sbm->compute( left, right, stereoMapRaw );
     
     double lowThresh = (double)lowThreshold;
-    printf("lowThresh %f\n", lowThresh);
     double highThresh = (double)highThreshold;
     minMaxLoc( stereoMapRaw, &lowThresh, &highThresh );
     

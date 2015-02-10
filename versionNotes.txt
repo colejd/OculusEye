@@ -33,6 +33,9 @@ This marks the first version with the 3d-printed mount for the cameras as well. 
 Bug fixes:
 - AntTweakBar no longer causes screen blanking when the GUI windows are all minimized (incidentally fixed by the move to Yosemite)
 
+-- v1.1.0 (2/10/15) ---------------------
+In this version, I've added a class for creating and handling disparity maps (StereoDepthMapper). I need to do a lot of research to get it doing something interesting. I've also added a few convenience functions, such as one for drawing OpenCV Mats directly to the screen. Finally, I've refactored the camera calibration code into its own class (CameraCalibrator).
+
 ----------------------------------------
 
 
@@ -45,7 +48,6 @@ to do:
 - Try SSE/SIMD instructions for YUV422 conversion (much, much faster)
 - Clean up GUI code (use externs rather than duplicate variables)
 - Queue loaded frames into a circular buffer
-- Show calibration checkerboard on-screen during calibration (remove the need for a printed sheet)
 - Fix OpenGL buffer sizing in OfxOculusRift.cpp to resize to fit the window
 
 optional:
@@ -60,6 +62,7 @@ done:
 - Show placeholder images when the cameras aren't connected
 - Write logic for camera calibration
 - Fix AntTweakBar integration (whole window is gray when all GUI windows are minimized)
+- Show calibration checkerboard on-screen during calibration (remove the need for a printed sheet)
 
 future:
 - Offload initial YUV422 to RGB conversion to Raspberry Pi located on hardware

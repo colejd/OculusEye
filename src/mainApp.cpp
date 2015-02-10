@@ -85,6 +85,9 @@ void mainApp::setup(){
     //ofLoadImage(calibrationCheckerboard, "CalibrationCheckerboard.bmp");
     //calibrationCheckerboard.update();
     
+    //printf(GetStdoutFromCommand("ls -la").c_str());
+    //checkerboard = cv::imread("../../../data/images/SampleImage.png", cv::IMREAD_ANYCOLOR);
+    
     //Set up GUI
     CreateGUI();
     
@@ -226,7 +229,7 @@ void mainApp::update()
     }
     
     //End camera calibration if it is running and both cameras have been successfully calibrated
-    if(calibrating && (leftEye->calibrated && rightEye->calibrated)){
+    if(calibrating && (leftEye->calibrator->calibrated)){
         EndCameraCalibration();
     }
     
@@ -327,6 +330,24 @@ void mainApp::draw()
     //mainFBO.draw(0, 0, ofGetWidth(), ofGetHeight());
     
     ofxTweakbars::draw();
+    
+    //If we're calibrating the camera, clear the screen and draw the calibration checkerboard and preview.
+    if(calibrating){
+        ofClear(0);
+
+        //Load and draw the checkerboard
+        cv::Mat checkerboard = cv::imread("../../../data/images/CalibrationCheckerboard.png", cv::IMREAD_ANYCOLOR);
+        DrawCVMat(checkerboard, OF_IMAGE_COLOR, 0, 0);
+        
+        //Make text for the image with information about the capture process
+        std::ostringstream stringStream;
+        stringStream << " Calibrating...\n";
+        stringStream << " Frames Captured: " << leftEye->calibrator->successes << "/" << leftEye->calibrator->numBoards + 1;
+        std::string caption = stringStream.str();
+        
+        //Draw the camera view
+        DrawCVMat(leftEye->dest.getMat(NULL), OF_IMAGE_COLOR, checkerboard.cols, 0, 240, 180, caption);
+    }
     
 }
 
@@ -457,18 +478,23 @@ void mainApp::UpdateEyeValues(CVEye *eye){
 void mainApp::BeginCameraCalibration(){
     calibrating = true;
     if(leftEye->initialized){
-        leftEye->BeginCalibration();
+        leftEye->calibrator->BeginCalibration();
+        leftEye->screenMessage = "Calibrating...";
     }
     if(rightEye->initialized){
-        //rightEye->BeginCalibration();
+        //rightEye->calibrator.BeginCalibration();
+        rightEye->screenMessage = "Calibrating...";
     }
 }
 
-void mainApp::EndCameraCalibration(){
-    if(calibrating){
-        leftEye->EndCalibration();
-        rightEye->EndCalibration();
+void mainApp::EndCameraCalibration(bool stopEarly){
+    if(calibrating && stopEarly){
+        leftEye->calibrator->EndCalibration(true);
+        //rightEye->calibrator->EndCalibration(true);
+        
     }
+    leftEye->screenMessage = "";
+    rightEye->screenMessage = "";
     calibrating = false;
 }
 
@@ -480,7 +506,7 @@ void mainApp::EndCameraCalibration(){
 void mainApp::keyPressed(int key){
     switch(key) {
         case 'f': ofToggleFullscreen(); break;
-        case 'c': if(!calibrating) BeginCameraCalibration(); else EndCameraCalibration(); break;
+        case 'c': if(!calibrating) BeginCameraCalibration(); else EndCameraCalibration(true); break;
         case '=': oculusRift.ipd += 1; break;
         case '-': oculusRift.ipd -= 1; if(oculusRift.ipd < 0) oculusRift.ipd = 0; break;
 

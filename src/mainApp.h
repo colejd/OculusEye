@@ -155,7 +155,7 @@ public:
     
     bool calibrating = false;
     void BeginCameraCalibration();
-    void EndCameraCalibration();
+    void EndCameraCalibration(bool stopEarly = false);
     bool correctCameraDistortion;
     
     //ofImage calibrationCheckerboard;
@@ -168,6 +168,7 @@ public:
     
     void DrawCVMat(const cv::Mat &mat, ofImageType type, int x, int y, string caption = "");
     void DrawCVMat(const cv::Mat &mat, ofImageType type, int x, int y, int w, int h, string caption = "");
+    
     
 private:
     string GetStdoutFromCommand(string cmd);
