@@ -69,7 +69,8 @@ void mainApp::setup(){
     ofSetFrameRate(TARGET_FRAMERATE);
     ofLog(OF_LOG_NOTICE, " Target framerate set to %i", TARGET_FRAMERATE);
     
-    ofSetVerticalSync(ENABLE_VSYNC);
+    useVSync = ENABLE_VSYNC;
+    ofSetVerticalSync(useVSync);
     ofLog(OF_LOG_NOTICE, " Vertical sync is %s ", ENABLE_VSYNC ? "on" : "off");
     
     oculusRift.init( TARGET_RES_X, TARGET_RES_Y, 0 ); //1280, 800, 4
@@ -79,6 +80,10 @@ void mainApp::setup(){
     oculusRift.interOcularDistance = -0.65f; //IPD of 0.65 is average
     
     eyeFPSGraph = PerformanceGraph("Eye FPS", ofGetWidth() - 70, ofGetHeight() - 15);
+    
+    //calibrationCheckerboard.allocate(1052, 744, OF_IMAGE_COLOR_ALPHA);
+    //ofLoadImage(calibrationCheckerboard, "CalibrationCheckerboard.bmp");
+    //calibrationCheckerboard.update();
     
     //Set up GUI
     CreateGUI();
@@ -110,6 +115,8 @@ void mainApp::CreateGUI(){
     generalSettingsBar -> addInt("Interpupillary -/+", oculusRift.ipd) -> setLabel("Interpupillary Distance [-/+]") -> setMin("0") -> setMax("100");
     generalSettingsBar -> addBool("Draw Guides", drawGuides) -> setLabel("Draw Guides");
     generalSettingsBar -> addBool("swapEyes", swapEyes) -> setLabel("Swap Eyes");
+    generalSettingsBar -> addBool("showPerformanceGraph", showPerformanceGraph) -> setLabel("Show Performace Graph");
+    generalSettingsBar -> addBool("useVSync", useVSync) -> setLabel("Use VSync (caps at 60 FPS)");
     
     generalSettingsStorage -> retrieve();
     generalSettingsBar -> load();
@@ -190,6 +197,10 @@ void mainApp::update()
     leftEye->update();
     rightEye->update();
     
+    //Figure out if cameras have been successfully calibrated
+    if(calibrating && (leftEye->calibrated && rightEye->calibrated)){
+        EndCameraCalibration();
+    }
 }
 
 
@@ -225,11 +236,18 @@ void mainApp::draw()
     ofSetColor( 255 );
     oculusRift.draw( ofVec2f(0,0), ofVec2f( ofGetWidth(), ofGetHeight() ) );
     
+    //Draw the checkerboard if we're calibrating.
+    //if(calibrating){
+    //    calibrationCheckerboard.draw(0, 0);
+    //}
+    
     //Draw debug text in top-right
     string str = "app fps: ";
 	str += ofToString(ofGetFrameRate(), 2) + "\n";
     //if(leftEye->initialized || leftEye->dummyImage) str += "left eye fps: " + ofToString(leftEye->camFps, 2) + "\n";
+    if(leftEye->screenMessage != "") str += "left eye: " + leftEye->screenMessage + "\n";
     //if(rightEye->initialized || leftEye->dummyImage) str += "right eye fps: " + ofToString(rightEye->camFps, 2) + "\n";
+    if(rightEye->screenMessage != "") str += "right eye: " + rightEye->screenMessage + "\n";
     ofDrawBitmapString(str, 10, 15);
     
     //Draw downsampling information to screen
@@ -252,8 +270,10 @@ void mainApp::draw()
         hLine.draw();
     }
     
-    eyeFPSGraph.Enqueue((leftEye->camFps + rightEye->camFps) / 2.0f);
-    eyeFPSGraph.Draw();
+    if(showPerformanceGraph){
+        eyeFPSGraph.Enqueue((leftEye->camFps + rightEye->camFps) / 2.0f);
+        eyeFPSGraph.Draw();
+    }
     
     //mainFBO.end();
     //mainFBO.draw(0, 0, ofGetWidth(), ofGetHeight());
@@ -359,6 +379,25 @@ void mainApp::UpdateEyeValues(CVEye *eye){
     eye->adaptiveDownsampling = adaptiveDownsampling;
     eye->imageSubdivisions = imageSubdivisions;
     eye->drawContours = drawContours;
+    ofSetVerticalSync(useVSync);
+}
+
+void mainApp::BeginCameraCalibration(){
+    calibrating = true;
+    if(leftEye->initialized){
+        leftEye->BeginCalibration();
+    }
+    if(rightEye->initialized){
+        //rightEye->BeginCalibration();
+    }
+}
+
+void mainApp::EndCameraCalibration(){
+    if(calibrating){
+        leftEye->EndCalibration();
+        rightEye->EndCalibration();
+    }
+    calibrating = false;
 }
 
 //--------------------------------------------------------------
@@ -369,6 +408,7 @@ void mainApp::UpdateEyeValues(CVEye *eye){
 void mainApp::keyPressed(int key){
     switch(key) {
         case 'f': ofToggleFullscreen(); break;
+        case 'c': if(!calibrating) BeginCameraCalibration(); else EndCameraCalibration(); break;
         case '=': oculusRift.ipd += 1; break;
         case '-': oculusRift.ipd -= 1; if(oculusRift.ipd < 0) oculusRift.ipd = 0; break;
 

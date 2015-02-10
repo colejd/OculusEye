@@ -81,6 +81,8 @@ public:
     
     bool drawGuides;
     bool duplicateEyes;
+    
+    bool useVSync;
 
     //PS3 Eye--------------
     void InitEyes();
@@ -145,6 +147,13 @@ public:
     ofxTweakbarSimpleStorage *ps3EyeSettingsStorage;
     
     PerformanceGraph eyeFPSGraph = PerformanceGraph("Left Eye", 0.0f, 0.0f);
+    bool showPerformanceGraph = false;
+    
+    bool calibrating = false;
+    void BeginCameraCalibration();
+    void EndCameraCalibration();
+    
+    //ofImage calibrationCheckerboard;
     
 private:
     string GetStdoutFromCommand(string cmd);

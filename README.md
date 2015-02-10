@@ -18,4 +18,4 @@ OpenCV 3.0 Beta with TBB
 LibUSB
 AntTweakBar
 
-Made with Xcode 5.1.1 on Mac OS 9.
+Made with Xcode 6.1.1 on Mac OS 10.10 Yosemite.

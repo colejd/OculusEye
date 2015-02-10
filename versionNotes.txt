@@ -23,29 +23,41 @@ I've converted the GUI to a completely new system called AntTweakBar (via ofxTwe
 The program now displays a test image when cameras are not connected. Operations are performed on this image.
 There is currently a bug with AntTweakBar wherein the camera output turns grey when no windows are displayed. This needs fixing very soon.
 
+-- v1.0.0 (2/9/15) ---------------------
+I've decided that I probably should have marked the software as 1.0 a while ago, with 1.0 being the deliverable for Capstone 1. I'll be versioning things a little more intelligently from now on.
+In this version, the project libraries have been moved so that there are no dependencies outside of the project folder, allowing it to be distributed easily.
+I've also implemented a basic camera calibration procedure to counteract lens distortion on-demand.
+The PS3 Eye driver code has been updated to the newest version, which includes additional options for framerate targets.
+This marks the first version with the 3d-printed mount for the cameras as well. The space between the center of the lenses is at or about 65 millimeters, making the need for IPD adjustment in software reduced or unnecessary, though it is left in.
+
+
+
 ----------------------------------------
+
 
 to do:
 - Figure out the license for this program
 - Lock down FPS at 60 (This will probably always be ongoing work)
-- Fix hotplugging to allow for disconnection/connection of cameras during run time
+- Fix hotplugging to allow for disconnection or at least connection of cameras during run time
 - Reintegrate ofxCocoa (makes this a native OSX application that lives in the tray)
 - Figure out a fix for horizontal banding in contour output when multithreading
 - Try SSE/SIMD instructions for YUV422 conversion (much, much faster)
-- Write logic for camera calibration
 - Clean up GUI code (use externs rather than duplicate variables)
 - Queue loaded frames into a circular buffer
+- Show calibration checkerboard on-screen during calibration (remove the need for a printed sheet)
+- Fix OpenGL buffer sizing in OfxOculusRift.cpp to resize to fit the window
 
 optional:
 - Integrate PS Move API
 
 done:
 - Add camera swap support
-- Convert from YUV422 to RGB directly
+- Convert from YUV422 to RGB directly (formerly YUV422 -> RGBA -> RGB)
 - Refactor eye code (initialization + OpenCV + update + render) into its own class.
-- Upgrade to OpenCV 3.0 alpha (upgraded to beta)
+- Upgrade to OpenCV 3.0 alpha (upgraded to newest beta)
 - Recompile OpenCV with TBB and IPP
 - Show placeholder images when the cameras aren't connected
+- Write logic for camera calibration
 
 future:
 - Offload initial YUV422 to RGB conversion to Raspberry Pi located on hardware

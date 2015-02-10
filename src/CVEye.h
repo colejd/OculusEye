@@ -112,6 +112,29 @@ public:
     //cv::Mat tmp;
     //cv::Mat src, src_gray, dst;
     
+    void BeginCalibration();
+    void EndCalibration();
+    bool calibrating = false;
+    bool calibrated = false;
+    int numBoards = 30; //The number of samples (frames with detected chessboards) taken to determine camera intrinsics
+    int numCornersHor = 9; //Actual number of squares minus one
+    int numCornersVer = 6; //Actual number of squares minus one
+    int numSquares;
+    cv::Size board_sz;
+    vector< vector<cv::Point3f> > object_points;
+    vector< vector<cv::Point2f> > image_points;
+    vector<cv::Point2f> corners;
+    int successes=0;
+    vector<cv::Point3f> obj;
+    float delayBetweenSuccesses = 1.0f;
+    
+    cv::Mat intrinsic = cv::Mat(3, 3, CV_32FC1);
+    cv::Mat distCoeffs;
+    vector<cv::Mat> rvecs;
+    vector<cv::Mat> tvecs;
+    
+    string screenMessage = "";
+    
 private:
     int camIndex;
     YUVBuffer yuvData;

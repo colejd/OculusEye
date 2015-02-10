@@ -18,7 +18,7 @@ CVEye::CVEye(const int _index){
     rawPixelData = (unsigned char*)malloc(CAMERA_WIDTH*CAMERA_HEIGHT*3*sizeof(unsigned char));
     
     //Initialize the camera, print results
-    cout << (init(CAMERA_WIDTH, CAMERA_HEIGHT) ? "Camera created.\n" : "Camera not found.\n");
+    cout << (init(CAMERA_WIDTH, CAMERA_HEIGHT) ? "Camera initialized.\n" : "Camera not found.\n");
     //thread.start();
     
     yuvData = YUVBuffer();
@@ -51,7 +51,7 @@ bool CVEye::init(const int _width, const int _height){
     {
         //threadUpdate.stop();
         eyeRef = devices.at(camIndex);
-        bool res = eyeRef->init(CAMERA_WIDTH, CAMERA_HEIGHT, 60);
+        bool res = eyeRef->init(CAMERA_WIDTH, CAMERA_HEIGHT, CAMERA_FPS);
         eyeRef->start();
         
         //Populate GUI fields with default hardware values
@@ -71,7 +71,7 @@ bool CVEye::init(const int _width, const int _height){
     
     //If no cameras are detected, a sample image is loaded.
     if(initialized == false){
-        ofLog(OF_LOG_WARNING, "Using sample image");
+        ofLog(OF_LOG_WARNING, "Displaying sample image");
         //If we've gotten here, the camera was not found or couldn't be initialized.
         //printf("Image %s\n", ( access( "../../../data/NoCameraFound.png", F_OK ) != -1 ) ? "exists" : "does not exist");
         rawPixelData = cv::imread("../../../data/SampleImage.png", cv::IMREAD_COLOR).data;
@@ -95,6 +95,43 @@ bool CVEye::init(const int _width, const int _height){
     
     
     return initialized;
+}
+
+void CVEye::BeginCalibration(){
+    calibrating = true;
+    screenMessage = "Calibrating...";
+    
+    numSquares = numCornersHor * numCornersVer;
+    board_sz = cv::Size(numCornersHor, numCornersVer);
+    
+    for(int j=0;j<numSquares;j++){
+        obj.push_back(cv::Point3f(j/numCornersHor, j%numCornersHor, 0.0f));
+    }
+    
+    intrinsic = cv::Mat(3, 3, CV_32FC1);
+    //Assumes the camera has an aspect ratio of 1
+    //Elements (0,0) and (1,1) are the focal lengths along the X and Y axis.
+    //See http://www.aishack.in/tutorials/calibrating-undistorting-with-opencv-in-c-oh-yeah/
+    intrinsic.ptr<float>(0)[0] = 1;
+    intrinsic.ptr<float>(1)[1] = 1;
+    
+    printf("\n===BEGIN CALIBRATION===\n");
+    printf("Boards: %i\n", numBoards);
+    printf("Corners (horizontal): %i\n", numCornersHor);
+    printf("Corners (vertical): %i\n", numCornersVer);
+    printf("Squares: %i\n", numSquares);
+}
+
+void CVEye::EndCalibration(){
+    calibrating = false;
+    screenMessage = "";
+    
+    if(calibrated){
+        calibrateCamera(object_points, image_points, src.size(), intrinsic, distCoeffs, rvecs, tvecs);
+    }
+    
+    printf("\n===END CALIBRATION===\n");
+    
 }
 
 /**
@@ -122,6 +159,7 @@ void CVEye::PullData(){
 void CVEye::update(){
     if(eyeRef || dummyImage)
     {
+        //Do we have camera data or a default image to display?
         bool pass = dummyImage;
         //Copy image data into finalImage when there's a new image from the camera hardware.
         if(eyeRef) pass = eyeRef->isNewFrame();
@@ -132,7 +170,13 @@ void CVEye::update(){
             PullData();
             src_tmp.data = rawPixelData;
             
-            if(doCanny){
+            if(calibrated){
+                cv::Mat src_tmp_undistorted;
+                src_tmp.copyTo(src_tmp_undistorted);
+                undistort(src_tmp_undistorted, src_tmp, intrinsic, distCoeffs);
+            }
+            
+            if(doCanny && !calibrating){
                 
                 src_tmp.copyTo(src);
                 cvtColor(src, src_gray, cv::COLOR_RGB2GRAY);
@@ -150,6 +194,34 @@ void CVEye::update(){
                 //Do last
                 finalImage.setFromPixels(dest.getMat(NULL).data, CAMERA_WIDTH, CAMERA_HEIGHT, OF_IMAGE_COLOR);
                 
+            }
+            else if(calibrating){
+                src_tmp.copyTo(src);
+                cvtColor(src, src_gray, cv::COLOR_RGB2GRAY);
+                src.copyTo(dest);
+                
+                if(successes < numBoards){
+                    bool found = findChessboardCorners(src_tmp, board_sz, corners, CV_CALIB_CB_ADAPTIVE_THRESH+CV_CALIB_CB_NORMALIZE_IMAGE);
+                    if(found) {
+                        screenMessage = "Calibrating... (found chessboard)";
+                        cornerSubPix(src_gray, corners, cv::Size(11, 11), cv::Size(-1, -1), cvTermCriteria(CV_TERMCRIT_EPS | CV_TERMCRIT_ITER, 30, 0.1));
+                        drawChessboardCorners(dest, board_sz, corners, found);
+                        
+                        image_points.push_back(corners);
+                        object_points.push_back(obj);
+                        
+                        ofLog(OF_LOG_VERBOSE, "Keyframe captured\n");
+                        successes++;
+                    }
+                }
+                //If we have enough samples fjklajlkads;jksa
+                else{
+                    calibrated = true;
+                    EndCalibration();
+                }
+                
+                //Do last
+                finalImage.setFromPixels(dest.getMat(NULL).data, CAMERA_WIDTH, CAMERA_HEIGHT, OF_IMAGE_COLOR);
             }
             //If no effects are applied, just put the raw video in the output image.
             else{
@@ -174,7 +246,7 @@ void CVEye::update(){
     //else init(width, height);
 }
 
-void CVEye::draw( ofVec2f pos, ofVec2f size ){
+void CVEye::draw(ofVec2f pos, ofVec2f size){
     
 }
 
@@ -373,7 +445,7 @@ void ParallelContourDetector::operator ()(const cv::Range &range) const{
         cv::UMat in(src_gray, cv::Rect(0, (src_gray.rows/subsections)*i, src_gray.cols, src_gray.rows/subsections));
         cv::UMat out(out_gray, cv::Rect(0, (out_gray.rows/subsections)*i, out_gray.cols, out_gray.rows/subsections));
         try{
-            findContours( in, contourData, contourHierarchy, RETR_EXTERNAL, CHAIN_APPROX_TC89_KCOS, cv::Point(0, 0) );
+            findContours( in, contourData, contourHierarchy, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE, cv::Point(0, 0) );
             out = Scalar::all(0);
             Scalar color = eye.guiLineColor;
             //if(eye.rave) color = Scalar(rand()&255, rand()&255, rand()&255);
