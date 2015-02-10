@@ -33,7 +33,6 @@
 		46F450F51A8937F000DD172A /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F450F41A8937F000DD172A /* OpenGL.framework */; };
 		46F450F71A8937F600DD172A /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F450F61A8937F600DD172A /* QuickTime.framework */; };
 		46F450F91A8937FC00DD172A /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F450F81A8937FC00DD172A /* CoreVideo.framework */; };
-		46F451001A897FB400DD172A /* CalibrationCheckerboard.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 46F450FF1A897F8800DD172A /* CalibrationCheckerboard.png */; };
 		46F451011A89817D00DD172A /* NoCameraFound.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5199099B1A2CC243008021BE /* NoCameraFound.png */; };
 		4EBCBD676B31AF4D2F88E053 /* OVR_Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0C106C983203B40BC30D3BD4 /* OVR_Timer.cpp */; };
 		519909391A23B2BD008021BE /* CVEye.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5199092C1A23B2BD008021BE /* CVEye.cpp */; };
@@ -155,7 +154,6 @@
 			dstSubfolderSpec = 6;
 			files = (
 				46F451011A89817D00DD172A /* NoCameraFound.png in CopyFiles */,
-				46F451001A897FB400DD172A /* CalibrationCheckerboard.png in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,6 +449,13 @@
 				B7F0A7EFA37F0A304499142F /* tinyxml2.h */,
 			);
 			name = TinyXml;
+			sourceTree = "<group>";
+		};
+		46F451021A89953400DD172A /* models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = models;
 			sourceTree = "<group>";
 		};
 		48B7CCA74FF7DC1D290B2D8E /* Kernel */ = {
@@ -794,8 +799,9 @@
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
-				519909711A23C741008021BE /* ext */,
 				51E1B3C41A66EB1C00D6BCA7 /* lib */,
+				519909711A23C741008021BE /* ext */,
+				46F451021A89953400DD172A /* models */,
 			);
 			sourceTree = "<group>";
 		};
