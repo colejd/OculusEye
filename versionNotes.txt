@@ -40,7 +40,7 @@ In this version, I've added a class for creating and handling disparity maps (St
 
 
 to do:
-- Figure out the license for this program
+- Figure out if I can legally license this with the MIT license
 - Lock down FPS at 60 (This will probably always be ongoing work)
 - Fix hotplugging to allow for disconnection or at least connection of cameras during run time
 - Reintegrate ofxCocoa (makes this a native OSX application that lives in the tray)
