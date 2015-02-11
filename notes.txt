@@ -12,6 +12,10 @@ See http://www.magicandlove.com/blog/2014/02/26/build-opencv-2-4-8-in-mac-osx-10
 If you do it in CMake, make sure to turn on the "advanced" toggle.
 WITH_TBB should be turned on.
 
+http://blogs.wcode.org/2014/10/howto-install-build-and-use-opencv-macosx-10-10/
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Super great guide for static libs
+
 To get OpenFrameworks working on OSX 10.9+:
 http://forum.openframeworks.cc/t/xcode6-compile-issue/16507/5
 
@@ -49,9 +53,9 @@ http://nuigroup.com/forums/viewthread/2921/
 - 320 x 240 at 120 frames/second 
 - USB.0 high-speed data transfer 
 
-The camera currently streams video in YUYV format, therefore each frame is 640*480*2 bytes. 
+"The camera currently streams video in YUYV format, therefore each frame is 640*480*2 bytes.
 At 30fps this amounts to about 17.5MB/s which is pretty low in comparison to the total USB 2.0 bandwidth. 
 At 60fps the amount of data gets higher and it could be affected by other peripherals connected to the USB host controller. 
 This is why it is recommended that the camera be the only device connected to the USB host controller. 
 Most of the CPU overhead that I currently have is the color conversion code that is implemented in straight C/C++ without any SIMD optimizations. 
-For real (MT) applications this code will go away, since we will be extracting raw grayscale image (every second byte of YUYV).
+For real (MT) applications this code will go away, since we will be extracting raw grayscale image (every second byte of YUYV)."
