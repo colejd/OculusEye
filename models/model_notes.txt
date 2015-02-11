@@ -1,10 +1,11 @@
+These models are in inch scale, and will probably be 1/10th the proper size when importing them into MakerBot software. I'm not sure about others.
+
 Mounting bracket based on designs by bsquang
     link: http://nuigroup.com/forums/viewthread/9473/
 
 This case perfectly accomodates the original screws mounting the camera PCB to its original casing. Be sure that it does not warp during the printing process; accuracy of the print is paramount for the success of the stereo effect.
 
 The distance between the first and third screwholes on the top of the PS3 Eye PCB is 1.5 inches.
-
 
 I want two of these:
 https://en.ids-imaging.com/store/produkte/kameras/usb-3-0-kameras/ueye-le/ui-3241le.html
