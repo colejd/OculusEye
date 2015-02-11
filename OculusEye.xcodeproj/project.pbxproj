@@ -562,6 +562,7 @@
 		46F455701A8AFC2A00DD172A /* libusb-1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libusb-1.0.a"; sourceTree = "<group>"; };
 		46F455721A8AFC5B00DD172A /* libtbb.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtbb.dylib; path = /usr/local/Cellar/tbb/4.2.4/lib/libtbb.dylib; sourceTree = "<absolute>"; };
 		46F455731A8AFC5B00DD172A /* libtbbmalloc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtbbmalloc.dylib; path = /usr/local/Cellar/tbb/4.2.4/lib/libtbbmalloc.dylib; sourceTree = "<absolute>"; };
+		46F455761A8B27E000DD172A /* InstallDependencies.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = InstallDependencies.sh; sourceTree = "<group>"; };
 		5199092C1A23B2BD008021BE /* CVEye.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CVEye.cpp; sourceTree = "<group>"; };
 		5199092D1A23B2BD008021BE /* CVEye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVEye.h; sourceTree = "<group>"; };
 		5199092E1A23B2BD008021BE /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -1592,6 +1593,7 @@
 				51B2FDD21A3109BA00246487 /* OculusEyeDebug.app */,
 				519909861A2581B1008021BE /* notes.txt */,
 				5199098E1A2581B2008021BE /* versionNotes.txt */,
+				46F455761A8B27E000DD172A /* InstallDependencies.sh */,
 				519909841A2581B1008021BE /* LICENSE.md */,
 				519909871A2581B2008021BE /* README.md */,
 				519909821A2581B1008021BE /* Credits.rtf */,

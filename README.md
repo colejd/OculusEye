@@ -21,4 +21,5 @@ You can easily install it with Brew.
 brew install tbb
 ```
 
-If you can't use Brew or want to do it manually, The brew lib files are expected in /usr/local/lib.
+If you can't use Brew or want to do it manually, The tbb lib files are expected in /usr/local/lib.
+You can download it at https://www.threadingbuildingblocks.org/download
