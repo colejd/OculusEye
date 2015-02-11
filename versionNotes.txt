@@ -45,10 +45,9 @@ Bugs Discovered:
 
 
 to do:
+- Improve performance
 - Figure out if I can legally license this with the MIT license
-- Lock down FPS at 60 (This will probably always be ongoing work)
 - Fix hotplugging to allow for disconnection or at least connection of cameras during run time
-- Reintegrate ofxCocoa (makes this a native OSX application that lives in the tray)
 - Figure out a fix for horizontal banding in contour output when multithreading
 - Try SSE/SIMD instructions for YUV422 conversion (much, much faster)
 - Clean up GUI code (use externs rather than duplicate variables)
@@ -71,6 +70,10 @@ done:
 - Write logic for camera calibration
 - Fix AntTweakBar integration (whole window is gray when all GUI windows are minimized)
 - Show calibration checkerboard on-screen during calibration (remove the need for a printed sheet)
+
+abandoned:
+- Reintegrate ofxCocoa (makes this a native OSX application that lives in the tray)
+    -> This was more for fun than anything. It wasn't useful and added unneeded complexity to the program.
 
 future:
 - Offload initial YUV422 to RGB conversion to Raspberry Pi located on hardware
