@@ -36,6 +36,11 @@ Bug fixes:
 -- v1.1.0 (2/10/15) ---------------------
 In this version, I've added a class for creating and handling disparity maps (StereoDepthMapper). I need to do a lot of research to get it doing something interesting. I've also added a few convenience functions, such as one for drawing OpenCV Mats directly to the screen. Finally, I've refactored the camera calibration code into its own class (CameraCalibrator).
 
+-- v1.1.1 (2/11/15) ---------------------
+Finally! I've gotten TBB inside the project folder without the project complaining. This project should truly have no dependencies outside of the main folder right now.
+
+Bugs Discovered:
+- This program does not like running OpenGL on AMD GPUs, and will crash on launch. Seems to be an OpenFrameworks problem.
 ----------------------------------------
 
 
@@ -49,6 +54,9 @@ to do:
 - Clean up GUI code (use externs rather than duplicate variables)
 - Queue loaded frames into a circular buffer
 - Fix OpenGL buffer sizing in OfxOculusRift.cpp to resize to fit the window
+
+- Move Data folder into OculusEye.app
+- Move TBB libraries into OculusEye.app
 
 optional:
 - Integrate PS Move API

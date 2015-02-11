@@ -22,6 +22,10 @@ http://forum.openframeworks.cc/t/xcode6-compile-issue/16507/5
 CUDA install guide:
 https://gist.github.com/mlhales/5785725
 
+For whatever reason, I had to add a Copy Files -> Products phase to get the program to detect TBB. I've no idea why...
+
+If you want a new version of TBB, you're probably going to have to recompile OpenCV with it as well as placing it in the proper directories in the project. You don't want the libraries in the libc++ directory.
+
 
 For OpenCV 3.0.0 beta:
 There was a comma in CMakeCache.txt "-Wl,-" which wasn't supposed to be there. Deleting this let the CUDA modules build.
