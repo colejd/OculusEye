@@ -146,11 +146,19 @@ void CVEye::update(){
                 undistort(src_tmp_undistorted, src_tmp, calibrator->intrinsic, calibrator->distCoeffs);
             }
             
-            if(doCanny && !calibrator->calibrating){
-                //Move src_tmp (cv::Mat) into src (cv::UMat). A better way of doing this doesn't exist yet (February 2015)
-                src_tmp.copyTo(src);
-                cvtColor(src, src_gray, cv::COLOR_RGB2GRAY);
-                src.copyTo(dest);
+            //Move src_tmp (cv::Mat) into src (cv::UMat). A better way of doing this doesn't exist yet (February 2015)
+            src_tmp.copyTo(src);
+            cvtColor(src, src_gray, cv::COLOR_RGB2GRAY);
+            src.copyTo(dest);
+            
+            if(calibrator->calibrating){
+                
+                calibrator->Update();
+                
+                //Do last
+                finalImage.setFromPixels(dest.getMat(NULL).data, CAMERA_WIDTH, CAMERA_HEIGHT, OF_IMAGE_COLOR);
+            }
+            else if(doCanny){
                 
                 if(computeFrame){
                     ApplyCanny(src, src_gray, dest);
@@ -164,16 +172,6 @@ void CVEye::update(){
                 //Do last
                 finalImage.setFromPixels(dest.getMat(NULL).data, CAMERA_WIDTH, CAMERA_HEIGHT, OF_IMAGE_COLOR);
                 
-            }
-            else if(calibrator->calibrating){
-                src_tmp.copyTo(src);
-                cvtColor(src, src_gray, cv::COLOR_RGB2GRAY);
-                src.copyTo(dest);
-                
-                calibrator->Update();
-                
-                //Do last
-                finalImage.setFromPixels(dest.getMat(NULL).data, CAMERA_WIDTH, CAMERA_HEIGHT, OF_IMAGE_COLOR);
             }
             //If no effects are applied, just put the raw video in the output image.
             else{

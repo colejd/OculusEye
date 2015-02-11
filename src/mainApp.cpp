@@ -188,6 +188,8 @@ void mainApp::exit(){
     
     //Save settings here
     generalSettingsStorage -> store();
+    //ps3EyeSettingsStorage -> store(); //Don't do this unless you know the defaults won't be overwritten
+    otherSettingsStorage -> store();
     
     //Clean up
     threadUpdate.stop(); //Stop USB update thread. Do this before deleting USB objects
