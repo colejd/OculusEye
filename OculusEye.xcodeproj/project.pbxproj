@@ -114,9 +114,9 @@
 		46F455661A8AF4B100DD172A /* liblibwebp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F4555F1A8AF4B100DD172A /* liblibwebp.a */; };
 		46F455671A8AF4B100DD172A /* libzlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F455601A8AF4B100DD172A /* libzlib.a */; };
 		46F455691A8AF81D00DD172A /* libippicv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F455681A8AF81D00DD172A /* libippicv.a */; };
-		46F4556C1A8AF9CB00DD172A /* libtbb.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F4556A1A8AF9CB00DD172A /* libtbb.dylib */; };
-		46F4556D1A8AF9CB00DD172A /* libtbbmalloc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F4556B1A8AF9CB00DD172A /* libtbbmalloc.dylib */; };
-		46F4556F1A8AF9F400DD172A /* libusb-1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F4556E1A8AF9F400DD172A /* libusb-1.0.0.dylib */; };
+		46F455711A8AFC2A00DD172A /* libusb-1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F455701A8AFC2A00DD172A /* libusb-1.0.a */; };
+		46F455741A8AFC5B00DD172A /* libtbb.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F455721A8AFC5B00DD172A /* libtbb.dylib */; };
+		46F455751A8AFC5B00DD172A /* libtbbmalloc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F455731A8AFC5B00DD172A /* libtbbmalloc.dylib */; };
 		519909391A23B2BD008021BE /* CVEye.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5199092C1A23B2BD008021BE /* CVEye.cpp */; };
 		5199093A1A23B2BD008021BE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5199092E1A23B2BD008021BE /* main.cpp */; };
 		5199093B1A23B2BD008021BE /* mainApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5199092F1A23B2BD008021BE /* mainApp.cpp */; };
@@ -559,9 +559,9 @@
 		46F4555F1A8AF4B100DD172A /* liblibwebp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = liblibwebp.a; sourceTree = "<group>"; };
 		46F455601A8AF4B100DD172A /* libzlib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libzlib.a; sourceTree = "<group>"; };
 		46F455681A8AF81D00DD172A /* libippicv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libippicv.a; sourceTree = "<group>"; };
-		46F4556A1A8AF9CB00DD172A /* libtbb.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libtbb.dylib; sourceTree = "<group>"; };
-		46F4556B1A8AF9CB00DD172A /* libtbbmalloc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libtbbmalloc.dylib; sourceTree = "<group>"; };
-		46F4556E1A8AF9F400DD172A /* libusb-1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libusb-1.0.0.dylib"; sourceTree = "<group>"; };
+		46F455701A8AFC2A00DD172A /* libusb-1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libusb-1.0.a"; sourceTree = "<group>"; };
+		46F455721A8AFC5B00DD172A /* libtbb.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtbb.dylib; path = ../../../../../../../../../../usr/local/Cellar/tbb/4.2.4/lib/libtbb.dylib; sourceTree = "<group>"; };
+		46F455731A8AFC5B00DD172A /* libtbbmalloc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtbbmalloc.dylib; path = ../../../../../../../../../../usr/local/Cellar/tbb/4.2.4/lib/libtbbmalloc.dylib; sourceTree = "<group>"; };
 		5199092C1A23B2BD008021BE /* CVEye.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CVEye.cpp; sourceTree = "<group>"; };
 		5199092D1A23B2BD008021BE /* CVEye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVEye.h; sourceTree = "<group>"; };
 		5199092E1A23B2BD008021BE /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -598,9 +598,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46F4556F1A8AF9F400DD172A /* libusb-1.0.0.dylib in Frameworks */,
-				46F4556C1A8AF9CB00DD172A /* libtbb.dylib in Frameworks */,
-				46F4556D1A8AF9CB00DD172A /* libtbbmalloc.dylib in Frameworks */,
+				46F455741A8AFC5B00DD172A /* libtbb.dylib in Frameworks */,
+				46F455751A8AFC5B00DD172A /* libtbbmalloc.dylib in Frameworks */,
 				46F455691A8AF81D00DD172A /* libippicv.a in Frameworks */,
 				46F452051A89D00100DD172A /* libAntTweakBar.a in Frameworks */,
 				46F4554C1A8AEF9600DD172A /* libopencv_flann.a in Frameworks */,
@@ -624,6 +623,7 @@
 				46F455641A8AF4B100DD172A /* liblibpng.a in Frameworks */,
 				46F455621A8AF4B100DD172A /* liblibjasper.a in Frameworks */,
 				46F4554F1A8AEF9700DD172A /* libopencv_imgproc.a in Frameworks */,
+				46F455711A8AFC2A00DD172A /* libusb-1.0.a in Frameworks */,
 				46F455531A8AEF9700DD172A /* libopencv_shape.a in Frameworks */,
 				46F4554A1A8AEF9600DD172A /* libopencv_core.a in Frameworks */,
 				46F455661A8AF4B100DD172A /* liblibwebp.a in Frameworks */,
@@ -1470,9 +1470,7 @@
 		46F455261A8AEF9600DD172A /* release */ = {
 			isa = PBXGroup;
 			children = (
-				46F4556E1A8AF9F400DD172A /* libusb-1.0.0.dylib */,
-				46F4556A1A8AF9CB00DD172A /* libtbb.dylib */,
-				46F4556B1A8AF9CB00DD172A /* libtbbmalloc.dylib */,
+				46F455701A8AFC2A00DD172A /* libusb-1.0.a */,
 				46F455681A8AF81D00DD172A /* libippicv.a */,
 				46F4555A1A8AF4B100DD172A /* libIlmImf.a */,
 				46F4555B1A8AF4B100DD172A /* liblibjasper.a */,
@@ -1589,6 +1587,8 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
+				46F455721A8AFC5B00DD172A /* libtbb.dylib */,
+				46F455731A8AFC5B00DD172A /* libtbbmalloc.dylib */,
 				51B2FDD21A3109BA00246487 /* OculusEyeDebug.app */,
 				519909861A2581B1008021BE /* notes.txt */,
 				5199098E1A2581B2008021BE /* versionNotes.txt */,
@@ -1995,6 +1995,7 @@
 					"$(PROJECT_DIR)/addons/OpenCV-3.0/lib/debug",
 					"$(PROJECT_DIR)/addons/OpenCV-3.0/lib/release",
 					"$(PROJECT_DIR)/addons/AntTweakBar/lib/mac",
+					/usr/local/Cellar/tbb/4.2.4/lib,
 				);
 				LLVM_LTO = NO;
 				OPENCV_HEADERS = "addons/OpenCV-3.0/include";
@@ -2043,6 +2044,7 @@
 					"$(PROJECT_DIR)/addons/OpenCV-3.0/lib/debug",
 					"$(PROJECT_DIR)/addons/OpenCV-3.0/lib/release",
 					"$(PROJECT_DIR)/addons/AntTweakBar/lib/mac",
+					/usr/local/Cellar/tbb/4.2.4/lib,
 				);
 				LLVM_LTO = NO;
 				OPENCV_HEADERS = "addons/OpenCV-3.0/include";
