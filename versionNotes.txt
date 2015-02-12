@@ -59,6 +59,7 @@ to do:
 
 optional:
 - Integrate PS Move API
+- Add microphone support from Eye cameras
 
 done:
 - Add camera swap support

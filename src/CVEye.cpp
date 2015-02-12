@@ -108,15 +108,24 @@ void CVEye::PullData(){
         //bool isNewFrame = eyeRef->isNewFrame();
         if(render)
         {
+            //BRANCH 1: Straight manual conversion (Preferred)
             yuvData.Convert(eyeRef->getLastFramePointerVolatile(), eyeRef->getRowBytes(), rawPixelData, eyeRef->getWidth(), eyeRef->getHeight());
+            src_tmp.data = rawPixelData;
             
+            //Branch 2: Parallel manual conversion
             //yuvData.LoadData(eyeRef->getLastFramePointerVolatile(), eyeRef->getRowBytes(), rawPixelData, eyeRef->getWidth(), eyeRef->getHeight());
             //yuvData.ConvertParallel(480);
+            
+            //Branch 3: OpenCV native conversion
+            /*
+            int matType = CV_MAKE_TYPE(CV_8U, 2);
+            cv::Mat yuv_tmp = cv::Mat(cv::Size(CAMERA_WIDTH, CAMERA_HEIGHT), matType);
+            yuv_tmp.data = eyeRef->getLastFramePointerVolatile();
+            cvtColor(yuv_tmp, src_tmp, COLOR_YUV2RGB_YUNV);
+            yuv_tmp.release();
+             */
+            
         }
-    }
-    else{
-        //Pull in a sample video frame
-        //rawPixelData = cv::imread("../../../data/Video_Output.png", cv::IMREAD_COLOR).data;
     }
 }
 
@@ -137,7 +146,6 @@ void CVEye::update(){
         {
             
             PullData();
-            src_tmp.data = rawPixelData;
             
             //Apply distortion from calibration to the source image
             if(calibrator->calibrated){
