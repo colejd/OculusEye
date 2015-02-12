@@ -83,7 +83,8 @@ void mainApp::setup(){
     //Set up Oculus Rift
     oculusRift.interOcularDistance = -0.65f; //IPD of 0.65 is average
     
-    eyeFPSGraph = PerformanceGraph("Eye FPS", ofGetWidth() - 70, ofGetHeight() - 15);
+    printf("Res: %i\n", ofGetWindowWidth());
+    eyeFPSGraph = PerformanceGraph("Eye FPS", ofGetWindowWidth() - 70, ofGetWindowHeight() - 15);
     
     //Set up GUI
     CreateGUI();
@@ -334,7 +335,9 @@ void mainApp::draw()
         hLine.draw();
     }
     
+    //Draw performance graph for eye
     if(showPerformanceGraph){
+        eyeFPSGraph.SetPosition(ofGetWindowWidth() - 70, ofGetWindowHeight() - 15);
         eyeFPSGraph.Enqueue((leftEye->camFps + rightEye->camFps) / 2.0f);
         eyeFPSGraph.Draw();
     }
@@ -355,7 +358,7 @@ void mainApp::draw()
         
         //Make text for the image with information about the capture process
         std::ostringstream stringStream;
-        stringStream << " Calibrating...\n";
+        stringStream << " Calibrating... (press C to stop)\n";
         stringStream << " Frames Captured: " << leftEye->calibrator->successes << "/" << leftEye->calibrator->numBoards + 1;
         std::string caption = stringStream.str();
         

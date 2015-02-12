@@ -35,10 +35,11 @@ public:
     
     float yMax = 0.0f;
     
-    PerformanceGraph(std::string label, float _xpos, float _ypos);
+    PerformanceGraph(std::string label, const float _xpos, const float _ypos);
     ~PerformanceGraph();
     
-    void Enqueue(float fps);
+    void Enqueue(const float fps);
+    void SetPosition(const float x, const float y);
     void Draw();
     bool fillGraph = false;
     

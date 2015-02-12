@@ -8,11 +8,10 @@
 
 #include "CVPerformance.h"
 
-PerformanceGraph::PerformanceGraph(std::string _label, float _xpos, float _ypos){
+PerformanceGraph::PerformanceGraph(std::string _label, const float _xpos, const float _ypos){
     fpsqueue = deque<float>(sizeLimit);
     fpsqueue.assign(0.0f, sizeLimit);
-    xpos = _xpos;
-    ypos = _ypos;
+    SetPosition(_xpos, _ypos);
     label = _label;
 }
 
@@ -27,6 +26,11 @@ void PerformanceGraph::Enqueue(float fps){
     fpsqueue.push_front(fps);
     if(fps > yMax) yMax = fps;
     fpsqueue.resize(sizeLimit);
+}
+
+void PerformanceGraph::SetPosition(const float x, const float y){
+    xpos = x;
+    ypos = y;
 }
 
 /**
