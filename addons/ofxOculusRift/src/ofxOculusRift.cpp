@@ -95,7 +95,7 @@ void ofxOculusRift::beginRender( float _interOcularShift, ofFbo* _fbo  )
 		_fbo->begin();
 		ofClear(0,0,0); // Todo: get the proper clear color
 	
-		setupScreenPerspective( _interOcularShift, ofGetWidth(), ofGetHeight(), ofGetOrientation(), false, getFov(), getNearClip(), getFarClip()  );
+		setupScreenPerspective( _interOcularShift, ofGetWindowWidth(), ofGetWindowHeight(), ofGetOrientation(), false, getFov(), getNearClip(), getFarClip()  );
 	
 		ofSetMatrixMode(OF_MATRIX_MODELVIEW);
 		ofLoadIdentityMatrix();
@@ -136,16 +136,16 @@ void ofxOculusRift::draw( ofVec2f pos, ofVec2f size )
 			ofClear(0,0,0);
     
             //Draw left eye things------------------------------------//
-			eyeFboLeft.draw( 0.0f, 0.0f, ofGetWidth() / 2.0f, ofGetHeight());
+			eyeFboLeft.draw( 0.0f, 0.0f, ofGetWindowWidth() / 2.0f, ofGetWindowHeight());
             if(leftBackground != NULL){
-                backgroundHeight = (ofGetHeight()/2.0f) - (leftBackground->height / 2.0f);
-                leftBackground->draw(ipd, backgroundHeight, ofGetWidth()/2.0f, ofGetHeight()/2.0f); //Added by Jon
+                backgroundHeight = (ofGetWindowHeight()/2.0f) - (leftBackground->height / 2.0f);
+                leftBackground->draw(ipd, backgroundHeight, ofGetWindowWidth()/2.0f, ofGetWindowHeight()/2.0f); //Added by Jon
             }
     
             //Draw right eye things-----------------------------------//
-			eyeFboRight.draw( ofGetWidth() / 2.0f, 0.0f, ofGetWidth() / 2.0f, ofGetHeight());
+			eyeFboRight.draw( ofGetWindowWidth() / 2.0f, 0.0f, ofGetWindowWidth() / 2.0f, ofGetWindowHeight());
             if(rightBackground != NULL)
-                rightBackground->draw(ofGetWidth() / 2.0 - ipd, backgroundHeight, ofGetWidth()/2.0f, ofGetHeight()/2.0f);//Added by Jon
+                rightBackground->draw(ofGetWindowWidth() / 2.0 - ipd, backgroundHeight, ofGetWindowWidth()/2.0f, ofGetWindowHeight()/2.0f);//Added by Jon
 	
 			// is this being drawn correctly?
 	
@@ -433,8 +433,8 @@ void ofxOculusRift::shutdown()
 //
 void ofxOculusRift::setupScreenPerspective(float _interOcularDistance, float width, float height, ofOrientation orientation, bool vFlip, float fov, float nearDist, float farDist)
 {
-	if(width == 0) width = ofGetWidth();
-	if(height == 0) height = ofGetHeight();
+	if(width == 0) width = ofGetWindowWidth();
+	if(height == 0) height = ofGetWindowHeight();
 	
 	float viewW = ofGetViewportWidth();
 	float viewH = ofGetViewportHeight();

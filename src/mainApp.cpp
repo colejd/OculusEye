@@ -31,20 +31,24 @@ void mainApp::setup(){
     cv::ipp::setUseIPP(true);
     printf("Using IPP: %s\n", cv::ipp::useIPP() ? "true" : "false");
     
-    char name[128];
-    dispatch_queue_t queue = gcl_create_dispatch_queue(CL_DEVICE_TYPE_GPU, NULL);
-    if (queue == NULL) {
-        queue = gcl_create_dispatch_queue(CL_DEVICE_TYPE_CPU, NULL);
-    }
-    cl_device_id gpu = gcl_get_device_id_with_dispatch_queue(queue);
-    clGetDeviceInfo(gpu, CL_DEVICE_NAME, 128, name, NULL);
-    fprintf(stdout, "Created a dispatch queue using the %s\n", name);
-    
     ofLog(OF_LOG_NOTICE, " OpenCL acceleration is %s ", cv::ocl::haveOpenCL() ? "available" : "not available");
     ofLog(OF_LOG_NOTICE, " OpenCL acceleration %s ", USE_OPENCL ? "requested" : "not requested");
     cv::ocl::setUseOpenCL(USE_OPENCL);
     if(USE_OPENCL){
         printf("Using OpenCL: %s\n", cv::ocl::useOpenCL() ? "true" : "false");
+        
+        //OpenCL information from OpenCL itself
+        /*
+        char name[128];
+        dispatch_queue_t queue = gcl_create_dispatch_queue(CL_DEVICE_TYPE_GPU, NULL);
+        if (queue == NULL) {
+            queue = gcl_create_dispatch_queue(CL_DEVICE_TYPE_CPU, NULL);
+        }
+        cl_device_id gpu = gcl_get_device_id_with_dispatch_queue(queue);
+        clGetDeviceInfo(gpu, CL_DEVICE_NAME, 128, name, NULL);
+        fprintf(stdout, "Created a dispatch queue using: %s\n", name);
+         */
+        
         std::vector<cv::ocl::PlatformInfo> platforms;
         cv::ocl::getPlatfomsInfo(platforms);
         for(int i=0; i<platforms.size(); i++){
@@ -91,34 +95,23 @@ void mainApp::setup(){
 void mainApp::CreateGUI(){
     
     //GUI page 1
+    printf("Init\n");
     generalSettingsBar = ofxTweakbars::create("General Settings", "General Settings");
+    printf("Init\n");
     generalSettingsStorage = new ofxTweakbarSimpleStorage(generalSettingsBar);
     
-    generalSettingsBar -> addBool("Canny Edge Detection", doCanny) -> setLabel("Canny Edge Detection");
-    generalSettingsBar -> addFloat("Canny Min Threshold", cannyMinThreshold) -> setLabel("Canny Min Threshold") -> setMin("0") -> setMax("100");
-    generalSettingsBar -> addFloat("Canny Ratio", cannyRatio) -> setLabel("Canny Ratio") -> setMin("2") -> setMax("3");
-    generalSettingsBar -> addColor3f("Edge Color", pickerColor) -> setLabel("Edge Color");
-    generalSettingsBar -> addBool("Draw Contours", drawContours) -> setLabel("Draw Contours") -> setGroup("Contour Settings");
-    generalSettingsBar -> addInt("Edge Thickness", edgeThickness) -> setLabel("Edge Thickness") -> setGroup("Contour Settings") -> setMin("-1") -> setMax("5");
-    generalSettingsBar -> addBool("Erosion/Dilution", doErosionDilution) -> setLabel("Erosion/Dilution") -> setGroup("Erosion/Dilution Settings");
-    generalSettingsBar -> addInt("Erosion Iterations", erosionIterations) -> setLabel("Erosion Iterations") -> setGroup("Erosion/Dilution Settings") -> setMin("1") -> setMax("5");
-    generalSettingsBar -> addInt("Dilution Iterations", dilutionIterations) -> setLabel("Dilution Iterations") -> setGroup("Erosion/Dilution Settings") -> setMin("1") -> setMax("5");
-    generalSettingsBar -> addBool("Adaptive Downsampling", adaptiveDownsampling) -> setLabel("Adaptive Downsampling");
-    generalSettingsBar -> addFloat("Downsampling Ratio", downsampleRatio) -> setLabel("Downsampling Ratio") -> setMin("0.01") -> setMax("1.0");
-    generalSettingsBar -> addInt("Subdivisions (Cores Used)", imageSubdivisions) -> setLabel("Subdivisions (Cores Used)") -> setMin("1") -> setMax("8");
-    generalSettingsBar -> addBool("Show Edges Only", showEdgesOnly) -> setLabel("Show Edges Only");
-    generalSettingsBar -> addBool("Rift Distortion", oculusRift.doWarping) -> setLabel("Rift Distortion");
-    generalSettingsBar -> addInt("Interpupillary -/+", oculusRift.ipd) -> setLabel("Interpupillary Distance [-/+]") -> setMin("0") -> setMax("100");
-    generalSettingsBar -> addBool("Draw Guides", drawGuides) -> setLabel("Draw Guides");
     generalSettingsBar -> addBool("swapEyes", swapEyes) -> setLabel("Swap Eyes");
-    generalSettingsBar -> addBool("showPerformanceGraph", showPerformanceGraph) -> setLabel("Show Performace Graph");
+    generalSettingsBar -> addBool("Rift Distortion", oculusRift.doWarping) -> setLabel("Rift Distortion") -> setGroup("Rift Settings");
+    generalSettingsBar -> addInt("Interpupillary -/+", oculusRift.ipd) -> setLabel("Interpupillary Distance [-/+]") -> setMin("0") -> setMax("100") -> setGroup("Rift Settings");
+    generalSettingsBar -> addBool("Draw Guides", drawGuides) -> setLabel("Draw Guides") -> setGroup("Debug");
+    generalSettingsBar -> addBool("showPerformanceGraph", showPerformanceGraph) -> setLabel("Show Performance Graph") -> setGroup("Debug");
     generalSettingsBar -> addBool("useVSync", useVSync) -> setLabel("Use VSync (caps at 60 FPS)");
-    generalSettingsBar -> addBool("correctCameraDistortion", correctCameraDistortion) -> setLabel("Correct Camera Distortion");
+    //generalSettingsBar -> addBool("correctCameraDistortion", correctCameraDistortion) -> setLabel("Correct Camera Distortion");
     
     generalSettingsStorage -> retrieve();
     generalSettingsBar -> load();
     generalSettingsStorage -> store();
-    //generalSettingsBar -> close();
+    generalSettingsBar -> close();
     
     //Set settings menu properties
     generalSettingsBar -> setSize(400, 300);
@@ -149,6 +142,7 @@ void mainApp::CreateGUI(){
     ps3EyeSettings -> setColor(44, 44, 44, 180);
     ps3EyeSettings -> setFontSize(2);
     
+    //Other Settings ----------------------------------
     otherSettings = ofxTweakbars::create("Other Settings", "Other Settings");
     otherSettingsStorage = new ofxTweakbarSimpleStorage(otherSettings);
     
@@ -165,6 +159,33 @@ void mainApp::CreateGUI(){
     otherSettings -> setSize(400, 300);
     otherSettings -> setColor(44, 44, 44, 180);
     otherSettings -> setFontSize(2);
+    
+    //Canny Settings ----------------------------------
+    cannySettings = ofxTweakbars::create("Canny Settings", "Canny Settings");
+    cannySettingsStorage = new ofxTweakbarSimpleStorage(cannySettings);
+    
+    cannySettings -> addBool("Canny Edge Detection", doCanny) -> setLabel("Canny Edge Detection");
+    cannySettings -> addFloat("Canny Min Threshold", cannyMinThreshold) -> setLabel("Canny Min Threshold") -> setMin("0") -> setMax("100");
+    cannySettings -> addFloat("Canny Ratio", cannyRatio) -> setLabel("Canny Ratio") -> setMin("2") -> setMax("3");
+    cannySettings -> addColor3f("Edge Color", pickerColor) -> setLabel("Edge Color");
+    cannySettings -> addBool("Draw Contours", drawContours) -> setLabel("Draw Contours") -> setGroup("Contour Settings");
+    cannySettings -> addInt("Edge Thickness", edgeThickness) -> setLabel("Edge Thickness") -> setGroup("Contour Settings") -> setMin("-1") -> setMax("5");
+    cannySettings -> addBool("Erosion/Dilution", doErosionDilution) -> setLabel("Erosion/Dilution") -> setGroup("Erosion/Dilution Settings");
+    cannySettings -> addInt("Erosion Iterations", erosionIterations) -> setLabel("Erosion Iterations") -> setGroup("Erosion/Dilution Settings") -> setMin("1") -> setMax("5");
+    cannySettings -> addInt("Dilution Iterations", dilutionIterations) -> setLabel("Dilution Iterations") -> setGroup("Erosion/Dilution Settings") -> setMin("1") -> setMax("5");
+    cannySettings -> addFloat("Downsampling Ratio", downsampleRatio) -> setLabel("Downsampling Ratio") -> setMin("0.01") -> setMax("1.0") -> setGroup("Performance");
+    cannySettings -> addBool("Adaptive Downsampling", adaptiveDownsampling) -> setLabel("Adaptive Downsampling") -> setGroup("Performance");
+    cannySettings -> addInt("Subdivisions (Cores Used)", imageSubdivisions) -> setLabel("Subdivisions (Cores Used)") -> setMin("1") -> setMax("8") -> setGroup("Performance");
+    cannySettings -> addBool("Show Edges Only", showEdgesOnly) -> setLabel("Show Edges Only");
+    
+    cannySettingsStorage -> retrieve();
+    cannySettings -> load();
+    cannySettingsStorage -> store();
+    cannySettings -> close();
+    
+    cannySettings -> setSize(400, 300);
+    cannySettings -> setColor(44, 44, 44, 180);
+    cannySettings -> setFontSize(2);
     
     /*
     //GUI page 3
@@ -190,6 +211,7 @@ void mainApp::exit(){
     generalSettingsStorage -> store();
     //ps3EyeSettingsStorage -> store(); //Don't do this unless you know the defaults won't be overwritten
     otherSettingsStorage -> store();
+    cannySettingsStorage -> store();
     
     //Clean up
     threadUpdate.stop(); //Stop USB update thread. Do this before deleting USB objects
@@ -251,12 +273,12 @@ void mainApp::draw()
     //Perform OpenCV operations on each eye and queue the results
     //to be drawn on their respective sides
     if((leftEye->initialized || leftEye->dummyImage) && renderLeftEye){
-        
         //Queue the left Eye's image into the oculusRift FBO.
         oculusRift.leftBackground = &getImageForSide(true);
         //Render into the left FBO.
         oculusRift.beginRenderSceneLeftEye();
         //Draw geometry here if you want
+        //ofxTweakbars::draw();
         oculusRift.endRenderSceneLeftEye();
     }
     if((rightEye->initialized || leftEye->dummyImage) && renderRightEye){
@@ -266,12 +288,14 @@ void mainApp::draw()
         //Render into the right FBO.
         oculusRift.beginRenderSceneRightEye();
         //Draw geometry here if you want
+        //ofxTweakbars::draw();
         oculusRift.endRenderSceneRightEye();
     }
     
     //Set opacity to full and draw both eyes at once.
     ofSetColor( 255 );
-    oculusRift.draw( ofVec2f(0,0), ofVec2f( ofGetWidth(), ofGetHeight() ) );
+    //TODO: set width/height to use actual current window width/height
+    oculusRift.draw( ofVec2f(0,0), ofVec2f( ofGetWindowWidth(), ofGetWindowHeight() ) );
     
     // STEP 2: DRAW USER GRAPHICS --------------------------------------------
 
@@ -318,6 +342,7 @@ void mainApp::draw()
     //mainFBO.end();
     //mainFBO.draw(0, 0, ofGetWidth(), ofGetHeight());
     
+    //Draw the GUI
     ofxTweakbars::draw();
     
     //If we're calibrating the camera, clear the screen and draw the calibration checkerboard and preview.

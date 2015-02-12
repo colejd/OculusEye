@@ -24,7 +24,7 @@
 #include "opencv2/core/core.hpp"
 #include <opencv2/core/ocl.hpp>
 
-#include <OpenCL/opencl.h>
+//#include <OpenCL/opencl.h>
 
 class ps3eyeUpdate : public ofThread {
     
@@ -149,6 +149,9 @@ public:
     
     ofxTweakbar *otherSettings;
     ofxTweakbarSimpleStorage *otherSettingsStorage;
+    
+    ofxTweakbar *cannySettings;
+    ofxTweakbarSimpleStorage *cannySettingsStorage;
     
     PerformanceGraph eyeFPSGraph = PerformanceGraph("Left Eye", 0.0f, 0.0f);
     bool showPerformanceGraph = false;

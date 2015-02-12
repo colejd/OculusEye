@@ -77,8 +77,8 @@ class ofxOculusRift : public ofCamera
     
         float				shaderScaleFactor;
     
-        ofImage * leftBackground;
-        ofImage * rightBackground;
+        ofImage * leftBackground; //Added by Jon
+        ofImage * rightBackground; //Added by Jon
     
         int ipd = 0;
 		
