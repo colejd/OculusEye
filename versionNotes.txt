@@ -40,8 +40,18 @@ In this version, I've added a class for creating and handling disparity maps (St
 Finally! I've gotten TBB inside the project folder without the project complaining. This project should truly have no dependencies outside of the main folder right now.
 
 Bugs Discovered:
-- This program does not like running OpenGL on AMD GPUs, and will crash on launch. Seems to be an OpenFrameworks problem.
+- [1]
+
+-- v1.1.2 (2/11/15) ---------------------
+Working on speeding up the color conversion code again. As it stands it uses 13% of the processor time, and I could really use that 10%. Interestingly enough, my code is faster than OpenCV's code, which is finally fixed (COLOR_YUV2RGB_YUYV was broken in previous betas).
+
+- Why is individual camera fps higher when VSync is on?
+
 ----------------------------------------
+
+
+Known Bugs:
+- [1] This program does not like running OpenGL on AMD GPUs, and will crash on launch. Seems to be an OpenFrameworks problem.
 
 
 to do:

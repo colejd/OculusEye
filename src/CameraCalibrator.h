@@ -55,7 +55,6 @@ public:
     vector<cv::Mat> rvecs;
     vector<cv::Mat> tvecs;
     
-    void RegisterMatRefs(Mat &tmp);
     void Update();
     
     float reprojectionError;

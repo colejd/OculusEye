@@ -32,10 +32,6 @@ CameraCalibrator::~CameraCalibrator(){
     
 }
 
-void CameraCalibrator::RegisterMatRefs(Mat &tmp){
-    
-}
-
 void CameraCalibrator::BeginCalibration(){
     printf("\n===BEGIN CALIBRATION===\n");
     printf("Boards: %i\n", numBoards);
@@ -52,7 +48,7 @@ void CameraCalibrator::EndCalibration(bool stopEarly){
     calibrating = false;
     if(!stopEarly){
         reprojectionError = calibrateCamera(object_points, image_points, src_tmp->size(), intrinsic, distCoeffs, rvecs, tvecs);
-        printf("Calibrated! Error = %f\n", reprojectionError);
+        printf("Calibrated! Reprojection error = %f / 1 (better values are closer to 0)\n", reprojectionError);
     }
     else{
         printf("Calibration canceled.\n");
@@ -66,7 +62,6 @@ void CameraCalibrator::Update(){
         //Look for a chess board in the camera frustum.
         bool found = findChessboardCorners(*src_tmp, board_sz, corners, CV_CALIB_CB_ADAPTIVE_THRESH+CV_CALIB_CB_NORMALIZE_IMAGE);
         if(found) {
-            //eye->screenMessage = "Calibrating... (found chessboard)";
             cornerSubPix(*src_gray, corners, cv::Size(11, 11), cv::Size(-1, -1), cvTermCriteria(CV_TERMCRIT_EPS | CV_TERMCRIT_ITER, 30, 0.1));
             drawChessboardCorners(*dest, board_sz, corners, found);
             

@@ -108,27 +108,33 @@ void CVEye::PullData(){
         //bool isNewFrame = eyeRef->isNewFrame();
         if(render)
         {
-            //BRANCH 1: Straight manual conversion (Preferred)
-            /*
-            yuvData.Convert(eyeRef->getLastFramePointerVolatile(), eyeRef->getRowBytes(), rawPixelData, eyeRef->getWidth(), eyeRef->getHeight());
-            src_tmp.data = rawPixelData;
-            */
+            int whichMethod = 1;
+            switch (whichMethod) {
+                    
+                //BRANCH 1: Straight manual conversion (Preferred)
+                case 1:
+                    yuvData.Convert(eyeRef->getLastFramePointerVolatile(), eyeRef->getRowBytes(), rawPixelData, eyeRef->getWidth(), eyeRef->getHeight());
+                    src_tmp.data = rawPixelData;
+                    break;
+                
+                
+                //Branch 2: Parallel manual conversion (????)
+                case 2:
+                    yuvData.LoadData(eyeRef->getLastFramePointerVolatile(), eyeRef->getRowBytes(), rawPixelData, eyeRef->getWidth(), eyeRef->getHeight());
+                    yuvData.ConvertParallel(1); //Number of rows to process at once?
+                    src_tmp.data = rawPixelData;
+                    break;
+                
+                //Branch 3: OpenCV native conversion (In case the Assembly types fix it before I do)
+                case 3:
+                    int matType = CV_MAKE_TYPE(CV_8U, 2);
+                    cv::Mat yuv_tmp = cv::Mat(cv::Size(CAMERA_WIDTH, CAMERA_HEIGHT), matType);
+                    yuv_tmp.data = eyeRef->getLastFramePointerVolatile();
+                    cvtColor(yuv_tmp, src_tmp, COLOR_YUV2RGB_YUYV);
+                    yuv_tmp.release();
+                    break;
+            }
             
-            //Branch 2: Parallel manual conversion (Fastest method with VSync turned on!)
-            
-            yuvData.LoadData(eyeRef->getLastFramePointerVolatile(), eyeRef->getRowBytes(), rawPixelData, eyeRef->getWidth(), eyeRef->getHeight());
-            yuvData.ConvertParallel(1); //Number of rows to process at once?
-            src_tmp.data = rawPixelData;
-            
-            
-            //Branch 3: OpenCV native conversion (In case the Assembly types fix it before I do)
-            /*
-            int matType = CV_MAKE_TYPE(CV_8U, 2);
-            cv::Mat yuv_tmp = cv::Mat(cv::Size(CAMERA_WIDTH, CAMERA_HEIGHT), matType);
-            yuv_tmp.data = eyeRef->getLastFramePointerVolatile();
-            cvtColor(yuv_tmp, src_tmp, COLOR_YUV2RGB_YUNV);
-            yuv_tmp.release();
-             */
             
         }
     }

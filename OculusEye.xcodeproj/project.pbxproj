@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		464C5F4A1A8D3554000E57AD /* model_notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 464C5F451A8D3554000E57AD /* model_notes.txt */; };
+		464C5F4B1A8D3554000E57AD /* mountingback.stl in Resources */ = {isa = PBXBuildFile; fileRef = 464C5F461A8D3554000E57AD /* mountingback.stl */; };
+		464C5F4C1A8D3554000E57AD /* mountingbracket.stl in Resources */ = {isa = PBXBuildFile; fileRef = 464C5F471A8D3554000E57AD /* mountingbracket.stl */; };
+		464C5F4D1A8D3554000E57AD /* mountingspacer.stl in Resources */ = {isa = PBXBuildFile; fileRef = 464C5F481A8D3554000E57AD /* mountingspacer.stl */; };
+		464C5F4E1A8D3554000E57AD /* prototype_1.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 464C5F491A8D3554000E57AD /* prototype_1.JPG */; };
 		46F450D91A89378100DD172A /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F450D81A89378100DD172A /* OpenCL.framework */; };
 		46F450DB1A89378A00DD172A /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F450DA1A89378A00DD172A /* Quartz.framework */; };
 		46F450DD1A89379000DD172A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F450DC1A89379000DD172A /* QuartzCore.framework */; };
@@ -188,6 +193,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		464C5F451A8D3554000E57AD /* model_notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = model_notes.txt; sourceTree = "<group>"; };
+		464C5F461A8D3554000E57AD /* mountingback.stl */ = {isa = PBXFileReference; lastKnownFileType = file; path = mountingback.stl; sourceTree = "<group>"; };
+		464C5F471A8D3554000E57AD /* mountingbracket.stl */ = {isa = PBXFileReference; lastKnownFileType = file; path = mountingbracket.stl; sourceTree = "<group>"; };
+		464C5F481A8D3554000E57AD /* mountingspacer.stl */ = {isa = PBXFileReference; lastKnownFileType = file; path = mountingspacer.stl; sourceTree = "<group>"; };
+		464C5F491A8D3554000E57AD /* prototype_1.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = prototype_1.JPG; sourceTree = "<group>"; };
 		46F450D81A89378100DD172A /* OpenCL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenCL.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/OpenCL.framework; sourceTree = DEVELOPER_DIR; };
 		46F450DA1A89378A00DD172A /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/Quartz.framework; sourceTree = DEVELOPER_DIR; };
 		46F450DC1A89379000DD172A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -205,7 +215,6 @@
 		46F450F41A8937F000DD172A /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/OpenGL.framework; sourceTree = DEVELOPER_DIR; };
 		46F450F61A8937F600DD172A /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/QuickTime.framework; sourceTree = DEVELOPER_DIR; };
 		46F450F81A8937FC00DD172A /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/CoreVideo.framework; sourceTree = DEVELOPER_DIR; };
-		46F451111A89C08300DD172A /* model_notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = model_notes.txt; sourceTree = "<group>"; };
 		46F451141A89C0B500DD172A /* DIN.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DIN.otf; sourceTree = "<group>"; };
 		46F451161A89C0B500DD172A /* MenuBarIcon_16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuBarIcon_16.png; sourceTree = "<group>"; };
 		46F451171A89C0B500DD172A /* MenuBarIcon_32.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = MenuBarIcon_32.icns; sourceTree = "<group>"; };
@@ -347,8 +356,6 @@
 		46F452EF1A89E49E00DD172A /* StereoDepthMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StereoDepthMapper.h; sourceTree = "<group>"; };
 		46F452F11A8A7F1400DD172A /* CameraCalibrator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CameraCalibrator.cpp; sourceTree = "<group>"; };
 		46F452F21A8A7F1400DD172A /* CameraCalibrator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraCalibrator.h; sourceTree = "<group>"; };
-		46F452F41A8AC42900DD172A /* mountingback.stl */ = {isa = PBXFileReference; lastKnownFileType = file; path = mountingback.stl; sourceTree = "<group>"; };
-		46F452F51A8AC42900DD172A /* mountingbracket.stl */ = {isa = PBXFileReference; lastKnownFileType = file; path = mountingbracket.stl; sourceTree = "<group>"; };
 		46F4543B1A8AEF9600DD172A /* cv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cv.h; sourceTree = "<group>"; };
 		46F4543C1A8AEF9600DD172A /* cv.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = cv.hpp; sourceTree = "<group>"; };
 		46F4543D1A8AEF9600DD172A /* cvaux.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cvaux.h; sourceTree = "<group>"; };
@@ -762,12 +769,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		46F451021A89953400DD172A /* models */ = {
+		464C5F431A8D3554000E57AD /* etc */ = {
 			isa = PBXGroup;
 			children = (
-				46F452F41A8AC42900DD172A /* mountingback.stl */,
-				46F452F51A8AC42900DD172A /* mountingbracket.stl */,
-				46F451111A89C08300DD172A /* model_notes.txt */,
+				464C5F441A8D3554000E57AD /* models */,
+				464C5F491A8D3554000E57AD /* prototype_1.JPG */,
+			);
+			path = etc;
+			sourceTree = "<group>";
+		};
+		464C5F441A8D3554000E57AD /* models */ = {
+			isa = PBXGroup;
+			children = (
+				464C5F451A8D3554000E57AD /* model_notes.txt */,
+				464C5F461A8D3554000E57AD /* mountingback.stl */,
+				464C5F471A8D3554000E57AD /* mountingbracket.stl */,
+				464C5F481A8D3554000E57AD /* mountingspacer.stl */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -1880,10 +1897,10 @@
 				46F451521A89C91D00DD172A /* .gitignore */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
 				519909881A2581B2008021BE /* resources */,
-				E4EEC9E9138DF44700A80321 /* openFrameworks */,
+				464C5F431A8D3554000E57AD /* etc */,
 				BB4B014C10F69532006C3DED /* addons */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
-				46F451021A89953400DD172A /* models */,
+				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2003,6 +2020,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				464C5F4A1A8D3554000E57AD /* model_notes.txt in Resources */,
+				464C5F4B1A8D3554000E57AD /* mountingback.stl in Resources */,
+				464C5F4D1A8D3554000E57AD /* mountingspacer.stl in Resources */,
+				464C5F4C1A8D3554000E57AD /* mountingbracket.stl in Resources */,
+				464C5F4E1A8D3554000E57AD /* prototype_1.JPG in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
