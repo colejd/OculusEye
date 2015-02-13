@@ -6,7 +6,7 @@ AR software for the Oculus Rift DK1 via two Playstation 3 Eye cameras.
 Controls:
 
 | Key    |  Effect             |
-|:-------|:--------------------|
+|:------ |:------------------- |
 | C      |  Calibrate camera   |
 | F      |  Toggle fullscreen  |
 | ESC    |  Quit               |
