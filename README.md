@@ -1,5 +1,5 @@
 #Oculus Eye
-###AR software for the Oculus Rift DK1 via two Playstation 3 Eye cameras.
+#####AR software for the Oculus Rift DK1 via two Playstation 3 Eye cameras
 
 ![Photo of prototype](http://i.imgur.com/MxHzK2b.jpg)
 
