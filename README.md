@@ -10,7 +10,7 @@ Controls:
 |:------ |:-------------------------------------------- |
 | C      |  Begin / end camera calibration              |
 | F      |  Toggle fullscreen                           |
-| + / -  |  Increase / Decrease interpupillary distance |
+| + / -  |  Increase / decrease interpupillary distance |
 | ESC    |  Quit                                        |
 
 #Build Instructions
