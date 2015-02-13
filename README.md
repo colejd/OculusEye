@@ -18,7 +18,6 @@ You will need to download the [OpenFrameworks 64-bit OSX branch](https://github.
 
 
 ___
-
 #Credits
 This project was created with [OpenFrameworks 64-bit OSX branch](https://github.com/NickHardeman/openframeworks_osx_64) using:
 - [PS3EYEDriver](https://github.com/inspirit/PS3EYEDriver)
