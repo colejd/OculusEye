@@ -12,6 +12,7 @@
 		464C5F4C1A8D3554000E57AD /* mountingbracket.stl in Resources */ = {isa = PBXBuildFile; fileRef = 464C5F471A8D3554000E57AD /* mountingbracket.stl */; };
 		464C5F4D1A8D3554000E57AD /* mountingspacer.stl in Resources */ = {isa = PBXBuildFile; fileRef = 464C5F481A8D3554000E57AD /* mountingspacer.stl */; };
 		464C5F4E1A8D3554000E57AD /* prototype_1.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 464C5F491A8D3554000E57AD /* prototype_1.JPG */; };
+		464C5F501A8DB188000E57AD /* bugs.txt in Resources */ = {isa = PBXBuildFile; fileRef = 464C5F4F1A8DB188000E57AD /* bugs.txt */; };
 		46F450D91A89378100DD172A /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F450D81A89378100DD172A /* OpenCL.framework */; };
 		46F450DB1A89378A00DD172A /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F450DA1A89378A00DD172A /* Quartz.framework */; };
 		46F450DD1A89379000DD172A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F450DC1A89379000DD172A /* QuartzCore.framework */; };
@@ -126,7 +127,6 @@
 		5199093C1A23B2BD008021BE /* OFCVBridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 519909311A23B2BD008021BE /* OFCVBridge.cpp */; };
 		5199093D1A23B2BD008021BE /* ps3eye.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 519909351A23B2BD008021BE /* ps3eye.cpp */; };
 		5199093E1A23B2BD008021BE /* screenConfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 519909371A23B2BD008021BE /* screenConfig.cpp */; };
-		519909991A25A534008021BE /* Canny.cl in Sources */ = {isa = PBXBuildFile; fileRef = 519909981A25A534008021BE /* Canny.cl */; };
 		51E1B39F1A42778F00D6BCA7 /* CVPerformance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51E1B39E1A42778F00D6BCA7 /* CVPerformance.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
@@ -198,6 +198,7 @@
 		464C5F471A8D3554000E57AD /* mountingbracket.stl */ = {isa = PBXFileReference; lastKnownFileType = file; path = mountingbracket.stl; sourceTree = "<group>"; };
 		464C5F481A8D3554000E57AD /* mountingspacer.stl */ = {isa = PBXFileReference; lastKnownFileType = file; path = mountingspacer.stl; sourceTree = "<group>"; };
 		464C5F491A8D3554000E57AD /* prototype_1.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = prototype_1.JPG; sourceTree = "<group>"; };
+		464C5F4F1A8DB188000E57AD /* bugs.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bugs.txt; sourceTree = "<group>"; };
 		46F450D81A89378100DD172A /* OpenCL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenCL.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/OpenCL.framework; sourceTree = DEVELOPER_DIR; };
 		46F450DA1A89378A00DD172A /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/Quartz.framework; sourceTree = DEVELOPER_DIR; };
 		46F450DC1A89379000DD172A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -696,7 +697,6 @@
 		519909861A2581B1008021BE /* notes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = notes.txt; sourceTree = "<group>"; };
 		519909871A2581B2008021BE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		5199098E1A2581B2008021BE /* versionNotes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = versionNotes.txt; sourceTree = "<group>"; };
-		519909981A25A534008021BE /* Canny.cl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.opencl; path = Canny.cl; sourceTree = "<group>"; };
 		51A88EB51A3F7EEF00D73FA2 /* CVPerformance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CVPerformance.h; sourceTree = "<group>"; };
 		51B2FDD21A3109BA00246487 /* OculusEyeDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OculusEyeDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51E1B39D1A424B9F00D6BCA7 /* programSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = programSettings.h; sourceTree = "<group>"; };
@@ -926,8 +926,6 @@
 		46F4524C1A89D06000DD172A /* ofxOculusRift */ = {
 			isa = PBXGroup;
 			children = (
-				46F4524D1A89D06000DD172A /* example-OculusRiftRendering */,
-				46F452531A89D06000DD172A /* example-OculusRiftSensorOrientation */,
 				46F452571A89D06000DD172A /* libs */,
 				46F452BC1A89D06000DD172A /* license.md */,
 				46F452BD1A89D06000DD172A /* README.md */,
@@ -935,84 +933,6 @@
 			);
 			name = ofxOculusRift;
 			path = addons/ofxOculusRift;
-			sourceTree = "<group>";
-		};
-		46F4524D1A89D06000DD172A /* example-OculusRiftRendering */ = {
-			isa = PBXGroup;
-			children = (
-				46F4524E1A89D06000DD172A /* bin */,
-				46F452521A89D06000DD172A /* src */,
-			);
-			path = "example-OculusRiftRendering";
-			sourceTree = "<group>";
-		};
-		46F4524E1A89D06000DD172A /* bin */ = {
-			isa = PBXGroup;
-			children = (
-				46F4524F1A89D06000DD172A /* data */,
-			);
-			path = bin;
-			sourceTree = "<group>";
-		};
-		46F4524F1A89D06000DD172A /* data */ = {
-			isa = PBXGroup;
-			children = (
-				46F452501A89D06000DD172A /* Fonts */,
-				46F452511A89D06000DD172A /* Shaders */,
-			);
-			path = data;
-			sourceTree = "<group>";
-		};
-		46F452501A89D06000DD172A /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Fonts;
-			sourceTree = "<group>";
-		};
-		46F452511A89D06000DD172A /* Shaders */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Shaders;
-			sourceTree = "<group>";
-		};
-		46F452521A89D06000DD172A /* src */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
-		46F452531A89D06000DD172A /* example-OculusRiftSensorOrientation */ = {
-			isa = PBXGroup;
-			children = (
-				46F452541A89D06000DD172A /* bin */,
-				46F452561A89D06000DD172A /* src */,
-			);
-			path = "example-OculusRiftSensorOrientation";
-			sourceTree = "<group>";
-		};
-		46F452541A89D06000DD172A /* bin */ = {
-			isa = PBXGroup;
-			children = (
-				46F452551A89D06000DD172A /* data */,
-			);
-			path = bin;
-			sourceTree = "<group>";
-		};
-		46F452551A89D06000DD172A /* data */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = data;
-			sourceTree = "<group>";
-		};
-		46F452561A89D06000DD172A /* src */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = src;
 			sourceTree = "<group>";
 		};
 		46F452571A89D06000DD172A /* libs */ = {
@@ -1890,6 +1810,7 @@
 				51B2FDD21A3109BA00246487 /* OculusEyeDebug.app */,
 				519909861A2581B1008021BE /* notes.txt */,
 				5199098E1A2581B2008021BE /* versionNotes.txt */,
+				464C5F4F1A8DB188000E57AD /* bugs.txt */,
 				519909841A2581B1008021BE /* LICENSE.md */,
 				519909871A2581B2008021BE /* README.md */,
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
@@ -1920,7 +1841,6 @@
 				51A88EB51A3F7EEF00D73FA2 /* CVPerformance.h */,
 				51E1B39E1A42778F00D6BCA7 /* CVPerformance.cpp */,
 				51E1B39D1A424B9F00D6BCA7 /* programSettings.h */,
-				519909981A25A534008021BE /* Canny.cl */,
 				46F452EF1A89E49E00DD172A /* StereoDepthMapper.h */,
 				46F452EE1A89E49E00DD172A /* StereoDepthMapper.cpp */,
 				46F452F21A8A7F1400DD172A /* CameraCalibrator.h */,
@@ -2021,6 +1941,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				464C5F4A1A8D3554000E57AD /* model_notes.txt in Resources */,
+				464C5F501A8DB188000E57AD /* bugs.txt in Resources */,
 				464C5F4B1A8D3554000E57AD /* mountingback.stl in Resources */,
 				464C5F4D1A8D3554000E57AD /* mountingspacer.stl in Resources */,
 				464C5F4C1A8D3554000E57AD /* mountingbracket.stl in Resources */,
@@ -2108,7 +2029,6 @@
 				5199093A1A23B2BD008021BE /* main.cpp in Sources */,
 				46F452CE1A89D06000DD172A /* OVR_String_FormatUtil.cpp in Sources */,
 				46F452E91A89D06000DD172A /* license.md in Sources */,
-				519909991A25A534008021BE /* Canny.cl in Sources */,
 				46F452D21A89D06000DD172A /* OVR_ThreadsPthread.cpp in Sources */,
 				46F4520A1A89D00100DD172A /* ofxTweakbarSimpleStorage.cpp in Sources */,
 				46F452E81A89D06000DD172A /* Util_Render_Stereo.cpp in Sources */,

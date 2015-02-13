@@ -415,9 +415,10 @@ void ofxOculusRift::clearSensor()
     
     //printf("OVR initialized: %i\n", OVR::System::IsInitialized());
 	
+    //TODO: Causes crashes on lab laptop when exiting
     //Disabled due to crashing issue:
     //https://developer.oculusvr.com/forums/viewtopic.php?f=20&t=11993&p=160998&hilit=system+destroy#p160998
-	//System::Destroy();
+	System::Destroy();
 }
 
 // ---------------------------------------------------------------------------------------------------------------------------------------------------
