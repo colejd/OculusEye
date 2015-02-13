@@ -16,8 +16,10 @@ Controls:
 #Build Instructions
 You will need to download the [OpenFrameworks 64-bit OSX branch](https://github.com/NickHardeman/openframeworks_osx_64). The project file goes in the same directory as any other OpenFrameworks project (openframeworks_osx_64/apps/myApps/). Open the XCode project and build the "OculusEye Release" scheme. The result will be placed in the /bin directory at the root folder of the project.
 
-
+####Prototype footage
+[![OculusEye Prototype Footage](http://img.youtube.com/vi/RTLH47_6cyU/0.jpg)](http://www.youtube.com/watch?v=RTLH47_6cyU)
 ___
+
 #Credits
 This project was created with [OpenFrameworks 64-bit OSX branch](https://github.com/NickHardeman/openframeworks_osx_64) using:
 - [PS3EYEDriver](https://github.com/inspirit/PS3EYEDriver)
