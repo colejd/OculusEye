@@ -170,6 +170,7 @@ public:
     void DrawCVMat(const cv::Mat &mat, ofImageType type, int x, int y, string caption = "");
     void DrawCVMat(const cv::Mat &mat, ofImageType type, int x, int y, int w, int h, string caption = "");
     
+    static void TW_CALL calibrationButtonCallback(void* pApp);
     
 private:
     string GetStdoutFromCommand(string cmd);

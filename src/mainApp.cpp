@@ -103,11 +103,12 @@ void mainApp::CreateGUI(){
     
     generalSettingsBar -> addBool("swapEyes", swapEyes) -> setLabel("Swap Eyes");
     generalSettingsBar -> addBool("Rift Distortion", oculusRift.doWarping) -> setLabel("Rift Distortion") -> setGroup("Rift Settings");
-    generalSettingsBar -> addInt("Interpupillary -/+", oculusRift.ipd) -> setLabel("Interpupillary Distance [-/+]") -> setMin("0") -> setMax("100") -> setGroup("Rift Settings");
+    generalSettingsBar -> addInt("Interpupillary -/+", oculusRift.ipd) -> setLabel("Interpupillary Distance [-/+]") -> setMin("0") -> setMax("100") -> setInc("=") -> setDecr("-") -> setGroup("Rift Settings");
     generalSettingsBar -> addBool("Draw Guides", drawGuides) -> setLabel("Draw Guides") -> setGroup("Debug");
     generalSettingsBar -> addBool("showPerformanceGraph", showPerformanceGraph) -> setLabel("Show Performance Graph") -> setGroup("Debug");
     generalSettingsBar -> addBool("useVSync", useVSync) -> setLabel("Use VSync (caps at 60 FPS)");
     //generalSettingsBar -> addBool("correctCameraDistortion", correctCameraDistortion) -> setLabel("Correct Camera Distortion");
+    generalSettingsBar -> addButton("Calibrate", mainApp::calibrationButtonCallback, this);
     
     generalSettingsStorage -> retrieve();
     generalSettingsBar -> load();
@@ -123,6 +124,7 @@ void mainApp::CreateGUI(){
     ps3EyeSettings = ofxTweakbars::create("PS3 Eye Settings", "PS3 Eye Settings");
     ps3EyeSettingsStorage = new ofxTweakbarSimpleStorage(ps3EyeSettings);
     
+    //ps3EyeSettings->addSeparator("my_seperator") -> setGroup("Particle Settings");
     ps3EyeSettings -> addBool("autoWhiteBalance", autoWhiteBalance) -> setLabel("Auto White Balance");
     ps3EyeSettings -> addBool("autoGain", autoGain) -> setLabel("Auto Gain");
     ps3EyeSettings -> addFloat("gain", gain) -> setLabel("Gain") -> setMin("0") -> setMax("63");
@@ -492,6 +494,12 @@ void mainApp::UpdateEyeValues(CVEye *eye){
     ofSetVerticalSync(useVSync);
 }
 
+//Begin camera calibration
+void TW_CALL mainApp::calibrationButtonCallback(void* pApp) {
+    mainApp* app = static_cast<mainApp*>(pApp);
+    app->BeginCameraCalibration();
+}
+
 void mainApp::BeginCameraCalibration(){
     calibrating = true;
     if(leftEye->initialized){
@@ -524,8 +532,8 @@ void mainApp::keyPressed(int key){
     switch(key) {
         case 'f': ofToggleFullscreen(); break;
         case 'c': if(!calibrating) BeginCameraCalibration(); else EndCameraCalibration(true); break;
-        case '=': oculusRift.ipd += 1; break;
-        case '-': oculusRift.ipd -= 1; if(oculusRift.ipd < 0) oculusRift.ipd = 0; break;
+        //case '=': oculusRift.ipd += 1; break;
+        //case '-': oculusRift.ipd -= 1; if(oculusRift.ipd < 0) oculusRift.ipd = 0; break;
 
     }
     UpdateEyeValues(leftEye);
