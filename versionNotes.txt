@@ -50,12 +50,10 @@ Working on speeding up the color conversion code again. As it stands it uses 13%
 ----------------------------------------
 
 
-Known Bugs:
-- [1] This program does not like running OpenGL on AMD GPUs, and will crash on launch. Seems to be an OpenFrameworks problem.
-
 
 to do:
 - Improve performance
+- Fix all the bugs
 - Figure out if I can legally license this with the MIT license
 - Fix hotplugging to allow for disconnection or at least connection of cameras during run time
 - Figure out a fix for horizontal banding in contour output when multithreading
@@ -79,7 +77,6 @@ done:
 - Recompile OpenCV with TBB and IPP
 - Show placeholder images when the cameras aren't connected
 - Write logic for camera calibration
-- Fix AntTweakBar integration (whole window is gray when all GUI windows are minimized)
 - Show calibration checkerboard on-screen during calibration (remove the need for a printed sheet)
 
 abandoned:

@@ -359,7 +359,7 @@ void mainApp::draw()
         //Make text for the image with information about the capture process
         std::ostringstream stringStream;
         stringStream << " Calibrating... (press C to stop)\n";
-        stringStream << " Frames Captured: " << leftEye->calibrator->successes << "/" << leftEye->calibrator->numBoards + 1;
+        stringStream << " Frames Captured: " << leftEye->calibrator->successes << "/" << leftEye->calibrator->numBoards;
         std::string caption = stringStream.str();
         
         //Draw the camera view
