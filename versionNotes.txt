@@ -39,13 +39,13 @@ In this version, I've added a class for creating and handling disparity maps (St
 -- v1.1.1 (2/11/15) ---------------------
 Finally! I've gotten TBB inside the project folder without the project complaining. This project should truly have no dependencies outside of the main folder right now.
 
-Bugs Discovered:
-- [1]
-
 -- v1.1.2 (2/11/15) ---------------------
 Working on speeding up the color conversion code again. As it stands it uses 13% of the processor time, and I could really use that 10%. Interestingly enough, my code is faster than OpenCV's code, which is finally fixed (COLOR_YUV2RGB_YUYV was broken in previous betas).
 
 - Why is individual camera fps higher when VSync is on?
+
+-- v1.1.3 (2/17/15) ---------------------
+Fixed a few bugs that have been bothering me. The Rift FBOs had issues with drawing at incorrect sizes when distortion was turned on. This is now fixed. OfxTweakbars was throwing initialization errors; suspecting that this had something to do with the bug causing a gray screen when the tweak bars are all minimized on certain platforms (https://github.com/seieibob/OculusEye/issues/2), I've fixed the problem. I haven't been able to test it yet, though.
 
 ----------------------------------------
 
