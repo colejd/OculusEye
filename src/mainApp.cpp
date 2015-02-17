@@ -93,6 +93,9 @@ void mainApp::setup(){
     
 }
 
+/**
+ * Create and populate an ofxTweakbar instance. Creates the windows you see on screen.
+ */
 void mainApp::CreateGUI(){
     
     //BUGFIX: initializes ofxTweakbars (possible fix for gray screen at launch?)
@@ -192,19 +195,6 @@ void mainApp::CreateGUI(){
     cannySettings -> setSize(400, 300);
     cannySettings -> setColor(44, 44, 44, 180);
     cannySettings -> setFontSize(2);
-    
-    /*
-    //GUI page 3
-    gui.addPage("Oculus Settings");
-    gui.addToggle("Render Left Eye", renderLeftEye);
-    gui.addToggle("Swap Eyes", swapEyes);
-    //gui.addSlider("Interocular Distance", oculusRift.interOcularDistance, -0.60f, -0.70f);
-    gui.addToggle("Render Right Eye", renderRightEye).setNewColumn(true);
-    //Finish GUI setup (do last)
-    gui.loadFromXML();
-    gui.setPage(1);
-    gui.show();
-     */
     
 }
 
@@ -497,7 +487,7 @@ void mainApp::UpdateEyeValues(CVEye *eye){
     ofSetVerticalSync(useVSync);
 }
 
-//Begin camera calibration
+//Button callback to begin camera calibration from the GUI
 void TW_CALL mainApp::calibrationButtonCallback(void* pApp) {
     mainApp* app = static_cast<mainApp*>(pApp);
     app->BeginCameraCalibration();

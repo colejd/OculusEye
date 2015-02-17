@@ -139,13 +139,14 @@ void ofxOculusRift::draw( ofVec2f pos, ofVec2f size )
 			eyeFboLeft.draw( 0.0f, 0.0f, ofGetWindowWidth() / 2.0f, ofGetWindowHeight());
             if(leftBackground != NULL){
                 backgroundHeight = (ofGetWindowHeight()/2.0f) - (leftBackground->height / 2.0f);
-                leftBackground->draw(ipd, backgroundHeight, ofGetWindowWidth()/2.0f, ofGetWindowHeight()/2.0f); //Added by Jon
+                printf("Background height %f\n", backgroundHeight);
+                leftBackground->draw(ipd, backgroundHeight, ofGetWindowWidth()/2.0f, leftBackground->height); //Added by Jon
             }
     
             //Draw right eye things-----------------------------------//
 			eyeFboRight.draw( ofGetWindowWidth() / 2.0f, 0.0f, ofGetWindowWidth() / 2.0f, ofGetWindowHeight());
             if(rightBackground != NULL)
-                rightBackground->draw(ofGetWindowWidth() / 2.0 - ipd, backgroundHeight, ofGetWindowWidth()/2.0f, ofGetWindowHeight()/2.0f);//Added by Jon
+                rightBackground->draw(ofGetWindowWidth() / 2.0 - ipd, backgroundHeight, ofGetWindowWidth()/2.0f, rightBackground->height);//Added by Jon
 	
 			// is this being drawn correctly?
 	
