@@ -95,10 +95,13 @@ void mainApp::setup(){
 
 void mainApp::CreateGUI(){
     
+    //BUGFIX: initializes ofxTweakbars (possible fix for gray screen at launch?)
+    ofxTweakbars::draw();
+    
     //GUI page 1
-    printf("Init\n");
+    //printf("Init\n");
     generalSettingsBar = ofxTweakbars::create("General Settings", "General Settings");
-    printf("Init\n");
+    //printf("Init\n");
     generalSettingsStorage = new ofxTweakbarSimpleStorage(generalSettingsBar);
     
     generalSettingsBar -> addBool("swapEyes", swapEyes) -> setLabel("Swap Eyes");

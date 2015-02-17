@@ -8,10 +8,11 @@ ofxTweakbars::ofxTweakbars()
 :simple_storage(NULL)
 ,is_initialized(false)
 {
-	
+    
 }
 
 ofxTweakbars::~ofxTweakbars() {
+    //TODO: Causes crash
     /* Jon
 	std::map<std::string, ofxTweakbar*>::iterator it = ofxTweakbars::bars.begin();
 	while(it != bars.end()) {
@@ -24,7 +25,7 @@ ofxTweakbars::~ofxTweakbars() {
 }
 
 ofxTweakbar* ofxTweakbars::create(std::string sName, std::string sTitle, bool bUseAutoStore) {
-	ofxTweakbar* bar = new ofxTweakbar(sName, sTitle, bUseAutoStore,&instance);
+    ofxTweakbar* bar = new ofxTweakbar(sName, sTitle, bUseAutoStore, &instance);
 	instance.bars[sName] = bar;
 	return bar;
 };

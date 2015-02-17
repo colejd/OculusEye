@@ -80,6 +80,7 @@ void ofxTweakbar::init() {
 	
 	setColor(44,44,44,200);
 	setFontSize(2);
+    
 }
 
 // TODO figure out how to handle the global gui object
@@ -91,6 +92,7 @@ ofxTweakbar::~ofxTweakbar() {
 	}
 }
 
+//TODO: This might be where the blank screen drawing error occurs.
 void ofxTweakbar::draw() {
 	if(!is_global) {
 		return;
