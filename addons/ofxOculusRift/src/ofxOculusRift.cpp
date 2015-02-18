@@ -139,7 +139,6 @@ void ofxOculusRift::draw( ofVec2f pos, ofVec2f size )
 			eyeFboLeft.draw( 0.0f, 0.0f, ofGetWindowWidth() / 2.0f, ofGetWindowHeight());
             if(leftBackground != NULL){
                 backgroundHeight = (ofGetWindowHeight()/2.0f) - (leftBackground->height / 2.0f);
-                printf("Background height %f\n", backgroundHeight);
                 leftBackground->draw(ipd, backgroundHeight, ofGetWindowWidth()/2.0f, leftBackground->height); //Added by Jon
             }
     

@@ -228,12 +228,12 @@ void mainApp::exit(){
  */
 void mainApp::update()
 {
-    //Update each CVEye (no synchronization)
+    //Update and draw each CVEye (no synchronization)
     leftEye->update();
     rightEye->update();
     
-    //Check for synchronization
-    if(leftEye->sync_update == rightEye->sync_update){
+    //Try synchronized update
+    if(leftEye->sync_update && rightEye->sync_update){
         SynchronizedUpdate();
         
         //Reset for the next loop
@@ -259,7 +259,9 @@ void mainApp::SynchronizedUpdate(){
 
 
 /**
- * Called after Update() once per frame. Just draw here.
+ * Called after Update() once per frame.
+ * Here we draw the output from each CVEye to the Oculus Rift,
+ * and display the GUI.
  */
 void mainApp::draw()
 {
@@ -312,7 +314,7 @@ void mainApp::draw()
     
     //Draw downsampling information to screen
     if(adaptiveDownsampling){
-        string dsLabel = "Downsample Ratio: ";
+        string dsLabel = "Adaptive Downsample Ratio: ";
         dsLabel += ofToString(leftEye->adaptedDownsampleRatio, 2) + "\n";
         ofDrawBitmapString(dsLabel, 10, ofGetHeight() - 10);
     }
