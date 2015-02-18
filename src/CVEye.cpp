@@ -74,7 +74,13 @@ bool CVEye::init(const int _width, const int _height){
         ofLog(OF_LOG_WARNING, "Displaying sample image");
         //If we've gotten here, the camera was not found or couldn't be initialized.
         //printf("Image %s\n", ( access( "../../../data/NoCameraFound.png", F_OK ) != -1 ) ? "exists" : "does not exist");
-        rawPixelData = cv::imread("../../../data/images/SampleImage.png", cv::IMREAD_COLOR).data;
+        
+        Mat image;
+        image = cv::imread("../../../data/images/SampleImage.png", CV_LOAD_IMAGE_COLOR);
+        //Imread gives us BGR, convert it to RGB (it might be the other way around)
+        cv::cvtColor(image, image, COLOR_BGR2RGB);
+        rawPixelData = image.data;
+        image.release();
         dummyImage = true;
     }
     

@@ -31,6 +31,7 @@ int main(){
 
     
     // Make borderless and (nearly) fullscreen
+    // see https://gist.github.com/ofZach/7808368
     NSWindow *window = (NSWindow *)ofGetCocoaWindow();
     [window setStyleMask:NSBorderlessWindowMask];
     [window setLevel:NSFloatingWindowLevel];
