@@ -11,24 +11,34 @@
 #include "ofAppGlutWindow.h"
 
 //#include "ofxCocoa.h"
-//#include <Cocoa/Cocoa.h>
+#include <Cocoa/Cocoa.h>
 
 //========================================================================
-int main( ){
-
+int main(){
     
     //ofAppGlutWindow window;
     ////ofSetCurrentRenderer(ofGLProgrammableRenderer::TYPE);
 	//ofSetupOpenGL(&window, 1280, 800, OF_WINDOW);
-    ofSetupOpenGL(1280, 800, OF_WINDOW); // Can be OF_WINDOW or OF_FULLSCREEN
+    
+    
+    ofSetupOpenGL(1280, 800, OF_WINDOW); // Can be OF_WINDOW, OF_FULLSCREEN, or OF_GAME_MODE
     
     //Possible fix for ATI cards
     glewExperimental= GL_TRUE;
-
-	// Kick off the running of the app
-	ofRunApp( new mainApp());
     
-    printf("App has ended.\n");
+    mainApp * app = new mainApp();
+    
+    // Make borderless fullscreen. Will throw errors but build anyway
+    /*
+    NSWindow *window = (NSWindow *)ofGetCocoaWindow();
+    [window setStyleMask:NSBorderlessWindowMask];
+    [window setLevel:NSFloatingWindowLevel];
+    window.level = NSMainMenuWindowLevel + 1;
+    ofSetWindowPosition(0,0);
+     */
+    
+    // Kick off the running of the app
+    ofRunApp(app);
     
     
     return 0;

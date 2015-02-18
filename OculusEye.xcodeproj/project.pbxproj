@@ -682,7 +682,7 @@
 		46F456A71A8C162800DD172A /* libtbbmalloc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libtbbmalloc.dylib; sourceTree = "<group>"; };
 		5199092C1A23B2BD008021BE /* CVEye.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CVEye.cpp; sourceTree = "<group>"; };
 		5199092D1A23B2BD008021BE /* CVEye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVEye.h; sourceTree = "<group>"; };
-		5199092E1A23B2BD008021BE /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		5199092E1A23B2BD008021BE /* main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = main.cpp; sourceTree = "<group>"; };
 		5199092F1A23B2BD008021BE /* mainApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mainApp.cpp; sourceTree = "<group>"; };
 		519909301A23B2BD008021BE /* mainApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mainApp.h; sourceTree = "<group>"; };
 		519909311A23B2BD008021BE /* OFCVBridge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OFCVBridge.cpp; sourceTree = "<group>"; };
