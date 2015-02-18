@@ -21,21 +21,25 @@ int main(){
 	//ofSetupOpenGL(&window, 1280, 800, OF_WINDOW);
     
     
+    //ofSetCurrentRenderer(ofGLProgrammableRenderer::TYPE);
     ofSetupOpenGL(1280, 800, OF_WINDOW); // Can be OF_WINDOW, OF_FULLSCREEN, or OF_GAME_MODE
     
     //Possible fix for ATI cards
     glewExperimental= GL_TRUE;
     
     mainApp * app = new mainApp();
+
     
-    // Make borderless fullscreen. Will throw errors but build anyway
-    /*
+    // Make borderless and (nearly) fullscreen
     NSWindow *window = (NSWindow *)ofGetCocoaWindow();
     [window setStyleMask:NSBorderlessWindowMask];
     [window setLevel:NSFloatingWindowLevel];
     window.level = NSMainMenuWindowLevel + 1;
-    ofSetWindowPosition(0,0);
-     */
+    //Give the window focus
+    [window makeKeyWindow];
+    //ofSetWindowPosition(0,0);
+    ofSetWindowShape(1280, 800);
+    
     
     // Kick off the running of the app
     ofRunApp(app);

@@ -122,7 +122,7 @@
 		46F456BB1A8C163F00DD172A /* libtbb_preview.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 46F456A51A8C162800DD172A /* libtbb_preview.dylib */; };
 		46F456BC1A8C164100DD172A /* libtbbmalloc.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 46F456A71A8C162800DD172A /* libtbbmalloc.dylib */; };
 		519909391A23B2BD008021BE /* CVEye.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5199092C1A23B2BD008021BE /* CVEye.cpp */; };
-		5199093A1A23B2BD008021BE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5199092E1A23B2BD008021BE /* main.cpp */; };
+		5199093A1A23B2BD008021BE /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5199092E1A23B2BD008021BE /* main.mm */; };
 		5199093B1A23B2BD008021BE /* mainApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5199092F1A23B2BD008021BE /* mainApp.cpp */; };
 		5199093C1A23B2BD008021BE /* OFCVBridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 519909311A23B2BD008021BE /* OFCVBridge.cpp */; };
 		5199093D1A23B2BD008021BE /* ps3eye.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 519909351A23B2BD008021BE /* ps3eye.cpp */; };
@@ -682,7 +682,7 @@
 		46F456A71A8C162800DD172A /* libtbbmalloc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libtbbmalloc.dylib; sourceTree = "<group>"; };
 		5199092C1A23B2BD008021BE /* CVEye.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CVEye.cpp; sourceTree = "<group>"; };
 		5199092D1A23B2BD008021BE /* CVEye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVEye.h; sourceTree = "<group>"; };
-		5199092E1A23B2BD008021BE /* main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = main.cpp; sourceTree = "<group>"; };
+		5199092E1A23B2BD008021BE /* main.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = main.mm; sourceTree = "<group>"; };
 		5199092F1A23B2BD008021BE /* mainApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mainApp.cpp; sourceTree = "<group>"; };
 		519909301A23B2BD008021BE /* mainApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mainApp.h; sourceTree = "<group>"; };
 		519909311A23B2BD008021BE /* OFCVBridge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OFCVBridge.cpp; sourceTree = "<group>"; };
@@ -1829,7 +1829,7 @@
 			isa = PBXGroup;
 			children = (
 				519909331A23B2BD008021BE /* PS3EYEDRIVER */,
-				5199092E1A23B2BD008021BE /* main.cpp */,
+				5199092E1A23B2BD008021BE /* main.mm */,
 				519909301A23B2BD008021BE /* mainApp.h */,
 				5199092F1A23B2BD008021BE /* mainApp.cpp */,
 				5199092D1A23B2BD008021BE /* CVEye.h */,
@@ -2026,7 +2026,7 @@
 				46F452151A89D00100DD172A /* ofxTweakbarSeparator.cpp in Sources */,
 				46F452C91A89D06000DD172A /* OVR_Log.cpp in Sources */,
 				51E1B39F1A42778F00D6BCA7 /* CVPerformance.cpp in Sources */,
-				5199093A1A23B2BD008021BE /* main.cpp in Sources */,
+				5199093A1A23B2BD008021BE /* main.mm in Sources */,
 				46F452CE1A89D06000DD172A /* OVR_String_FormatUtil.cpp in Sources */,
 				46F452E91A89D06000DD172A /* license.md in Sources */,
 				46F452D21A89D06000DD172A /* OVR_ThreadsPthread.cpp in Sources */,
