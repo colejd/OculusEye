@@ -188,10 +188,10 @@ void ofxOculusRift::draw( ofVec2f pos, ofVec2f size )
         
         //Draw left eye background
         if(leftBackground != NULL)
-            leftBackground->draw(0, backgroundHeight); //Added by Jon
+            leftBackground->draw(ipd, backgroundHeight); //Added by Jon
         //Draw right eye background
         if(rightBackground != NULL)
-            rightBackground->draw(eyeFboLeft.getWidth(), backgroundHeight);//Added by Jon
+            rightBackground->draw(ofGetWindowWidth() / 2.0 - ipd, backgroundHeight);//Added by Jon
 	}
 	
 	needSensorReadingThisFrame = true;
