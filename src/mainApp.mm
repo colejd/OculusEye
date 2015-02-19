@@ -113,6 +113,7 @@ void mainApp::CreateGUI(){
     generalSettingsBar -> addBool("Draw Guides", drawGuides) -> setLabel("Draw Guides") -> setGroup("Debug");
     generalSettingsBar -> addBool("showPerformanceGraph", showPerformanceGraph) -> setLabel("Show Performance Graph") -> setGroup("Debug");
     generalSettingsBar -> addBool("useVSync", useVSync) -> setLabel("Use VSync (caps at 60 FPS)");
+    generalSettingsBar -> addButton("Toggle Fullscreen", mainApp::fullscreenButtonCallback, this) -> setKey("f");
     //generalSettingsBar -> addBool("correctCameraDistortion", correctCameraDistortion) -> setLabel("Correct Camera Distortion");
     generalSettingsBar -> addButton("Calibrate", mainApp::calibrationButtonCallback, this);
     
@@ -553,6 +554,14 @@ void mainApp::SetBorderlessFullscreen(bool useFullscreen){
     
 }
 
+/**
+ * Button callback to toggle fullscreen
+ */
+void TW_CALL mainApp::fullscreenButtonCallback(void* pApp) {
+    mainApp* app = static_cast<mainApp*>(pApp);
+    app->ToggleBorderlessFullscreen();
+}
+
 //--------------------------------------------------------------
 // UI Methods
 /**
@@ -560,10 +569,7 @@ void mainApp::SetBorderlessFullscreen(bool useFullscreen){
  */
 void mainApp::keyPressed(int key){
     switch(key) {
-        case 'f': ToggleBorderlessFullscreen(); break;
         case 'c': if(!calibrating) BeginCameraCalibration(); else EndCameraCalibration(true); break;
-        //case '=': oculusRift.ipd += 1; break;
-        //case '-': oculusRift.ipd -= 1; if(oculusRift.ipd < 0) oculusRift.ipd = 0; break;
 
     }
     UpdateEyeValues(leftEye);

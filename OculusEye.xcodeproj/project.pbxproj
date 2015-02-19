@@ -28,7 +28,6 @@
 		46F450F11A8937E100DD172A /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F450F01A8937E100DD172A /* CoreFoundation.framework */; };
 		46F450F31A8937E800DD172A /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F450F21A8937E800DD172A /* CoreServices.framework */; };
 		46F450F51A8937F000DD172A /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F450F41A8937F000DD172A /* OpenGL.framework */; };
-		46F450F71A8937F600DD172A /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F450F61A8937F600DD172A /* QuickTime.framework */; };
 		46F450F91A8937FC00DD172A /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F450F81A8937FC00DD172A /* CoreVideo.framework */; };
 		46F4514B1A89C38C00DD172A /* icon-debug.icns in CopyFiles */ = {isa = PBXBuildFile; fileRef = 46F4512F1A89C1A000DD172A /* icon-debug.icns */; };
 		46F4514C1A89C38C00DD172A /* icon.icns in CopyFiles */ = {isa = PBXBuildFile; fileRef = 46F451301A89C1A000DD172A /* icon.icns */; };
@@ -214,7 +213,6 @@
 		46F450F01A8937E100DD172A /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/CoreFoundation.framework; sourceTree = DEVELOPER_DIR; };
 		46F450F21A8937E800DD172A /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/CoreServices.framework; sourceTree = DEVELOPER_DIR; };
 		46F450F41A8937F000DD172A /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/OpenGL.framework; sourceTree = DEVELOPER_DIR; };
-		46F450F61A8937F600DD172A /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/QuickTime.framework; sourceTree = DEVELOPER_DIR; };
 		46F450F81A8937FC00DD172A /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/CoreVideo.framework; sourceTree = DEVELOPER_DIR; };
 		46F451141A89C0B500DD172A /* DIN.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DIN.otf; sourceTree = "<group>"; };
 		46F451161A89C0B500DD172A /* MenuBarIcon_16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuBarIcon_16.png; sourceTree = "<group>"; };
@@ -747,7 +745,6 @@
 				46F452C31A89D06000DD172A /* libovr.a in Frameworks */,
 				E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */,
 				46F450F91A8937FC00DD172A /* CoreVideo.framework in Frameworks */,
-				46F450F71A8937F600DD172A /* QuickTime.framework in Frameworks */,
 				46F450F51A8937F000DD172A /* OpenGL.framework in Frameworks */,
 				46F450F31A8937E800DD172A /* CoreServices.framework in Frameworks */,
 				46F450F11A8937E100DD172A /* CoreFoundation.framework in Frameworks */,
@@ -1757,7 +1754,6 @@
 			isa = PBXGroup;
 			children = (
 				46F450F81A8937FC00DD172A /* CoreVideo.framework */,
-				46F450F61A8937F600DD172A /* QuickTime.framework */,
 				46F450F41A8937F000DD172A /* OpenGL.framework */,
 				46F450F21A8937E800DD172A /* CoreServices.framework */,
 				46F450F01A8937E100DD172A /* CoreFoundation.framework */,
@@ -2180,6 +2176,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LIBRARY = "libstdc++";
+				CLANG_USE_OPTIMIZATION_PROFILE = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2207,8 +2204,6 @@
 					"$(PROJECT_DIR)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Release",
 					"$(PROJECT_DIR)/addons/OpenCV-3.0/lib/release",
 					"$(PROJECT_DIR)/addons/AntTweakBar/lib/mac",
-					"$(PROJECT_DIR)/addons/OpenCV-3.0/tbb_4.3v3/lib",
-					"$(PROJECT_DIR)/addons/OpenCV-3.0/tbb_4.2.4/lib/libc++",
 					"$(PROJECT_DIR)/addons/OpenCV-3.0/tbb_4.2.4/lib",
 				);
 				LLVM_LTO = NO;
@@ -2230,6 +2225,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LIBRARY = "libstdc++";
+				CLANG_USE_OPTIMIZATION_PROFILE = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2239,7 +2235,7 @@
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/glut/lib/osx\"";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_MODEL_TUNING = NONE;
-				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_OPTIMIZATION_LEVEL = fast;
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
 					"$(PROJECT_DIR)/addons/AntTweakBar/include/**",
@@ -2256,8 +2252,6 @@
 					"$(PROJECT_DIR)/addons/ofxOculusRift/libs/LibOVR/Lib/MacOS/Release",
 					"$(PROJECT_DIR)/addons/OpenCV-3.0/lib/release",
 					"$(PROJECT_DIR)/addons/AntTweakBar/lib/mac",
-					"$(PROJECT_DIR)/addons/OpenCV-3.0/tbb_4.3v3/lib",
-					"$(PROJECT_DIR)/addons/OpenCV-3.0/tbb_4.2.4/lib/libc++",
 					"$(PROJECT_DIR)/addons/OpenCV-3.0/tbb_4.2.4/lib",
 				);
 				LLVM_LTO = NO;

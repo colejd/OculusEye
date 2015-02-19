@@ -15,7 +15,7 @@
 
 
 // Do fullscreen on launch? (Screen resolution changes from DEFAULT_RES to TARGET_RES)
-#define LAUNCH_FULLSCREEN true
+#define LAUNCH_FULLSCREEN false
 // Native screen resolution
 #define DEFAULT_RES_X 1280
 #define DEFAULT_RES_Y 800

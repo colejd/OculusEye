@@ -80,6 +80,7 @@ public:
     bool isBorderlessFullscreen;
     void ToggleBorderlessFullscreen();
     void SetBorderlessFullscreen(bool useFullscreen);
+    static void TW_CALL fullscreenButtonCallback(void* pApp);
 
     ofImage leftVideoImage, leftFinalImage;
     ofImage rightVideoImage, rightFinalImage;
