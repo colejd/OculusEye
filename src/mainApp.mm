@@ -531,24 +531,25 @@ void mainApp::ToggleBorderlessFullscreen(){
  * See https://gist.github.com/ofZach/7808368
  */
 void mainApp::SetBorderlessFullscreen(bool useFullscreen){
+    NSWindow *window = (NSWindow *)ofGetCocoaWindow();
     if(useFullscreen){
-        NSWindow *window = (NSWindow *)ofGetCocoaWindow();
         [window setStyleMask:NSBorderlessWindowMask];
         [window setLevel:NSFloatingWindowLevel];
         window.level = NSMainMenuWindowLevel + 1;
-        //Give the window focus
-        [window makeKeyWindow];
         ofSetWindowShape(TARGET_RES_X, TARGET_RES_Y);
         ofSetWindowPosition(0, 0);
     }
     else{
-        NSWindow *window = (NSWindow *)ofGetCocoaWindow();
         window.level = NSMainMenuWindowLevel - 1;
         ofSetWindowPosition(0,200);
         [window setStyleMask: NSResizableWindowMask| NSClosableWindowMask | NSMiniaturizableWindowMask | NSTitledWindowMask];
         [window makeKeyAndOrderFront:nil];
     }
     isBorderlessFullscreen = useFullscreen;
+    //Focus is lost due to a glitch; return focus to the window
+    //(see https://github.com/openframeworks/openFrameworks/issues/2174)
+    [window makeFirstResponder:window.contentView];
+    
 }
 
 //--------------------------------------------------------------

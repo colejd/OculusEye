@@ -49,6 +49,7 @@ Fixed a few bugs that have been bothering me. The Rift FBOs had issues with draw
 
 -- v1.1.4 (2/18/15) ---------------------
 Noticed that using the Rift with the program introduced extra VSync, so I'm working on a way to avoid using GLUT's fullscreen, staying in borderless fullscreen. It works, mostly, but there are some quirks I'd like to sort out.
+9:22 PM: We now have fully functional borderless fullscreen! We did it! I'm satisfied with this implementation and will be using it instead of default fullscreen going forward.
 
 ----------------------------------------
 
