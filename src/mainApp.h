@@ -75,18 +75,18 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
     
-    void CreateGUI();
-    
     bool isBorderlessFullscreen;
     void ToggleBorderlessFullscreen();
     void SetBorderlessFullscreen(bool useFullscreen);
-    static void TW_CALL fullscreenButtonCallback(void* pApp);
 
     ofImage leftVideoImage, leftFinalImage;
     ofImage rightVideoImage, rightFinalImage;
     
-    bool drawGuides;
     bool duplicateEyes;
+    
+    void SynchronizedUpdate();
+    void DrawCVMat(const cv::Mat &mat, ofImageType type, int x, int y, string caption = "");
+    void DrawCVMat(const cv::Mat &mat, ofImageType type, int x, int y, int w, int h, string caption = "");
     
     bool useVSync;
 
@@ -143,12 +143,12 @@ public:
     CVEye *leftEye;
     CVEye *rightEye;
 
-    void UpdateEyeValues(CVEye *eye);
-    void UpdateEyeCamera(CVEye *eye);
+    //GUI-----------------------
+    void CreateGUI();
     
     ofxTweakbar *generalSettingsBar;
     ofxTweakbarSimpleStorage *generalSettingsStorage;
-    
+
     ofxTweakbar *ps3EyeSettings;
     ofxTweakbarSimpleStorage *ps3EyeSettingsStorage;
     
@@ -161,6 +161,15 @@ public:
     PerformanceGraph eyeFPSGraph = PerformanceGraph("Left Eye", 0.0f, 0.0f);
     bool showPerformanceGraph = false;
     
+    bool drawGuides;
+    
+    static void TW_CALL fullscreenButtonCallback(void* pApp);
+    static void TW_CALL calibrationButtonCallback(void* pApp);
+    
+    //Other---------------------
+    void UpdateEyeValues(CVEye *eye);
+    void UpdateEyeCamera(CVEye *eye);
+    
     bool calibrating = false;
     void BeginCameraCalibration();
     void EndCameraCalibration(bool stopEarly = false);
@@ -169,13 +178,6 @@ public:
     StereoDepthMapper stereoMapper;
     bool computeDisparityMap = false;
     bool showDisparityMap = false;
-    
-    void SynchronizedUpdate();
-    
-    void DrawCVMat(const cv::Mat &mat, ofImageType type, int x, int y, string caption = "");
-    void DrawCVMat(const cv::Mat &mat, ofImageType type, int x, int y, int w, int h, string caption = "");
-    
-    static void TW_CALL calibrationButtonCallback(void* pApp);
     
 private:
     string GetStdoutFromCommand(string cmd);
