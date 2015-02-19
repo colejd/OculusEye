@@ -63,27 +63,27 @@ void mainApp::setup(){
     ofLog(OF_LOG_NOTICE, " CPUs available:    %2.i", cv::getNumberOfCPUs());
     ofLog(OF_LOG_NOTICE, " Threads available: %2.i", cv::getNumThreads());
     
-    #if SYSTEM_FULLSCREEN
+    #if LAUNCH_FULLSCREEN
         //TODO: Why does the camera fps go down when I use this?
         //Set fullscreen and change resolution.
         changeScreenRes(TARGET_RES_X, TARGET_RES_Y);
         SetBorderlessFullscreen(true);
     #endif
+    isBorderlessFullscreen = LAUNCH_FULLSCREEN;
     
     ofSetFrameRate(TARGET_FRAMERATE);
     ofLog(OF_LOG_NOTICE, " Target framerate set to %i", TARGET_FRAMERATE);
     
-    useVSync = ENABLE_VSYNC;
-    ofSetVerticalSync(useVSync);
-    ofLog(OF_LOG_NOTICE, " Vertical sync is %s ", ENABLE_VSYNC ? "on" : "off");
+    //useVSync = ENABLE_VSYNC;
+    //ofSetVerticalSync(useVSync);
+    //ofLog(OF_LOG_NOTICE, " Vertical sync is %s ", useVSync ? "on" : "off");
     
-    oculusRift.init( TARGET_RES_X, TARGET_RES_Y, 0 ); //1280, 800, 4
+    oculusRift.init(TARGET_RES_X, TARGET_RES_Y, 0); //1280, 800, 4
 	oculusRift.setPosition(0, 0, 0);
     
     //Set up Oculus Rift
     oculusRift.interOcularDistance = -0.65f; //IPD of 0.65 is average
     
-    printf("Res: %i\n", ofGetWindowWidth());
     eyeFPSGraph = PerformanceGraph("Eye FPS", ofGetWindowWidth() - 70, ofGetWindowHeight() - 15);
     
     //Set up GUI
@@ -216,7 +216,7 @@ void mainApp::exit(){
     printf("USB Connections stopped.\n");
     
     //Restore screen resolution
-    #if SYSTEM_FULLSCREEN
+    #if LAUNCH_FULLSCREEN
         changeScreenRes(DEFAULT_RES_X, DEFAULT_RES_Y);
     #endif
     printf("Main app cleaned up and exited.\n");
@@ -527,7 +527,8 @@ void mainApp::ToggleBorderlessFullscreen(){
 }
 
 /**
- * Sets borderless fullscreen through Cocoa.
+ * Sets borderless fullscreen directly through Cocoa.
+ * Avoids VSync bug (doubles with two monitors).
  * See https://gist.github.com/ofZach/7808368
  */
 void mainApp::SetBorderlessFullscreen(bool useFullscreen){
@@ -546,7 +547,7 @@ void mainApp::SetBorderlessFullscreen(bool useFullscreen){
         [window makeKeyAndOrderFront:nil];
     }
     isBorderlessFullscreen = useFullscreen;
-    //Focus is lost due to a glitch; return focus to the window
+    //Focus is lost due to a bug in OpenFrameworks; this returns focus to the window
     //(see https://github.com/openframeworks/openFrameworks/issues/2174)
     [window makeFirstResponder:window.contentView];
     

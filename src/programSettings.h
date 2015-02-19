@@ -14,12 +14,12 @@
 #define OculusEye_programSettings_h
 
 
-// Do stretched fullscreen? (Screen resolution changes from DEFAULT_RES to TARGET_RES)
-#define SYSTEM_FULLSCREEN true
+// Do fullscreen on launch? (Screen resolution changes from DEFAULT_RES to TARGET_RES)
+#define LAUNCH_FULLSCREEN true
 // Native screen resolution
 #define DEFAULT_RES_X 1280
 #define DEFAULT_RES_Y 800
-// Target screen resolution
+// Desired screen resolution
 #define TARGET_RES_X 1280
 #define TARGET_RES_Y 800
 
@@ -31,10 +31,8 @@
 #define CAMERA_HEIGHT 480
 #define CAMERA_FPS 60
 
-// The framerate that will be used (capped to 60 when vsync is enabled).
+// The highest framerate allowed (capped to 60 when vsync is enabled).
 #define TARGET_FRAMERATE 9999 //9999
-//Enable/disable vsync
-#define ENABLE_VSYNC false
 //Enable/disable OpenCL support through UMats (freezes at Canny at the moment)
 #define USE_OPENCL false
 
