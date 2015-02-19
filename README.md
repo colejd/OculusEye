@@ -16,7 +16,7 @@ Controls:
 You'll find toggles at the bottom-left to open windows that reveal various settings to play with.
 
 #Requirements
-For reference, this program was developed on a mid-2012 MacBook Pro with OSX 10.10 (Yosemite).
+For reference, this program was developed on a mid-2012 MacBook Pro 13-inch with OSX 10.10 (Yosemite).
 
 
 This program was built for Mavericks, but tested exclusively on Yosemite. Your mileage may vary greatly depending on your hardware. Bugs may present themselves on Macs with AMD GPUs. Intel GPUs work well (I know, right?) and NVidia GPUs run with minor graphical errors.
