@@ -11,15 +11,10 @@
 #include "ofAppGlutWindow.h"
 
 //#include "ofxCocoa.h"
-#include <Cocoa/Cocoa.h>
+//#include <Cocoa/Cocoa.h>
 
 //========================================================================
 int main(){
-    
-    //ofAppGlutWindow window;
-    ////ofSetCurrentRenderer(ofGLProgrammableRenderer::TYPE);
-	//ofSetupOpenGL(&window, 1280, 800, OF_WINDOW);
-    
     
     //ofSetCurrentRenderer(ofGLProgrammableRenderer::TYPE);
     ofSetupOpenGL(1280, 800, OF_WINDOW); // Can be OF_WINDOW, OF_FULLSCREEN, or OF_GAME_MODE

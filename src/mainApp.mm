@@ -108,7 +108,15 @@ void mainApp::CreateGUI(){
     generalSettingsStorage = new ofxTweakbarSimpleStorage(generalSettingsBar);
     
     //Define global stuff here (quirk of the ofxTweakbar API)
-    generalSettingsBar -> setGlobalHelp("OculusEye by Jonathan Cole");
+    generalSettingsBar -> setGlobalHelp("OculusEye by Jonathan Cole\n"
+                                        "https://github.com/seieibob/OculusEye\n"
+                                        "\n"
+                                        "Key shortcuts:\n"
+                                        "-/+ : Change IPD\n"
+                                        "F   : Toggle fullscreen\n"
+                                        "C   : Begin/end camera calibration\n"
+                                        "ESC : Quit program"
+                                        );
     generalSettingsBar -> setIconAlign(2); //1 = vertical, 2 = horizontal
     
     generalSettingsBar -> addBool("swapEyes", swapEyes) -> setLabel("Swap Eyes");
