@@ -65,9 +65,9 @@ void mainApp::setup(){
     
     #if SYSTEM_FULLSCREEN
         //TODO: Why does the camera fps go down when I use this?
-        changeScreenRes(TARGET_RES_X, TARGET_RES_Y);
         //Set fullscreen and change resolution.
-        ofSetFullscreen(true);
+        changeScreenRes(TARGET_RES_X, TARGET_RES_Y);
+        SetBorderlessFullscreen(true);
     #endif
     
     ofSetFrameRate(TARGET_FRAMERATE);
@@ -518,6 +518,39 @@ void mainApp::EndCameraCalibration(bool stopEarly){
     calibrating = false;
 }
 
+/**
+ * Toggles borderless fullscreen on and off.
+ */
+void mainApp::ToggleBorderlessFullscreen(){
+    isBorderlessFullscreen = !isBorderlessFullscreen;
+    SetBorderlessFullscreen(isBorderlessFullscreen);
+}
+
+/**
+ * Sets borderless fullscreen through Cocoa.
+ * See https://gist.github.com/ofZach/7808368
+ */
+void mainApp::SetBorderlessFullscreen(bool useFullscreen){
+    if(useFullscreen){
+        NSWindow *window = (NSWindow *)ofGetCocoaWindow();
+        [window setStyleMask:NSBorderlessWindowMask];
+        [window setLevel:NSFloatingWindowLevel];
+        window.level = NSMainMenuWindowLevel + 1;
+        //Give the window focus
+        [window makeKeyWindow];
+        ofSetWindowShape(TARGET_RES_X, TARGET_RES_Y);
+        ofSetWindowPosition(0, 0);
+    }
+    else{
+        NSWindow *window = (NSWindow *)ofGetCocoaWindow();
+        window.level = NSMainMenuWindowLevel - 1;
+        ofSetWindowPosition(0,200);
+        [window setStyleMask: NSResizableWindowMask| NSClosableWindowMask | NSMiniaturizableWindowMask | NSTitledWindowMask];
+        [window makeKeyAndOrderFront:nil];
+    }
+    isBorderlessFullscreen = useFullscreen;
+}
+
 //--------------------------------------------------------------
 // UI Methods
 /**
@@ -525,7 +558,7 @@ void mainApp::EndCameraCalibration(bool stopEarly){
  */
 void mainApp::keyPressed(int key){
     switch(key) {
-        case 'f': ofToggleFullscreen(); break;
+        case 'f': ToggleBorderlessFullscreen(); break;
         case 'c': if(!calibrating) BeginCameraCalibration(); else EndCameraCalibration(true); break;
         //case '=': oculusRift.ipd += 1; break;
         //case '-': oculusRift.ipd -= 1; if(oculusRift.ipd < 0) oculusRift.ipd = 0; break;

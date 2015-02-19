@@ -15,7 +15,7 @@
 
 
 // Do stretched fullscreen? (Screen resolution changes from DEFAULT_RES to TARGET_RES)
-#define SYSTEM_FULLSCREEN false
+#define SYSTEM_FULLSCREEN true
 // Native screen resolution
 #define DEFAULT_RES_X 1280
 #define DEFAULT_RES_Y 800

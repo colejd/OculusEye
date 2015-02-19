@@ -123,7 +123,7 @@
 		46F456BC1A8C164100DD172A /* libtbbmalloc.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 46F456A71A8C162800DD172A /* libtbbmalloc.dylib */; };
 		519909391A23B2BD008021BE /* CVEye.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5199092C1A23B2BD008021BE /* CVEye.cpp */; };
 		5199093A1A23B2BD008021BE /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5199092E1A23B2BD008021BE /* main.mm */; };
-		5199093B1A23B2BD008021BE /* mainApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5199092F1A23B2BD008021BE /* mainApp.cpp */; };
+		5199093B1A23B2BD008021BE /* mainApp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5199092F1A23B2BD008021BE /* mainApp.mm */; };
 		5199093C1A23B2BD008021BE /* OFCVBridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 519909311A23B2BD008021BE /* OFCVBridge.cpp */; };
 		5199093D1A23B2BD008021BE /* ps3eye.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 519909351A23B2BD008021BE /* ps3eye.cpp */; };
 		5199093E1A23B2BD008021BE /* screenConfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 519909371A23B2BD008021BE /* screenConfig.cpp */; };
@@ -683,7 +683,7 @@
 		5199092C1A23B2BD008021BE /* CVEye.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CVEye.cpp; sourceTree = "<group>"; };
 		5199092D1A23B2BD008021BE /* CVEye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVEye.h; sourceTree = "<group>"; };
 		5199092E1A23B2BD008021BE /* main.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = main.mm; sourceTree = "<group>"; };
-		5199092F1A23B2BD008021BE /* mainApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mainApp.cpp; sourceTree = "<group>"; };
+		5199092F1A23B2BD008021BE /* mainApp.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = mainApp.mm; sourceTree = "<group>"; };
 		519909301A23B2BD008021BE /* mainApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mainApp.h; sourceTree = "<group>"; };
 		519909311A23B2BD008021BE /* OFCVBridge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OFCVBridge.cpp; sourceTree = "<group>"; };
 		519909321A23B2BD008021BE /* OFCVBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OFCVBridge.h; sourceTree = "<group>"; };
@@ -1830,8 +1830,9 @@
 			children = (
 				519909331A23B2BD008021BE /* PS3EYEDRIVER */,
 				5199092E1A23B2BD008021BE /* main.mm */,
+				51E1B39D1A424B9F00D6BCA7 /* programSettings.h */,
 				519909301A23B2BD008021BE /* mainApp.h */,
-				5199092F1A23B2BD008021BE /* mainApp.cpp */,
+				5199092F1A23B2BD008021BE /* mainApp.mm */,
 				5199092D1A23B2BD008021BE /* CVEye.h */,
 				5199092C1A23B2BD008021BE /* CVEye.cpp */,
 				519909321A23B2BD008021BE /* OFCVBridge.h */,
@@ -1840,7 +1841,6 @@
 				519909371A23B2BD008021BE /* screenConfig.cpp */,
 				51A88EB51A3F7EEF00D73FA2 /* CVPerformance.h */,
 				51E1B39E1A42778F00D6BCA7 /* CVPerformance.cpp */,
-				51E1B39D1A424B9F00D6BCA7 /* programSettings.h */,
 				46F452EF1A89E49E00DD172A /* StereoDepthMapper.h */,
 				46F452EE1A89E49E00DD172A /* StereoDepthMapper.cpp */,
 				46F452F21A8A7F1400DD172A /* CameraCalibrator.h */,
@@ -1996,7 +1996,7 @@
 				46F452EB1A89D06000DD172A /* ofxOculusRift.cpp in Sources */,
 				46F452171A89D00100DD172A /* ofxTweakbarType.cpp in Sources */,
 				46F4520B1A89D00100DD172A /* ofxTweakbarStorage.cpp in Sources */,
-				5199093B1A23B2BD008021BE /* mainApp.cpp in Sources */,
+				5199093B1A23B2BD008021BE /* mainApp.mm in Sources */,
 				519909391A23B2BD008021BE /* CVEye.cpp in Sources */,
 				46F452111A89D00100DD172A /* ofxTweakbarFloat.cpp in Sources */,
 				46F452EA1A89D06000DD172A /* README.md in Sources */,

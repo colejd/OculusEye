@@ -76,6 +76,10 @@ public:
     void gotMessage(ofMessage msg);
     
     void CreateGUI();
+    
+    bool isBorderlessFullscreen;
+    void ToggleBorderlessFullscreen();
+    void SetBorderlessFullscreen(bool useFullscreen);
 
     ofImage leftVideoImage, leftFinalImage;
     ofImage rightVideoImage, rightFinalImage;
