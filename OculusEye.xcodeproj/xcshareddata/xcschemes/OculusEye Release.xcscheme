@@ -57,6 +57,13 @@
             ReferencedContainer = "container:OculusEye.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "DYLD_LIBRARY_PATH"
+            value = "$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
