@@ -546,13 +546,15 @@ void mainApp::ToggleBorderlessFullscreen(){
  */
 void mainApp::SetBorderlessFullscreen(bool useFullscreen){
     NSWindow *window = (NSWindow *)ofGetCocoaWindow();
+    //Fullscreen
     if(useFullscreen){
         [window setStyleMask:NSBorderlessWindowMask];
         [window setLevel:NSFloatingWindowLevel];
         window.level = NSMainMenuWindowLevel + 1;
         ofSetWindowShape(TARGET_RES_X, TARGET_RES_Y);
-        ofSetWindowPosition(0, 0);
+        ofSetWindowPosition(0, 1); //Set it one pixel down from true fullscreen to fool OpenGL into giving me more FPS when using VSync
     }
+    //Windowed
     else{
         window.level = NSMainMenuWindowLevel - 1;
         ofSetWindowPosition(0,200);
