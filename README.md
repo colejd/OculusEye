@@ -1,7 +1,7 @@
 #OculusEye
 OculusEye is an open-source wearable augmented reality platform with a focus on cost-effectiveness. The software portion of this project is based on OpenCV 3.0. The hardware is comprised of cheaply available parts: two Playstation 3 Eye cameras, and a [modular, 3d-printable mount](/etc/models).
 
-![Photo of prototype](/etc/prototype1.JPG?raw=true)
+![Photo of prototype](http://i.imgur.com/MxHzK2b.jpg)
 [![OculusEye Prototype Footage](http://img.youtube.com/vi/RTLH47_6cyU/0.jpg)](http://www.youtube.com/watch?v=RTLH47_6cyU)
 
 #How to use OculusEye
