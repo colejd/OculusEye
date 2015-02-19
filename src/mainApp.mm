@@ -284,8 +284,8 @@ void mainApp::draw()
     //Perform OpenCV operations on each eye and queue the results
     //to be drawn on their respective sides
     if((leftEye->initialized || leftEye->dummyImage) && renderLeftEye){
-        //Queue the left Eye's image into the oculusRift FBO.
-        oculusRift.leftBackground = &getImageForSide(true);
+        //Queue the left CVEye's image data into the oculusRift FBO.
+        oculusRift.leftBackground = &getImageForSide(LEFT);
         //Render into the left FBO.
         oculusRift.beginRenderSceneLeftEye();
         //Draw geometry here if you want
@@ -294,8 +294,8 @@ void mainApp::draw()
     }
     if((rightEye->initialized || leftEye->dummyImage) && renderRightEye){
         
-        //Queue the right Eye's image into the oculusRift FBO.
-        oculusRift.rightBackground = &getImageForSide(false);
+        //Queue the right CVEye's image data into the oculusRift FBO.
+        oculusRift.rightBackground = &getImageForSide(RIGHT);
         //Render into the right FBO.
         oculusRift.beginRenderSceneRightEye();
         //Draw geometry here if you want
@@ -382,10 +382,10 @@ void mainApp::draw()
  * Returns the image for the left or right side of the
  * screen based on isSwapped.
  */
-ofImage& mainApp::getImageForSide(const bool isLeft){
+ofImage& mainApp::getImageForSide(EyeSide side){
     bool isSwapped = swapEyes;
     //if(duplicateEyes) return leftEye->finalImage;
-    if(isLeft){
+    if(side == LEFT){
         if(isSwapped) return rightEye->finalImage;
         else return leftEye->finalImage;
     }
@@ -438,10 +438,16 @@ void mainApp::InitEyes(){
     
 }
 
+/**
+ * Draws a cv::Mat directly to the screen via OpenFrameworks.
+ */
 void mainApp::DrawCVMat(const cv::Mat& mat, ofImageType type, int x, int y, string caption){
     DrawCVMat(mat, type, x, y, mat.cols, mat.rows, caption);
 }
 
+/**
+ * Draws a cv::Mat directly to the screen via OpenFrameworks.
+ */
 void mainApp::DrawCVMat(const cv::Mat& mat, ofImageType type, int x, int y, int w, int h, string caption){
     
     //Draw background box

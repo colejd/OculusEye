@@ -116,9 +116,9 @@
 		46F456B41A8C162800DD172A /* libtbb.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F456A31A8C162800DD172A /* libtbb.dylib */; };
 		46F456B61A8C162800DD172A /* libtbb_preview.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F456A51A8C162800DD172A /* libtbb_preview.dylib */; };
 		46F456B81A8C162800DD172A /* libtbbmalloc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F456A71A8C162800DD172A /* libtbbmalloc.dylib */; };
-		46F456BA1A8C163D00DD172A /* libtbb.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 46F456A31A8C162800DD172A /* libtbb.dylib */; };
-		46F456BB1A8C163F00DD172A /* libtbb_preview.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 46F456A51A8C162800DD172A /* libtbb_preview.dylib */; };
-		46F456BC1A8C164100DD172A /* libtbbmalloc.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 46F456A71A8C162800DD172A /* libtbbmalloc.dylib */; };
+		46F456BA1A8C163D00DD172A /* libtbb.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 46F456A31A8C162800DD172A /* libtbb.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		46F456BB1A8C163F00DD172A /* libtbb_preview.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 46F456A51A8C162800DD172A /* libtbb_preview.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		46F456BC1A8C164100DD172A /* libtbbmalloc.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 46F456A71A8C162800DD172A /* libtbbmalloc.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		519909391A23B2BD008021BE /* CVEye.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5199092C1A23B2BD008021BE /* CVEye.cpp */; };
 		5199093A1A23B2BD008021BE /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5199092E1A23B2BD008021BE /* main.mm */; };
 		5199093B1A23B2BD008021BE /* mainApp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5199092F1A23B2BD008021BE /* mainApp.mm */; };
@@ -1859,12 +1859,12 @@
 			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "OculusEye" */;
 			buildPhases = (
 				E4B69B580A3A1756003C02F2 /* Sources */,
+				E4B6FFFD0C3F9AB9008CF71C /* ShellScript */,
 				46F456121A8BDAF700DD172A /* CopyFiles */,
 				E4B69B590A3A1756003C02F2 /* Frameworks */,
 				E4C2427710CC5ABF004149E2 /* CopyFiles */,
 				5199099A1A2CC232008021BE /* CopyFiles */,
 				46F451031A89985700DD172A /* Resources */,
-				E4B6FFFD0C3F9AB9008CF71C /* ShellScript */,
 				46F4514D1A89C50D00DD172A /* ShellScript */,
 			);
 			buildRules = (

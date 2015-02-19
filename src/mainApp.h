@@ -92,7 +92,6 @@ public:
 
     //PS3 Eye--------------
     void InitEyes();
-    ofImage& getImageForSide(const bool isLeft);
     ps3eyeUpdate threadUpdate;
     int cam_width, cam_height;
     //FPS variables
@@ -116,6 +115,12 @@ public:
     ofxOculusRift oculusRift;
     bool doRiftDistortion;
     bool swapEyes;
+    
+    enum EyeSide{
+        LEFT = 1,
+        RIGHT = 2
+    };
+    ofImage& getImageForSide(EyeSide side);
 
     //OpenCV--------------------
     float cannyRatio = 3.0f;

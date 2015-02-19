@@ -131,7 +131,7 @@ void CVEye::PullData(){
                     src_tmp.data = rawPixelData;
                     break;
                 
-                //Branch 3: OpenCV native conversion (In case the Assembly types fix it before I do)
+                //Branch 3: OpenCV native conversion (in case the Assembly types fix it before I do)
                 case 3:
                     int matType = CV_MAKE_TYPE(CV_8U, 2);
                     cv::Mat yuv_tmp = cv::Mat(cv::Size(CAMERA_WIDTH, CAMERA_HEIGHT), matType);
