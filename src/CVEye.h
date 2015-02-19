@@ -27,11 +27,6 @@
 #include <opencv2/flann/timer.h>
 #include <opencv2/core/mat.hpp>
 
-//#include <OpenCL/opencl.h>
-//#include "Canny.cl.h"
-
-//#include <boost/numeric/ublas/vector.hpp>
-
 class CVEye {
 public:
 	
