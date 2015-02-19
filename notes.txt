@@ -2,15 +2,15 @@ File paths in OF are relative to /bin/data/ when loading resources. See build ph
 
 Screen resolution changer makes the camera update loop slower for some reason.
 
-
-OpenCV 3.0 needs to be recompiled with libstdc++ to work properly with OpenFrameworks. Otherwise,
-you'll get weird linker errors talking about vtables or some hogwash.
-See http://www.magicandlove.com/blog/2014/02/26/build-opencv-2-4-8-in-mac-osx-10-9/ or http://stackoverflow.com/questions/19626854/opencv-cuda-osx-maverick
+OpenCV 3.0 compilation instructions:
+Should you want to upgrade the OpenCV version, you will need to compile it with libstdc++ to work with OpenFrameworks. Otherwise,
+you'll get weird linker errors talking about vtables or some other gibberish. See http://www.magicandlove.com/blog/2014/02/26/build-opencv-2-4-8-in-mac-osx-10-9/ or http://stackoverflow.com/questions/19626854/opencv-cuda-osx-maverick
   in CMakeCache.txt:
     CMAKE_CXX_FLAGS:STRING=-stdlib=libstdc++
     CMAKE_EXE_LINKER_FLAGS:STRING=-stdlib=libstdc++
-If you do it in CMake, make sure to turn on the "advanced" toggle.
-WITH_TBB should be turned on.
+In CMake, make sure to turn on the "advanced" toggle to find these.
+You should build the static libraries, which you can do by toggling off BUILD_SHARED_LIBS.
+WITH_TBB must be turned on.
 
 http://blogs.wcode.org/2014/10/howto-install-build-and-use-opencv-macosx-10-10/
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -24,7 +24,7 @@ https://gist.github.com/mlhales/5785725
 
 For whatever reason, I had to add a Copy Files -> Products phase to get the program to detect TBB. I've no idea why...
 
-If you want a new version of TBB, you're probably going to have to recompile OpenCV with it as well as placing it in the proper directories in the project. You don't want the libraries in the libc++ directory.
+If you want a new version of TBB, you're probably going to have to recompile OpenCV with it as well as placing it in the proper directories in the project. You don't want to include the libraries in the libc++ directory.
 
 
 For OpenCV 3.0.0 beta:
@@ -47,7 +47,7 @@ I should be using SIMD instructions to convert the source from YUV422 to RGB.
 http://forum.openframeworks.cc/t/fullscreen-dual-screen/693/2
 
 
-INFORMATION:
+PS3 EYE INFORMATION:
 http://nuigroup.com/forums/viewthread/2921/
 
 - 4 channel audio input:16 bits/channel, 48kHz, SNR 90db 
@@ -55,7 +55,7 @@ http://nuigroup.com/forums/viewthread/2921/
 - 2.1 F-stop, <1% distortion, fixed focus (25cm to 8 at 75º FOV) 
 - 640 x 480 at 60 frames/second 
 - 320 x 240 at 120 frames/second 
-- USB.0 high-speed data transfer 
+- USB 2.0 high-speed data transfer
 
 "The camera currently streams video in YUYV format, therefore each frame is 640*480*2 bytes.
 At 30fps this amounts to about 17.5MB/s which is pretty low in comparison to the total USB 2.0 bandwidth. 
