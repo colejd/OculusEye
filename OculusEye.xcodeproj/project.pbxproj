@@ -1826,7 +1826,6 @@
 			children = (
 				519909331A23B2BD008021BE /* PS3EYEDRIVER */,
 				5199092E1A23B2BD008021BE /* main.mm */,
-				51E1B39D1A424B9F00D6BCA7 /* programSettings.h */,
 				519909301A23B2BD008021BE /* mainApp.h */,
 				5199092F1A23B2BD008021BE /* mainApp.mm */,
 				5199092D1A23B2BD008021BE /* CVEye.h */,
@@ -1841,6 +1840,7 @@
 				46F452EE1A89E49E00DD172A /* StereoDepthMapper.cpp */,
 				46F452F21A8A7F1400DD172A /* CameraCalibrator.h */,
 				46F452F11A8A7F1400DD172A /* CameraCalibrator.cpp */,
+				51E1B39D1A424B9F00D6BCA7 /* programSettings.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;

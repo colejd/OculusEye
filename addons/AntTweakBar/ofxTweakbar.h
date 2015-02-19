@@ -17,6 +17,11 @@ public:
 		,CENTER = 2
 		,RIGHT = 3
 	};
+    
+    enum IconAlign {
+        VERTICAL = 1,
+        HORIZONTAL = 2
+    };
 	
 	ofxTweakbarFloat* addFloat(
 			 const char* pName
@@ -151,10 +156,16 @@ public:
 	ofxTweakbar* setFontSize(int nSize = 1);
 
 	ofxTweakbar* setLabel(std::string sLabel);
+    
+    //Jon
+    ofxTweakbar* setHelp(std::string sLabel);
+    ofxTweakbar* setGlobalHelp(std::string sLabel);
 	
 	ofxTweakbar* setPosition(float nX, float nY);
 	
 	ofxTweakbar* setButtonAlign(int align);
+    
+    ofxTweakbar* setIconAlign(int align);
 	
 	ofxTweakbar* setIconifiable(bool flag);
 	

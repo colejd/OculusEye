@@ -107,6 +107,10 @@ void mainApp::CreateGUI(){
     //printf("Init\n");
     generalSettingsStorage = new ofxTweakbarSimpleStorage(generalSettingsBar);
     
+    //Define global stuff here (quirk of the ofxTweakbar API)
+    generalSettingsBar -> setGlobalHelp("OculusEye by Jonathan Cole");
+    generalSettingsBar -> setIconAlign(2); //1 = vertical, 2 = horizontal
+    
     generalSettingsBar -> addBool("swapEyes", swapEyes) -> setLabel("Swap Eyes");
     generalSettingsBar -> addBool("Rift Distortion", oculusRift.doWarping) -> setLabel("Rift Distortion") -> setGroup("Rift Settings");
     generalSettingsBar -> addInt("Interpupillary -/+", oculusRift.ipd) -> setLabel("Interpupillary Distance [-/+]") -> setMin("0") -> setMax("100") -> setInc("=") -> setDecr("-") -> setGroup("Rift Settings");

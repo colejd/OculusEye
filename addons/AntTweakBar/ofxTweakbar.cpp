@@ -166,6 +166,29 @@ ofxTweakbar* ofxTweakbar::setLabel(std::string sLabel) {
 	return this;
 }
 
+//Jon
+/**
+ * Adds additional text that can be found at the value's corresponding
+ * entry in the help window.
+ */
+ofxTweakbar* ofxTweakbar::setHelp(std::string sLabel) {
+    ostringstream oss;
+    oss << getName() << " help='" << sLabel << "'";
+    TwDefine(oss.str().c_str());
+    return this;
+}
+
+//Jon
+/**
+ * Sets text at the top of the help window.
+ */
+ofxTweakbar* ofxTweakbar::setGlobalHelp(std::string sLabel) {
+    ostringstream oss;
+    oss << " GLOBAL help='" << sLabel << "'";
+    TwDefine(oss.str().c_str());
+    return this;
+}
+
 ofxTweakbar* ofxTweakbar::setPosition(float nX, float nY) {
 	ostringstream oss;
 	oss << getName() << " position='" << nX << " " << nY << "'";
@@ -485,5 +508,17 @@ ofxTweakbar* ofxTweakbar::setButtonAlign(int align) {
 	}
 	TwDefine(bt_align.c_str());
 	return this;
+}
+
+ofxTweakbar* ofxTweakbar::setIconAlign(int align) {
+    string bt_align = "GLOBAL iconalign=vertical";
+    if(align == VERTICAL){
+        bt_align = "GLOBAL iconalign=vertical";
+    }
+    else if(align == HORIZONTAL){
+        bt_align = "GLOBAL iconalign=horizontal";
+    }
+    TwDefine(bt_align.c_str());
+    return this;
 }
 

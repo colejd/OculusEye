@@ -82,6 +82,13 @@ ofxTweakbarType* ofxTweakbarType::setLabel(std::string sLabel) {
 	return this;
 }
 
+//Jon
+ofxTweakbarType* ofxTweakbarType::setHelp(std::string sLabel) {
+    TwSetParam(bar->getBar(), name.c_str(), "help", TW_PARAM_CSTRING, 1, sLabel.c_str());
+    properties["help"] = sLabel;
+    return this;
+}
+
 ofxTweakbarType* ofxTweakbarType::setGroup(std::string sGroup) {	
 	TwSetParam(bar->getBar(), name.c_str(), "group", TW_PARAM_CSTRING, 1, sGroup.c_str());
 	properties["group"] = sGroup;

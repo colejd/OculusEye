@@ -84,6 +84,13 @@ public:
 		ss << t;
 		return setLabel(ss.str());
 	}
+    
+    template<typename T>
+    ofxTweakbarType* setHelp(T t) {
+        stringstream ss;
+        ss << t;
+        return setHelp(ss.str());
+    }
 	
 	template<typename T>
 	ofxTweakbarType* setGroup(T t) {
@@ -113,6 +120,7 @@ public:
 	virtual ofxTweakbarType* setMin(std::string sMin);
 	virtual ofxTweakbarType* setMax(std::string sMax);
 	virtual ofxTweakbarType* setLabel(std::string sLabel);
+    virtual ofxTweakbarType* setHelp(std::string sLabel);
 	virtual ofxTweakbarType* setGroup(std::string sGroup);
 	virtual ofxTweakbarType* setPrecision(std::string sPrecision);
 	virtual ofxTweakbarType* setOpened(bool bOpenend);
