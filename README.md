@@ -41,4 +41,4 @@ This project was created with [OpenFrameworks 64-bit OSX branch](https://github.
 - [Intel's Threading Building Blocks](https://www.threadingbuildingblocks.org/) (4.2 Update 4)
 - XCode 6 + Yosemite
 
-Made by [Jonathan Cole](joncole.me)
+Made by [Jonathan Cole](www.joncole.me)
