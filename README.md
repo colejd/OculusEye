@@ -25,6 +25,8 @@ This program was built for Mavericks, but tested exclusively on Yosemite. Your m
 #Build Instructions
 You will need to download the [OpenFrameworks 64-bit OSX branch](https://github.com/NickHardeman/openframeworks_osx_64). The project file goes in the same directory as any other OpenFrameworks project (openframeworks_osx_64/apps/myApps/). Open the XCode project and build the "OculusEye Release" scheme. The result will be placed in the /bin directory at the root folder of the project.
 
+Everything in the /resources directory will be copied into /bin/data.
+
 ___
 
 #Credits

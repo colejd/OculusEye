@@ -149,7 +149,7 @@ void mainApp::CreateGUI(){
     ps3EyeSettings -> addFloat("gain", gain) -> setLabel("Gain") -> setMin("0") -> setMax("63");
     ps3EyeSettings -> addFloat("sharpness", sharpness) -> setLabel("Sharpness") -> setMin("0") -> setMax("63");
     ps3EyeSettings -> addFloat("exposure", exposure) -> setLabel("Exposure") -> setMin("0") -> setMax("255");
-    ps3EyeSettings -> addFloat("brightneww", brightness) -> setLabel("Brightness") -> setMin("0") -> setMax("255");
+    ps3EyeSettings -> addFloat("brightness", brightness) -> setLabel("Brightness") -> setMin("0") -> setMax("255");
     ps3EyeSettings -> addFloat("contrast", contrast) -> setLabel("Contrast") -> setMin("0") -> setMax("255");
     ps3EyeSettings -> addFloat("hue", hue) -> setLabel("Hue") -> setMin("0") -> setMax("255");
     ps3EyeSettings -> addFloat("blueBalance", blueBalance) -> setLabel("Blue Balance") -> setMin("0") -> setMax("255");
