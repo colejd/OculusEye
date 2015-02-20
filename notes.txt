@@ -46,6 +46,12 @@ I should be using SIMD instructions to convert the source from YUV422 to RGB.
 
 http://forum.openframeworks.cc/t/fullscreen-dual-screen/693/2
 
+For putting a .dylib in your project:
+Copy them into the desired directory before the linking stage. Make sure that you've used install_name_tool to change their id path, as in:
+install_name_tool @loader_path/../Frameworks/libwhatever.dylib libwhatever.dylib
+(when you're in the same directory as libwhatever.dylib)
+In this example, you'll want to have these .dylibs copy into the Frameworks directory so they can be found.
+
 
 PS3 EYE INFORMATION:
 http://nuigroup.com/forums/viewthread/2921/

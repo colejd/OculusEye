@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		464C5F4A1A8D3554000E57AD /* model_notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 464C5F451A8D3554000E57AD /* model_notes.txt */; };
-		464C5F4B1A8D3554000E57AD /* mountingback.stl in Resources */ = {isa = PBXBuildFile; fileRef = 464C5F461A8D3554000E57AD /* mountingback.stl */; };
-		464C5F4C1A8D3554000E57AD /* mountingbracket.stl in Resources */ = {isa = PBXBuildFile; fileRef = 464C5F471A8D3554000E57AD /* mountingbracket.stl */; };
-		464C5F4D1A8D3554000E57AD /* mountingspacer.stl in Resources */ = {isa = PBXBuildFile; fileRef = 464C5F481A8D3554000E57AD /* mountingspacer.stl */; };
-		464C5F4E1A8D3554000E57AD /* prototype_1.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 464C5F491A8D3554000E57AD /* prototype_1.JPG */; };
+		4658F4241A96E01F00D8B024 /* libtbb.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 46F456A31A8C162800DD172A /* libtbb.dylib */; };
+		4658F4251A96E02200D8B024 /* libtbb_preview.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 46F456A51A8C162800DD172A /* libtbb_preview.dylib */; };
+		4658F4261A96E02600D8B024 /* libtbbmalloc.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 46F456A71A8C162800DD172A /* libtbbmalloc.dylib */; };
+		4658F4271A96E23D00D8B024 /* libtbb.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F456A31A8C162800DD172A /* libtbb.dylib */; };
+		4658F4281A96E24000D8B024 /* libtbb_preview.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F456A51A8C162800DD172A /* libtbb_preview.dylib */; };
+		4658F4291A96E24300D8B024 /* libtbbmalloc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F456A71A8C162800DD172A /* libtbbmalloc.dylib */; };
 		46F450D91A89378100DD172A /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F450D81A89378100DD172A /* OpenCL.framework */; };
 		46F450DB1A89378A00DD172A /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F450DA1A89378A00DD172A /* Quartz.framework */; };
 		46F450DD1A89379000DD172A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F450DC1A89379000DD172A /* QuartzCore.framework */; };
@@ -82,8 +83,6 @@
 		46F452E61A89D06000DD172A /* Util_LatencyTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F452B61A89D06000DD172A /* Util_LatencyTest.cpp */; };
 		46F452E71A89D06000DD172A /* Util_MagCalibration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F452B81A89D06000DD172A /* Util_MagCalibration.cpp */; };
 		46F452E81A89D06000DD172A /* Util_Render_Stereo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F452BA1A89D06000DD172A /* Util_Render_Stereo.cpp */; };
-		46F452E91A89D06000DD172A /* license.md in Sources */ = {isa = PBXBuildFile; fileRef = 46F452BC1A89D06000DD172A /* license.md */; };
-		46F452EA1A89D06000DD172A /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 46F452BD1A89D06000DD172A /* README.md */; };
 		46F452EB1A89D06000DD172A /* ofxOculusRift.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F452BF1A89D06000DD172A /* ofxOculusRift.cpp */; };
 		46F452F01A89E49E00DD172A /* StereoDepthMapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F452EE1A89E49E00DD172A /* StereoDepthMapper.cpp */; };
 		46F452F31A8A7F1400DD172A /* CameraCalibrator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F452F11A8A7F1400DD172A /* CameraCalibrator.cpp */; };
@@ -113,12 +112,6 @@
 		46F455671A8AF4B100DD172A /* libzlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F455601A8AF4B100DD172A /* libzlib.a */; };
 		46F455691A8AF81D00DD172A /* libippicv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F455681A8AF81D00DD172A /* libippicv.a */; };
 		46F455711A8AFC2A00DD172A /* libusb-1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F455701A8AFC2A00DD172A /* libusb-1.0.a */; };
-		46F456B41A8C162800DD172A /* libtbb.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F456A31A8C162800DD172A /* libtbb.dylib */; };
-		46F456B61A8C162800DD172A /* libtbb_preview.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F456A51A8C162800DD172A /* libtbb_preview.dylib */; };
-		46F456B81A8C162800DD172A /* libtbbmalloc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F456A71A8C162800DD172A /* libtbbmalloc.dylib */; };
-		46F456BA1A8C163D00DD172A /* libtbb.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 46F456A31A8C162800DD172A /* libtbb.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		46F456BB1A8C163F00DD172A /* libtbb_preview.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 46F456A51A8C162800DD172A /* libtbb_preview.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		46F456BC1A8C164100DD172A /* libtbbmalloc.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 46F456A71A8C162800DD172A /* libtbbmalloc.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		519909391A23B2BD008021BE /* CVEye.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5199092C1A23B2BD008021BE /* CVEye.cpp */; };
 		5199093A1A23B2BD008021BE /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5199092E1A23B2BD008021BE /* main.mm */; };
 		5199093B1A23B2BD008021BE /* mainApp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5199092F1A23B2BD008021BE /* mainApp.mm */; };
@@ -155,18 +148,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		46F456121A8BDAF700DD172A /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 16;
-			files = (
-				46F456BA1A8C163D00DD172A /* libtbb.dylib in CopyFiles */,
-				46F456BB1A8C163F00DD172A /* libtbb_preview.dylib in CopyFiles */,
-				46F456BC1A8C164100DD172A /* libtbbmalloc.dylib in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		5199099A1A2CC232008021BE /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -185,6 +166,9 @@
 			dstSubfolderSpec = 10;
 			files = (
 				BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */,
+				4658F4241A96E01F00D8B024 /* libtbb.dylib in CopyFiles */,
+				4658F4251A96E02200D8B024 /* libtbb_preview.dylib in CopyFiles */,
+				4658F4261A96E02600D8B024 /* libtbbmalloc.dylib in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -709,9 +693,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46F456B41A8C162800DD172A /* libtbb.dylib in Frameworks */,
-				46F456B61A8C162800DD172A /* libtbb_preview.dylib in Frameworks */,
-				46F456B81A8C162800DD172A /* libtbbmalloc.dylib in Frameworks */,
+				4658F4271A96E23D00D8B024 /* libtbb.dylib in Frameworks */,
+				4658F4281A96E24000D8B024 /* libtbb_preview.dylib in Frameworks */,
+				4658F4291A96E24300D8B024 /* libtbbmalloc.dylib in Frameworks */,
 				46F455691A8AF81D00DD172A /* libippicv.a in Frameworks */,
 				46F452051A89D00100DD172A /* libAntTweakBar.a in Frameworks */,
 				46F4554C1A8AEF9600DD172A /* libopencv_flann.a in Frameworks */,
@@ -1860,9 +1844,8 @@
 			buildPhases = (
 				E4B69B580A3A1756003C02F2 /* Sources */,
 				E4B6FFFD0C3F9AB9008CF71C /* ShellScript */,
-				46F456121A8BDAF700DD172A /* CopyFiles */,
-				E4B69B590A3A1756003C02F2 /* Frameworks */,
 				E4C2427710CC5ABF004149E2 /* CopyFiles */,
+				E4B69B590A3A1756003C02F2 /* Frameworks */,
 				5199099A1A2CC232008021BE /* CopyFiles */,
 				46F451031A89985700DD172A /* Resources */,
 				46F4514D1A89C50D00DD172A /* ShellScript */,
@@ -1933,11 +1916,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				464C5F4A1A8D3554000E57AD /* model_notes.txt in Resources */,
-				464C5F4B1A8D3554000E57AD /* mountingback.stl in Resources */,
-				464C5F4D1A8D3554000E57AD /* mountingspacer.stl in Resources */,
-				464C5F4C1A8D3554000E57AD /* mountingbracket.stl in Resources */,
-				464C5F4E1A8D3554000E57AD /* prototype_1.JPG in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1968,7 +1946,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cp -f ../../../libs/fmodex/lib/osx/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/libfmodex.dylib\"; install_name_tool -change ./libfmodex.dylib @executable_path/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";\n\n\ncp -f ../../../libs/fmodex/lib/osx/libtbb.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/libtbb.dylib\"; install_name_tool -change ./libtbb.dylib @executable_path/libtbb.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";\ncp -f ../../../libs/fmodex/lib/osx/libtbb_preview.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/libtbb_preview.dylib\"; install_name_tool -change ./libtbb_preview.dylib @executable_path/libtbb_preview.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";\ncp -f ../../../libs/fmodex/lib/osx/libtbbmalloc.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/libtbbmalloc.dylib\"; install_name_tool -change ./libtbbmalloc.dylib @executable_path/libtbb_preview.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";\n\nmkdir -p \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\ncp -f \"$ICON_FILE\" \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n";
+			shellScript = "cp -f ../../../libs/fmodex/lib/osx/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/libfmodex.dylib\"; install_name_tool -change ./libfmodex.dylib @executable_path/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";\n\nmkdir -p \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\ncp -f \"$ICON_FILE\" \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1991,7 +1969,6 @@
 				5199093B1A23B2BD008021BE /* mainApp.mm in Sources */,
 				519909391A23B2BD008021BE /* CVEye.cpp in Sources */,
 				46F452111A89D00100DD172A /* ofxTweakbarFloat.cpp in Sources */,
-				46F452EA1A89D06000DD172A /* README.md in Sources */,
 				46F452F01A89E49E00DD172A /* StereoDepthMapper.cpp in Sources */,
 				46F452C51A89D06000DD172A /* OVR_Allocator.cpp in Sources */,
 				46F452101A89D00100DD172A /* ofxTweakbarFiles.cpp in Sources */,
@@ -2020,7 +1997,6 @@
 				51E1B39F1A42778F00D6BCA7 /* CVPerformance.cpp in Sources */,
 				5199093A1A23B2BD008021BE /* main.mm in Sources */,
 				46F452CE1A89D06000DD172A /* OVR_String_FormatUtil.cpp in Sources */,
-				46F452E91A89D06000DD172A /* license.md in Sources */,
 				46F452D21A89D06000DD172A /* OVR_ThreadsPthread.cpp in Sources */,
 				46F4520A1A89D00100DD172A /* ofxTweakbarSimpleStorage.cpp in Sources */,
 				46F452E81A89D06000DD172A /* Util_Render_Stereo.cpp in Sources */,
