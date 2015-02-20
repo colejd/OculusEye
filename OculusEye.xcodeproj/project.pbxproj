@@ -146,15 +146,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		5199099A1A2CC232008021BE /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = data;
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E4C2427710CC5ABF004149E2 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -176,6 +167,19 @@
 		464C5F471A8D3554000E57AD /* mountingbracket.stl */ = {isa = PBXFileReference; lastKnownFileType = file; path = mountingbracket.stl; sourceTree = "<group>"; };
 		464C5F481A8D3554000E57AD /* mountingspacer.stl */ = {isa = PBXFileReference; lastKnownFileType = file; path = mountingspacer.stl; sourceTree = "<group>"; };
 		464C5F491A8D3554000E57AD /* prototype_1.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = prototype_1.JPG; sourceTree = "<group>"; };
+		4658F42C1A97061B00D8B024 /* DIN.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DIN.otf; sourceTree = "<group>"; };
+		4658F42E1A97061B00D8B024 /* icon-debug.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "icon-debug.icns"; sourceTree = "<group>"; };
+		4658F42F1A97061B00D8B024 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
+		4658F4301A97061B00D8B024 /* MenuBarIcon_16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuBarIcon_16.png; sourceTree = "<group>"; };
+		4658F4311A97061B00D8B024 /* MenuBarIcon_32.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = MenuBarIcon_32.icns; sourceTree = "<group>"; };
+		4658F4321A97061B00D8B024 /* MenuBarIcon_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuBarIcon_32.png; sourceTree = "<group>"; };
+		4658F4331A97061B00D8B024 /* MenuBarIcon_32_Alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuBarIcon_32_Alt.png; sourceTree = "<group>"; };
+		4658F4351A97061B00D8B024 /* CalibrationCheckerboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CalibrationCheckerboard.png; sourceTree = "<group>"; };
+		4658F4361A97061B00D8B024 /* NoCameraFound.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NoCameraFound.png; sourceTree = "<group>"; };
+		4658F4371A97061B00D8B024 /* SampleImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SampleImage.png; sourceTree = "<group>"; };
+		4658F4391A97061B00D8B024 /* HmdDistort.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = HmdDistort.vert; sourceTree = "<group>"; };
+		4658F43A1A97061B00D8B024 /* HmdWarp.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = HmdWarp.frag; sourceTree = "<group>"; };
+		4658F43B1A97061B00D8B024 /* HmdWarp.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = HmdWarp.vert; sourceTree = "<group>"; };
 		46F450D81A89378100DD172A /* OpenCL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenCL.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/OpenCL.framework; sourceTree = DEVELOPER_DIR; };
 		46F450DA1A89378A00DD172A /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/Quartz.framework; sourceTree = DEVELOPER_DIR; };
 		46F450DC1A89379000DD172A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -192,19 +196,6 @@
 		46F450F21A8937E800DD172A /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/CoreServices.framework; sourceTree = DEVELOPER_DIR; };
 		46F450F41A8937F000DD172A /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/OpenGL.framework; sourceTree = DEVELOPER_DIR; };
 		46F450F81A8937FC00DD172A /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/CoreVideo.framework; sourceTree = DEVELOPER_DIR; };
-		46F451141A89C0B500DD172A /* DIN.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DIN.otf; sourceTree = "<group>"; };
-		46F451161A89C0B500DD172A /* MenuBarIcon_16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuBarIcon_16.png; sourceTree = "<group>"; };
-		46F451171A89C0B500DD172A /* MenuBarIcon_32.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = MenuBarIcon_32.icns; sourceTree = "<group>"; };
-		46F451181A89C0B500DD172A /* MenuBarIcon_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuBarIcon_32.png; sourceTree = "<group>"; };
-		46F451191A89C0B500DD172A /* MenuBarIcon_32_Alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuBarIcon_32_Alt.png; sourceTree = "<group>"; };
-		46F4511C1A89C0B500DD172A /* CalibrationCheckerboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CalibrationCheckerboard.png; sourceTree = "<group>"; };
-		46F4511D1A89C0B500DD172A /* NoCameraFound.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NoCameraFound.png; sourceTree = "<group>"; };
-		46F4511F1A89C0B500DD172A /* HmdDistort.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = HmdDistort.vert; sourceTree = "<group>"; };
-		46F451201A89C0B500DD172A /* HmdWarp.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = HmdWarp.frag; sourceTree = "<group>"; };
-		46F451211A89C0B500DD172A /* HmdWarp.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = HmdWarp.vert; sourceTree = "<group>"; };
-		46F4512F1A89C1A000DD172A /* icon-debug.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "icon-debug.icns"; sourceTree = "<group>"; };
-		46F451301A89C1A000DD172A /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
-		46F4514E1A89C6AB00DD172A /* SampleImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SampleImage.png; sourceTree = "<group>"; };
 		46F451521A89C91D00DD172A /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		46F451561A89D00100DD172A /* AntTweakBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AntTweakBar.h; sourceTree = "<group>"; };
 		46F451571A89D00100DD172A /* AntTweakBarOld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AntTweakBarOld.h; sourceTree = "<group>"; };
@@ -762,50 +753,57 @@
 			path = models;
 			sourceTree = "<group>";
 		};
-		46F451131A89C0B500DD172A /* fonts */ = {
+		4658F42A1A97061B00D8B024 /* data */ = {
 			isa = PBXGroup;
 			children = (
-				46F451141A89C0B500DD172A /* DIN.otf */,
+				4658F42B1A97061B00D8B024 /* fonts */,
+				4658F42D1A97061B00D8B024 /* icons */,
+				4658F4341A97061B00D8B024 /* images */,
+				4658F4381A97061B00D8B024 /* shaders */,
 			);
-			name = fonts;
-			path = resources/Fonts;
-			sourceTree = SOURCE_ROOT;
+			path = data;
+			sourceTree = "<group>";
 		};
-		46F451151A89C0B500DD172A /* icons */ = {
+		4658F42B1A97061B00D8B024 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
-				46F4512F1A89C1A000DD172A /* icon-debug.icns */,
-				46F451301A89C1A000DD172A /* icon.icns */,
-				46F451161A89C0B500DD172A /* MenuBarIcon_16.png */,
-				46F451171A89C0B500DD172A /* MenuBarIcon_32.icns */,
-				46F451181A89C0B500DD172A /* MenuBarIcon_32.png */,
-				46F451191A89C0B500DD172A /* MenuBarIcon_32_Alt.png */,
+				4658F42C1A97061B00D8B024 /* DIN.otf */,
 			);
-			name = icons;
-			path = resources/icons;
-			sourceTree = SOURCE_ROOT;
+			path = fonts;
+			sourceTree = "<group>";
 		};
-		46F4511A1A89C0B500DD172A /* images */ = {
+		4658F42D1A97061B00D8B024 /* icons */ = {
 			isa = PBXGroup;
 			children = (
-				46F4514E1A89C6AB00DD172A /* SampleImage.png */,
-				46F4511C1A89C0B500DD172A /* CalibrationCheckerboard.png */,
-				46F4511D1A89C0B500DD172A /* NoCameraFound.png */,
+				4658F42E1A97061B00D8B024 /* icon-debug.icns */,
+				4658F42F1A97061B00D8B024 /* icon.icns */,
+				4658F4301A97061B00D8B024 /* MenuBarIcon_16.png */,
+				4658F4311A97061B00D8B024 /* MenuBarIcon_32.icns */,
+				4658F4321A97061B00D8B024 /* MenuBarIcon_32.png */,
+				4658F4331A97061B00D8B024 /* MenuBarIcon_32_Alt.png */,
 			);
-			name = images;
-			path = resources/images;
-			sourceTree = SOURCE_ROOT;
+			path = icons;
+			sourceTree = "<group>";
 		};
-		46F4511E1A89C0B500DD172A /* shaders */ = {
+		4658F4341A97061B00D8B024 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				46F4511F1A89C0B500DD172A /* HmdDistort.vert */,
-				46F451201A89C0B500DD172A /* HmdWarp.frag */,
-				46F451211A89C0B500DD172A /* HmdWarp.vert */,
+				4658F4351A97061B00D8B024 /* CalibrationCheckerboard.png */,
+				4658F4361A97061B00D8B024 /* NoCameraFound.png */,
+				4658F4371A97061B00D8B024 /* SampleImage.png */,
 			);
-			name = shaders;
-			path = resources/Shaders;
-			sourceTree = SOURCE_ROOT;
+			path = images;
+			sourceTree = "<group>";
+		};
+		4658F4381A97061B00D8B024 /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				4658F4391A97061B00D8B024 /* HmdDistort.vert */,
+				4658F43A1A97061B00D8B024 /* HmdWarp.frag */,
+				4658F43B1A97061B00D8B024 /* HmdWarp.vert */,
+			);
+			path = shaders;
+			sourceTree = "<group>";
 		};
 		46F451541A89D00100DD172A /* AntTweakBar */ = {
 			isa = PBXGroup;
@@ -1702,18 +1700,6 @@
 			path = ps3Eye;
 			sourceTree = "<group>";
 		};
-		519909881A2581B2008021BE /* resources */ = {
-			isa = PBXGroup;
-			children = (
-				46F451131A89C0B500DD172A /* fonts */,
-				46F451151A89C0B500DD172A /* icons */,
-				46F4511A1A89C0B500DD172A /* images */,
-				46F4511E1A89C0B500DD172A /* shaders */,
-			);
-			name = resources;
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
@@ -1786,8 +1772,8 @@
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
 				46F451521A89C91D00DD172A /* .gitignore */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
+				4658F42A1A97061B00D8B024 /* data */,
 				BB4B014C10F69532006C3DED /* addons */,
-				519909881A2581B2008021BE /* resources */,
 				464C5F431A8D3554000E57AD /* etc */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
@@ -1838,7 +1824,6 @@
 				E4B6FFFD0C3F9AB9008CF71C /* ShellScript */,
 				E4C2427710CC5ABF004149E2 /* CopyFiles */,
 				E4B69B590A3A1756003C02F2 /* Frameworks */,
-				5199099A1A2CC232008021BE /* CopyFiles */,
 				46F451031A89985700DD172A /* Resources */,
 				46F4514D1A89C50D00DD172A /* ShellScript */,
 			);
@@ -1925,7 +1910,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Copies the contents of the resources directory into the data directory so OF can find it.\ncp -a \"$TARGET_BUILD_DIR/../resources/\" \"$TARGET_BUILD_DIR/data/\"";
+			shellScript = "# Copies the contents of the data directory into /bin/data so OpenFrameworks can find it.\ncp -a \"$TARGET_BUILD_DIR/../data/\" \"$TARGET_BUILD_DIR/data/\"";
 		};
 		E4B6FFFD0C3F9AB9008CF71C /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
