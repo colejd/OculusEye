@@ -62,7 +62,6 @@ I've finally fixed the library issues I've been having. The binaries should now 
 to do:
 - Improve performance
 - Fix all the bugs
-- Figure out if I can legally license this with the MIT license
 - Fix USB hotplugging to allow for disconnection or at least connection of cameras during run time
 - Figure out a fix for horizontal banding in contour output when multithreading
 - Try SSE/SIMD instructions for YUV422 conversion (much, much faster)
