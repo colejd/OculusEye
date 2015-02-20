@@ -186,7 +186,7 @@ void mainApp::CreateGUI(){
     cannySettings = ofxTweakbars::create("Canny Settings", "Canny Settings");
     cannySettingsStorage = new ofxTweakbarSimpleStorage(cannySettings);
     
-    cannySettings -> addBool("Canny Edge Detection", doCanny) -> setLabel("Canny Edge Detection");
+    cannySettings -> addBool("Canny Edge Detection", doCanny) -> setLabel("Canny Edge Detection") -> setKey("e");
     cannySettings -> addFloat("Canny Min Threshold", cannyMinThreshold) -> setLabel("Canny Min Threshold") -> setMin("0") -> setMax("100");
     cannySettings -> addFloat("Canny Ratio", cannyRatio) -> setLabel("Canny Ratio") -> setMin("2") -> setMax("3");
     cannySettings -> addColor3f("Edge Color", pickerColor) -> setLabel("Edge Color");
@@ -607,7 +607,14 @@ void mainApp::keyPressed(int key){
  * This method fires when a key is released.
  */
 void mainApp::keyReleased(int key){
-
+    UpdateEyeValues(leftEye);
+    if(leftEye->initialized){
+        UpdateEyeCamera(leftEye);
+    }
+    UpdateEyeValues(rightEye);
+    if(rightEye->initialized){
+        UpdateEyeCamera(rightEye);
+    }
 }
 
 /**
