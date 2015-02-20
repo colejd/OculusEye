@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4658F4241A96E01F00D8B024 /* libtbb.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 46F456A31A8C162800DD172A /* libtbb.dylib */; };
-		4658F4251A96E02200D8B024 /* libtbb_preview.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 46F456A51A8C162800DD172A /* libtbb_preview.dylib */; };
-		4658F4261A96E02600D8B024 /* libtbbmalloc.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 46F456A71A8C162800DD172A /* libtbbmalloc.dylib */; };
+		4658F4241A96E01F00D8B024 /* libtbb.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 46F456A31A8C162800DD172A /* libtbb.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		4658F4251A96E02200D8B024 /* libtbb_preview.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 46F456A51A8C162800DD172A /* libtbb_preview.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		4658F4261A96E02600D8B024 /* libtbbmalloc.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 46F456A71A8C162800DD172A /* libtbbmalloc.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		4658F4271A96E23D00D8B024 /* libtbb.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F456A31A8C162800DD172A /* libtbb.dylib */; };
 		4658F4281A96E24000D8B024 /* libtbb_preview.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F456A51A8C162800DD172A /* libtbb_preview.dylib */; };
 		4658F4291A96E24300D8B024 /* libtbbmalloc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F456A71A8C162800DD172A /* libtbbmalloc.dylib */; };
@@ -29,8 +29,6 @@
 		46F450F31A8937E800DD172A /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F450F21A8937E800DD172A /* CoreServices.framework */; };
 		46F450F51A8937F000DD172A /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F450F41A8937F000DD172A /* OpenGL.framework */; };
 		46F450F91A8937FC00DD172A /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F450F81A8937FC00DD172A /* CoreVideo.framework */; };
-		46F4514B1A89C38C00DD172A /* icon-debug.icns in CopyFiles */ = {isa = PBXBuildFile; fileRef = 46F4512F1A89C1A000DD172A /* icon-debug.icns */; };
-		46F4514C1A89C38C00DD172A /* icon.icns in CopyFiles */ = {isa = PBXBuildFile; fileRef = 46F451301A89C1A000DD172A /* icon.icns */; };
 		46F452051A89D00100DD172A /* libAntTweakBar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F4515A1A89D00100DD172A /* libAntTweakBar.a */; };
 		46F452081A89D00100DD172A /* ofxTweakbar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F4515F1A89D00100DD172A /* ofxTweakbar.cpp */; };
 		46F452091A89D00100DD172A /* ofxTweakbars.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F451611A89D00100DD172A /* ofxTweakbars.cpp */; };
@@ -154,8 +152,6 @@
 			dstPath = data;
 			dstSubfolderSpec = 16;
 			files = (
-				46F4514B1A89C38C00DD172A /* icon-debug.icns in CopyFiles */,
-				46F4514C1A89C38C00DD172A /* icon.icns in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2185,6 +2181,7 @@
 				OTHER_LDFLAGS = "$(OF_CORE_LIBS)";
 				PRODUCT_NAME = "$(TARGET_NAME)Debug";
 				SDKROOT = macosx10.9;
+				STRIP_STYLE = all;
 				USER_HEADERS = "\"$(OPENCV_HEADERS)\"";
 				USER_HEADER_SEARCH_PATHS = "$(OPENCV_HEADERS)";
 				USER_LIBS = "\"$(OPENCV_LIBS)\", \"addons/AntTweakBar/lib/mac\"";
@@ -2199,7 +2196,7 @@
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_USE_OPTIMIZATION_PROFILE = NO;
 				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = YES;
+				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
@@ -2233,6 +2230,7 @@
 				OTHER_LDFLAGS = "$(OF_CORE_LIBS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx10.9;
+				STRIP_STYLE = all;
 				USER_HEADERS = "\"$(OPENCV_HEADERS)\"";
 				USER_HEADER_SEARCH_PATHS = "$(OPENCV_HEADERS)";
 				USER_LIBS = "\"$(OPENCV_LIBS)\", \"addons/AntTweakBar/lib/mac\"";
