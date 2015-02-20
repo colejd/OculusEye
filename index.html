@@ -61,6 +61,86 @@ $ git checkout gh-pages
 <a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
 
 <p>Having trouble with Pages? Check out the documentation at <a href="https://help.github.com/pages">https://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+
+<h1>
+<a id="oculuseye" class="anchor" href="#oculuseye" aria-hidden="true"><span class="octicon octicon-link"></span></a>OculusEye</h1>
+
+<p>OculusEye is an open-source wearable augmented reality platform with a focus on cost-effectiveness. The software portion of this project is based on OpenCV 3.0. The hardware is comprised of cheaply available parts: two Playstation 3 Eye cameras, and a <a href="/etc/models">modular, 3d-printable mount</a>.</p>
+
+<p><img src="http://i.imgur.com/MxHzK2b.jpg" alt="Photo of prototype">
+<a href="http://www.youtube.com/watch?v=RTLH47_6cyU"><img src="http://img.youtube.com/vi/RTLH47_6cyU/0.jpg" alt="OculusEye Prototype Footage"></a></p>
+
+<h1>
+<a id="how-to-use-oculuseye" class="anchor" href="#how-to-use-oculuseye" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to use OculusEye</h1>
+
+<p>Controls:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Key</th>
+<th align="left">Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">C</td>
+<td align="left">Begin / end camera calibration</td>
+</tr>
+<tr>
+<td align="left">F</td>
+<td align="left">Toggle fullscreen</td>
+</tr>
+<tr>
+<td align="left">+ / -</td>
+<td align="left">Increase / decrease interpupillary distance</td>
+</tr>
+<tr>
+<td align="left">ESC</td>
+<td align="left">Quit</td>
+</tr>
+</tbody>
+</table>
+
+<p>You'll find toggles at the bottom-left to open windows that reveal various settings to play with.</p>
+
+<h1>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements</h1>
+
+<p>For reference, this program was developed on a mid-2012 MacBook Pro 13-inch with OSX 10.10 (Yosemite).</p>
+
+<p>This program was built for Mavericks, but tested exclusively on Yosemite. Your mileage may vary greatly depending on your hardware. Bugs may present themselves on Macs with AMD GPUs. Intel GPUs work well (right?) and NVidia GPUs run with minor graphical errors.</p>
+
+<h1>
+<a id="build-instructions" class="anchor" href="#build-instructions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Build Instructions</h1>
+
+<p>You will need to download the <a href="https://github.com/NickHardeman/openframeworks_osx_64">OpenFrameworks 64-bit OSX branch</a>. The project file goes in the same directory as any other OpenFrameworks project (openframeworks_osx_64/apps/myApps/). Open the XCode project and build the "OculusEye Release" scheme. The result will be placed in the /bin directory at the root folder of the project.</p>
+
+<p>Everything in the /data directory will be copied into /bin/data.</p>
+
+<hr>
+
+<h1>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h1>
+
+<p>This program is licensed under the MIT License. See <a href="LICENSE.txt">the license</a> for more.</p>
+
+<h1>
+<a id="credits" class="anchor" href="#credits" aria-hidden="true"><span class="octicon octicon-link"></span></a>Credits</h1>
+
+<p>This project was created with <a href="https://github.com/NickHardeman/openframeworks_osx_64">OpenFrameworks 64-bit OSX branch</a> using:</p>
+
+<ul>
+<li><a href="https://github.com/inspirit/PS3EYEDriver">PS3EYEDriver</a></li>
+<li><a href="https://github.com/andreasmuller/ofxOculusRift">ofxOculusRift</a></li>
+<li><a href="https://github.com/roxlu/ofxTweakbar">ofxTweakBar</a></li>
+<li><a href="http://opencv.org/">OpenCV 3.0 Beta</a></li>
+<li>
+<a href="https://www.threadingbuildingblocks.org/">Intel's Threading Building Blocks</a> (4.2 Update 4)</li>
+<li>XCode 6 + Yosemite</li>
+</ul>
+
+<p>Made by <a href="www.joncole.me">Jonathan Cole</a></p>
       </section>
       <footer>
         <p><small>Hosted on <a href="http://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
