@@ -52,6 +52,9 @@ Noticed that using the Rift with the program introduced extra VSync, so I'm work
 9:22 PM: We now have fully functional borderless fullscreen! We did it! I'm satisfied with this implementation and will be using it instead of default fullscreen going forward.
 I've also updated the ofxTweakbar module to better utilize the Help menu.
 
+-- v1.1.5 (2/19/15) ---------------------
+I've finally fixed the library issues I've been having. The binaries should now work without any external dependencies.
+
 ----------------------------------------
 
 
