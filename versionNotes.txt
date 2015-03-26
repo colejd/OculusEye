@@ -55,6 +55,9 @@ I've also updated the ofxTweakbar module to better utilize the Help menu.
 -- v1.1.5 (2/19/15) ---------------------
 I've finally fixed the library issues I've been having. The binaries should now work without any external dependencies.
 
+-- v1.1.6 (3/25/15) ---------------------
+Updated to a newer build of OpenCV. This includes a 40-80% speedup for the Canny algorithm.
+
 ----------------------------------------
 
 
