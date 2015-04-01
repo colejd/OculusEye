@@ -6,6 +6,11 @@
 //
 //
 
+/**
+ * Code for pulling camera data from the PS3 Eyes and giving them
+ * to the outer interface (PS3EyePlugin).
+ */
+
 #ifndef __OculusEye__PS3EyeDriver__
 #define __OculusEye__PS3EyeDriver__
 

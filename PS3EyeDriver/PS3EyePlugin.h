@@ -6,6 +6,10 @@
 //
 //
 
+/**
+ * Interface into PS3 Eye code.
+ */
+
 #import <Foundation/Foundation.h>
 
 #include <stdio.h>

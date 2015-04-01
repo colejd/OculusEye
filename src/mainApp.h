@@ -27,7 +27,7 @@
 #include "../PS3EyeDriver/PS3EyePlugin.h"
 
 //#include <OpenCL/opencl.h>
-
+/*
 class ps3eyeUpdate : public ofThread {
     
 public:
@@ -58,6 +58,7 @@ public:
         }
     }
 };
+ */
 
 class mainApp : public ofBaseApp {
 public:
