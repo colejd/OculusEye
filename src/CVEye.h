@@ -12,10 +12,12 @@
 #include "ofMain.h"
 #include <iostream>
 
-#include "ps3Eye/ps3eye.h"
+//#include "ps3Eye/ps3eye.h"
 #include "OFCVBridge.h"
 #include "programSettings.h"
 #include "CameraCalibrator.h"
+
+#include "../PS3EyeDriver/PS3EyePlugin.h"
 
 #include <opencv/cv.h>
 #include <opencv/cv.hpp>
@@ -30,7 +32,7 @@
 class CVEye {
 public:
 	
-    CVEye(const int _index);
+    CVEye(const int _index, PS3EyeDriver &driver);
     ~CVEye();
 	
     bool init(const int _width, const int _height);
@@ -39,7 +41,8 @@ public:
     void shutdown();
     
     //PS3 Eye stuff
-    ps3eye::PS3EYECam::PS3EYERef eyeRef;
+    //ps3eye::PS3EYECam::PS3EYERef eyeRef;
+    PS3EyeDriver* eyeDriver;
     
     //FPS variables
     int camFrameCount = 0;

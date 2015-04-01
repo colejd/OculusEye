@@ -22,8 +22,8 @@ void _End(){
     [[PS3EyePlugin sharedInstance] End];
 }
 
-int _GetNumCameras(){
-    return [[PS3EyePlugin sharedInstance] GetNumCameras];
+int _GetCameraCount(){
+    return [[PS3EyePlugin sharedInstance] GetCameraCount];
 }
 
 
@@ -69,7 +69,7 @@ static PS3EyePlugin* sharedInstance = nil;
     printf("PS3EyePlugin shut down.\n");
 }
 
--(int) GetNumCameras {
+-(int) GetCameraCount {
     return driver->GetNumCameras();
 }
 

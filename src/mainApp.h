@@ -12,7 +12,6 @@
 #include "ofxOculusRift.h"
 #include "ofxTweak.h"
 
-#include "ps3Eye/ps3eye.h"
 #include "CVEye.h"
 #include "programSettings.h"
 #include "screenConfig.h"
@@ -24,7 +23,7 @@
 #include "opencv2/core/core.hpp"
 #include <opencv2/core/ocl.hpp>
 
-#include "../PS3EyeDriver/PS3EyePlugin.h"
+//#include "../PS3EyeDriver/PS3EyePlugin.h"
 
 //#include <OpenCL/opencl.h>
 /*
@@ -95,7 +94,7 @@ public:
 
     //PS3 Eye--------------
     void InitEyes();
-    ps3eyeUpdate threadUpdate;
+    //ps3eyeUpdate threadUpdate;
     int cam_width, cam_height;
     //FPS variables
     int camFrameCount = 0;

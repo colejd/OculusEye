@@ -9,8 +9,9 @@
 #include "CVEye.h"
 
 //Constructor
-CVEye::CVEye(const int _index) {
+CVEye::CVEye(const int _index, PS3EyeDriver &driver) {
     camIndex = _index;
+    eyeDriver = &driver;
     
     finalImage.allocate(CAMERA_WIDTH, CAMERA_HEIGHT, OF_IMAGE_COLOR);
     //finalImage.loadImage("NoCameraFound.jpg");
@@ -37,24 +38,27 @@ CVEye::~CVEye(){
     //free(rawPixelData); //Having this on crashes the program when cameras aren't plugged in. Why?
     
     //Kill USB connection
-    if(eyeRef) eyeRef->stop();
+    //if(eyeRef) eyeRef->stop();
     
 }
 
 bool CVEye::init(const int _width, const int _height){
-    initialized = false;
+    //initialized = false;
     
     using namespace ps3eye;
     // list out the devices
     std::vector<PS3EYECam::PS3EYERef> devices( PS3EYECam::getDevices(true) );
     if(0 < devices.size() && camIndex < devices.size())
     {
+        /*
         //threadUpdate.stop();
         eyeRef = devices.at(camIndex);
         bool eyeDidInit = eyeRef->init(CAMERA_WIDTH, CAMERA_HEIGHT, CAMERA_FPS);
         eyeRef->start();
+         */
         
         //Populate GUI fields with default hardware values
+        /*
         autoWhiteBalance = eyeRef->getAutoWhiteBalance();
         autoGain = eyeRef->getAutogain();
         gain = eyeRef->getGain();
@@ -65,8 +69,10 @@ bool CVEye::init(const int _width, const int _height){
         hue = eyeRef->getHue();
         blueBalance = eyeRef->getBlueBalance();
         redBalance = eyeRef->getRedBalance();
+         */
         
-        initialized = eyeDidInit;
+        //initialized = eyeDidInit;
+        initialized = eyeDriver->camerasInitialized;
     }
     
     //If no cameras are detected, a sample image is loaded.

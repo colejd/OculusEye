@@ -23,7 +23,7 @@
 void _InitDriver();
 void _Begin();
 void _End();
-int _GetNumCameras();
+int _GetCameraCount();
 
 //Objective-C --------------------------------------------------
 
@@ -35,6 +35,6 @@ int _GetNumCameras();
 -(void)InitDriver;
 -(void)Begin;
 -(void)End;
--(int)GetNumCameras;
+-(int)GetCameraCount;
 
 @end

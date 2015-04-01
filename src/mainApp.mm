@@ -243,8 +243,6 @@ void mainApp::CreateGUI(){
  */
 void mainApp::exit(){
     
-    [eyeDriver End];
-    
     //Save settings here
     generalSettingsStorage -> store();
     //ps3EyeSettingsStorage -> store(); //Don't do this unless you know the defaults won't be overwritten
@@ -252,7 +250,8 @@ void mainApp::exit(){
     cannySettingsStorage -> store();
     
     //Clean up
-    threadUpdate.stop(); //Stop USB update thread. Do this before deleting USB objects
+    [eyeDriver End];
+    //threadUpdate.stop(); //Stop USB update thread. Do this before deleting USB objects
     delete leftEye;  //Stop USB connections; very important
     delete rightEye; //Stop USB connections; very important
     printf("USB Connections stopped.\n");
@@ -433,18 +432,19 @@ ofImage& mainApp::getImageForSide(EyeSide side){
  */
 void mainApp::InitEyes(){
     
-    int camerasDetected = [eyeDriver GetNumCameras];
+    int camerasDetected = [eyeDriver GetCameraCount];
     // list out the devices
     printf("Eye cameras detected: %i\n", camerasDetected );
-    
-    leftEye = new CVEye(0);
-    rightEye = new CVEye(1);
     
     if(camerasDetected > 0){
         //threadUpdate.start();
         [eyeDriver InitDriver];
     }
     
+    leftEye = new CVEye(0, eyeDriver);
+    rightEye = new CVEye(1, eyeDriver);
+    
+    /*
     //Pull default values from the camera hardware and update the GUI / CVEyes present
     if(leftEye->initialized){
         autoWhiteBalance = leftEye->eyeRef->getAutoWhiteBalance();
@@ -460,6 +460,7 @@ void mainApp::InitEyes(){
         
         UpdateEyeCamera(leftEye);
     }
+     */
     UpdateEyeValues(leftEye);
     if(rightEye->initialized){
         UpdateEyeCamera(rightEye);
@@ -503,6 +504,7 @@ void mainApp::DrawCVMat(const cv::Mat& mat, ofImageType type, int x, int y, int 
  * Expensive. Don't call often.
  */
 void mainApp::UpdateEyeCamera(CVEye *eye){
+    /*
     if(eye->eyeRef){
         eye->eyeRef->setAutoWhiteBalance(autoWhiteBalance);
         eye->eyeRef->setAutogain(autoGain);
@@ -515,6 +517,7 @@ void mainApp::UpdateEyeCamera(CVEye *eye){
         eye->eyeRef->setBlueBalance(blueBalance);
         eye->eyeRef->setRedBalance(redBalance);
     }
+     */
 }
 
 /**

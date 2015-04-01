@@ -119,7 +119,7 @@
 		46FD55911ACB5470003D0FD5 /* PS3EyePlugin.mm in Sources */ = {isa = PBXBuildFile; fileRef = 46FD55901ACB5470003D0FD5 /* PS3EyePlugin.mm */; };
 		46FD55941ACB5C0D003D0FD5 /* PS3EyeDriver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46FD55921ACB5C0D003D0FD5 /* PS3EyeDriver.cpp */; };
 		46FD55991ACB8C94003D0FD5 /* Driver Architecture.txt in Resources */ = {isa = PBXBuildFile; fileRef = 46FD55981ACB8C94003D0FD5 /* Driver Architecture.txt */; };
-		519909391A23B2BD008021BE /* CVEye.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5199092C1A23B2BD008021BE /* CVEye.cpp */; };
+		519909391A23B2BD008021BE /* CVEye.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5199092C1A23B2BD008021BE /* CVEye.mm */; };
 		5199093A1A23B2BD008021BE /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5199092E1A23B2BD008021BE /* main.mm */; };
 		5199093B1A23B2BD008021BE /* mainApp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5199092F1A23B2BD008021BE /* mainApp.mm */; };
 		5199093C1A23B2BD008021BE /* OFCVBridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 519909311A23B2BD008021BE /* OFCVBridge.cpp */; };
@@ -391,7 +391,7 @@
 		46FD55921ACB5C0D003D0FD5 /* PS3EyeDriver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PS3EyeDriver.cpp; sourceTree = "<group>"; };
 		46FD55931ACB5C0D003D0FD5 /* PS3EyeDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PS3EyeDriver.h; sourceTree = "<group>"; };
 		46FD55981ACB8C94003D0FD5 /* Driver Architecture.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Driver Architecture.txt"; sourceTree = "<group>"; };
-		5199092C1A23B2BD008021BE /* CVEye.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CVEye.cpp; sourceTree = "<group>"; };
+		5199092C1A23B2BD008021BE /* CVEye.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CVEye.mm; sourceTree = "<group>"; };
 		5199092D1A23B2BD008021BE /* CVEye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVEye.h; sourceTree = "<group>"; };
 		5199092E1A23B2BD008021BE /* main.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = main.mm; sourceTree = "<group>"; };
 		5199092F1A23B2BD008021BE /* mainApp.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = mainApp.mm; sourceTree = "<group>"; };
@@ -1057,7 +1057,7 @@
 				519909301A23B2BD008021BE /* mainApp.h */,
 				5199092F1A23B2BD008021BE /* mainApp.mm */,
 				5199092D1A23B2BD008021BE /* CVEye.h */,
-				5199092C1A23B2BD008021BE /* CVEye.cpp */,
+				5199092C1A23B2BD008021BE /* CVEye.mm */,
 				519909321A23B2BD008021BE /* OFCVBridge.h */,
 				519909311A23B2BD008021BE /* OFCVBridge.cpp */,
 				519909381A23B2BD008021BE /* screenConfig.h */,
@@ -1256,7 +1256,7 @@
 				46F452171A89D00100DD172A /* ofxTweakbarType.cpp in Sources */,
 				46F4520B1A89D00100DD172A /* ofxTweakbarStorage.cpp in Sources */,
 				5199093B1A23B2BD008021BE /* mainApp.mm in Sources */,
-				519909391A23B2BD008021BE /* CVEye.cpp in Sources */,
+				519909391A23B2BD008021BE /* CVEye.mm in Sources */,
 				46F452111A89D00100DD172A /* ofxTweakbarFloat.cpp in Sources */,
 				46F452F01A89E49E00DD172A /* StereoDepthMapper.cpp in Sources */,
 				46F452C51A89D06000DD172A /* OVR_Allocator.cpp in Sources */,

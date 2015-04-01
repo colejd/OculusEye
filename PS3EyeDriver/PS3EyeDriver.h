@@ -16,8 +16,13 @@
 
 #include <stdio.h>
 #include <pthread.h>
+#include <assert.h>
 
 #include "ps3eye.h"
+
+#define CAMERA_WIDTH 640
+#define CAMERA_HEIGHT 480
+#define CAMERA_FPS 60
 
 class PS3EyeDriver {
 public:
@@ -28,9 +33,31 @@ public:
     
     void StartCameraUpdateThread();
     void StopCameraUpdateThread();
-    pthread_t *cameraThreadID;
+    pthread_t cameraThreadID;
+    pthread_attr_t cameraThreadAttr;
+    size_t stackSize;
+    
+    int cameraThreadRetVal;
     int cameraThreadErr;
     bool cameraThreadStarted = false;
+    
+    bool autoWhiteBalance;
+    bool autoGain;
+    float gain;
+    float sharpness;
+    float exposure;
+    float brightness;
+    float contrast;
+    float hue;
+    float blueBalance;
+    float redBalance;
+    //Raw video data array from PS Eye (RGBA888 color)
+    unsigned char * rawPixelData;
+    
+    ps3eye::PS3EYECam::PS3EYERef leftEyeRef;
+    ps3eye::PS3EYECam::PS3EYERef rightEyeRef;
+    
+    bool camerasInitialized = false;
     
     
     static int GetNumCameras();
