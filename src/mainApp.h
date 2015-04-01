@@ -24,6 +24,8 @@
 #include "opencv2/core/core.hpp"
 #include <opencv2/core/ocl.hpp>
 
+#include "../PS3EyeDriver/PS3EyePlugin.h"
+
 //#include <OpenCL/opencl.h>
 
 class ps3eyeUpdate : public ofThread {
@@ -183,6 +185,10 @@ public:
     StereoDepthMapper stereoMapper;
     bool computeDisparityMap = false;
     bool showDisparityMap = false;
+    
+    void LoadBundles();
+    NSBundle *eyeBundle;
+    id eyeDriver;
     
 private:
     string GetStdoutFromCommand(string cmd);

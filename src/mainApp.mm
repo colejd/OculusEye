@@ -15,6 +15,8 @@
  */
 void mainApp::setup(){
     
+    LoadBundles();
+    
     //Set the minimum type of log that is printed (lower priority logs will be ignored)
     ofSetLogLevel( OF_LOG_NOTICE );
     
@@ -91,6 +93,31 @@ void mainApp::setup(){
     
     InitEyes();
     
+}
+
+void mainApp::LoadBundles(){
+    NSBundle *appBundle;
+    NSArray *bundlePaths;
+    
+    appBundle = [NSBundle mainBundle];
+    bundlePaths = [appBundle pathsForResourcesOfType:@"bundle"
+                                         inDirectory:@"../PlugIns"];
+    cout << "Plugins: " << [bundlePaths count] << "\n";
+    
+    for(NSString *bundlePath in bundlePaths){
+        NSLog(@"Found plugin: %@", [bundlePath stringByAbbreviatingWithTildeInPath]);
+        if([[bundlePath lastPathComponent]  isEqual: @"PS3EyeDriver.bundle"]){
+            eyeBundle = [NSBundle bundleWithPath:bundlePath];
+        }
+    }
+    
+    bool loaded = [eyeBundle load];
+    printf("Loaded: %s\n", loaded ? "YES" : "NO");
+    Class principalClass;
+    principalClass = [eyeBundle principalClass];
+    
+    eyeDriver = [[principalClass alloc] init];
+    [eyeDriver Begin];
 }
 
 /**
@@ -215,6 +242,8 @@ void mainApp::CreateGUI(){
  * Called once at the end of the application.
  */
 void mainApp::exit(){
+    
+    [eyeDriver End];
     
     //Save settings here
     generalSettingsStorage -> store();
@@ -404,15 +433,16 @@ ofImage& mainApp::getImageForSide(EyeSide side){
  */
 void mainApp::InitEyes(){
     
+    int camerasDetected = [eyeDriver GetNumCameras];
     // list out the devices
-    std::vector<ps3eye::PS3EYECam::PS3EYERef> devices( ps3eye::PS3EYECam::getDevices(true) );
-    printf("Eye cameras detected: %lu\n", devices.size());
+    printf("Eye cameras detected: %i\n", camerasDetected );
     
     leftEye = new CVEye(0);
     rightEye = new CVEye(1);
     
-    if(devices.size() > 0){
-        threadUpdate.start();
+    if(camerasDetected > 0){
+        //threadUpdate.start();
+        [eyeDriver InitDriver];
     }
     
     //Pull default values from the camera hardware and update the GUI / CVEyes present

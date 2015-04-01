@@ -1,0 +1,11 @@
+This creates a .bundle that gives texture data from one or two Playstation Eye cameras.
+
+For modularity purposes, this module will hold:
+- (int, int) Camera Resolution
+- (*uchar[]) RGB array for both cameras
+
+
+As such, this module should be a black box to the rest of OculusEye, returning only camera data as RGB arrays.
+
+
+This bundle should as a bonus be compatible with Unity3D.

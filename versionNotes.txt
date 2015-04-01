@@ -65,6 +65,8 @@ It's ambiguous whether this speedup actually applies to OSX or not.
 
 
 to do:
+- Refactor PS3 Eye driver code into a separate dylib
+    - This project should implement that dylib.
 - Improve performance
 - Fix all the bugs
 - Fix USB hotplugging to allow for disconnection or at least connection of cameras during run time
