@@ -275,7 +275,6 @@ void mainApp::exit(){
  */
 void mainApp::update()
 {
-    //[eyeDriver PullData];
     //Update and draw each CVEye (no synchronization)
     leftEye->update();
     rightEye->update();

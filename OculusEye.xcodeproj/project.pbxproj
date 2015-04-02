@@ -118,7 +118,7 @@
 		46FD558A1ACB3421003D0FD5 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46FD55891ACB3421003D0FD5 /* IOKit.framework */; };
 		46FD558F1ACB3AA9003D0FD5 /* PS3EyeDriver.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 46FD55711ACB3006003D0FD5 /* PS3EyeDriver.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		46FD55911ACB5470003D0FD5 /* PS3EyePlugin.mm in Sources */ = {isa = PBXBuildFile; fileRef = 46FD55901ACB5470003D0FD5 /* PS3EyePlugin.mm */; };
-		46FD55941ACB5C0D003D0FD5 /* PS3EyeDriver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46FD55921ACB5C0D003D0FD5 /* PS3EyeDriver.cpp */; };
+		46FD55941ACB5C0D003D0FD5 /* PS3EyeDriver.mm in Sources */ = {isa = PBXBuildFile; fileRef = 46FD55921ACB5C0D003D0FD5 /* PS3EyeDriver.mm */; };
 		46FD55991ACB8C94003D0FD5 /* Driver Architecture.txt in Resources */ = {isa = PBXBuildFile; fileRef = 46FD55981ACB8C94003D0FD5 /* Driver Architecture.txt */; };
 		519909391A23B2BD008021BE /* CVEye.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5199092C1A23B2BD008021BE /* CVEye.mm */; };
 		5199093A1A23B2BD008021BE /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5199092E1A23B2BD008021BE /* main.mm */; };
@@ -391,7 +391,7 @@
 		46FD55891ACB3421003D0FD5 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		46FD558C1ACB34D3003D0FD5 /* PS3EyePlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PS3EyePlugin.h; sourceTree = "<group>"; };
 		46FD55901ACB5470003D0FD5 /* PS3EyePlugin.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = PS3EyePlugin.mm; sourceTree = "<group>"; };
-		46FD55921ACB5C0D003D0FD5 /* PS3EyeDriver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PS3EyeDriver.cpp; sourceTree = "<group>"; };
+		46FD55921ACB5C0D003D0FD5 /* PS3EyeDriver.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = PS3EyeDriver.mm; sourceTree = "<group>"; };
 		46FD55931ACB5C0D003D0FD5 /* PS3EyeDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PS3EyeDriver.h; sourceTree = "<group>"; };
 		46FD55981ACB8C94003D0FD5 /* Driver Architecture.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Driver Architecture.txt"; sourceTree = "<group>"; };
 		5199092C1A23B2BD008021BE /* CVEye.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CVEye.mm; sourceTree = "<group>"; };
@@ -925,7 +925,7 @@
 				46FD558C1ACB34D3003D0FD5 /* PS3EyePlugin.h */,
 				46FD55901ACB5470003D0FD5 /* PS3EyePlugin.mm */,
 				46FD55931ACB5C0D003D0FD5 /* PS3EyeDriver.h */,
-				46FD55921ACB5C0D003D0FD5 /* PS3EyeDriver.cpp */,
+				46FD55921ACB5C0D003D0FD5 /* PS3EyeDriver.mm */,
 				468761121ACDD26600594754 /* OFCVBridge.h */,
 				468761111ACDD26600594754 /* OFCVBridge.cpp */,
 				46FD55841ACB313F003D0FD5 /* backend */,
@@ -1242,7 +1242,7 @@
 				46FD557E1ACB30CD003D0FD5 /* ps3eye.cpp in Sources */,
 				46FD55911ACB5470003D0FD5 /* PS3EyePlugin.mm in Sources */,
 				468761131ACDD26600594754 /* OFCVBridge.cpp in Sources */,
-				46FD55941ACB5C0D003D0FD5 /* PS3EyeDriver.cpp in Sources */,
+				46FD55941ACB5C0D003D0FD5 /* PS3EyeDriver.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

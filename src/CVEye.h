@@ -43,7 +43,6 @@ public:
     
     //PS3 Eye stuff
     //ps3eye::PS3EYECam::PS3EYERef eyeRef;
-    //PS3EyeDriver* eyeDriver;
     PS3EyePlugin* eyePlugin;
     
     //FPS variables

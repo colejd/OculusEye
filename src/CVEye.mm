@@ -120,14 +120,18 @@ bool CVEye::init(const int _width, const int _height){
 void CVEye::PullData(){
     if(initialized){
         if(isLeftEye){
-            [eyePlugin PullData_Left];
-            rawPixelData = [eyePlugin GetLeftCameraData];
-            src_tmp.data = rawPixelData;
+            //if(leftEyeRef->isNewFrame()){
+                [eyePlugin PullData_Left];
+                rawPixelData = [eyePlugin GetLeftCameraData];
+                src_tmp.data = rawPixelData;
+            //}
         }
         else{
-            [eyePlugin PullData_Right];
-            rawPixelData = [eyePlugin GetRightCameraData];
-            src_tmp.data = rawPixelData;
+            //if(rightEyeRef->isNewFrame()){
+                [eyePlugin PullData_Right];
+                rawPixelData = [eyePlugin GetRightCameraData];
+                src_tmp.data = rawPixelData;
+            //}
         }
     }
     /*
@@ -171,23 +175,25 @@ void CVEye::PullData(){
 }
 
 void CVEye::update(){
-    if(true || dummyImage)
+    bool cameraPass = ( ([eyePlugin LeftEyeInitialized] && isLeftEye) || ([eyePlugin RightEyeInitialized] && !isLeftEye) );
+    if(cameraPass || dummyImage)
     //if(eyeDriver->leftEyeRef || dummyImage)
     {
-        /*
+        bool isNewFrame = false;
+        if(isLeftEye && cameraPass) isNewFrame = [eyePlugin LeftEyeHasNewFrame];
+        else if(!isLeftEye && cameraPass) isNewFrame = [eyePlugin RightEyeHasNewFrame];
+        
         //Do we have camera data or a default image to display?
         bool computeFrame = dummyImage;
-        if(eyeDriver->leftEyeRef){
+        if(cameraPass){
             //Continue if the camera hardware says it has a new frame
-            computeFrame = eyeDriver->leftEyeRef->isNewFrame();
+            //computeFrame = eyeDriver->leftEyeRef->isNewFrame();
+            computeFrame = isNewFrame;
             //Mark this CVEye as updated
-            sync_update = eyeDriver->leftEyeRef->isNewFrame();
+            //sync_update = eyeDriver->leftEyeRef->isNewFrame();
+            sync_update = isNewFrame;
         }
-         */
         
-        //temp
-        //computeFrame = [eyePlugin LeftEyeHasNewFrame];
-        computeFrame = true;
         //Continue if we have new camera data or a default image to display
         if(computeFrame)
         {

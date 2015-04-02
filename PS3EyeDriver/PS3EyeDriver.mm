@@ -54,7 +54,7 @@ void PS3EyeDriver::Init(){
         leftEyeInitialized = true;
     }
     if(GetNumCameras() > 1){
-        rightEyeRef = devices.at(0);
+        rightEyeRef = devices.at(1);
         bool eyeDidInit = rightEyeRef->init(CAMERA_WIDTH, CAMERA_HEIGHT, CAMERA_FPS);
         rightEyeRef->start();
         printf("[PS3EyeDriver] Right camera initialized: %s\n", eyeDidInit ? "Yes" : "No");
@@ -70,7 +70,7 @@ void PS3EyeDriver::Init(){
  */
 void PS3EyeDriver::PullData_Left(){
     if(leftEyeRef){
-        printf("%i\n", leftEyeRef->getLastFramePointer()[0]);
+        //printf("%X\n", (int)(leftEyeRef->getLastFramePointerVolatile()[0]));
         yuvData_left.Convert(leftEyeRef->getLastFramePointerVolatile(), leftEyeRef->getRowBytes(), rawPixelData_Left, leftEyeRef->getWidth(), leftEyeRef->getHeight());
     }
 }

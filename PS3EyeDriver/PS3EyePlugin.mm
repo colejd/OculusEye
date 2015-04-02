@@ -37,6 +37,10 @@ int _GetCameraCount(){
 
 -(id)init {
     if (self = [super init]) {
+        if(self){
+            driver = new PS3EyeDriver();
+            if (!driver) self = nil;
+        }
     }
     return self;
 }
@@ -55,7 +59,7 @@ static PS3EyePlugin* sharedInstance = nil;
 
 -(void) Begin {
     printf("PS3EyePlugin starting...\n");
-    driver = new PS3EyeDriver();
+    //driver = new PS3EyeDriver();
     
     //Last
     printf("PS3EyePlugin started.\n");
