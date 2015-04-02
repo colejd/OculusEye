@@ -55,6 +55,57 @@ void PS3EyeDriver::Init(){
     
 }
 
+/**
+ * Puts RGB888 data into rawPixelData to prepare it for OpenCV processing.
+ */
+void PS3EyeDriver::PullData(){
+    if(leftEyeRef){
+        yuvData.Convert(eyeRef->getLastFramePointerVolatile(), eyeRef->getRowBytes(), rawPixelData, eyeRef->getWidth(), eyeRef->getHeight());
+    }
+    if(rightEyeRef){
+        yuvData.Convert(eyeRef->getLastFramePointerVolatile(), eyeRef->getRowBytes(), rawPixelData, eyeRef->getWidth(), eyeRef->getHeight());
+    }
+    /*
+    if(initialized)
+    {
+        //Copy image data into VideoImage when there's a new image from the camera hardware.
+        //bool isNewFrame = eyeRef->isNewFrame();
+        if(render)
+        {
+            int whichMethod = 1;
+            switch (whichMethod) {
+                    
+                    //BRANCH 1: Straight manual conversion (Preferred)
+                case 1:
+                    yuvData.Convert(eyeRef->getLastFramePointerVolatile(), eyeRef->getRowBytes(), rawPixelData, eyeRef->getWidth(), eyeRef->getHeight());
+                    src_tmp.data = rawPixelData;
+                    break;
+                    
+                    
+                    //Branch 2: Parallel manual conversion (????)
+                case 2:
+                    yuvData.LoadData(eyeRef->getLastFramePointerVolatile(), eyeRef->getRowBytes(), rawPixelData, eyeRef->getWidth(), eyeRef->getHeight());
+                    yuvData.ConvertParallel(1); //Number of rows to process at once?
+                    src_tmp.data = rawPixelData;
+                    break;
+                    
+                    //Branch 3: OpenCV native conversion (in case the Assembly types fix it before I do)
+                case 3:
+                    int matType = CV_MAKE_TYPE(CV_8U, 2);
+                    cv::Mat yuv_tmp = cv::Mat(cv::Size(CAMERA_WIDTH, CAMERA_HEIGHT), matType);
+                    yuv_tmp.data = eyeRef->getLastFramePointerVolatile();
+                    cvtColor(yuv_tmp, src_tmp, COLOR_YUV2RGB_YUYV);
+                    yuv_tmp.release();
+                    break;
+            }
+            
+            
+        }
+    }
+     */
+}
+
+
 //Stack size is 1 MB * 16
 #define REQUIRED_STACK_SIZE 1024*1024*16
 void PS3EyeDriver::StartCameraUpdateThread(){

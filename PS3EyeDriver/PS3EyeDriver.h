@@ -52,12 +52,15 @@ public:
     float blueBalance;
     float redBalance;
     //Raw video data array from PS Eye (RGBA888 color)
-    unsigned char * rawPixelData;
+    unsigned char * rawPixelData_Left;
+    unsigned char * rawPixelData_Right;
     
     ps3eye::PS3EYECam::PS3EYERef leftEyeRef;
     ps3eye::PS3EYECam::PS3EYERef rightEyeRef;
     
     bool camerasInitialized = false;
+    
+    void PullData();
     
     
     static int GetNumCameras();

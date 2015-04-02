@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		468761131ACDD26600594754 /* OFCVBridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 468761111ACDD26600594754 /* OFCVBridge.cpp */; };
 		46CB212A1AC37958009DD011 /* libIlmImf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46CB210C1AC37958009DD011 /* libIlmImf.a */; };
 		46CB212B1AC37958009DD011 /* libippicv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46CB210D1AC37958009DD011 /* libippicv.a */; };
 		46CB212C1AC37958009DD011 /* liblibjasper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46CB210E1AC37958009DD011 /* liblibjasper.a */; };
@@ -206,6 +207,8 @@
 		4658F4391A97061B00D8B024 /* HmdDistort.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = HmdDistort.vert; sourceTree = "<group>"; };
 		4658F43A1A97061B00D8B024 /* HmdWarp.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = HmdWarp.frag; sourceTree = "<group>"; };
 		4658F43B1A97061B00D8B024 /* HmdWarp.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = HmdWarp.vert; sourceTree = "<group>"; };
+		468761111ACDD26600594754 /* OFCVBridge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OFCVBridge.cpp; sourceTree = "<group>"; };
+		468761121ACDD26600594754 /* OFCVBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OFCVBridge.h; sourceTree = "<group>"; };
 		46CB210C1AC37958009DD011 /* libIlmImf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libIlmImf.a; sourceTree = "<group>"; };
 		46CB210D1AC37958009DD011 /* libippicv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libippicv.a; sourceTree = "<group>"; };
 		46CB210E1AC37958009DD011 /* liblibjasper.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = liblibjasper.a; sourceTree = "<group>"; };
@@ -919,6 +922,8 @@
 		46FD557F1ACB30DF003D0FD5 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				468761121ACDD26600594754 /* OFCVBridge.h */,
+				468761111ACDD26600594754 /* OFCVBridge.cpp */,
 				46FD558C1ACB34D3003D0FD5 /* PS3EyePlugin.h */,
 				46FD55901ACB5470003D0FD5 /* PS3EyePlugin.mm */,
 				46FD55931ACB5C0D003D0FD5 /* PS3EyeDriver.h */,
@@ -1236,6 +1241,7 @@
 			files = (
 				46FD557E1ACB30CD003D0FD5 /* ps3eye.cpp in Sources */,
 				46FD55911ACB5470003D0FD5 /* PS3EyePlugin.mm in Sources */,
+				468761131ACDD26600594754 /* OFCVBridge.cpp in Sources */,
 				46FD55941ACB5C0D003D0FD5 /* PS3EyeDriver.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1652,6 +1658,7 @@
 				46FD55771ACB3006003D0FD5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "OculusEye" */ = {
 			isa = XCConfigurationList;
