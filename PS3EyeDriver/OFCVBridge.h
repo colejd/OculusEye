@@ -13,8 +13,8 @@
 
 #include <stdint.h>
 
-#ifndef __ofCV__OFCVBridge__Eye__
-#define __ofCV__OFCVBridge__Eye__
+#ifndef __ofCV__OFCVBridge__
+#define __ofCV__OFCVBridge__
 
 //--------------------------------------------------------------
 #define _max(a, b) (((a) > (b)) ? (a) : (b))
@@ -67,7 +67,7 @@ class YUVBuffer {
         YUVBuffer();
         ~YUVBuffer();
     
-        void operator ()(const cv::Range &range) const;
+        //void operator ()(const cv::Range &range) const;
     
         void LoadData(uint8_t *source, const int stride, uint8_t *dest, const int width, const int height);
     

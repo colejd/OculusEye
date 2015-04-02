@@ -9,20 +9,21 @@
 #include "CVEye.h"
 
 //Constructor
-CVEye::CVEye(const int _index, PS3EyeDriver &driver) {
+CVEye::CVEye(const int _index, PS3EyePlugin *plugin, bool isLeft) {
     camIndex = _index;
-    eyeDriver = &driver;
+    eyePlugin = plugin;
     
     finalImage.allocate(CAMERA_WIDTH, CAMERA_HEIGHT, OF_IMAGE_COLOR);
     //finalImage.loadImage("NoCameraFound.jpg");
     //finalImage.setImageType(OF_IMAGE_COLOR);
     rawPixelData = (unsigned char*)malloc(CAMERA_WIDTH*CAMERA_HEIGHT*3*sizeof(unsigned char));
+    isLeftEye = isLeft;
     
     //Initialize the camera, print results
-    cout << (init(CAMERA_WIDTH, CAMERA_HEIGHT) ? "Camera initialized.\n" : "Camera not found.\n");
+    cout << (init(CAMERA_WIDTH, CAMERA_HEIGHT) ? "[CVEye] Camera initialized.\n" : "[CVEye] Camera not found.\n");
     //thread.start();
     
-    yuvData = YUVBuffer();
+    //yuvData = YUVBuffer();
     
 }
 
@@ -72,8 +73,11 @@ bool CVEye::init(const int _width, const int _height){
          */
         
         //initialized = eyeDidInit;
-        initialized = eyeDriver->camerasInitialized;
+        //initialized = eyeDriver->camerasInitialized;
     }
+    
+    if(isLeftEye) initialized = [eyePlugin LeftEyeInitialized];
+    else initialized = [eyePlugin RightEyeInitialized];
     
     //If no cameras are detected, a sample image is loaded.
     if(initialized == false){
@@ -114,6 +118,15 @@ bool CVEye::init(const int _width, const int _height){
  * Puts RGB888 data into rawPixelData to prepare it for OpenCV processing.
  */
 void CVEye::PullData(){
+    if(isLeftEye){
+        [eyePlugin PullData_Left];
+        rawPixelData = [eyePlugin GetLeftCameraData];
+    }
+    else{
+        [eyePlugin PullData_Right];
+        rawPixelData = [eyePlugin GetRightCameraData];
+    }
+    /*
     if(initialized)
     {
         //Copy image data into VideoImage when there's a new image from the camera hardware.
@@ -150,25 +163,34 @@ void CVEye::PullData(){
             
         }
     }
+     */
 }
 
 void CVEye::update(){
-    if(eyeRef || dummyImage)
+    if(true || dummyImage)
+    //if(eyeDriver->leftEyeRef || dummyImage)
     {
+        /*
         //Do we have camera data or a default image to display?
         bool computeFrame = dummyImage;
-        if(eyeRef){
+        if(eyeDriver->leftEyeRef){
             //Continue if the camera hardware says it has a new frame
-            computeFrame = eyeRef->isNewFrame();
+            computeFrame = eyeDriver->leftEyeRef->isNewFrame();
             //Mark this CVEye as updated
-            sync_update = eyeRef->isNewFrame();
+            sync_update = eyeDriver->leftEyeRef->isNewFrame();
         }
+         */
         
+        //temp
+        //computeFrame = [eyePlugin LeftEyeHasNewFrame];
+        computeFrame = true;
         //Continue if we have new camera data or a default image to display
         if(computeFrame)
         {
             
             PullData();
+            //rawPixelData = eyeDriver->rawPixelData_Left;
+            //rawPixelData = [eyePlugin GetLeftCameraData];
             
             //Apply distortion from calibration to the source image
             if(calibrator->calibrated){
@@ -356,8 +378,11 @@ void CVEye::ApplyCanny(cv::UMat &src, cv::UMat &src_gray, cv::UMat &dest){
 }
 
 
-
-
+/*
+PS3EyeDriver* CVEye::GetDriverForSide(){
+    //if(isLeftEye){
+}
+ */
 
 
 

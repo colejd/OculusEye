@@ -250,8 +250,14 @@ void mainApp::exit(){
     cannySettingsStorage -> store();
     
     //Clean up
-    [eyeDriver End];
     //threadUpdate.stop(); //Stop USB update thread. Do this before deleting USB objects
+    [eyeDriver End];
+    bool threadStopped = false;
+    /*
+    while([eyeDriver ThreadIsRunning]){
+        if(![eyeDriver ThreadIsRunning]) break;
+    }
+    */
     delete leftEye;  //Stop USB connections; very important
     delete rightEye; //Stop USB connections; very important
     printf("USB Connections stopped.\n");
@@ -269,6 +275,7 @@ void mainApp::exit(){
  */
 void mainApp::update()
 {
+    //[eyeDriver PullData];
     //Update and draw each CVEye (no synchronization)
     leftEye->update();
     rightEye->update();
@@ -441,8 +448,8 @@ void mainApp::InitEyes(){
         [eyeDriver InitDriver];
     }
     
-    leftEye = new CVEye(0, eyeDriver);
-    rightEye = new CVEye(1, eyeDriver);
+    leftEye = new CVEye(0, ((PS3EyePlugin *) eyeDriver), true);
+    rightEye = new CVEye(1, ((PS3EyePlugin *) eyeDriver), false);
     
     /*
     //Pull default values from the camera hardware and update the GUI / CVEyes present

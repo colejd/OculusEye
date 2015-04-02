@@ -19,6 +19,7 @@
 #include <assert.h>
 
 #include "ps3eye.h"
+#include "OFCVBridge.h"
 
 #define CAMERA_WIDTH 640
 #define CAMERA_HEIGHT 480
@@ -60,10 +61,14 @@ public:
     
     bool camerasInitialized = false;
     
-    void PullData();
+    void PullData_Left();
+    void PullData_Right();
     
     
     static int GetNumCameras();
+    
+    YUVBuffer yuvData_left;
+    YUVBuffer yuvData_right;
     
 private:
     

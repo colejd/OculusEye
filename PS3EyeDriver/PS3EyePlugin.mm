@@ -69,8 +69,43 @@ static PS3EyePlugin* sharedInstance = nil;
     printf("PS3EyePlugin shut down.\n");
 }
 
+-(uint8_t *)GetLeftCameraData{
+    return driver->rawPixelData_Left;
+}
+-(uint8_t *)GetRightCameraData{
+    return driver->rawPixelData_Right;
+}
+
+-(void)PullData_Left{
+    driver->PullData_Left();
+}
+
+-(void)PullData_Right{
+    driver->PullData_Right();
+}
+
 -(int) GetCameraCount {
     return driver->GetNumCameras();
+}
+
+-(bool) LeftEyeHasNewFrame {
+    return driver->leftEyeRef->isNewFrame();
+}
+
+-(bool) RightEyeHasNewFrame {
+    return driver->rightEyeRef->isNewFrame();
+}
+
+-(bool) LeftEyeInitialized {
+    return (driver->leftEyeRef != NULL);
+}
+
+-(bool) RightEyeInitialized {
+    return (driver->rightEyeRef != NULL);
+}
+
+-(bool) ThreadIsRunning {
+    return driver->cameraThreadStarted;
 }
 
 @end //End implementation

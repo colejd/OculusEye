@@ -36,5 +36,17 @@ int _GetCameraCount();
 -(void)Begin;
 -(void)End;
 -(int)GetCameraCount;
+-(uint8_t *)GetLeftCameraData;
+-(uint8_t *)GetRightCameraData;
+-(void)PullData_Left;
+-(void)PullData_Right;
+
+-(bool) LeftEyeHasNewFrame;
+-(bool) RightEyeHasNewFrame;
+
+-(bool) LeftEyeInitialized;
+-(bool) RightEyeInitialized;
+
+-(bool) ThreadIsRunning;
 
 @end

@@ -18,6 +18,7 @@
 #include "CameraCalibrator.h"
 
 #include "../PS3EyeDriver/PS3EyePlugin.h"
+#include "../PS3EyeDriver/PS3EyeDriver.h"
 
 #include <opencv/cv.h>
 #include <opencv/cv.hpp>
@@ -32,7 +33,7 @@
 class CVEye {
 public:
 	
-    CVEye(const int _index, PS3EyeDriver &driver);
+    CVEye(const int _index, PS3EyePlugin *driver, bool isLeft);
     ~CVEye();
 	
     bool init(const int _width, const int _height);
@@ -42,7 +43,8 @@ public:
     
     //PS3 Eye stuff
     //ps3eye::PS3EYECam::PS3EYERef eyeRef;
-    PS3EyeDriver* eyeDriver;
+    //PS3EyeDriver* eyeDriver;
+    PS3EyePlugin* eyePlugin;
     
     //FPS variables
     int camFrameCount = 0;
@@ -113,6 +115,10 @@ public:
     bool sync_update = false;
     
     CameraCalibrator *calibrator;
+    
+    bool isLeftEye;
+    
+    PS3EyeDriver* GetDriverForSide(bool isLeft);
     
 private:
     int camIndex;
