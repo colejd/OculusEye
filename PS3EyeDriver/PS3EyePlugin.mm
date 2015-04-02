@@ -97,11 +97,13 @@ static PS3EyePlugin* sharedInstance = nil;
 }
 
 -(bool) LeftEyeInitialized {
-    return (driver->leftEyeRef != NULL);
+    //return (driver->leftEyeRef != NULL);
+    return driver->leftEyeInitialized;
 }
 
 -(bool) RightEyeInitialized {
-    return (driver->rightEyeRef != NULL);
+    //return (driver->rightEyeRef != NULL);
+    return driver->rightEyeInitialized;
 }
 
 -(bool) ThreadIsRunning {

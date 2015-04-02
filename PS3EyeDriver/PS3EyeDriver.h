@@ -59,7 +59,7 @@ public:
     ps3eye::PS3EYECam::PS3EYERef leftEyeRef;
     ps3eye::PS3EYECam::PS3EYERef rightEyeRef;
     
-    bool camerasInitialized = false;
+    //bool camerasInitialized = false;
     
     void PullData_Left();
     void PullData_Right();
@@ -69,6 +69,9 @@ public:
     
     YUVBuffer yuvData_left;
     YUVBuffer yuvData_right;
+    
+    bool leftEyeInitialized = false;
+    bool rightEyeInitialized = false;
     
 private:
     

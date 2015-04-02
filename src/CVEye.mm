@@ -118,13 +118,17 @@ bool CVEye::init(const int _width, const int _height){
  * Puts RGB888 data into rawPixelData to prepare it for OpenCV processing.
  */
 void CVEye::PullData(){
-    if(isLeftEye){
-        [eyePlugin PullData_Left];
-        rawPixelData = [eyePlugin GetLeftCameraData];
-    }
-    else{
-        [eyePlugin PullData_Right];
-        rawPixelData = [eyePlugin GetRightCameraData];
+    if(initialized){
+        if(isLeftEye){
+            [eyePlugin PullData_Left];
+            rawPixelData = [eyePlugin GetLeftCameraData];
+            src_tmp.data = rawPixelData;
+        }
+        else{
+            [eyePlugin PullData_Right];
+            rawPixelData = [eyePlugin GetRightCameraData];
+            src_tmp.data = rawPixelData;
+        }
     }
     /*
     if(initialized)
