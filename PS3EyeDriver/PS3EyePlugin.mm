@@ -10,19 +10,23 @@
 
 //C++ ---------------------------------------------------------
 extern "C"{
-void _InitDriver(){
+void InitDriver(){
     [[PS3EyePlugin sharedInstance] InitDriver];
 }
 
-void _Begin(){
+void Begin(){
     [[PS3EyePlugin sharedInstance] Begin];
 }
 
-void _End(){
+void End(){
     [[PS3EyePlugin sharedInstance] End];
 }
 
-int _GetCameraCount(){
+void Dealloc(){
+    [[PS3EyePlugin sharedInstance] End];
+}
+
+int GetCameraCount(){
     return [[PS3EyePlugin sharedInstance] GetCameraCount];
 }
 

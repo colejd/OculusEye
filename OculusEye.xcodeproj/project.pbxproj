@@ -119,7 +119,6 @@
 		46FD558F1ACB3AA9003D0FD5 /* PS3EyeDriver.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 46FD55711ACB3006003D0FD5 /* PS3EyeDriver.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		46FD55911ACB5470003D0FD5 /* PS3EyePlugin.mm in Sources */ = {isa = PBXBuildFile; fileRef = 46FD55901ACB5470003D0FD5 /* PS3EyePlugin.mm */; };
 		46FD55941ACB5C0D003D0FD5 /* PS3EyeDriver.mm in Sources */ = {isa = PBXBuildFile; fileRef = 46FD55921ACB5C0D003D0FD5 /* PS3EyeDriver.mm */; };
-		46FD55991ACB8C94003D0FD5 /* Driver Architecture.txt in Resources */ = {isa = PBXBuildFile; fileRef = 46FD55981ACB8C94003D0FD5 /* Driver Architecture.txt */; };
 		519909391A23B2BD008021BE /* CVEye.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5199092C1A23B2BD008021BE /* CVEye.mm */; };
 		5199093A1A23B2BD008021BE /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5199092E1A23B2BD008021BE /* main.mm */; };
 		5199093B1A23B2BD008021BE /* mainApp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5199092F1A23B2BD008021BE /* mainApp.mm */; };
@@ -1185,7 +1184,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46FD55991ACB8C94003D0FD5 /* Driver Architecture.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

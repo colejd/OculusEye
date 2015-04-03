@@ -23,10 +23,12 @@
 //Unity3D hooks
 
 extern "C" {
-    void _InitDriver();
-    void _Begin();
-    void _End();
-    int _GetCameraCount();
+    void InitDriver();
+    void Begin();
+    void End();
+    int GetCameraCount();
+    
+    void Dealloc();
 
     uint8_t* GetLeftCameraData();
     uint8_t* GetRightCameraData();
