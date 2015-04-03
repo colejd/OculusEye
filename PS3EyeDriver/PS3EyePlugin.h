@@ -17,13 +17,42 @@
 #include <pthread.h>
 
 #include "PS3EyeDriver.h"
+#include "PS3EyeMisc.h"
 
 //C++ ---------------------------------------------------------
 //Unity3D hooks
-void _InitDriver();
-void _Begin();
-void _End();
-int _GetCameraCount();
+
+extern "C" {
+    void _InitDriver();
+    void _Begin();
+    void _End();
+    int _GetCameraCount();
+
+    uint8_t* GetLeftCameraData();
+    uint8_t* GetRightCameraData();
+    void PullData_Left();
+    void PullData_Right();
+
+    bool LeftEyeHasNewFrame();
+    bool RightEyeHasNewFrame();
+
+    bool LeftEyeInitialized();
+    bool RightEyeInitialized();
+
+    bool ThreadIsRunning();
+
+    void setAutoWhiteBalance (bool autoWhiteBalance);
+    void setAutoGain (bool autoGain);
+    void setGain (float gain);
+    void setSharpness (float sharpness);
+    void setExposure (float exposure);
+    void setBrightness (float brightness);
+    void setContrast (float contrast);
+    void setHue (float hue); //huehuehuehuehue
+    void setBlueBalance (float blueBalance);
+    void setRedBalance (float redBalance);
+}
+
 
 //Objective-C --------------------------------------------------
 
@@ -48,5 +77,16 @@ int _GetCameraCount();
 -(bool) RightEyeInitialized;
 
 -(bool) ThreadIsRunning;
+
+-(void) setAutoWhiteBalance: (bool) autoWhiteBalance;
+-(void) setAutoGain: (bool) autoGain;
+-(void) setGain: (float) gain;
+-(void) setSharpness: (float) sharpness;
+-(void) setExposure: (float) exposure;
+-(void) setBrightness: (float) brightness;
+-(void) setContrast: (float) contrast;
+-(void) setHue: (float) hue; //huehuehuehuehue
+-(void) setBlueBalance: (float) blueBalance;
+-(void) setRedBalance: (float) redBalance;
 
 @end

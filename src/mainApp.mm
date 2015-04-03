@@ -252,6 +252,7 @@ void mainApp::exit(){
     //Clean up
     //threadUpdate.stop(); //Stop USB update thread. Do this before deleting USB objects
     [eyeDriver End];
+    [eyeDriver dealloc];
     bool threadStopped = false;
     /*
     while([eyeDriver ThreadIsRunning]){
@@ -260,7 +261,6 @@ void mainApp::exit(){
     */
     delete leftEye;  //Stop USB connections; very important
     delete rightEye; //Stop USB connections; very important
-    printf("USB Connections stopped.\n");
     
     //Restore screen resolution
     #if LAUNCH_FULLSCREEN
@@ -468,10 +468,9 @@ void mainApp::InitEyes(){
     }
      */
     UpdateEyeValues(leftEye);
-    if(rightEye->initialized){
-        UpdateEyeCamera(rightEye);
-    }
     UpdateEyeValues(rightEye);
+    
+    UpdateCameraSettings();
     
 }
 
@@ -509,19 +508,20 @@ void mainApp::DrawCVMat(const cv::Mat& mat, ofImageType type, int x, int y, int 
 /**
  * Expensive. Don't call often.
  */
-void mainApp::UpdateEyeCamera(CVEye *eye){
+void mainApp::UpdateCameraSettings(){
+    
     /*
-    if(eye->eyeRef){
-        eye->eyeRef->setAutoWhiteBalance(autoWhiteBalance);
-        eye->eyeRef->setAutogain(autoGain);
-        eye->eyeRef->setGain(gain);
-        eye->eyeRef->setSharpness(sharpness);
-        eye->eyeRef->setExposure(exposure);
-        eye->eyeRef->setBrightness(brightness);
-        eye->eyeRef->setContrast(contrast);
-        eye->eyeRef->setHue(hue);
-        eye->eyeRef->setBlueBalance(blueBalance);
-        eye->eyeRef->setRedBalance(redBalance);
+    if(eyeDriver){
+        [eyeDriver setAutoWhiteBalance:autoWhiteBalance];
+        [eyeDriver setAutoGain:autoGain];
+        [eyeDriver setGain:gain];
+        [eyeDriver setSharpness:sharpness];
+        [eyeDriver setExposure:exposure];
+        [eyeDriver setBrightness:brightness];
+        [eyeDriver setContrast:contrast];
+        [eyeDriver setHue:hue];
+        [eyeDriver setBlueBalance:blueBalance];
+        [eyeDriver setRedBalance:redBalance];
     }
      */
 }
@@ -632,13 +632,7 @@ void mainApp::keyPressed(int key){
 
     }
     UpdateEyeValues(leftEye);
-    if(leftEye->initialized){
-        UpdateEyeCamera(leftEye);
-    }
-    UpdateEyeValues(rightEye);
-    if(rightEye->initialized){
-        UpdateEyeCamera(rightEye);
-    }
+    UpdateCameraSettings();
     
 }
 
@@ -647,13 +641,7 @@ void mainApp::keyPressed(int key){
  */
 void mainApp::keyReleased(int key){
     UpdateEyeValues(leftEye);
-    if(leftEye->initialized){
-        UpdateEyeCamera(leftEye);
-    }
-    UpdateEyeValues(rightEye);
-    if(rightEye->initialized){
-        UpdateEyeCamera(rightEye);
-    }
+    UpdateCameraSettings();
 }
 
 /**
@@ -678,13 +666,12 @@ void mainApp::mousePressed(int x, int y, int button){
     //Update values to reflect GUI state
     //These operations are expensive. Use them only when necessary.
     if(leftEye){
-        UpdateEyeCamera(leftEye);
         UpdateEyeValues(leftEye);
     }
     if(rightEye){
-        UpdateEyeCamera(rightEye);
         UpdateEyeValues(rightEye);
     }
+    UpdateCameraSettings();
 }
 
 /**
@@ -694,13 +681,12 @@ void mainApp::mouseReleased(int x, int y, int button){
     //Update values to reflect GUI state
     //These operations are expensive. Use them only when necessary.
     if(leftEye){
-        UpdateEyeCamera(leftEye);
         UpdateEyeValues(leftEye);
     }
     if(rightEye){
-        UpdateEyeCamera(rightEye);
         UpdateEyeValues(rightEye);
     }
+    UpdateCameraSettings();
 }
 
 /**

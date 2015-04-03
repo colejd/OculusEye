@@ -175,7 +175,7 @@ public:
     
     //Other---------------------
     void UpdateEyeValues(CVEye *eye);
-    void UpdateEyeCamera(CVEye *eye);
+    void UpdateCameraSettings();
     
     bool calibrating = false;
     void BeginCameraCalibration();

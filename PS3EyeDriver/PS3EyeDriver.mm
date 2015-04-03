@@ -71,13 +71,13 @@ void PS3EyeDriver::Init(){
 void PS3EyeDriver::PullData_Left(){
     if(leftEyeRef){
         //printf("%X\n", (int)(leftEyeRef->getLastFramePointerVolatile()[0]));
-        yuvData_left.Convert(leftEyeRef->getLastFramePointerVolatile(), leftEyeRef->getRowBytes(), rawPixelData_Left, leftEyeRef->getWidth(), leftEyeRef->getHeight());
+        yuvData_left.Convert(leftEyeRef->getLastFramePointer(), leftEyeRef->getRowBytes(), rawPixelData_Left, leftEyeRef->getWidth(), leftEyeRef->getHeight());
     }
 }
 
 void PS3EyeDriver::PullData_Right(){
     if(rightEyeRef){
-        yuvData_right.Convert(rightEyeRef->getLastFramePointerVolatile(), rightEyeRef->getRowBytes(), rawPixelData_Right, rightEyeRef->getWidth(), rightEyeRef->getHeight());
+        yuvData_right.Convert(rightEyeRef->getLastFramePointer(), rightEyeRef->getRowBytes(), rawPixelData_Right, rightEyeRef->getWidth(), rightEyeRef->getHeight());
     }
 }
 
@@ -112,6 +112,7 @@ void PS3EyeDriver::StopCameraUpdateThread(){
     if(cameraThreadStarted){
         leftEyeRef->stop();
         rightEyeRef->stop();
+        printf("[PS3EyeDriver] USB Connections stopped.\n");
         //pthread_cancel(cameraThreadID);
         cameraThreadRetVal = pthread_attr_destroy(&cameraThreadAttr);
         //cameraThreadRetVal = pthread_join(cameraThreadID, NULL);
@@ -150,4 +151,100 @@ int PS3EyeDriver::GetNumCameras(){
     std::vector<ps3eye::PS3EYECam::PS3EYERef> devices( ps3eye::PS3EYECam::getDevices(true) );
     return (int)devices.size();
 }
+
+
+void PS3EyeDriver::setAutoGain(bool autoGain, EyeType whichSide){
+    if(whichSide == LEFT_EYE){ }
+    else if(whichSide == RIGHT_EYE){ }
+    else if(whichSide == BOTH_EYES){
+        leftEyeRef->setAutogain(autoGain);
+        rightEyeRef->setAutogain(autoGain);
+    }
+}
+
+void PS3EyeDriver::setAutoWhiteBalance(bool autoWhiteBalance, EyeType whichSide){
+    if(whichSide == LEFT_EYE){ }
+    else if(whichSide == RIGHT_EYE){ }
+    else if(whichSide == BOTH_EYES){
+        leftEyeRef->setAutoWhiteBalance(autoWhiteBalance);
+        rightEyeRef->setAutoWhiteBalance(autoWhiteBalance);
+    }
+}
+
+void PS3EyeDriver::setGain(float gain, EyeType whichSide){
+    if(whichSide == LEFT_EYE){ }
+    else if(whichSide == RIGHT_EYE){ }
+    else if(whichSide == BOTH_EYES){
+        leftEyeRef-> setGain(gain);
+        rightEyeRef-> setGain(gain);
+    }
+}
+
+void PS3EyeDriver::setSharpness(float sharpness, EyeType whichSide){
+    if(whichSide == LEFT_EYE){ }
+    else if(whichSide == RIGHT_EYE){ }
+    else if(whichSide == BOTH_EYES){
+        leftEyeRef-> setSharpness(sharpness);
+        rightEyeRef-> setSharpness(sharpness);
+    }
+}
+
+void PS3EyeDriver::setExposure(float exposure, EyeType whichSide){
+    if(whichSide == LEFT_EYE){ }
+    else if(whichSide == RIGHT_EYE){ }
+    else if(whichSide == BOTH_EYES){
+        leftEyeRef->setExposure(exposure);
+        rightEyeRef->setExposure(exposure);
+    }
+}
+
+void PS3EyeDriver::setBrightness(float brightness, EyeType whichSide){
+    if(whichSide == LEFT_EYE){ }
+    else if(whichSide == RIGHT_EYE){ }
+    else if(whichSide == BOTH_EYES){
+        leftEyeRef->setBrightness(brightness);
+        rightEyeRef->setBrightness(brightness);
+    }
+}
+
+void PS3EyeDriver::setContrast(float contrast, EyeType whichSide){
+    if(whichSide == LEFT_EYE){ }
+    else if(whichSide == RIGHT_EYE){ }
+    else if(whichSide == BOTH_EYES){
+        leftEyeRef->setContrast(contrast);
+        rightEyeRef->setContrast(contrast);
+    }
+}
+
+void PS3EyeDriver::setHue(float hue, EyeType whichSide){
+    if(whichSide == LEFT_EYE){ }
+    else if(whichSide == RIGHT_EYE){ }
+    else if(whichSide == BOTH_EYES){
+        leftEyeRef->setHue(hue);
+        rightEyeRef->setHue(hue);
+    }
+}
+
+void PS3EyeDriver::setBlueBalance(float blueBalance, EyeType whichSide){
+    if(whichSide == LEFT_EYE){ }
+    else if(whichSide == RIGHT_EYE){ }
+    else if(whichSide == BOTH_EYES){
+        leftEyeRef->setBlueBalance(blueBalance);
+        rightEyeRef->setBlueBalance(blueBalance);
+    }
+}
+
+void PS3EyeDriver::setRedBalance(float redBalance, EyeType whichSide){
+    if(whichSide == LEFT_EYE){ }
+    else if(whichSide == RIGHT_EYE){ }
+    else if(whichSide == BOTH_EYES){
+        leftEyeRef->setRedBalance(redBalance);
+        rightEyeRef->setRedBalance(redBalance);
+    }
+}
+
+
+
+
+
 

@@ -21,6 +21,8 @@
 #include "ps3eye.h"
 #include "OFCVBridge.h"
 
+#include "PS3EyeMisc.h"
+
 #define CAMERA_WIDTH 640
 #define CAMERA_HEIGHT 480
 #define CAMERA_FPS 60
@@ -72,6 +74,18 @@ public:
     
     bool leftEyeInitialized = false;
     bool rightEyeInitialized = false;
+    
+    void setAutoGain(bool autoGain, EyeType whichSide);
+    void setAutoWhiteBalance(bool autoWhiteBalance, EyeType whichSide);
+    void setGain(float gain, EyeType whichSide);
+    void setSharpness(float sharpness, EyeType whichSide);
+    void setExposure(float exposure, EyeType whichSide);
+    void setBrightness(float brightness, EyeType whichSide);
+    void setContrast(float contrast, EyeType whichSide);
+    void setHue(float hue, EyeType whichSide);
+    void setBlueBalance(float blueBalance, EyeType whichSide);
+    void setRedBalance(float redBalance, EyeType whichSide);
+
     
 private:
     

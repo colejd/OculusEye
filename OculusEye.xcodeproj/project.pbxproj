@@ -124,7 +124,6 @@
 		5199093A1A23B2BD008021BE /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5199092E1A23B2BD008021BE /* main.mm */; };
 		5199093B1A23B2BD008021BE /* mainApp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5199092F1A23B2BD008021BE /* mainApp.mm */; };
 		5199093C1A23B2BD008021BE /* OFCVBridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 519909311A23B2BD008021BE /* OFCVBridge.cpp */; };
-		5199093D1A23B2BD008021BE /* ps3eye.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 519909351A23B2BD008021BE /* ps3eye.cpp */; };
 		5199093E1A23B2BD008021BE /* screenConfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 519909371A23B2BD008021BE /* screenConfig.cpp */; };
 		51E1B39F1A42778F00D6BCA7 /* CVPerformance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51E1B39E1A42778F00D6BCA7 /* CVPerformance.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
@@ -209,6 +208,7 @@
 		4658F43B1A97061B00D8B024 /* HmdWarp.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = HmdWarp.vert; sourceTree = "<group>"; };
 		468761111ACDD26600594754 /* OFCVBridge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OFCVBridge.cpp; sourceTree = "<group>"; };
 		468761121ACDD26600594754 /* OFCVBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OFCVBridge.h; sourceTree = "<group>"; };
+		468761171ACE17D300594754 /* PS3EyeMisc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PS3EyeMisc.h; sourceTree = "<group>"; };
 		46CB210C1AC37958009DD011 /* libIlmImf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libIlmImf.a; sourceTree = "<group>"; };
 		46CB210D1AC37958009DD011 /* libippicv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libippicv.a; sourceTree = "<group>"; };
 		46CB210E1AC37958009DD011 /* liblibjasper.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = liblibjasper.a; sourceTree = "<group>"; };
@@ -401,9 +401,6 @@
 		519909301A23B2BD008021BE /* mainApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mainApp.h; sourceTree = "<group>"; };
 		519909311A23B2BD008021BE /* OFCVBridge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OFCVBridge.cpp; sourceTree = "<group>"; };
 		519909321A23B2BD008021BE /* OFCVBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OFCVBridge.h; sourceTree = "<group>"; };
-		519909341A23B2BD008021BE /* libusb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libusb.h; sourceTree = "<group>"; };
-		519909351A23B2BD008021BE /* ps3eye.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ps3eye.cpp; sourceTree = "<group>"; };
-		519909361A23B2BD008021BE /* ps3eye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ps3eye.h; sourceTree = "<group>"; };
 		519909371A23B2BD008021BE /* screenConfig.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = screenConfig.cpp; sourceTree = "<group>"; };
 		519909381A23B2BD008021BE /* screenConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = screenConfig.h; sourceTree = "<group>"; };
 		519909461A23BE0D008021BE /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
@@ -928,6 +925,7 @@
 				46FD55921ACB5C0D003D0FD5 /* PS3EyeDriver.mm */,
 				468761121ACDD26600594754 /* OFCVBridge.h */,
 				468761111ACDD26600594754 /* OFCVBridge.cpp */,
+				468761171ACE17D300594754 /* PS3EyeMisc.h */,
 				46FD55841ACB313F003D0FD5 /* backend */,
 			);
 			name = src;
@@ -957,17 +955,6 @@
 				46FD557D1ACB30CD003D0FD5 /* ps3eye.h */,
 			);
 			name = backend;
-			sourceTree = "<group>";
-		};
-		519909331A23B2BD008021BE /* PS3EYEDRIVER */ = {
-			isa = PBXGroup;
-			children = (
-				519909341A23B2BD008021BE /* libusb.h */,
-				519909351A23B2BD008021BE /* ps3eye.cpp */,
-				519909361A23B2BD008021BE /* ps3eye.h */,
-			);
-			name = PS3EYEDRIVER;
-			path = ps3Eye;
 			sourceTree = "<group>";
 		};
 		BB4B014C10F69532006C3DED /* addons */ = {
@@ -1057,7 +1044,6 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				519909331A23B2BD008021BE /* PS3EYEDRIVER */,
 				5199092E1A23B2BD008021BE /* main.mm */,
 				519909301A23B2BD008021BE /* mainApp.h */,
 				5199092F1A23B2BD008021BE /* mainApp.mm */,
@@ -1256,7 +1242,6 @@
 				46F452161A89D00100DD172A /* ofxTweakbarString.cpp in Sources */,
 				46F452CB1A89D06000DD172A /* OVR_RefCount.cpp in Sources */,
 				46F452091A89D00100DD172A /* ofxTweakbars.cpp in Sources */,
-				5199093D1A23B2BD008021BE /* ps3eye.cpp in Sources */,
 				46F452131A89D00100DD172A /* ofxTweakbarList.cpp in Sources */,
 				46F452EB1A89D06000DD172A /* ofxOculusRift.cpp in Sources */,
 				46F452171A89D00100DD172A /* ofxTweakbarType.cpp in Sources */,
@@ -1332,7 +1317,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1384,7 +1369,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_MODULES = YES;

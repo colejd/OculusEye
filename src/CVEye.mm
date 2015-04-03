@@ -46,11 +46,11 @@ CVEye::~CVEye(){
 bool CVEye::init(const int _width, const int _height){
     //initialized = false;
     
-    using namespace ps3eye;
-    // list out the devices
-    std::vector<PS3EYECam::PS3EYERef> devices( PS3EYECam::getDevices(true) );
-    if(0 < devices.size() && camIndex < devices.size())
-    {
+    //using namespace ps3eye;
+    //// list out the devices
+    //std::vector<PS3EYECam::PS3EYERef> devices( PS3EYECam::getDevices(true) );
+    //if(0 < devices.size() && camIndex < devices.size())
+    //{
         /*
         //threadUpdate.stop();
         eyeRef = devices.at(camIndex);
@@ -74,7 +74,7 @@ bool CVEye::init(const int _width, const int _height){
         
         //initialized = eyeDidInit;
         //initialized = eyeDriver->camerasInitialized;
-    }
+    //}
     
     if(isLeftEye) initialized = [eyePlugin LeftEyeInitialized];
     else initialized = [eyePlugin RightEyeInitialized];
