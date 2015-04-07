@@ -509,6 +509,16 @@
 			path = models;
 			sourceTree = "<group>";
 		};
+		46584E041AD457B0001E1908 /* frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				46FD55871ACB3400003D0FD5 /* Foundation.framework */,
+				46FD55851ACB33EF003D0FD5 /* Cocoa.framework */,
+				46FD55891ACB3421003D0FD5 /* IOKit.framework */,
+			);
+			name = frameworks;
+			sourceTree = "<group>";
+		};
 		4658F42A1A97061B00D8B024 /* data */ = {
 			isa = PBXGroup;
 			children = (
@@ -898,6 +908,7 @@
 		46FD55641ACB2CDC003D0FD5 /* PS3EyeDriver */ = {
 			isa = PBXGroup;
 			children = (
+				46584E041AD457B0001E1908 /* frameworks */,
 				46FD557F1ACB30DF003D0FD5 /* src */,
 				46FD55801ACB30ED003D0FD5 /* dependencies */,
 				46FD55811ACB30FD003D0FD5 /* products */,
@@ -1019,9 +1030,6 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
-				46FD55891ACB3421003D0FD5 /* IOKit.framework */,
-				46FD55871ACB3400003D0FD5 /* Foundation.framework */,
-				46FD55851ACB33EF003D0FD5 /* Cocoa.framework */,
 				51B2FDD21A3109BA00246487 /* OculusEyeDebug.app */,
 				519909861A2581B1008021BE /* notes.txt */,
 				5199098E1A2581B2008021BE /* versionNotes.txt */,

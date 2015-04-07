@@ -116,6 +116,10 @@ void setRedBalance (float redBalance){
 - (void)dealloc {
     delete driver;
     driver = NULL;
+    if(sharedInstance != nil){
+        [sharedInstance End];
+        [sharedInstance dealloc];
+    }
     [super dealloc];
 }
 

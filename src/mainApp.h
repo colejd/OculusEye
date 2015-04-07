@@ -190,6 +190,8 @@ public:
     NSBundle *eyeBundle;
     id eyeDriver;
     
+    PS3EyePlugin *eyePlugin;
+    
 private:
     string GetStdoutFromCommand(string cmd);
 };

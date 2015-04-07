@@ -118,6 +118,8 @@ void mainApp::LoadBundles(){
     
     eyeDriver = [[principalClass alloc] init];
     [eyeDriver Begin];
+    
+    //Begin();
 }
 
 /**

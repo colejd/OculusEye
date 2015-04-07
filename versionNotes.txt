@@ -60,13 +60,14 @@ Updated to a newer build of OpenCV. This includes a 40-80% speedup for the Canny
 See https://github.com/Itseez/opencv/pull/3583
 It's ambiguous whether this speedup actually applies to OSX or not.
 
-----------------------------------------
+-----------------------------------------
 
 
 
 to do:
-- Refactor PS3 Eye driver code into a separate dylib
-    - This project should implement that dylib.
+- Load configuration (programSettings.h) from a text file
+- Add a nose
+- Use multiplatform threading library in PS3EyeDriver
 - Improve performance
 - Fix all the bugs
 - Fix USB hotplugging to allow for disconnection or at least connection of cameras during run time
@@ -77,13 +78,13 @@ to do:
 - Fix OpenGL buffer sizing in OfxOculusRift.cpp to resize to fit the window
 
 - Move Data folder into OculusEye.app
-- Move TBB libraries into OculusEye.app
 
 optional:
 - Integrate PS Move API
 - Add microphone support from Eye cameras
 
 done:
+- Refactor PS3 Eye driver code into a separate dylib (PS3EyePlugin.bundle)
 - Add camera swap support
 - Convert from YUV422 to RGB directly (formerly YUV422 -> RGBA -> RGB)
 - Refactor eye code (initialization + OpenCV + update + render) into its own class.
