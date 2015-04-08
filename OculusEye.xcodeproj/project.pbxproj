@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4669069C1AD4819C00D69129 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4669069A1AD4817200D69129 /* GLUT.framework */; };
+		4669069D1AD4819F00D69129 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 466906981AD4816C00D69129 /* OpenGL.framework */; };
 		468761131ACDD26600594754 /* OFCVBridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 468761111ACDD26600594754 /* OFCVBridge.cpp */; };
 		46CB212A1AC37958009DD011 /* libIlmImf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46CB210C1AC37958009DD011 /* libIlmImf.a */; };
 		46CB212B1AC37958009DD011 /* libippicv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46CB210D1AC37958009DD011 /* libippicv.a */; };
@@ -116,7 +118,7 @@
 		46FD55861ACB33EF003D0FD5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46FD55851ACB33EF003D0FD5 /* Cocoa.framework */; };
 		46FD55881ACB3400003D0FD5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46FD55871ACB3400003D0FD5 /* Foundation.framework */; };
 		46FD558A1ACB3421003D0FD5 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46FD55891ACB3421003D0FD5 /* IOKit.framework */; };
-		46FD558F1ACB3AA9003D0FD5 /* PS3EyeDriver.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 46FD55711ACB3006003D0FD5 /* PS3EyeDriver.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		46FD558F1ACB3AA9003D0FD5 /* libPS3EyeDriver.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 46FD55711ACB3006003D0FD5 /* libPS3EyeDriver.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		46FD55911ACB5470003D0FD5 /* PS3EyePlugin.mm in Sources */ = {isa = PBXBuildFile; fileRef = 46FD55901ACB5470003D0FD5 /* PS3EyePlugin.mm */; };
 		46FD55941ACB5C0D003D0FD5 /* PS3EyeDriver.mm in Sources */ = {isa = PBXBuildFile; fileRef = 46FD55921ACB5C0D003D0FD5 /* PS3EyeDriver.mm */; };
 		519909391A23B2BD008021BE /* CVEye.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5199092C1A23B2BD008021BE /* CVEye.mm */; };
@@ -167,7 +169,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				46FD558F1ACB3AA9003D0FD5 /* PS3EyeDriver.bundle in CopyFiles */,
+				46FD558F1ACB3AA9003D0FD5 /* libPS3EyeDriver.bundle in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,6 +207,9 @@
 		4658F4391A97061B00D8B024 /* HmdDistort.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = HmdDistort.vert; sourceTree = "<group>"; };
 		4658F43A1A97061B00D8B024 /* HmdWarp.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = HmdWarp.frag; sourceTree = "<group>"; };
 		4658F43B1A97061B00D8B024 /* HmdWarp.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = HmdWarp.vert; sourceTree = "<group>"; };
+		466906961AD477C400D69129 /* UnityInterop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnityInterop.h; sourceTree = "<group>"; };
+		466906981AD4816C00D69129 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		4669069A1AD4817200D69129 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		468761111ACDD26600594754 /* OFCVBridge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OFCVBridge.cpp; sourceTree = "<group>"; };
 		468761121ACDD26600594754 /* OFCVBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OFCVBridge.h; sourceTree = "<group>"; };
 		468761171ACE17D300594754 /* PS3EyeMisc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PS3EyeMisc.h; sourceTree = "<group>"; };
@@ -380,7 +385,7 @@
 		46F452F11A8A7F1400DD172A /* CameraCalibrator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CameraCalibrator.cpp; sourceTree = "<group>"; };
 		46F452F21A8A7F1400DD172A /* CameraCalibrator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraCalibrator.h; sourceTree = "<group>"; };
 		46FD55661ACB2CDC003D0FD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		46FD55711ACB3006003D0FD5 /* PS3EyeDriver.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PS3EyeDriver.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		46FD55711ACB3006003D0FD5 /* libPS3EyeDriver.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = libPS3EyeDriver.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		46FD557B1ACB30CD003D0FD5 /* libusb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libusb.h; sourceTree = "<group>"; };
 		46FD557C1ACB30CD003D0FD5 /* ps3eye.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ps3eye.cpp; sourceTree = "<group>"; };
 		46FD557D1ACB30CD003D0FD5 /* ps3eye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ps3eye.h; sourceTree = "<group>"; };
@@ -423,6 +428,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4669069D1AD4819F00D69129 /* OpenGL.framework in Frameworks */,
+				4669069C1AD4819C00D69129 /* GLUT.framework in Frameworks */,
 				46FD558A1ACB3421003D0FD5 /* IOKit.framework in Frameworks */,
 				46FD55881ACB3400003D0FD5 /* Foundation.framework in Frameworks */,
 				46FD55861ACB33EF003D0FD5 /* Cocoa.framework in Frameworks */,
@@ -512,6 +519,8 @@
 		46584E041AD457B0001E1908 /* frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4669069A1AD4817200D69129 /* GLUT.framework */,
+				466906981AD4816C00D69129 /* OpenGL.framework */,
 				46FD55871ACB3400003D0FD5 /* Foundation.framework */,
 				46FD55851ACB33EF003D0FD5 /* Cocoa.framework */,
 				46FD55891ACB3421003D0FD5 /* IOKit.framework */,
@@ -937,6 +946,7 @@
 				468761111ACDD26600594754 /* OFCVBridge.cpp */,
 				468761171ACE17D300594754 /* PS3EyeMisc.h */,
 				46FD55841ACB313F003D0FD5 /* backend */,
+				466906961AD477C400D69129 /* UnityInterop.h */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -952,7 +962,7 @@
 		46FD55811ACB30FD003D0FD5 /* products */ = {
 			isa = PBXGroup;
 			children = (
-				46FD55711ACB3006003D0FD5 /* PS3EyeDriver.bundle */,
+				46FD55711ACB3006003D0FD5 /* libPS3EyeDriver.bundle */,
 			);
 			name = products;
 			sourceTree = "<group>";
@@ -1083,9 +1093,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		46FD55701ACB3006003D0FD5 /* PS3EyeDriver */ = {
+		46FD55701ACB3006003D0FD5 /* libPS3EyeDriver */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 46FD55751ACB3006003D0FD5 /* Build configuration list for PBXNativeTarget "PS3EyeDriver" */;
+			buildConfigurationList = 46FD55751ACB3006003D0FD5 /* Build configuration list for PBXNativeTarget "libPS3EyeDriver" */;
 			buildPhases = (
 				46FD556D1ACB3006003D0FD5 /* Sources */,
 				46FD556E1ACB3006003D0FD5 /* Frameworks */,
@@ -1095,9 +1105,9 @@
 			);
 			dependencies = (
 			);
-			name = PS3EyeDriver;
+			name = libPS3EyeDriver;
 			productName = PS3EyeDriver;
-			productReference = 46FD55711ACB3006003D0FD5 /* PS3EyeDriver.bundle */;
+			productReference = 46FD55711ACB3006003D0FD5 /* libPS3EyeDriver.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		E4B69B5A0A3A1756003C02F2 /* OculusEye */ = {
@@ -1158,7 +1168,7 @@
 			projectRoot = "";
 			targets = (
 				E4B69B5A0A3A1756003C02F2 /* OculusEye */,
-				46FD55701ACB3006003D0FD5 /* PS3EyeDriver */,
+				46FD55701ACB3006003D0FD5 /* libPS3EyeDriver */,
 			);
 		};
 /* End PBXProject section */
@@ -1308,7 +1318,7 @@
 /* Begin PBXTargetDependency section */
 		46FD55791ACB300F003D0FD5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 46FD55701ACB3006003D0FD5 /* PS3EyeDriver */;
+			target = 46FD55701ACB3006003D0FD5 /* libPS3EyeDriver */;
 			targetProxy = 46FD55781ACB300F003D0FD5 /* PBXContainerItemProxy */;
 		};
 		E4EEB9AC138B136A00A80321 /* PBXTargetDependency */ = {
@@ -1323,7 +1333,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1375,7 +1385,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1642,7 +1652,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		46FD55751ACB3006003D0FD5 /* Build configuration list for PBXNativeTarget "PS3EyeDriver" */ = {
+		46FD55751ACB3006003D0FD5 /* Build configuration list for PBXNativeTarget "libPS3EyeDriver" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				46FD55761ACB3006003D0FD5 /* Debug */,

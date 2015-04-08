@@ -19,8 +19,23 @@
 #include "PS3EyeDriver.h"
 #include "PS3EyeMisc.h"
 
+#include <string>
+#include <sstream>
+#include <iostream>
+
 //C++ ---------------------------------------------------------
 //Unity3D hooks
+#include <OpenGL/OpenGL.h>
+#include <GLUT/GLUT.h>
+
+static int g_DeviceType = -1;
+static void* left_TexturePointer;
+static void* right_TexturePointer;
+
+static void SetDefaultGraphicsState ();
+static void DoRendering (int eventID);
+//static void FillTextureFromCode (int width, int height, int stride, unsigned char* dst);
+static void FillTextureFromCode(int width, int height, int stride, unsigned char* dst, EyeType side);
 
 extern "C" {
     void InitDriver();
@@ -53,6 +68,9 @@ extern "C" {
     void setHue (float hue); //huehuehuehuehue
     void setBlueBalance (float blueBalance);
     void setRedBalance (float redBalance);
+    
+    void SetUnityTexturePointers(void *leftPtr, void *rightPtr);
+    
 }
 
 

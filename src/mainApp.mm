@@ -106,7 +106,7 @@ void mainApp::LoadBundles(){
     
     for(NSString *bundlePath in bundlePaths){
         NSLog(@"Found plugin: %@", [bundlePath stringByAbbreviatingWithTildeInPath]);
-        if([[bundlePath lastPathComponent]  isEqual: @"PS3EyeDriver.bundle"]){
+        if([[bundlePath lastPathComponent]  isEqual: @"libPS3EyeDriver.bundle"]){
             eyeBundle = [NSBundle bundleWithPath:bundlePath];
         }
     }

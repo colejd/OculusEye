@@ -60,6 +60,12 @@ Updated to a newer build of OpenCV. This includes a 40-80% speedup for the Canny
 See https://github.com/Itseez/opencv/pull/3583
 It's ambiguous whether this speedup actually applies to OSX or not.
 
+-- v1.2.0 (4/07/15) ---------------------
+Refactored camera code into a bundle loaded by the operating system. This results in FPS gains and a more modular codebase; with this we can swap in code to use another camera, such as the PS4 camera.
+
+-- v1.2.1 (4/07/15) ---------------------
+This one is much more major than the minor version number suggests. This bundle should now work very well with Unity!
+
 -----------------------------------------
 
 

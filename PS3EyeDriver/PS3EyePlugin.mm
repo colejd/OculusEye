@@ -7,8 +7,29 @@
 //
 
 #import "PS3EyePlugin.h"
+#import "UnityInterop.h"
 
 //C++ ---------------------------------------------------------
+
+// --------------------------------------------------------------------------
+// Helper utilities
+
+
+// Prints a string
+/*
+static void DebugLog (const char* str)
+{
+#if UNITY_WIN
+    OutputDebugStringA (str);
+#else
+    printf ("%s", str);
+    //LogUnity(str);
+#endif
+}
+*/
+
+// --------------------------------------------------------------------------
+
 extern "C"{
 void InitDriver(){
     [[PS3EyePlugin sharedInstance] InitDriver];
@@ -91,6 +112,156 @@ void setBlueBalance (float blueBalance){
 void setRedBalance (float redBalance){
     return [[PS3EyePlugin sharedInstance] setRedBalance:redBalance];
 }
+    
+void SetDebugFunction( FuncPtr fp )
+{
+    LogUnity = fp;
+}
+    
+void SetUnityTexturePointers(void *leftPtr, void *rightPtr){
+    // A script calls this at initialization time; just remember the texture pointer here.
+    // Will update texture pixels each frame from the plugin rendering event (texture update
+    // needs to happen on the rendering thread).
+    left_TexturePointer = leftPtr;
+    right_TexturePointer = rightPtr;
+    LogUnity("Set Texture Pointers");
+}
+    
+void UnitySetGraphicsDevice (void* device, int deviceType, int eventType)
+{
+    // Set device type to -1, i.e. "not recognized by our plugin"
+    g_DeviceType = -1;
+    
+#if SUPPORT_OPENGL
+    // If we've got an OpenGL device, remember device type. There's no OpenGL
+    // "device pointer" to remember since OpenGL always operates on a currently set
+    // global context.
+    if (deviceType == kGfxRendererOpenGL)
+    {
+        g_DeviceType = deviceType;
+    }
+#endif
+}
+    
+void UnityRenderEvent (int eventID)
+{
+    // Unknown graphics device type? Do nothing.
+    if (g_DeviceType == -1)
+        return;
+    
+    // Actual functions defined below
+    SetDefaultGraphicsState ();
+    DoRendering (eventID);
+}
+    
+}
+
+static void SetDefaultGraphicsState ()
+{
+    
+#if SUPPORT_OPENGL
+    // OpenGL case
+    if (g_DeviceType == kGfxRendererOpenGL)
+    {
+        glDisable (GL_CULL_FACE);
+        glDisable (GL_LIGHTING);
+        glDisable (GL_BLEND);
+        glDisable (GL_ALPHA_TEST);
+        glDepthFunc (GL_LEQUAL);
+        glEnable (GL_DEPTH_TEST);
+        glDepthMask (GL_FALSE);
+    }
+#endif
+}
+
+static void DoRendering (int eventID)
+{
+    
+
+    
+#if SUPPORT_OPENGL
+    // OpenGL case
+    if (g_DeviceType == kGfxRendererOpenGL)
+    {
+        if(eventID == 1){
+            // update native texture from code
+            if (left_TexturePointer && LeftEyeHasNewFrame())
+            {
+                GLuint gltex = (GLuint)(size_t)(left_TexturePointer);
+                glBindTexture (GL_TEXTURE_2D, gltex);
+                int texWidth, texHeight;
+                glGetTexLevelParameteriv (GL_TEXTURE_2D, 0, GL_TEXTURE_WIDTH, &texWidth);
+                glGetTexLevelParameteriv (GL_TEXTURE_2D, 0, GL_TEXTURE_HEIGHT, &texHeight);
+                
+                unsigned char* data = new unsigned char[texWidth*texHeight*4];
+                FillTextureFromCode (texWidth, texHeight, texHeight*4, data, LEFT_EYE);
+                glTexSubImage2D (GL_TEXTURE_2D, 0, 0, 0, texWidth, texHeight, GL_RGBA, GL_UNSIGNED_BYTE, data);
+                delete[] data;
+            }
+        }
+        
+        if(eventID == 2){
+            // update native texture from code
+            if (right_TexturePointer && RightEyeHasNewFrame())
+            {
+                GLuint gltex = (GLuint)(size_t)(right_TexturePointer);
+                glBindTexture (GL_TEXTURE_2D, gltex);
+                int texWidth, texHeight;
+                glGetTexLevelParameteriv (GL_TEXTURE_2D, 0, GL_TEXTURE_WIDTH, &texWidth);
+                glGetTexLevelParameteriv (GL_TEXTURE_2D, 0, GL_TEXTURE_HEIGHT, &texHeight);
+                
+                unsigned char* data = new unsigned char[texWidth*texHeight*4];
+                FillTextureFromCode (texWidth, texHeight, texHeight*4, data, RIGHT_EYE);
+                glTexSubImage2D (GL_TEXTURE_2D, 0, 0, 0, texWidth, texHeight, GL_RGBA, GL_UNSIGNED_BYTE, data);
+                delete[] data;
+            }
+        }
+    }
+    else{
+        LogUnity("This plugin needs OpenGL!");
+    }
+#endif
+}
+
+static void FillTextureFromCode(int width, int height, int stride, unsigned char* dst, EyeType side){
+    
+    //Fill
+    unsigned char *eyeData = NULL;
+    if(side == LEFT_EYE){
+        PullData_Left();
+        eyeData = GetLeftCameraData();
+    }
+    else if(side == RIGHT_EYE){
+        PullData_Right();
+        eyeData = GetRightCameraData();
+    }
+    
+    
+    for (int y = 0; y < height; ++y)
+    {
+        unsigned char* ptr = dst;
+        unsigned char* eyeDataPtr = eyeData;
+        //memcpy(dataPtr, data, width*height*3*sizeof(data[0]));
+        for (int x = 0; x < width; ++x)
+        {
+            // Write the texture pixel
+            
+            ptr[0] = eyeDataPtr[0];//255;//data[0];
+            ptr[1] = eyeDataPtr[1];//0;//data[1];
+            ptr[2] = eyeDataPtr[2];//0;//data[2];
+            ptr[3] = 255;
+            
+            
+            // Jump to next pixel (each is 4 bytes)
+            ptr += 4;
+            eyeDataPtr += 3;
+        }
+        
+        // Jump to next row
+        dst += (width * 4);
+        eyeData += (width * 3);
+    }
+    
 }
 
 
@@ -136,7 +307,7 @@ static PS3EyePlugin* sharedInstance = nil;
 }
 
 -(void) Begin {
-    printf("[PS3EyePlugin] starting...\n");
+    printf("[PS3EyePlugin] Starting...\n");
     //driver = new PS3EyeDriver();
     
     //Last
