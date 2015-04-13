@@ -23,42 +23,6 @@
 #include "opencv2/core/core.hpp"
 #include <opencv2/core/ocl.hpp>
 
-//#include "../PS3EyeDriver/PS3EyePlugin.h"
-
-//#include <OpenCL/opencl.h>
-/*
-class ps3eyeUpdate : public ofThread {
-    
-public:
-    ps3eyeUpdate(){
-    }
-    
-    void start(){
-        startThread(false);   // blocking, verbose
-    }
-    
-    void stop(){
-        stopThread();
-    }
-    
-    //--------------------------
-    void threadedFunction()
-    {
-        while( isThreadRunning() != 0 )
-        {
-            lock();
-            bool res = ps3eye::PS3EYECam::updateDevices();
-            if(!res)
-            {
-                ofLog(OF_LOG_WARNING, "Thread has stopped");
-                break;
-            }
-            unlock();
-        }
-    }
-};
- */
-
 class mainApp : public ofBaseApp {
 public:
     //OpenFrameworks------------------------------

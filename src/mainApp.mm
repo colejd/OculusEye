@@ -245,14 +245,14 @@ void mainApp::CreateGUI(){
  */
 void mainApp::exit(){
     
-    //Save settings here
+    //Save GUI settings here
     generalSettingsStorage -> store();
     //ps3EyeSettingsStorage -> store(); //Don't do this unless you know the defaults won't be overwritten
     otherSettingsStorage -> store();
     cannySettingsStorage -> store();
     
     //Clean up
-    //threadUpdate.stop(); //Stop USB update thread. Do this before deleting USB objects
+    //Stop USB update thread. Do this before deleting USB objects
     [eyeDriver End];
     [eyeDriver dealloc];
     bool threadStopped = false;
@@ -261,8 +261,8 @@ void mainApp::exit(){
         if(![eyeDriver ThreadIsRunning]) break;
     }
     */
-    delete leftEye;  //Stop USB connections; very important
-    delete rightEye; //Stop USB connections; very important
+    delete leftEye;
+    delete rightEye;
     
     //Restore screen resolution
     #if LAUNCH_FULLSCREEN

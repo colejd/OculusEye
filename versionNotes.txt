@@ -71,6 +71,7 @@ This one is much more major than the minor version number suggests. This bundle 
 
 
 to do:
+- Add a field for setting a background color for "edges only" mode.
 - Load configuration (programSettings.h) from a text file
 - Add a nose
 - Use multiplatform threading library in PS3EyeDriver
