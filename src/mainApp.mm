@@ -106,7 +106,7 @@ void mainApp::LoadBundles(){
     
     for(NSString *bundlePath in bundlePaths){
         NSLog(@"Found plugin: %@", [bundlePath stringByAbbreviatingWithTildeInPath]);
-        if([[bundlePath lastPathComponent]  isEqual: @"libPS3EyeDriver.bundle"]){
+        if([[bundlePath lastPathComponent]  isEqual: @"libPS4EyeDriver.bundle"]){
             eyeBundle = [NSBundle bundleWithPath:bundlePath];
         }
     }
@@ -449,8 +449,8 @@ void mainApp::InitEyes(){
         [eyeDriver InitDriver];
     }
     
-    leftEye = new CVEye(0, ((PS3EyePlugin *) eyeDriver), true);
-    rightEye = new CVEye(1, ((PS3EyePlugin *) eyeDriver), false);
+    leftEye = new CVEye(0, ((PS4EyePlugin *) eyeDriver), true);
+    rightEye = new CVEye(1, ((PS4EyePlugin *) eyeDriver), false);
     
     /*
     //Pull default values from the camera hardware and update the GUI / CVEyes present

@@ -1,5 +1,5 @@
 //
-//  PS3EyePlugin.h
+//  PS4EyePlugin.h
 //  OculusEye
 //
 //  Created by Jonathan Cole on 3/31/15.
@@ -7,7 +7,7 @@
 //
 
 /**
- * Interface into PS3 Eye code.
+ * Interface into PS4 Eye code.
  */
 
 #import <Foundation/Foundation.h>
@@ -16,8 +16,8 @@
 #include <assert.h>
 #include <pthread.h>
 
-#include "PS3EyeDriver.h"
-#include "PS3EyeMisc.h"
+#include "PS4EyeDriver.h"
+#include "PS4EyeMisc.h"
 
 #include <string>
 #include <sstream>
@@ -47,14 +47,11 @@ extern "C" {
 
     uint8_t* GetLeftCameraData();
     uint8_t* GetRightCameraData();
-    void PullData_Left();
-    void PullData_Right();
+    void PullData();
 
-    bool LeftEyeHasNewFrame();
-    bool RightEyeHasNewFrame();
+    bool EyeHasNewFrame();
 
-    bool LeftEyeInitialized();
-    bool RightEyeInitialized();
+    bool EyeInitialized();
 
     bool ThreadIsRunning();
 
@@ -76,25 +73,22 @@ extern "C" {
 
 //Objective-C --------------------------------------------------
 
-@interface PS3EyePlugin : NSObject{
-    PS3EyeDriver *driver;
+@interface PS4EyePlugin : NSObject{
+    PS4EyeDriver *driver;
 }
 
-+(PS3EyePlugin*) sharedInstance;
++(PS4EyePlugin*) sharedInstance;
 -(void)InitDriver;
 -(void)Begin;
 -(void)End;
 -(int)GetCameraCount;
 -(uint8_t *)GetLeftCameraData;
 -(uint8_t *)GetRightCameraData;
--(void)PullData_Left;
--(void)PullData_Right;
+-(void)PullData;
 
--(bool) LeftEyeHasNewFrame;
--(bool) RightEyeHasNewFrame;
+-(bool) EyeHasNewFrame;
 
--(bool) LeftEyeInitialized;
--(bool) RightEyeInitialized;
+-(bool) EyeInitialized;
 
 -(bool) ThreadIsRunning;
 

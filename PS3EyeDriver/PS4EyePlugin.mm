@@ -1,12 +1,12 @@
 //
-//  PS3EyePlugin.mm
+//  PS4EyePlugin.mm
 //  OculusEye
 //
 //  Created by Jonathan Cole on 3/31/15.
 //
 //
 
-#import "PS3EyePlugin.h"
+#import "PS4EyePlugin.h"
 #import "UnityInterop.h"
 
 //C++ ---------------------------------------------------------
@@ -32,85 +32,76 @@ static void DebugLog (const char* str)
 
 extern "C"{
 void InitDriver(){
-    [[PS3EyePlugin sharedInstance] InitDriver];
+    [[PS4EyePlugin sharedInstance] InitDriver];
 }
 
 void Begin(){
-    [[PS3EyePlugin sharedInstance] Begin];
+    [[PS4EyePlugin sharedInstance] Begin];
 }
 
 void End(){
-    [[PS3EyePlugin sharedInstance] End];
+    [[PS4EyePlugin sharedInstance] End];
 }
 
 void Dealloc(){
-    [[PS3EyePlugin sharedInstance] End];
+    [[PS4EyePlugin sharedInstance] End];
 }
 
 int GetCameraCount(){
-    return [[PS3EyePlugin sharedInstance] GetCameraCount];
+    return [[PS4EyePlugin sharedInstance] GetCameraCount];
 }
 
 uint8_t* GetLeftCameraData(){
-    return [[PS3EyePlugin sharedInstance] GetLeftCameraData];
+    return [[PS4EyePlugin sharedInstance] GetLeftCameraData];
 }
 uint8_t* GetRightCameraData(){
-    return [[PS3EyePlugin sharedInstance] GetRightCameraData];
+    return [[PS4EyePlugin sharedInstance] GetRightCameraData];
 }
-void PullData_Left(){
-    [[PS3EyePlugin sharedInstance] PullData_Left];
-}
-void PullData_Right(){
-    [[PS3EyePlugin sharedInstance] PullData_Right];
+void PullData(){
+    [[PS4EyePlugin sharedInstance] PullData];
 }
 
-bool LeftEyeHasNewFrame(){
-    return [[PS3EyePlugin sharedInstance] LeftEyeHasNewFrame];
-}
-bool RightEyeHasNewFrame(){
-    return [[PS3EyePlugin sharedInstance] RightEyeHasNewFrame];
+bool EyeHasNewFrame(){
+    return [[PS4EyePlugin sharedInstance] EyeHasNewFrame];
 }
 
-bool LeftEyeInitialized(){
-    return [[PS3EyePlugin sharedInstance] LeftEyeInitialized];
-}
-bool RightEyeInitialized(){
-    return [[PS3EyePlugin sharedInstance] RightEyeInitialized];
+bool EyeInitialized(){
+    return [[PS4EyePlugin sharedInstance] EyeInitialized];
 }
 
 bool ThreadIsRunning(){
-    return [[PS3EyePlugin sharedInstance] ThreadIsRunning];
+    return [[PS4EyePlugin sharedInstance] ThreadIsRunning];
 }
 
 void setAutoWhiteBalance (bool autoWhiteBalance){
-    return [[PS3EyePlugin sharedInstance] setAutoWhiteBalance:autoWhiteBalance];
+    return [[PS4EyePlugin sharedInstance] setAutoWhiteBalance:autoWhiteBalance];
 }
 void setAutoGain (bool autoGain){
-    return [[PS3EyePlugin sharedInstance] setAutoGain:autoGain];
+    return [[PS4EyePlugin sharedInstance] setAutoGain:autoGain];
 }
 void setGain (float gain){
-    return [[PS3EyePlugin sharedInstance] setGain:gain];
+    return [[PS4EyePlugin sharedInstance] setGain:gain];
 }
 void setSharpness (float sharpness){
-    return [[PS3EyePlugin sharedInstance] setSharpness:sharpness];
+    return [[PS4EyePlugin sharedInstance] setSharpness:sharpness];
 }
 void setExposure (float exposure){
-    return [[PS3EyePlugin sharedInstance] setExposure:exposure];
+    return [[PS4EyePlugin sharedInstance] setExposure:exposure];
 }
 void setBrightness (float brightness){
-    return [[PS3EyePlugin sharedInstance] setBrightness:brightness];
+    return [[PS4EyePlugin sharedInstance] setBrightness:brightness];
 }
 void setContrast (float contrast){
-    return [[PS3EyePlugin sharedInstance] setContrast:contrast];
+    return [[PS4EyePlugin sharedInstance] setContrast:contrast];
 }
 void setHue (float hue){ //huehuehuehuehue
-    return [[PS3EyePlugin sharedInstance] setHue:hue];
+    return [[PS4EyePlugin sharedInstance] setHue:hue];
 }
 void setBlueBalance (float blueBalance){
-    return [[PS3EyePlugin sharedInstance] setBlueBalance:blueBalance];
+    return [[PS4EyePlugin sharedInstance] setBlueBalance:blueBalance];
 }
 void setRedBalance (float redBalance){
-    return [[PS3EyePlugin sharedInstance] setRedBalance:redBalance];
+    return [[PS4EyePlugin sharedInstance] setRedBalance:redBalance];
 }
     
 void SetDebugFunction( FuncPtr fp )
@@ -177,15 +168,16 @@ static void SetDefaultGraphicsState ()
 static void DoRendering (int eventID)
 {
     
-
+    if(EyeHasNewFrame()){
     
 #if SUPPORT_OPENGL
     // OpenGL case
     if (g_DeviceType == kGfxRendererOpenGL)
     {
+        PullData();
         if(eventID == 1){
             // update native texture from code
-            if (left_TexturePointer && LeftEyeHasNewFrame())
+            if (left_TexturePointer)
             {
                 GLuint gltex = (GLuint)(size_t)(left_TexturePointer);
                 glBindTexture (GL_TEXTURE_2D, gltex);
@@ -202,7 +194,7 @@ static void DoRendering (int eventID)
         
         if(eventID == 2){
             // update native texture from code
-            if (right_TexturePointer && RightEyeHasNewFrame())
+            if (right_TexturePointer)
             {
                 GLuint gltex = (GLuint)(size_t)(right_TexturePointer);
                 glBindTexture (GL_TEXTURE_2D, gltex);
@@ -221,6 +213,7 @@ static void DoRendering (int eventID)
         LogUnity("This plugin needs OpenGL!");
     }
 #endif
+    }
 }
 
 static void FillTextureFromCode(int width, int height, int stride, unsigned char* dst, EyeType side){
@@ -228,11 +221,9 @@ static void FillTextureFromCode(int width, int height, int stride, unsigned char
     //Fill
     unsigned char *eyeData = NULL;
     if(side == LEFT_EYE){
-        PullData_Left();
         eyeData = GetLeftCameraData();
     }
     else if(side == RIGHT_EYE){
-        PullData_Right();
         eyeData = GetRightCameraData();
     }
     
@@ -270,14 +261,14 @@ static void FillTextureFromCode(int width, int height, int stride, unsigned char
 
 //Objective-C --------------------------------------------------
 
-@implementation PS3EyePlugin{
+@implementation PS4EyePlugin{
     //Private instance variables
 }
 
 -(id)init {
     if (self = [super init]) {
         if(self){
-            driver = new PS3EyeDriver();
+            driver = new PS4EyeDriver();
             if (!driver) self = nil;
         }
     }
@@ -294,10 +285,10 @@ static void FillTextureFromCode(int width, int height, int stride, unsigned char
     [super dealloc];
 }
 
-static PS3EyePlugin* sharedInstance = nil;
-+(PS3EyePlugin*)sharedInstance {
+static PS4EyePlugin* sharedInstance = nil;
++(PS4EyePlugin*)sharedInstance {
     if( !sharedInstance )
-        sharedInstance = [[PS3EyePlugin alloc] init];
+        sharedInstance = [[PS4EyePlugin alloc] init];
     
     return sharedInstance;
 }
@@ -307,19 +298,19 @@ static PS3EyePlugin* sharedInstance = nil;
 }
 
 -(void) Begin {
-    printf("[PS3EyePlugin] Starting...\n");
-    //driver = new PS3EyeDriver();
+    printf("[PS4EyePlugin] Starting...\n");
+    //driver = new PS4EyeDriver();
     
     //Last
-    printf("[PS3EyePlugin] PS3EyePlugin started.\n");
+    printf("[PS4EyePlugin] PS4EyePlugin started.\n");
 }
 
 -(void) End {
-    printf("[PS3EyePlugin] PS3EyePlugin shutting down...\n");
+    printf("[PS4EyePlugin] PS4EyePlugin shutting down...\n");
     //delete driver;
     
     //Last
-    printf("[PS3EyePlugin] PS3EyePlugin shut down.\n");
+    printf("[PS4EyePlugin] PS4EyePlugin shut down.\n");
 }
 
 -(uint8_t *)GetLeftCameraData{
@@ -329,34 +320,21 @@ static PS3EyePlugin* sharedInstance = nil;
     return driver->rawPixelData_Right;
 }
 
--(void)PullData_Left{
-    driver->PullData_Left();
-}
-
--(void)PullData_Right{
-    driver->PullData_Right();
+-(void)PullData{
+    driver->PullData();
 }
 
 -(int) GetCameraCount {
     return driver->GetNumCameras();
 }
 
--(bool) LeftEyeHasNewFrame {
-    return driver->leftEyeRef->isNewFrame();
+-(bool) EyeHasNewFrame {
+    return driver->eyeRef->isNewFrame();
 }
 
--(bool) RightEyeHasNewFrame {
-    return driver->rightEyeRef->isNewFrame();
-}
-
--(bool) LeftEyeInitialized {
+-(bool) EyeInitialized {
     //return (driver->leftEyeRef != NULL);
-    return driver->leftEyeInitialized;
-}
-
--(bool) RightEyeInitialized {
-    //return (driver->rightEyeRef != NULL);
-    return driver->rightEyeInitialized;
+    return driver->eyeInitialized;
 }
 
 -(bool) ThreadIsRunning {

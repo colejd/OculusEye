@@ -105,6 +105,6 @@ abandoned:
     -> This was more for fun than anything. It wasn't useful and added unneeded complexity to the program.
 
 future:
-- Offload initial YUV422 to RGB conversion to Raspberry Pi located on hardware
+- Offload initial YUV422 to RGB conversion to Raspberry Pi mounted on hardware
 - Figure out a way to get the video from the Pi to the computer quickly
 - Add an IR diffuser to the cameras and remove IR filters from them (improves low-light detection)

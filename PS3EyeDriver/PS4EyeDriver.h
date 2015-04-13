@@ -1,5 +1,5 @@
 //
-//  PS3EyeDriver.h
+//  PS4EyeDriver.h
 //  OculusEye
 //
 //  Created by Jonathan Cole on 3/31/15.
@@ -7,30 +7,30 @@
 //
 
 /**
- * Code for pulling camera data from the PS3 Eyes and giving them
- * to the outer interface (PS3EyePlugin).
+ * Code for pulling camera data from the PS4 Eyes and giving them
+ * to the outer interface (PS4EyePlugin).
  */
 
-#ifndef __OculusEye__PS3EyeDriver__
-#define __OculusEye__PS3EyeDriver__
+#ifndef __OculusEye__PS4EyeDriver__
+#define __OculusEye__PS4EyeDriver__
 
 #include <stdio.h>
 #include <pthread.h>
 #include <assert.h>
 
-#include "ps3eye.h"
-#include "OFCVBridge.h"
+#include "ps4eye.h"
+//#include "OFCVBridge.h"
 
-#include "PS3EyeMisc.h"
+#include "PS4EyeMisc.h"
 
 #define CAMERA_WIDTH 640
 #define CAMERA_HEIGHT 480
 #define CAMERA_FPS 60
 
-class PS3EyeDriver {
+class PS4EyeDriver {
 public:
-    PS3EyeDriver();
-    ~PS3EyeDriver();
+    PS4EyeDriver();
+    ~PS4EyeDriver();
     
     void Init();
     
@@ -58,22 +58,19 @@ public:
     unsigned char * rawPixelData_Left;
     unsigned char * rawPixelData_Right;
     
-    ps3eye::PS3EYECam::PS3EYERef leftEyeRef;
-    ps3eye::PS3EYECam::PS3EYERef rightEyeRef;
+    ps4eye::PS4EYECam::PS4EYERef eyeRef;
     
     //bool camerasInitialized = false;
     
-    void PullData_Left();
-    void PullData_Right();
+    void PullData();
     
     
     static int GetNumCameras();
     
-    YUVBuffer yuvData_left;
-    YUVBuffer yuvData_right;
+    //YUVBuffer yuvData_left;
+    //YUVBuffer yuvData_right;
     
-    bool leftEyeInitialized = false;
-    bool rightEyeInitialized = false;
+    bool eyeInitialized = false;
     
     void setAutoGain(bool autoGain, EyeType whichSide);
     void setAutoWhiteBalance(bool autoWhiteBalance, EyeType whichSide);
@@ -85,6 +82,17 @@ public:
     void setHue(float hue, EyeType whichSide);
     void setBlueBalance(float blueBalance, EyeType whichSide);
     void setRedBalance(float redBalance, EyeType whichSide);
+    
+    //from https://social.msdn.microsoft.com/forums/windowsdesktop/en-us/1071301e-74a2-4de4-be72-81c34604cde9/program-to-translate-yuyv-to-rgbrgb modified yuyv order
+    /*--------------------------------------------------------*\
+     |    yuv2rgb                                               |
+     \*--------------------------------------------------------*/
+    void yuv2rgb(int y, int u, int v, char *r, char *g, char *b);
+    
+    /*--------------------------------------------------------*\
+     |    yuyvToRgb                                             |
+     \*--------------------------------------------------------*/
+    void yuyvToRgb(uint8_t *in,uint8_t *out, int size_x,int size_y);
 
     
 private:
@@ -94,4 +102,4 @@ private:
 
 void *CameraUpdateThread(void *arg);
 
-#endif /* defined(__OculusEye__PS3EyeDriver__) */
+#endif /* defined(__OculusEye__PS4EyeDriver__) */

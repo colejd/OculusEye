@@ -9,7 +9,7 @@
 #include "CVEye.h"
 
 //Constructor
-CVEye::CVEye(const int _index, PS3EyePlugin *plugin, bool isLeft) {
+CVEye::CVEye(const int _index, PS4EyePlugin *plugin, bool isLeft) {
     camIndex = _index;
     eyePlugin = plugin;
     
@@ -76,8 +76,8 @@ bool CVEye::init(const int _width, const int _height){
         //initialized = eyeDriver->camerasInitialized;
     //}
     
-    if(isLeftEye) initialized = [eyePlugin LeftEyeInitialized];
-    else initialized = [eyePlugin RightEyeInitialized];
+    if(isLeftEye) initialized = [eyePlugin EyeInitialized];
+    else initialized = [eyePlugin EyeInitialized];
     
     //If no cameras are detected, a sample image is loaded.
     if(initialized == false){
@@ -119,16 +119,17 @@ bool CVEye::init(const int _width, const int _height){
  */
 void CVEye::PullData(){
     if(initialized){
+        [eyePlugin PullData];
         if(isLeftEye){
             //if(leftEyeRef->isNewFrame()){
-                [eyePlugin PullData_Left];
+                //[eyePlugin PullData];
                 rawPixelData = [eyePlugin GetLeftCameraData];
                 src_tmp.data = rawPixelData;
             //}
         }
         else{
             //if(rightEyeRef->isNewFrame()){
-                [eyePlugin PullData_Right];
+                //[eyePlugin PullData];
                 rawPixelData = [eyePlugin GetRightCameraData];
                 src_tmp.data = rawPixelData;
             //}
@@ -175,13 +176,13 @@ void CVEye::PullData(){
 }
 
 void CVEye::update(){
-    bool cameraPass = ( ([eyePlugin LeftEyeInitialized] && isLeftEye) || ([eyePlugin RightEyeInitialized] && !isLeftEye) );
+    bool cameraPass = ( ([eyePlugin EyeInitialized] && isLeftEye) || ([eyePlugin EyeInitialized] && !isLeftEye) );
     if(cameraPass || dummyImage)
     //if(eyeDriver->leftEyeRef || dummyImage)
     {
         bool isNewFrame = false;
-        if(isLeftEye && cameraPass) isNewFrame = [eyePlugin LeftEyeHasNewFrame];
-        else if(!isLeftEye && cameraPass) isNewFrame = [eyePlugin RightEyeHasNewFrame];
+        if(isLeftEye && cameraPass) isNewFrame = [eyePlugin EyeHasNewFrame];
+        else if(!isLeftEye && cameraPass) isNewFrame = [eyePlugin EyeHasNewFrame];
         
         //Do we have camera data or a default image to display?
         bool computeFrame = dummyImage;
