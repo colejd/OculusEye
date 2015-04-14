@@ -88,10 +88,10 @@ void mainApp::setup(){
     
     eyeFPSGraph = PerformanceGraph("Eye FPS", ofGetWindowWidth() - 70, ofGetWindowHeight() - 15);
     
-    InitEyes();
-    
     //Set up GUI
     CreateGUI();
+    
+    InitEyes();
     
 }
 
@@ -188,7 +188,7 @@ void mainApp::CreateGUI(){
     //ps3EyeSettings -> load();
     //ps3EyeSettingsStorage -> store();
     //ps3EyeSettings -> close();
-    ps3EyeSettings -> open();
+    //ps3EyeSettings -> open();
     
     ps3EyeSettings -> setSize(400, 300);
     ps3EyeSettings -> setColor(44, 44, 44, 180);
@@ -456,25 +456,25 @@ void mainApp::InitEyes(){
     
     //Pull default values from the camera hardware and update the GUI / CVEyes present
     //if(eyePlugin){
-        autoWhiteBalance = [eyePlugin getAutoWhiteBalance];
-        autoGain = [eyePlugin getAutoGain];
-        gain = [eyePlugin getGain];
-        sharpness = [eyePlugin getSharpness];
+        autoWhiteBalance = [eyeDriver getAutoWhiteBalance];
+        autoGain = [eyeDriver getAutoGain];
+        gain = [eyeDriver getGain];
+        sharpness = [eyeDriver getSharpness];
         printf("Sharpness: %f\n", sharpness);
-        exposure = [eyePlugin getExposure];
-        brightness = [eyePlugin getBrightness];
-        contrast = [eyePlugin getContrast];
-        hue = [eyePlugin getHue];
-        blueBalance = [eyePlugin getBlueBalance];
-        redBalance = [eyePlugin getRedBalance];
+        exposure = [eyeDriver getExposure];
+        brightness = [eyeDriver getBrightness];
+        contrast = [eyeDriver getContrast];
+        hue = [eyeDriver getHue];
+        blueBalance = [eyeDriver getBlueBalance];
+        redBalance = [eyeDriver getRedBalance];
         
-        //UpdateCameraSettings();
+        UpdateCameraSettings();
     //}
     
     UpdateEyeValues(leftEye);
     UpdateEyeValues(rightEye);
     
-    UpdateCameraSettings();
+    //UpdateCameraSettings();
     
 }
 
@@ -510,7 +510,8 @@ void mainApp::DrawCVMat(const cv::Mat& mat, ofImageType type, int x, int y, int 
 
 
 /**
- * Expensive. Don't call often.
+ * Updates the values for the PS3 Eye firmware located on the device.
+ * Very slow due to USB writes. Use sparingly.
  */
 void mainApp::UpdateCameraSettings(){
     
@@ -580,6 +581,14 @@ void mainApp::EndCameraCalibration(bool stopEarly){
 }
 
 /**
+ * Button callback to toggle fullscreen
+ */
+void TW_CALL mainApp::fullscreenButtonCallback(void* pApp) {
+    mainApp* app = static_cast<mainApp*>(pApp);
+    app->ToggleBorderlessFullscreen();
+}
+
+/**
  * Toggles borderless fullscreen on and off.
  */
 void mainApp::ToggleBorderlessFullscreen(){
@@ -614,14 +623,6 @@ void mainApp::SetBorderlessFullscreen(bool useFullscreen){
     //(see https://github.com/openframeworks/openFrameworks/issues/2174)
     [window makeFirstResponder:window.contentView];
     
-}
-
-/**
- * Button callback to toggle fullscreen
- */
-void TW_CALL mainApp::fullscreenButtonCallback(void* pApp) {
-    mainApp* app = static_cast<mainApp*>(pApp);
-    app->ToggleBorderlessFullscreen();
 }
 
 //--------------------------------------------------------------

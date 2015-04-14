@@ -152,9 +152,7 @@ public:
     
     void LoadBundles();
     NSBundle *eyeBundle;
-    id eyeDriver;
-    
-    PS3EyePlugin *eyePlugin;
+    id eyeDriver; //<PS3EyePlugin>
     
 private:
     string GetStdoutFromCommand(string cmd);

@@ -41,6 +41,7 @@ void CameraCalibrator::BeginCalibration(){
     
     calibrating = true;
     calibrated = false;
+    lookingForBoard = true;
     
 }
 
@@ -56,12 +57,28 @@ void CameraCalibrator::EndCalibration(bool stopEarly){
     printf("===END CALIBRATION===\n");
 }
 
+/**
+ * Search for a physical chess board and correct for distortion once found.
+ */
 void CameraCalibrator::Update(){
-    
     if(successes < numBoards){
         //Look for a chess board in the camera frustum.
-        bool found = findChessboardCorners(*src_tmp, board_sz, corners, CV_CALIB_CB_ADAPTIVE_THRESH+CV_CALIB_CB_NORMALIZE_IMAGE);
+        bool found = false;
+        
+        //Use a time delay to wait between searches to reduce slowdown
+        if(lookingForBoard){
+            float currentTime = ofGetElapsedTimef();
+            if( (currentTime - lastFoundBoardTime) > delayBetweenBoardSearches){
+                lastFoundBoardTime = currentTime;
+                found = findChessboardCorners(*src_tmp, board_sz, corners, CV_CALIB_CB_ADAPTIVE_THRESH+CV_CALIB_CB_NORMALIZE_IMAGE);
+            }
+        }
+        
+        //Once the board is found, it will examine the board every frame. However, it will only
+        //record the distortion every few frames, so as to give the user time to move the camera,
+        //giving better results.
         if(found) {
+            lookingForBoard = false;
             cornerSubPix(*src_gray, corners, cv::Size(11, 11), cv::Size(-1, -1), cvTermCriteria(CV_TERMCRIT_EPS | CV_TERMCRIT_ITER, 30, 0.1));
             drawChessboardCorners(*dest, board_sz, corners, found);
             
@@ -76,6 +93,9 @@ void CameraCalibrator::Update(){
                 successes++;
             }
             
+        }
+        else{
+            lookingForBoard = true;
         }
         
     }

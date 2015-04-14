@@ -59,6 +59,10 @@ public:
     
     float reprojectionError;
     
+    bool lookingForBoard = true;
+    float lastFoundBoardTime;
+    float delayBetweenBoardSearches = 1.0f;
+    
     
 private:
     cv::Mat *src_tmp;

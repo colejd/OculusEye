@@ -451,7 +451,7 @@ static PS3EyePlugin* sharedInstance = nil;
     return driver->leftEyeRef->getContrast();
 }
 
--(Byte) getHue{ //huehuehuehuehue
+-(Byte) getHue{ //hhhehehe
     return driver->leftEyeRef->getHue();
 }
 
