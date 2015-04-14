@@ -23,13 +23,18 @@
 
 #include "PS3EyeMisc.h"
 
+#include <boost/thread.hpp>
+
 #define CAMERA_WIDTH 640
 #define CAMERA_HEIGHT 480
 #define CAMERA_FPS 60
 
 class PS3EyeDriver {
 public:
-    PS3EyeDriver();
+    typedef void (*FuncPtr)( const char * );
+    FuncPtr Log;
+    
+    PS3EyeDriver(FuncPtr logPtr);
     ~PS3EyeDriver();
     
     void Init();
@@ -66,7 +71,6 @@ public:
     void PullData_Left();
     void PullData_Right();
     
-    
     static int GetNumCameras();
     
     YUVBuffer yuvData_left;
@@ -85,13 +89,16 @@ public:
     void setHue(float hue, EyeType whichSide);
     void setBlueBalance(float blueBalance, EyeType whichSide);
     void setRedBalance(float redBalance, EyeType whichSide);
-
+    
+    boost::thread cameraPollingThread;
+    void CameraPollThread();
     
 private:
     
     
 };
 
-void *CameraUpdateThread(void *arg);
+//This actually does get used.
+static void *CameraUpdateThread(void *arg);
 
 #endif /* defined(__OculusEye__PS3EyeDriver__) */

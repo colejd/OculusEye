@@ -18,7 +18,7 @@
 #include "CameraCalibrator.h"
 
 #include "../PS3EyeDriver/PS3EyePlugin.h"
-#include "../PS3EyeDriver/PS3EyeDriver.h"
+//#include "../PS3EyeDriver/PS3EyeDriver.h"
 
 #include <opencv/cv.h>
 #include <opencv/cv.hpp>
@@ -117,7 +117,7 @@ public:
     
     bool isLeftEye;
     
-    PS3EyeDriver* GetDriverForSide(bool isLeft);
+    //PS3EyeDriver* GetDriverForSide(bool isLeft);
     
 private:
     int camIndex;

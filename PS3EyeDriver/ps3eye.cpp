@@ -735,8 +735,10 @@ namespace ps3eye {
     
     PS3EYECam::~PS3EYECam()
     {
+        //printf("Destroying camera instance...\n");
         stop();
         release();
+        //printf("Destroyed camera instance.\n");
     }
     
     void PS3EYECam::release()

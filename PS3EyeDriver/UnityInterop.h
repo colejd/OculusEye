@@ -52,7 +52,6 @@ extern "C" void UnityRenderEvent(int eventID);
 static void CallBackFunction(std::string str);
 
 typedef void (*FuncPtr)( const char * );
-
-FuncPtr LogUnity;
+FuncPtr DebugLog;
 
 #endif

@@ -10,6 +10,10 @@
 		4669069C1AD4819C00D69129 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4669069A1AD4817200D69129 /* GLUT.framework */; };
 		4669069D1AD4819F00D69129 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 466906981AD4816C00D69129 /* OpenGL.framework */; };
 		468761131ACDD26600594754 /* OFCVBridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 468761111ACDD26600594754 /* OFCVBridge.cpp */; };
+		46938B971ADD9854000CD7D7 /* libboost_system-mt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46938B951ADD9854000CD7D7 /* libboost_system-mt.a */; };
+		46938B981ADD9854000CD7D7 /* libboost_thread-mt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46938B961ADD9854000CD7D7 /* libboost_thread-mt.a */; };
+		46938B991ADD986D000CD7D7 /* libboost_system-mt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46938B951ADD9854000CD7D7 /* libboost_system-mt.a */; };
+		46938B9A1ADD986D000CD7D7 /* libboost_thread-mt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46938B961ADD9854000CD7D7 /* libboost_thread-mt.a */; };
 		46CB212A1AC37958009DD011 /* libIlmImf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46CB210C1AC37958009DD011 /* libIlmImf.a */; };
 		46CB212B1AC37958009DD011 /* libippicv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46CB210D1AC37958009DD011 /* libippicv.a */; };
 		46CB212C1AC37958009DD011 /* liblibjasper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46CB210E1AC37958009DD011 /* liblibjasper.a */; };
@@ -213,6 +217,8 @@
 		468761111ACDD26600594754 /* OFCVBridge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OFCVBridge.cpp; sourceTree = "<group>"; };
 		468761121ACDD26600594754 /* OFCVBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OFCVBridge.h; sourceTree = "<group>"; };
 		468761171ACE17D300594754 /* PS3EyeMisc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PS3EyeMisc.h; sourceTree = "<group>"; };
+		46938B951ADD9854000CD7D7 /* libboost_system-mt.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libboost_system-mt.a"; path = "../../../../../../../../../../usr/local/Cellar/boost/1.57.0/lib/libboost_system-mt.a"; sourceTree = "<group>"; };
+		46938B961ADD9854000CD7D7 /* libboost_thread-mt.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libboost_thread-mt.a"; path = "../../../../../../../../../../usr/local/Cellar/boost/1.57.0/lib/libboost_thread-mt.a"; sourceTree = "<group>"; };
 		46CB210C1AC37958009DD011 /* libIlmImf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libIlmImf.a; sourceTree = "<group>"; };
 		46CB210D1AC37958009DD011 /* libippicv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libippicv.a; sourceTree = "<group>"; };
 		46CB210E1AC37958009DD011 /* liblibjasper.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = liblibjasper.a; sourceTree = "<group>"; };
@@ -428,6 +434,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46938B991ADD986D000CD7D7 /* libboost_system-mt.a in Frameworks */,
+				46938B9A1ADD986D000CD7D7 /* libboost_thread-mt.a in Frameworks */,
 				4669069D1AD4819F00D69129 /* OpenGL.framework in Frameworks */,
 				4669069C1AD4819C00D69129 /* GLUT.framework in Frameworks */,
 				46FD558A1ACB3421003D0FD5 /* IOKit.framework in Frameworks */,
@@ -441,6 +449,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46938B971ADD9854000CD7D7 /* libboost_system-mt.a in Frameworks */,
+				46938B981ADD9854000CD7D7 /* libboost_thread-mt.a in Frameworks */,
 				46CB21431AC37958009DD011 /* libzlib.a in Frameworks */,
 				46F452051A89D00100DD172A /* libAntTweakBar.a in Frameworks */,
 				46CB21311AC37958009DD011 /* libopencv_calib3d.a in Frameworks */,
@@ -1040,6 +1050,8 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
+				46938B951ADD9854000CD7D7 /* libboost_system-mt.a */,
+				46938B961ADD9854000CD7D7 /* libboost_thread-mt.a */,
 				51B2FDD21A3109BA00246487 /* OculusEyeDebug.app */,
 				519909861A2581B1008021BE /* notes.txt */,
 				5199098E1A2581B2008021BE /* versionNotes.txt */,
@@ -1333,7 +1345,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1361,12 +1373,16 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/PS3EyeDriver/src/**";
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/PS3EyeDriver/src/**",
+					/usr/local/Cellar/boost/1.57.0/include,
+				);
 				INFOPLIST_FILE = PS3EyeDriver/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PS3EyeDriver",
+					/usr/local/Cellar/boost/1.57.0/lib,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -1385,7 +1401,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1410,12 +1426,16 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/PS3EyeDriver/src/**";
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/PS3EyeDriver/src/**",
+					/usr/local/Cellar/boost/1.57.0/include,
+				);
 				INFOPLIST_FILE = PS3EyeDriver/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PS3EyeDriver",
+					/usr/local/Cellar/boost/1.57.0/lib,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -1565,6 +1585,7 @@
 					"$(OF_CORE_HEADERS)",
 					"$(PROJECT_DIR)/addons/AntTweakBar/include/**",
 					"$(PROJECT_DIR)/addons/ofxOculusRift/**",
+					/usr/local/Cellar/boost/1.57.0/include,
 				);
 				ICON = "$(ICON_NAME_DEBUG)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
@@ -1618,6 +1639,7 @@
 					"$(OF_CORE_HEADERS)",
 					"$(PROJECT_DIR)/addons/AntTweakBar/include/**",
 					"$(PROJECT_DIR)/addons/ofxOculusRift/**",
+					/usr/local/Cellar/boost/1.57.0/include,
 				);
 				ICON = "$(ICON_NAME_RELEASE)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";

@@ -66,6 +66,9 @@ Refactored camera code into a bundle loaded by the operating system. This result
 -- v1.2.1 (4/07/15) ---------------------
 This one is much more major than the minor version number suggests. This bundle should now work very well with Unity!
 
+-- v1.2.2 (4/14/15) ---------------------
+I've abandoned the driver's native threading in support of Boost's threading libraries. This will allow me to go multiplatform when the time comes.
+
 -----------------------------------------
 
 

@@ -8,8 +8,10 @@
 
 #include "PS3EyeDriver.h"
 
-PS3EyeDriver::PS3EyeDriver(){
-    printf("[PS3EyeDriver] Driver starting...\n");
+PS3EyeDriver::PS3EyeDriver(FuncPtr logPtr){
+    Log = logPtr;
+    Log("[PS3EyeDriver] Creating driver...");
+    //printf("[PS3EyeDriver] Driver starting...\n");
     
     rawPixelData_Left = (unsigned char*)malloc(CAMERA_WIDTH*CAMERA_HEIGHT*3*sizeof(unsigned char));
     rawPixelData_Right = (unsigned char*)malloc(CAMERA_WIDTH*CAMERA_HEIGHT*3*sizeof(unsigned char));
@@ -18,29 +20,30 @@ PS3EyeDriver::PS3EyeDriver(){
     yuvData_right = YUVBuffer();
     
     //Last
-    printf("[PS3EyeDriver] Driver started.\n");
+    Log("[PS3EyeDriver] Driver created.");
     
 }
 
 PS3EyeDriver::~PS3EyeDriver(){
-    printf("[PS3EyeDriver] Driver stopping...\n");
+    Log("[PS3EyeDriver] Driver stopping...");
     StopCameraUpdateThread();
     
     free(rawPixelData_Left);
     free(rawPixelData_Right);
     
     //Last
-    printf("[PS3EyeDriver] Driver stopped.\n");
+    Log("[PS3EyeDriver] Driver stopped.");
     
 }
 
 void PS3EyeDriver::Init(){
-    printf("[PS3EyeDriver] Initializing...\n");
+    Log("[PS3EyeDriver] Initializing...");
     //Start polling the cameras
     StartCameraUpdateThread();
     
     //Initialize the cameras
     //initialized = false;
+    //if(cameraThreadStarted) Log("The thread is started.");
     
     using namespace ps3eye;
     // list out the devices
@@ -61,7 +64,7 @@ void PS3EyeDriver::Init(){
         rightEyeInitialized = true;
     }
     
-    printf("[PS3EyeDriver] Driver init over.\n");
+    Log("[PS3EyeDriver] Driver initialized.");
     
 }
 
@@ -86,65 +89,125 @@ void PS3EyeDriver::PullData_Right(){
 #define REQUIRED_STACK_SIZE 1024*1024*16
 void PS3EyeDriver::StartCameraUpdateThread(){
     if(!cameraThreadStarted){
+        Log("[PS3EyeDriver] Starting the polling thread.");
+        /*
         cameraThreadRetVal = pthread_attr_init(&cameraThreadAttr);
-        assert(!cameraThreadRetVal);
+        //assert(!cameraThreadRetVal);
         
         cameraThreadErr = pthread_attr_getstacksize(&cameraThreadAttr, &stackSize);
         //assert(!cameraThreadErr);
         if(stackSize < REQUIRED_STACK_SIZE){
             cameraThreadErr = pthread_attr_setstacksize(&cameraThreadAttr, REQUIRED_STACK_SIZE);
-            printf("[PS3EyeDriver] Resized the stack\n");
+            Log("[PS3EyeDriver] Resized the stack");
         }
         
         cameraThreadRetVal = pthread_attr_setdetachstate(&cameraThreadAttr, PTHREAD_CREATE_DETACHED);
-        assert(!cameraThreadRetVal);
+        //assert(!cameraThreadRetVal);
         
         cameraThreadErr = pthread_create(&cameraThreadID, &cameraThreadAttr, &CameraUpdateThread, NULL);
-        cameraThreadStarted = true;
+         */
+        
+        //http://www.boost.org/doc/libs/1_54_0/doc/html/thread/thread_management.html#thread.thread_management.tutorial.launching
+        boost::thread::attributes attrs;
+        // set portable attributes
+        // ...
+        attrs.set_stack_size(4096*10);
+        #if defined(BOOST_THREAD_PLATFORM_WIN32)
+                // ... window version
+        #elif defined(BOOST_THREAD_PLATFORM_PTHREAD)
+                // ... pthread version
+                pthread_attr_setschedpolicy(attrs.native_handle(), SCHED_RR);
+        #else
+        #error "Boost threads unavailable on this platform"
+        #endif
+        
+        cameraPollingThread = boost::thread(attrs, boost::bind(&PS3EyeDriver::CameraPollThread, this));
+        cameraPollingThread.detach();
+        
+        //cameraPollingThread = boost::thread(&PS3EyeDriver::CameraPollThread, this);
+        
+        Log("[PS3EyeDriver] Finished starting the polling thread.");
     }
     else{
-        printf("[PS3EyeDriver] Couldn't start the camera update thread as it was already started.\n");
+        Log("[PS3EyeDriver] Couldn't start the camera update thread as it was already started.");
     }
     
 }
 
 void PS3EyeDriver::StopCameraUpdateThread(){
+    Log("[PS3EyeDriver] Stopping camera update thread...");
     if(cameraThreadStarted){
-        leftEyeRef->stop();
-        rightEyeRef->stop();
-        printf("[PS3EyeDriver] USB Connections stopped.\n");
+        //Stop the cameras first. Very important!
+        Log("[PS3EyeDriver] Stopping USB connections...");
+        leftEyeRef.reset(); //Calls destructor for leftEyeRef
+        rightEyeRef.reset(); //Calls destructor for rightEyeRef
+        Log("[PS3EyeDriver] USB connections stopped.");
+        /*
         //pthread_cancel(cameraThreadID);
         cameraThreadRetVal = pthread_attr_destroy(&cameraThreadAttr);
         //cameraThreadRetVal = pthread_join(cameraThreadID, NULL);
-        assert(!cameraThreadRetVal);
+        //assert(!cameraThreadRetVal);
         if (cameraThreadErr != 0)
         {
             // Report an error.
-            printf("[PS3EyeDriver] Couldn't stop the thread...\n");
+            Log("[PS3EyeDriver] Couldn't stop the thread...");
         }
         else{
-            printf("[PS3EyeDriver] Stopped the camera thread.\n");
+            Log("[PS3EyeDriver] Stopped the camera thread.");
         }
+         */
+        cameraPollingThread.interrupt();
+        cameraPollingThread.join();
         cameraThreadStarted = false;
+        Log("[PS3EyeDriver] Camera update thread stopped.");
     }
     else{
-        printf("[PS3EyeDriver] Couldn't stop camera update thread as it was already stopped.\n");
+        Log("[PS3EyeDriver] Couldn't stop camera update thread as it is not running.");
     }
 }
 
-void *CameraUpdateThread(void *arg){
+/*
+static void *CameraUpdateThread(void *arg){
     while(true){
         //lock();
         //printf("Update\n");
         bool res = ps3eye::PS3EYECam::updateDevices();
         if(!res)
         {
-            printf("[PS3EyeDriver] Thread has stopped");
+            printf("[PS3EyeDriver] Thread has stopped.");
             break;
         }
         //unlock();
     }
     return NULL;
+}
+ */
+
+void PS3EyeDriver::CameraPollThread(){
+    cameraThreadStarted = true;
+    while(true){
+        try{
+            boost::this_thread::interruption_point();
+            if(boost::this_thread::interruption_requested()){
+                //Log("Interrupt requested.");
+                break;
+            }
+            //lock();
+            //printf("Update\n");
+            bool res = ps3eye::PS3EYECam::updateDevices();
+            //Log("[PS3EyeDriver] Thread update");
+            if(!res)
+            {
+                break;
+            }
+            //unlock();
+        }
+        catch(boost::thread_interrupted&){
+            //Log("[PS3EyeDriver] Polling thread interrupted.");
+            break;
+        }
+    }
+    //Log("[PS3EyeDriver] Polling thread has stopped.");
 }
 
 int PS3EyeDriver::GetNumCameras(){

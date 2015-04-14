@@ -23,7 +23,7 @@ static void DebugLog (const char* str)
     OutputDebugStringA (str);
 #else
     printf ("%s", str);
-    //LogUnity(str);
+    //DebugLog(str);
 #endif
 }
 */
@@ -51,10 +51,10 @@ int GetCameraCount(){
     return [[PS3EyePlugin sharedInstance] GetCameraCount];
 }
 
-uint8_t* GetLeftCameraData(){
+unsigned char* GetLeftCameraData(){
     return [[PS3EyePlugin sharedInstance] GetLeftCameraData];
 }
-uint8_t* GetRightCameraData(){
+unsigned char* GetRightCameraData(){
     return [[PS3EyePlugin sharedInstance] GetRightCameraData];
 }
 void PullData_Left(){
@@ -112,19 +112,24 @@ void setBlueBalance (float blueBalance){
 void setRedBalance (float redBalance){
     return [[PS3EyePlugin sharedInstance] setRedBalance:redBalance];
 }
-    
-void SetDebugFunction( FuncPtr fp )
+
+//Called from Unity
+void SetDebugLogFunction( FuncPtr fp )
 {
-    LogUnity = fp;
+    DebugLog = fp;
 }
-    
+
+void LogNative(const char *message){
+    printf("%s\n", message);
+}
+
 void SetUnityTexturePointers(void *leftPtr, void *rightPtr){
     // A script calls this at initialization time; just remember the texture pointer here.
     // Will update texture pixels each frame from the plugin rendering event (texture update
     // needs to happen on the rendering thread).
     left_TexturePointer = leftPtr;
     right_TexturePointer = rightPtr;
-    LogUnity("Set Texture Pointers");
+    DebugLog("[PS3EyePlugin] Set texture pointers.");
 }
     
 void UnitySetGraphicsDevice (void* device, int deviceType, int eventType)
@@ -218,7 +223,7 @@ static void DoRendering (int eventID)
         }
     }
     else{
-        LogUnity("This plugin needs OpenGL!");
+        DebugLog("[PS3EyePlugin] This plugin needs OpenGL!");
     }
 #endif
 }
@@ -277,8 +282,14 @@ static void FillTextureFromCode(int width, int height, int stride, unsigned char
 -(id)init {
     if (self = [super init]) {
         if(self){
-            driver = new PS3EyeDriver();
-            if (!driver) self = nil;
+            //Set logging function (Unity should set this before this point is reached)
+            if(DebugLog == NULL){
+                DebugLog = &LogNative;
+            }
+            DebugLog("[PS3EyePlugin] super init");
+            //Create the driver
+            driver = new PS3EyeDriver(DebugLog);
+            //if (!driver) self = nil;
         }
     }
     return self;
@@ -296,36 +307,41 @@ static void FillTextureFromCode(int width, int height, int stride, unsigned char
 
 static PS3EyePlugin* sharedInstance = nil;
 +(PS3EyePlugin*)sharedInstance {
-    if( !sharedInstance )
+    if( !sharedInstance ){
+        DebugLog("[PS3EyePlugin] Shared instance created.");
         sharedInstance = [[PS3EyePlugin alloc] init];
+    }
     
     return sharedInstance;
 }
 
 -(void) InitDriver {
+    DebugLog("[PS3EyePlugin] InitDriver started.");
     driver->Init();
+    DebugLog("[PS3EyePlugin] InitDriver done.");
 }
 
 -(void) Begin {
-    printf("[PS3EyePlugin] Starting...\n");
+    DebugLog("[PS3EyePlugin] Begin start");
     //driver = new PS3EyeDriver();
+    //InitDriver();
     
     //Last
-    printf("[PS3EyePlugin] PS3EyePlugin started.\n");
+    DebugLog("[PS3EyePlugin] Begin end");
 }
 
 -(void) End {
-    printf("[PS3EyePlugin] PS3EyePlugin shutting down...\n");
+    DebugLog("[PS3EyePlugin] Shutting down...");
     //delete driver;
     
     //Last
-    printf("[PS3EyePlugin] PS3EyePlugin shut down.\n");
+    DebugLog("[PS3EyePlugin] Shut down.");
 }
 
--(uint8_t *)GetLeftCameraData{
+-(unsigned char *)GetLeftCameraData{
     return driver->rawPixelData_Left;
 }
--(uint8_t *)GetRightCameraData{
+-(unsigned char *)GetRightCameraData{
     return driver->rawPixelData_Right;
 }
 

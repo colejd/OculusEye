@@ -45,8 +45,8 @@ extern "C" {
     
     void Dealloc();
 
-    uint8_t* GetLeftCameraData();
-    uint8_t* GetRightCameraData();
+    unsigned char* GetLeftCameraData();
+    unsigned char* GetRightCameraData();
     void PullData_Left();
     void PullData_Right();
 
@@ -85,8 +85,8 @@ extern "C" {
 -(void)Begin;
 -(void)End;
 -(int)GetCameraCount;
--(uint8_t *)GetLeftCameraData;
--(uint8_t *)GetRightCameraData;
+-(unsigned char *)GetLeftCameraData;
+-(unsigned char *)GetRightCameraData;
 -(void)PullData_Left;
 -(void)PullData_Right;
 
