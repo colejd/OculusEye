@@ -88,10 +88,10 @@ void mainApp::setup(){
     
     eyeFPSGraph = PerformanceGraph("Eye FPS", ofGetWindowWidth() - 70, ofGetWindowHeight() - 15);
     
+    InitEyes();
+    
     //Set up GUI
     CreateGUI();
-    
-    InitEyes();
     
 }
 
@@ -185,9 +185,10 @@ void mainApp::CreateGUI(){
     ps3EyeSettings -> addFloat("redBalance", redBalance) -> setLabel("Red Balance") -> setMin("0") -> setMax("255");
     
     ps3EyeSettingsStorage -> retrieve();
-    ps3EyeSettings -> load();
-    ps3EyeSettingsStorage -> store();
-    ps3EyeSettings -> close();
+    //ps3EyeSettings -> load();
+    //ps3EyeSettingsStorage -> store();
+    //ps3EyeSettings -> close();
+    ps3EyeSettings -> open();
     
     ps3EyeSettings -> setSize(400, 300);
     ps3EyeSettings -> setColor(44, 44, 44, 180);
@@ -452,23 +453,24 @@ void mainApp::InitEyes(){
     leftEye = new CVEye(0, ((PS3EyePlugin *) eyeDriver), true);
     rightEye = new CVEye(1, ((PS3EyePlugin *) eyeDriver), false);
     
-    /*
+    
     //Pull default values from the camera hardware and update the GUI / CVEyes present
-    if(leftEye->initialized){
-        autoWhiteBalance = leftEye->eyeRef->getAutoWhiteBalance();
-        autoGain = leftEye->eyeRef->getAutogain();
-        gain = leftEye->eyeRef->getGain();
-        sharpness = leftEye->eyeRef->getSharpness();
-        exposure = leftEye->eyeRef->getExposure();
-        brightness = leftEye->eyeRef->getBrightness();
-        contrast = leftEye->eyeRef->getContrast();
-        hue = leftEye->eyeRef->getHue();
-        blueBalance = leftEye->eyeRef->getBlueBalance();
-        redBalance = leftEye->eyeRef->getRedBalance();
+    //if(eyePlugin){
+        autoWhiteBalance = [eyePlugin getAutoWhiteBalance];
+        autoGain = [eyePlugin getAutoGain];
+        gain = [eyePlugin getGain];
+        sharpness = [eyePlugin getSharpness];
+        printf("Sharpness: %f\n", sharpness);
+        exposure = [eyePlugin getExposure];
+        brightness = [eyePlugin getBrightness];
+        contrast = [eyePlugin getContrast];
+        hue = [eyePlugin getHue];
+        blueBalance = [eyePlugin getBlueBalance];
+        redBalance = [eyePlugin getRedBalance];
         
-        UpdateEyeCamera(leftEye);
-    }
-     */
+        //UpdateCameraSettings();
+    //}
+    
     UpdateEyeValues(leftEye);
     UpdateEyeValues(rightEye);
     
@@ -512,7 +514,6 @@ void mainApp::DrawCVMat(const cv::Mat& mat, ofImageType type, int x, int y, int 
  */
 void mainApp::UpdateCameraSettings(){
     
-    /*
     if(eyeDriver){
         [eyeDriver setAutoWhiteBalance:autoWhiteBalance];
         [eyeDriver setAutoGain:autoGain];
@@ -525,7 +526,7 @@ void mainApp::UpdateCameraSettings(){
         [eyeDriver setBlueBalance:blueBalance];
         [eyeDriver setRedBalance:redBalance];
     }
-     */
+    
 }
 
 /**

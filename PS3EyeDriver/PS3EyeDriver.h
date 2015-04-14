@@ -49,16 +49,6 @@ public:
     int cameraThreadErr;
     bool cameraThreadStarted = false;
     
-    bool autoWhiteBalance;
-    bool autoGain;
-    float gain;
-    float sharpness;
-    float exposure;
-    float brightness;
-    float contrast;
-    float hue;
-    float blueBalance;
-    float redBalance;
     //Raw video data array from PS Eye (RGBA888 color)
     unsigned char * rawPixelData_Left;
     unsigned char * rawPixelData_Right;

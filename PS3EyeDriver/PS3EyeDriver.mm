@@ -111,7 +111,7 @@ void PS3EyeDriver::StartCameraUpdateThread(){
         boost::thread::attributes attrs;
         // set portable attributes
         // ...
-        attrs.set_stack_size(4096*10);
+        attrs.set_stack_size(REQUIRED_STACK_SIZE); //4096*10
         #if defined(BOOST_THREAD_PLATFORM_WIN32)
                 // ... window version
         #elif defined(BOOST_THREAD_PLATFORM_PTHREAD)

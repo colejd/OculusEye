@@ -3,6 +3,3 @@ This module should be a black box to the rest of OculusEye, returning only uchar
 For modularity purposes, this module will hold:
 - (int, int) Camera Resolution
 - (*uchar[]) RGB array for both cameras
-
-
-This bundle should as a bonus be compatible with Unity3D.

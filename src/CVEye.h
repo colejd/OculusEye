@@ -13,7 +13,7 @@
 #include <iostream>
 
 //#include "ps3Eye/ps3eye.h"
-#include "OFCVBridge.h"
+//#include "OFCVBridge.h"
 #include "programSettings.h"
 #include "CameraCalibrator.h"
 

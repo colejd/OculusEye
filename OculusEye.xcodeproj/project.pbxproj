@@ -217,8 +217,8 @@
 		468761111ACDD26600594754 /* OFCVBridge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OFCVBridge.cpp; sourceTree = "<group>"; };
 		468761121ACDD26600594754 /* OFCVBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OFCVBridge.h; sourceTree = "<group>"; };
 		468761171ACE17D300594754 /* PS3EyeMisc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PS3EyeMisc.h; sourceTree = "<group>"; };
-		46938B951ADD9854000CD7D7 /* libboost_system-mt.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libboost_system-mt.a"; path = "../../../../../../../../../../usr/local/Cellar/boost/1.57.0/lib/libboost_system-mt.a"; sourceTree = "<group>"; };
-		46938B961ADD9854000CD7D7 /* libboost_thread-mt.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libboost_thread-mt.a"; path = "../../../../../../../../../../usr/local/Cellar/boost/1.57.0/lib/libboost_thread-mt.a"; sourceTree = "<group>"; };
+		46938B951ADD9854000CD7D7 /* libboost_system-mt.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libboost_system-mt.a"; path = "/usr/local/Cellar/boost/1.57.0/lib/libboost_system-mt.a"; sourceTree = "<absolute>"; };
+		46938B961ADD9854000CD7D7 /* libboost_thread-mt.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libboost_thread-mt.a"; path = "/usr/local/Cellar/boost/1.57.0/lib/libboost_thread-mt.a"; sourceTree = "<absolute>"; };
 		46CB210C1AC37958009DD011 /* libIlmImf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libIlmImf.a; sourceTree = "<group>"; };
 		46CB210D1AC37958009DD011 /* libippicv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libippicv.a; sourceTree = "<group>"; };
 		46CB210E1AC37958009DD011 /* liblibjasper.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = liblibjasper.a; sourceTree = "<group>"; };
@@ -964,6 +964,8 @@
 		46FD55801ACB30ED003D0FD5 /* dependencies */ = {
 			isa = PBXGroup;
 			children = (
+				46938B951ADD9854000CD7D7 /* libboost_system-mt.a */,
+				46938B961ADD9854000CD7D7 /* libboost_thread-mt.a */,
 				46FD55821ACB311B003D0FD5 /* libusb-1.0.a */,
 			);
 			name = dependencies;
@@ -1050,8 +1052,6 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
-				46938B951ADD9854000CD7D7 /* libboost_system-mt.a */,
-				46938B961ADD9854000CD7D7 /* libboost_thread-mt.a */,
 				51B2FDD21A3109BA00246487 /* OculusEyeDebug.app */,
 				519909861A2581B1008021BE /* notes.txt */,
 				5199098E1A2581B2008021BE /* versionNotes.txt */,

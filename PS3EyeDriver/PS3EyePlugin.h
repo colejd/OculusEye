@@ -98,15 +98,28 @@ extern "C" {
 
 -(bool) ThreadIsRunning;
 
+/*------ Setters -----*/
 -(void) setAutoWhiteBalance: (bool) autoWhiteBalance;
 -(void) setAutoGain: (bool) autoGain;
--(void) setGain: (float) gain;
--(void) setSharpness: (float) sharpness;
--(void) setExposure: (float) exposure;
--(void) setBrightness: (float) brightness;
--(void) setContrast: (float) contrast;
--(void) setHue: (float) hue; //huehuehuehuehue
--(void) setBlueBalance: (float) blueBalance;
--(void) setRedBalance: (float) redBalance;
+-(void) setGain: (Byte) gain;
+-(void) setSharpness: (Byte) sharpness;
+-(void) setExposure: (Byte) exposure;
+-(void) setBrightness: (Byte) brightness;
+-(void) setContrast: (Byte) contrast;
+-(void) setHue: (Byte) hue; //huehuehuehuehue
+-(void) setBlueBalance: (Byte) blueBalance;
+-(void) setRedBalance: (Byte) redBalance;
+
+/*------ Getters -----*/
+-(bool) getAutoWhiteBalance;
+-(bool) getAutoGain;
+-(Byte) getGain;
+-(Byte) getSharpness;
+-(Byte) getExposure;
+-(Byte) getBrightness;
+-(Byte) getContrast;
+-(Byte) getHue;
+-(Byte) getBlueBalance;
+-(Byte) getRedBalance;
 
 @end

@@ -379,6 +379,8 @@ static PS3EyePlugin* sharedInstance = nil;
     return driver->cameraThreadStarted;
 }
 
+/*------ Setters -----*/
+
 -(void) setAutoWhiteBalance: (bool) autoWhiteBalance{
     driver->setAutoWhiteBalance(autoWhiteBalance, BOTH_EYES);
 }
@@ -387,36 +389,78 @@ static PS3EyePlugin* sharedInstance = nil;
     driver->setAutoGain(autoGain, BOTH_EYES);
 }
 
--(void) setGain: (float) gain{
+-(void) setGain: (Byte) gain{
     driver->setGain(gain, BOTH_EYES);
 }
 
--(void) setSharpness: (float) sharpness{
+-(void) setSharpness: (Byte) sharpness{
     driver->setSharpness(sharpness, BOTH_EYES);
 }
 
--(void) setExposure: (float) exposure{
+-(void) setExposure: (Byte) exposure{
     driver->setExposure(exposure, BOTH_EYES);
 }
 
--(void) setBrightness: (float) brightness{
+-(void) setBrightness: (Byte) brightness{
     driver->setBrightness(brightness, BOTH_EYES);
 }
 
--(void) setContrast: (float) contrast{
+-(void) setContrast: (Byte) contrast{
     driver->setContrast(contrast, BOTH_EYES);
 }
 
--(void) setHue: (float) hue{ //huehuehuehuehue
+-(void) setHue: (Byte) hue{ //huehuehuehuehue
     driver->setHue(hue, BOTH_EYES);
 }
 
--(void) setBlueBalance: (float) blueBalance{
+-(void) setBlueBalance: (Byte) blueBalance{
     driver->setBlueBalance(blueBalance, BOTH_EYES);
 }
 
--(void) setRedBalance: (float) redBalance{
+-(void) setRedBalance: (Byte) redBalance{
     driver->setRedBalance(redBalance, BOTH_EYES);
+}
+
+/*------ Getters -----*/
+
+-(bool) getAutoWhiteBalance {
+    return driver->leftEyeRef->getAutoWhiteBalance();
+}
+
+-(bool) getAutoGain{
+    return driver->leftEyeRef->getAutogain();
+}
+
+-(Byte) getGain{
+    return driver->leftEyeRef->getGain();
+}
+
+-(Byte) getSharpness{
+    return driver->leftEyeRef->getSharpness();
+}
+
+-(Byte) getExposure{
+    return driver->leftEyeRef->getExposure();
+}
+
+-(Byte) getBrightness{
+    return driver->leftEyeRef->getBrightness();
+}
+
+-(Byte) getContrast{
+    return driver->leftEyeRef->getContrast();
+}
+
+-(Byte) getHue{ //huehuehuehuehue
+    return driver->leftEyeRef->getHue();
+}
+
+-(Byte) getBlueBalance{
+    return driver->leftEyeRef->getBlueBalance();
+}
+
+-(Byte) getRedBalance{
+    return driver->leftEyeRef->getRedBalance();
 }
 
 @end //End implementation
