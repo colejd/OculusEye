@@ -128,7 +128,6 @@
 		519909391A23B2BD008021BE /* CVEye.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5199092C1A23B2BD008021BE /* CVEye.mm */; };
 		5199093A1A23B2BD008021BE /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5199092E1A23B2BD008021BE /* main.mm */; };
 		5199093B1A23B2BD008021BE /* mainApp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5199092F1A23B2BD008021BE /* mainApp.mm */; };
-		5199093C1A23B2BD008021BE /* OFCVBridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 519909311A23B2BD008021BE /* OFCVBridge.cpp */; };
 		5199093E1A23B2BD008021BE /* screenConfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 519909371A23B2BD008021BE /* screenConfig.cpp */; };
 		51E1B39F1A42778F00D6BCA7 /* CVPerformance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51E1B39E1A42778F00D6BCA7 /* CVPerformance.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
@@ -409,8 +408,6 @@
 		5199092E1A23B2BD008021BE /* main.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = main.mm; sourceTree = "<group>"; };
 		5199092F1A23B2BD008021BE /* mainApp.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = mainApp.mm; sourceTree = "<group>"; };
 		519909301A23B2BD008021BE /* mainApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mainApp.h; sourceTree = "<group>"; };
-		519909311A23B2BD008021BE /* OFCVBridge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OFCVBridge.cpp; sourceTree = "<group>"; };
-		519909321A23B2BD008021BE /* OFCVBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OFCVBridge.h; sourceTree = "<group>"; };
 		519909371A23B2BD008021BE /* screenConfig.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = screenConfig.cpp; sourceTree = "<group>"; };
 		519909381A23B2BD008021BE /* screenConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = screenConfig.h; sourceTree = "<group>"; };
 		519909461A23BE0D008021BE /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
@@ -1078,8 +1075,6 @@
 				5199092F1A23B2BD008021BE /* mainApp.mm */,
 				5199092D1A23B2BD008021BE /* CVEye.h */,
 				5199092C1A23B2BD008021BE /* CVEye.mm */,
-				519909321A23B2BD008021BE /* OFCVBridge.h */,
-				519909311A23B2BD008021BE /* OFCVBridge.cpp */,
 				519909381A23B2BD008021BE /* screenConfig.h */,
 				519909371A23B2BD008021BE /* screenConfig.cpp */,
 				51A88EB51A3F7EEF00D73FA2 /* CVPerformance.h */,
@@ -1288,7 +1283,6 @@
 				46F452D51A89D06000DD172A /* OVR_UTF8Util.cpp in Sources */,
 				46F452DF1A89D06000DD172A /* OVR_SensorImpl.cpp in Sources */,
 				46F452E71A89D06000DD172A /* Util_MagCalibration.cpp in Sources */,
-				5199093C1A23B2BD008021BE /* OFCVBridge.cpp in Sources */,
 				46F452D71A89D06000DD172A /* OVR_DeviceImpl.cpp in Sources */,
 				46F452D91A89D06000DD172A /* OVR_OSX_DeviceManager.cpp in Sources */,
 				46F452C61A89D06000DD172A /* OVR_Atomic.cpp in Sources */,

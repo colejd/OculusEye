@@ -33,7 +33,7 @@
 
 // The highest framerate allowed (capped to 60 when vsync is enabled).
 #define TARGET_FRAMERATE 9999 //9999
-//Enable/disable OpenCL support through UMats (freezes at Canny at the moment)
+//Enable/disable OpenCL support through UMats (freezes at Canny processing at the moment)
 #define USE_OPENCL false
 
 

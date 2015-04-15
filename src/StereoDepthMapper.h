@@ -29,18 +29,43 @@ public:
     cv::Mat stereoMapRaw;
     cv::Mat stereoMap;
     
-    int ndisparities = 16*5;   /**< Range of disparity */
-    int SADWindowSize = 21; /**< Size of the block window. Must be odd */
-    
     int lowThreshold;
     int highThreshold;
     
     cv::Ptr<StereoBM> sbm;
     
+    cv::Ptr<StereoSGBM> sgbm;
+    
     StereoDepthMapper();
     ~StereoDepthMapper();
     
-    void CalculateStereoMap(const Mat &left, const Mat &right, bool swapSides = false);
+    void UpdateValues();
+    void CalculateStereoMap(const Mat &leftIn, const Mat &rightIn, bool swapSides = false);
+    
+    bool useSGBM = false;
+    
+    //numDisparities – Maximum disparity minus minimum disparity. This parameter must be divisible by 16.
+    int numDisparities = 112;
+    int preFilterSize = 5;
+    //preFilterCap – Truncation value for the prefiltered image pixels.
+    int preFilterCap = 61;
+    //minDisparity – Minimum possible disparity value.
+    int minDisparity = -39;
+    int textureThreshold = 507;
+    //uniquenessRatio – Margin in percentage by which the best (minimum) computed cost function value should “win” the second best value to consider the found match correct. Normally, a value within the 5-15 range is good enough.
+    int uniquenessRatio = 0;
+    //speckleWindowSize – Maximum size of smooth disparity regions to consider their noise speckles and invalidate.
+    int speckleWindowSize = 0;
+    //speckleRange – Maximum disparity variation within each connected component.
+    int speckleRange = 8;
+    //disp12MaxDiff – Maximum allowed difference (in integer pixel units) in the left-right disparity check.
+    int disp12MaxDiff = 1;
+    //SADWindowSize – Matched block size. It must be an odd number >=1 .
+    int SADWindowSize = 5;
+    
+    int blurScale = 3;
+    int erosionIterations = 1;
+    int dilutionIterations = 1;
     
 private:
     

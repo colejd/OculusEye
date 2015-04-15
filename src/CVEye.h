@@ -119,9 +119,10 @@ public:
     
     //PS3EyeDriver* GetDriverForSide(bool isLeft);
     
+    bool useColorCanny = false;
+    
 private:
     int camIndex;
-    YUVBuffer yuvData;
     
 };
 

@@ -154,6 +154,8 @@ public:
     NSBundle *eyeBundle;
     id eyeDriver; //<PS3EyePlugin>
     
+    int cannyType;
+    
 private:
     string GetStdoutFromCommand(string cmd);
 };

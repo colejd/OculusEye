@@ -14,16 +14,11 @@ CVEye::CVEye(const int _index, PS3EyePlugin *plugin, bool isLeft) {
     eyePlugin = plugin;
     
     finalImage.allocate(CAMERA_WIDTH, CAMERA_HEIGHT, OF_IMAGE_COLOR);
-    //finalImage.loadImage("NoCameraFound.jpg");
-    //finalImage.setImageType(OF_IMAGE_COLOR);
     rawPixelData = (unsigned char*)malloc(CAMERA_WIDTH*CAMERA_HEIGHT*3*sizeof(unsigned char));
     isLeftEye = isLeft;
     
     //Initialize the camera, print results
     cout << (init(CAMERA_WIDTH, CAMERA_HEIGHT) ? "[CVEye] Camera initialized.\n" : "[CVEye] Camera not found.\n");
-    //thread.start();
-    
-    //yuvData = YUVBuffer();
     
 }
 
@@ -38,52 +33,15 @@ CVEye::~CVEye(){
     //Clean up
     //free(rawPixelData); //Having this on crashes the program when cameras aren't plugged in. Why?
     
-    //Kill USB connection
-    //if(eyeRef) eyeRef->stop();
-    
 }
 
 bool CVEye::init(const int _width, const int _height){
-    //initialized = false;
-    
-    //using namespace ps3eye;
-    //// list out the devices
-    //std::vector<PS3EYECam::PS3EYERef> devices( PS3EYECam::getDevices(true) );
-    //if(0 < devices.size() && camIndex < devices.size())
-    //{
-        /*
-        //threadUpdate.stop();
-        eyeRef = devices.at(camIndex);
-        bool eyeDidInit = eyeRef->init(CAMERA_WIDTH, CAMERA_HEIGHT, CAMERA_FPS);
-        eyeRef->start();
-         */
-        
-        //Populate GUI fields with default hardware values
-        /*
-        autoWhiteBalance = eyeRef->getAutoWhiteBalance();
-        autoGain = eyeRef->getAutogain();
-        gain = eyeRef->getGain();
-        sharpness = eyeRef->getSharpness();
-        exposure = eyeRef->getExposure();
-        brightness = eyeRef->getBrightness();
-        contrast = eyeRef->getContrast();
-        hue = eyeRef->getHue();
-        blueBalance = eyeRef->getBlueBalance();
-        redBalance = eyeRef->getRedBalance();
-         */
-        
-        //initialized = eyeDidInit;
-        //initialized = eyeDriver->camerasInitialized;
-    //}
-    
     if(isLeftEye) initialized = [eyePlugin LeftEyeInitialized];
     else initialized = [eyePlugin RightEyeInitialized];
     
     //If no cameras are detected, a sample image is loaded.
     if(initialized == false){
         ofLog(OF_LOG_WARNING, "Displaying sample image");
-        //If we've gotten here, the camera was not found or couldn't be initialized.
-        //printf("Image %s\n", ( access( "../../../data/NoCameraFound.png", F_OK ) != -1 ) ? "exists" : "does not exist");
         
         Mat image;
         image = cv::imread("../../../data/images/SampleImage.png", CV_LOAD_IMAGE_COLOR);
@@ -94,12 +52,11 @@ bool CVEye::init(const int _width, const int _height){
         dummyImage = true;
     }
     
+    //Grab some camera data (checks for initialization)
     PullData();
     
-    using namespace cv;
-    
     int matType = CV_MAKE_TYPE(CV_8U, 3);
-    src_tmp = Mat(cv::Size(CAMERA_WIDTH, CAMERA_HEIGHT), matType, rawPixelData);
+    src_tmp = cv::Mat(cv::Size(CAMERA_WIDTH, CAMERA_HEIGHT), matType, rawPixelData);
     src.create(cv::Size(CAMERA_WIDTH, CAMERA_HEIGHT), matType);
     src_gray.create(cv::Size(CAMERA_WIDTH, CAMERA_HEIGHT), CV_8U);
     src_tmp.copyTo(src);
@@ -175,7 +132,10 @@ void CVEye::PullData(){
 }
 
 void CVEye::update(){
+    //If this is the initialized left eye or right eye, continue
     bool cameraPass = ( ([eyePlugin LeftEyeInitialized] && isLeftEye) || ([eyePlugin RightEyeInitialized] && !isLeftEye) );
+    
+    //If we have a sample image or a camera frame, update
     if(cameraPass || dummyImage)
     //if(eyeDriver->leftEyeRef || dummyImage)
     {
@@ -202,8 +162,14 @@ void CVEye::update(){
             //rawPixelData = eyeDriver->rawPixelData_Left;
             //rawPixelData = [eyePlugin GetLeftCameraData];
             
-            //Apply distortion from calibration to the source image
+            //-----------------------------------------------
+            //Apply operations to src_tmp, which holds the unaltered camera data.
+            //Preparation step for all other image operations.
+            
+            //Remove lens distortion from the camera data using the calibration
+            //matrix if it exists
             if(calibrator->calibrated){
+                printf("Applying calibration");
                 cv::Mat src_tmp_undistorted;
                 src_tmp.copyTo(src_tmp_undistorted);
                 undistort(src_tmp_undistorted, src_tmp, calibrator->intrinsic, calibrator->distCoeffs);
@@ -213,6 +179,9 @@ void CVEye::update(){
             src_tmp.copyTo(src);
             cvtColor(src, src_gray, cv::COLOR_RGB2GRAY);
             src.copyTo(dest);
+            
+            //-----------------------------------------------
+            //All image operations after this will use src as the input and dest as the output.
             
             if(calibrator->calibrating){
                 
@@ -238,7 +207,7 @@ void CVEye::update(){
             }
             //If no effects are applied, just put the raw video in the output image.
             else{
-                finalImage.setFromPixels(src_tmp.data, CAMERA_WIDTH, CAMERA_HEIGHT, OF_IMAGE_COLOR);
+                finalImage.setFromPixels(src.getMat(0).data, CAMERA_WIDTH, CAMERA_HEIGHT, OF_IMAGE_COLOR);
             }
             
         }
@@ -272,6 +241,21 @@ void CVEye::shutdown(){
 void CVEye::ApplyCanny(cv::UMat &src, cv::UMat &src_gray, cv::UMat &dest){
     using namespace cv;
     //START_TIMER(cannyTimer);
+    UMat input_image;
+    if(useColorCanny){
+        std::vector<cv::Mat> channels;
+        cv::Mat hsv;
+        cv::cvtColor( src, hsv, CV_RGB2HSV );
+        cv::split(hsv, channels);
+        src_gray.getMat(0) = channels[0];
+        input_image = src_gray;
+        hsv.release();
+        printf("Use color canny\n");
+    }
+    else{
+        input_image = src_gray;
+        printf("Use greyscale canny\n");
+    }
     
     adaptedDownsampleRatio = downsampleRatio;
     
@@ -293,15 +277,15 @@ void CVEye::ApplyCanny(cv::UMat &src, cv::UMat &src_gray, cv::UMat &dest){
     
     //Downsample the image to a smaller size
     if(downsampleRatio < 1.0f){
-        resize(src_gray, src_gray, cv::Size(), adaptedDownsampleRatio, adaptedDownsampleRatio, INTER_AREA); //#1
+        resize(input_image, input_image, cv::Size(), adaptedDownsampleRatio, adaptedDownsampleRatio, INTER_AREA); //#1
     }
-    resize(canny_output, canny_output, src_gray.size());
-    resize(contour_output, contour_output, src_gray.size());
+    resize(canny_output, canny_output, input_image.size());
+    resize(contour_output, contour_output, input_image.size());
     
     //Smooth src_gray to reduce noise (Canny also smooths the image, but it is a linear blur; thus this blurring is preserved)
     int blurScale = 3;
     //Box filter blur
-    blur( src_gray, src_gray, cv::Size(blurScale, blurScale) );
+    blur( input_image, input_image, cv::Size(blurScale, blurScale) );
     
     //Gaussian blur
     //cv::GaussianBlur(src_gray, src_gray, cv::Size(7,7), 1.5, 1.5);
@@ -313,8 +297,8 @@ void CVEye::ApplyCanny(cv::UMat &src, cv::UMat &src_gray, cv::UMat &dest){
     //src_gray_clone.release();
     
     if(doErosionDilution){
-        erode(src_gray, src_gray, Mat(), cv::Point(-1,-1), erosionIterations, BORDER_CONSTANT, morphologyDefaultBorderValue());
-        dilate(src_gray, src_gray, Mat(), cv::Point(-1,-1), dilutionIterations, BORDER_CONSTANT, morphologyDefaultBorderValue());
+        erode(input_image, input_image, Mat(), cv::Point(-1,-1), erosionIterations, BORDER_CONSTANT, morphologyDefaultBorderValue());
+        dilate(input_image, input_image, Mat(), cv::Point(-1,-1), dilutionIterations, BORDER_CONSTANT, morphologyDefaultBorderValue());
     }
     
     int edgeThresh = 1;
@@ -333,7 +317,7 @@ void CVEye::ApplyCanny(cv::UMat &src, cv::UMat &src_gray, cv::UMat &dest){
     //cv::ocl::setUseOpenCL(true);
     //contour_output = Scalar::all(0);
     //canny_output = Scalar::all(0);
-    Canny( src_gray, canny_output, lowThreshold, highThreshold, kernel_size );
+    Canny( input_image, canny_output, lowThreshold, highThreshold, kernel_size );
     //cv::ocl::setUseOpenCL(false);
     
     //Black out the final image if we only want to see the edges
@@ -388,13 +372,6 @@ void CVEye::ApplyCanny(cv::UMat &src, cv::UMat &src_gray, cv::UMat &dest){
 }
 
 
-/*
-PS3EyeDriver* CVEye::GetDriverForSide(){
-    //if(isLeftEye){
-}
- */
-
-
 
 
 /*
@@ -444,6 +421,11 @@ void ParallelCanny::operator ()(const cv::Range &range) const{
  */
 
 
+/**
+ * Breaks the image into a number of pieces, specified by range's upper limit;
+ * it then schedules each piece for canny detection on a different thread.
+ */
+ 
 void ParallelContourDetector::operator ()(const cv::Range &range) const{
     using namespace cv;
     
@@ -468,7 +450,7 @@ void ParallelContourDetector::operator ()(const cv::Range &range) const{
             drawContours(out, contourData, -1, color, eye.edgeThickness, 8, contourHierarchy);
         }
         catch(Exception e){
-            //printf("Contour Detector Error\n");
+            printf("[CVEye] ParallelContourDetector error.\n");
         }
         
         in.release();

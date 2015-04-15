@@ -202,6 +202,18 @@ void mainApp::CreateGUI(){
     otherSettings -> addBool("showDisparityMap", showDisparityMap) -> setLabel("Show Disparity Map");
     otherSettings -> addInt("stereo_lowThreshold", stereoMapper.lowThreshold) -> setLabel("Low Threshold") -> setMin("0") -> setMax("255");
     otherSettings -> addInt("stereo_highThreshold", stereoMapper.highThreshold) -> setLabel("High Threshold") -> setMin("0") -> setMax("255");
+    otherSettings -> addInt("minDisparity", stereoMapper.minDisparity) -> setLabel("Min Disparity") -> setMin("-50") -> setMax("50");
+    otherSettings -> addInt("numDisparities", stereoMapper.numDisparities) -> setLabel("Num Disparities") -> setStep("16") -> setMin("16") -> setMax("512");
+    otherSettings -> addInt("SADWindowSize", stereoMapper.SADWindowSize) -> setLabel("SADWindowSize") -> setMin(5) -> setMax(255) -> setStep(2);
+    otherSettings -> addInt("disp12MaxDiff", stereoMapper.disp12MaxDiff) -> setLabel("disp12MaxDiff") -> setMin("0") -> setMax("500");
+    otherSettings -> addInt("preFilterCap", stereoMapper.preFilterCap) -> setLabel("preFilterCap") -> setMin("1") -> setMax("63");
+    otherSettings -> addInt("uniquenessRatio", stereoMapper.uniquenessRatio) -> setLabel("Uniqueness Ratio") -> setMin("0") -> setMax("30");
+    otherSettings -> addInt("speckleWindowSize", stereoMapper.speckleWindowSize) -> setLabel("Speckle Window Size") -> setMin("0") -> setMax("500");
+    otherSettings -> addInt("speckleRange", stereoMapper.speckleRange) -> setLabel("Speckle Range") -> setMin("0") -> setMax("500");
+    otherSettings -> addInt("textureThreshold", stereoMapper.textureThreshold) -> setLabel("Texture Threshold") -> setMin("0") -> setMax("5000");
+    otherSettings -> addInt("blurScale", stereoMapper.blurScale) -> setLabel("Blurring Scale") -> setMin("3") -> setMax("11") -> setStep(2);
+    otherSettings -> addInt("erosionIterations", stereoMapper.erosionIterations) -> setLabel("Erosion Iterations") -> setMin("0") -> setMax("5");
+    otherSettings -> addInt("dilutionIterations", stereoMapper.dilutionIterations) -> setLabel("Dilution Iterations") -> setMin("0") -> setMax("5");
     
     otherSettingsStorage -> retrieve();
     otherSettings -> load();
@@ -217,6 +229,7 @@ void mainApp::CreateGUI(){
     cannySettingsStorage = new ofxTweakbarSimpleStorage(cannySettings);
     
     cannySettings -> addBool("Canny Edge Detection", doCanny) -> setLabel("Canny Edge Detection") -> setKey("e");
+    //cannySettings -> addBool("Use Color Canny", useColorCanny) -> setLabel("Use Color Canny");
     cannySettings -> addFloat("Canny Min Threshold", cannyMinThreshold) -> setLabel("Canny Min Threshold") -> setMin("0") -> setMax("100");
     cannySettings -> addFloat("Canny Ratio", cannyRatio) -> setLabel("Canny Ratio") -> setMin("2") -> setMax("3");
     cannySettings -> addColor3f("Edge Color", pickerColor) -> setLabel("Edge Color");
@@ -229,6 +242,7 @@ void mainApp::CreateGUI(){
     cannySettings -> addBool("Adaptive Downsampling", adaptiveDownsampling) -> setLabel("Adaptive Downsampling") -> setGroup("Performance");
     cannySettings -> addInt("Subdivisions (Cores Used)", imageSubdivisions) -> setLabel("Subdivisions (Cores Used)") -> setMin("1") -> setMax("8") -> setGroup("Performance");
     cannySettings -> addBool("Show Edges Only", showEdgesOnly) -> setLabel("Show Edges Only");
+    cannySettings -> addList("Canny Type", cannyType, "Greyscale, Hue, Color");
     
     cannySettingsStorage -> retrieve();
     cannySettings -> load();
@@ -256,12 +270,7 @@ void mainApp::exit(){
     //Stop USB update thread. Do this before deleting USB objects
     [eyeDriver End];
     [eyeDriver dealloc];
-    bool threadStopped = false;
-    /*
-    while([eyeDriver ThreadIsRunning]){
-        if(![eyeDriver ThreadIsRunning]) break;
-    }
-    */
+    
     delete leftEye;
     delete rightEye;
     
@@ -446,7 +455,7 @@ void mainApp::InitEyes(){
     printf("Eye cameras detected: %i\n", camerasDetected );
     
     if(camerasDetected > 0){
-        //threadUpdate.start();
+        //Initialize the camera polling thread
         [eyeDriver InitDriver];
     }
     
@@ -460,7 +469,6 @@ void mainApp::InitEyes(){
         autoGain = [eyeDriver getAutoGain];
         gain = [eyeDriver getGain];
         sharpness = [eyeDriver getSharpness];
-        printf("Sharpness: %f\n", sharpness);
         exposure = [eyeDriver getExposure];
         brightness = [eyeDriver getBrightness];
         contrast = [eyeDriver getContrast];
@@ -473,8 +481,6 @@ void mainApp::InitEyes(){
     
     UpdateEyeValues(leftEye);
     UpdateEyeValues(rightEye);
-    
-    //UpdateCameraSettings();
     
 }
 
