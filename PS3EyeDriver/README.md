@@ -21,7 +21,11 @@ brew install boost
 #Credits
 This plugin is based on [PS3EYEDriver](https://github.com/inspirit/PS3EYEDriver) by inspirit.
 
-Made by [Jonathan Cole](www.joncole.me)
+#License
+This plugin is licensed under the MIT License. See [the license](LICENSE.txt) for more.
 
 #Known Bugs
 For whatever reason, if you load this plugin in Unity, the Boost thread that updates the camera hardware takes right around 60 seconds to kick into gear. To be frank, I have no idea why. It seems to be an issue with Unity itself.
+
+
+Made by [Jonathan Cole](www.joncole.me)
