@@ -1,4 +1,5 @@
 #OculusEye
+Made by [Jonathan Cole](www.joncole.me)
 
 OculusEye is an open-source wearable augmented reality platform with a focus on cost-effectiveness. The software portion of this project is based on OpenCV 3.0. The hardware is comprised of cheaply available parts: two Playstation 3 Eye cameras, and a [modular, 3d-printable mount](/etc/models).
 
@@ -42,5 +43,3 @@ This project was created with [OpenFrameworks 64-bit OSX branch](https://github.
 - [OpenCV 3.0 Beta](http://opencv.org/)
 - [Intel's Threading Building Blocks](https://www.threadingbuildingblocks.org/) (4.2 Update 4)
 - XCode 6 + Yosemite
-
-Made by [Jonathan Cole](www.joncole.me)

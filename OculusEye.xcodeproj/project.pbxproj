@@ -408,7 +408,6 @@
 		46FD55901ACB5470003D0FD5 /* PS3EyePlugin.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = PS3EyePlugin.mm; sourceTree = "<group>"; };
 		46FD55921ACB5C0D003D0FD5 /* PS3EyeDriver.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = PS3EyeDriver.mm; sourceTree = "<group>"; };
 		46FD55931ACB5C0D003D0FD5 /* PS3EyeDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PS3EyeDriver.h; sourceTree = "<group>"; };
-		46FD55981ACB8C94003D0FD5 /* Driver Architecture.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Driver Architecture.txt"; sourceTree = "<group>"; };
 		5199092C1A23B2BD008021BE /* CVEye.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CVEye.mm; sourceTree = "<group>"; };
 		5199092D1A23B2BD008021BE /* CVEye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CVEye.h; sourceTree = "<group>"; };
 		5199092E1A23B2BD008021BE /* main.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = main.mm; sourceTree = "<group>"; };
@@ -930,14 +929,13 @@
 		46FD55641ACB2CDC003D0FD5 /* PS3EyePlugin */ = {
 			isa = PBXGroup;
 			children = (
+				46C163DF1ADF8B8100BAD956 /* LICENSE.md */,
 				46C163D61ADF1E6B00BAD956 /* README.md */,
 				46584E041AD457B0001E1908 /* frameworks */,
 				46FD557F1ACB30DF003D0FD5 /* src */,
 				46FD55801ACB30ED003D0FD5 /* dependencies */,
 				46FD55811ACB30FD003D0FD5 /* products */,
 				46FD55651ACB2CDC003D0FD5 /* Supporting Files */,
-				46FD55981ACB8C94003D0FD5 /* Driver Architecture.txt */,
-				46C163DF1ADF8B8100BAD956 /* LICENSE.md */,
 			);
 			name = PS3EyePlugin;
 			path = PS3EyeDriver;

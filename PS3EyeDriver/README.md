@@ -1,7 +1,12 @@
 #PS3EyePlugin
+Made by [Jonathan Cole](www.joncole.me)
+
 PS3EyePlugin is an efficient dylib for accessing Playstation 3 Eye cameras over USB. It has both a C++ and Objective-C interface, allowing it to work with either language. Additionally, it includes an interface for Unity, should you wish to use it there.
 
 Currently, this library is configured for 64-bit; however, 32-bit or universal is not out of the question. You'll need to rebuild Boost with universal support to do so.
+
+#How to use
+GetCameraDataLeft/Right will return an RGB888 array representing a 640x480 image.
 
 #Requirements
 - OSX 10.9+
@@ -26,6 +31,3 @@ This plugin is licensed under the MIT License. See [the license](LICENSE.txt) fo
 
 #Known Bugs
 For whatever reason, if you load this plugin in Unity, the Boost thread that updates the camera hardware takes right around 60 seconds to kick into gear. To be frank, I have no idea why. It seems to be an issue with Unity itself.
-
-
-Made by [Jonathan Cole](www.joncole.me)
