@@ -1,7 +1,7 @@
 #PS3EyePlugin
 PS3EyePlugin is an efficient dylib for accessing Playstation 3 Eye cameras over USB. It has both a C++ and Objective-C interface, allowing it to work with either language. Additionally, it includes an interface for Unity, should you wish to use it there.
 
-Currently, this library is configured for 64-bit; however, 32-bit or universal is not out of the question. You'll need to rebuild Boost with universal support.
+Currently, this library is configured for 64-bit; however, 32-bit or universal is not out of the question. You'll need to rebuild Boost with universal support to do so.
 
 #Requirements
 - OSX 10.9+
