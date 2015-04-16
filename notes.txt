@@ -22,7 +22,7 @@ http://forum.openframeworks.cc/t/xcode6-compile-issue/16507/5
 CUDA install guide:
 https://gist.github.com/mlhales/5785725
 
-For whatever reason, I had to add a Copy Files -> Products phase to get the program to detect TBB. I've no idea why...
+For whatever reason, I had to add a Copy Files -> Products phase to get the program to detect TBB. I've no idea why... (this might be inaccurate now. [4/16])
 
 If you want a new version of TBB, you're probably going to have to recompile OpenCV with it as well as placing it in the proper directories in the project. You don't want to include the libraries in the libc++ directory.
 
@@ -32,7 +32,7 @@ There was a comma in CMakeCache.txt "-Wl,-" which wasn't supposed to be there. D
 Fixed bug in canny.cpp manually; see https://github.com/Itseez/opencv/commit/184b6e314c236ba9c57ff583d49b27ac6d401e23#diff-0
 
 
-In the build directory of OpenCV, make install puts files where they need to be, and make uninstall gets rid of the files.
+In the build directory of OpenCV, "make install" puts files where they need to be, and "make uninstall" gets rid of the files.
 
 
 http://answers.opencv.org/question/1451/smoothing-image-better-way-of-doing-that/
