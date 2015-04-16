@@ -9,11 +9,14 @@
 /* Begin PBXBuildFile section */
 		4669069C1AD4819C00D69129 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4669069A1AD4817200D69129 /* GLUT.framework */; };
 		4669069D1AD4819F00D69129 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 466906981AD4816C00D69129 /* OpenGL.framework */; };
-		468761131ACDD26600594754 /* OFCVBridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 468761111ACDD26600594754 /* OFCVBridge.cpp */; };
+		468164301ADF074800D3FE2F /* Globals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4681642E1ADF074800D3FE2F /* Globals.cpp */; };
+		468761131ACDD26600594754 /* YUVBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 468761111ACDD26600594754 /* YUVBuffer.cpp */; };
 		46938B971ADD9854000CD7D7 /* libboost_system-mt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46938B951ADD9854000CD7D7 /* libboost_system-mt.a */; };
 		46938B981ADD9854000CD7D7 /* libboost_thread-mt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46938B961ADD9854000CD7D7 /* libboost_thread-mt.a */; };
 		46938B991ADD986D000CD7D7 /* libboost_system-mt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46938B951ADD9854000CD7D7 /* libboost_system-mt.a */; };
 		46938B9A1ADD986D000CD7D7 /* libboost_thread-mt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46938B961ADD9854000CD7D7 /* libboost_thread-mt.a */; };
+		46C163DB1ADF1E8900BAD956 /* ps3eye.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46C163D91ADF1E8900BAD956 /* ps3eye.cpp */; };
+		46C163DE1ADF1EE800BAD956 /* libusb-1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46C163DC1ADF1ED900BAD956 /* libusb-1.0.a */; };
 		46CB212A1AC37958009DD011 /* libIlmImf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46CB210C1AC37958009DD011 /* libIlmImf.a */; };
 		46CB212B1AC37958009DD011 /* libippicv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46CB210D1AC37958009DD011 /* libippicv.a */; };
 		46CB212C1AC37958009DD011 /* liblibjasper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46CB210E1AC37958009DD011 /* liblibjasper.a */; };
@@ -117,8 +120,6 @@
 		46F452EB1A89D06000DD172A /* ofxOculusRift.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F452BF1A89D06000DD172A /* ofxOculusRift.cpp */; };
 		46F452F01A89E49E00DD172A /* StereoDepthMapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F452EE1A89E49E00DD172A /* StereoDepthMapper.cpp */; };
 		46F452F31A8A7F1400DD172A /* CameraCalibrator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F452F11A8A7F1400DD172A /* CameraCalibrator.cpp */; };
-		46FD557E1ACB30CD003D0FD5 /* ps3eye.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46FD557C1ACB30CD003D0FD5 /* ps3eye.cpp */; };
-		46FD55831ACB311B003D0FD5 /* libusb-1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46FD55821ACB311B003D0FD5 /* libusb-1.0.a */; };
 		46FD55861ACB33EF003D0FD5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46FD55851ACB33EF003D0FD5 /* Cocoa.framework */; };
 		46FD55881ACB3400003D0FD5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46FD55871ACB3400003D0FD5 /* Foundation.framework */; };
 		46FD558A1ACB3421003D0FD5 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46FD55891ACB3421003D0FD5 /* IOKit.framework */; };
@@ -213,11 +214,18 @@
 		466906961AD477C400D69129 /* UnityInterop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnityInterop.h; sourceTree = "<group>"; };
 		466906981AD4816C00D69129 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		4669069A1AD4817200D69129 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
-		468761111ACDD26600594754 /* OFCVBridge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OFCVBridge.cpp; sourceTree = "<group>"; };
-		468761121ACDD26600594754 /* OFCVBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OFCVBridge.h; sourceTree = "<group>"; };
+		4681642E1ADF074800D3FE2F /* Globals.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Globals.cpp; sourceTree = "<group>"; };
+		4681642F1ADF074800D3FE2F /* Globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Globals.h; sourceTree = "<group>"; };
+		468761111ACDD26600594754 /* YUVBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = YUVBuffer.cpp; sourceTree = "<group>"; };
+		468761121ACDD26600594754 /* YUVBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUVBuffer.h; sourceTree = "<group>"; };
 		468761171ACE17D300594754 /* PS3EyeMisc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PS3EyeMisc.h; sourceTree = "<group>"; };
 		46938B951ADD9854000CD7D7 /* libboost_system-mt.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libboost_system-mt.a"; path = "/usr/local/Cellar/boost/1.57.0/lib/libboost_system-mt.a"; sourceTree = "<absolute>"; };
 		46938B961ADD9854000CD7D7 /* libboost_thread-mt.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libboost_thread-mt.a"; path = "/usr/local/Cellar/boost/1.57.0/lib/libboost_thread-mt.a"; sourceTree = "<absolute>"; };
+		46C163D61ADF1E6B00BAD956 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		46C163D81ADF1E8900BAD956 /* libusb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libusb.h; path = backend/libusb.h; sourceTree = "<group>"; };
+		46C163D91ADF1E8900BAD956 /* ps3eye.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ps3eye.cpp; path = backend/ps3eye.cpp; sourceTree = "<group>"; };
+		46C163DA1ADF1E8900BAD956 /* ps3eye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ps3eye.h; path = backend/ps3eye.h; sourceTree = "<group>"; };
+		46C163DC1ADF1ED900BAD956 /* libusb-1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libusb-1.0.a"; path = "/usr/local/Cellar/libusb/1.0.9/lib/libusb-1.0.a"; sourceTree = "<absolute>"; };
 		46CB210C1AC37958009DD011 /* libIlmImf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libIlmImf.a; sourceTree = "<group>"; };
 		46CB210D1AC37958009DD011 /* libippicv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libippicv.a; sourceTree = "<group>"; };
 		46CB210E1AC37958009DD011 /* liblibjasper.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = liblibjasper.a; sourceTree = "<group>"; };
@@ -391,10 +399,6 @@
 		46F452F21A8A7F1400DD172A /* CameraCalibrator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraCalibrator.h; sourceTree = "<group>"; };
 		46FD55661ACB2CDC003D0FD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46FD55711ACB3006003D0FD5 /* libPS3EyeDriver.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = libPS3EyeDriver.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		46FD557B1ACB30CD003D0FD5 /* libusb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libusb.h; sourceTree = "<group>"; };
-		46FD557C1ACB30CD003D0FD5 /* ps3eye.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ps3eye.cpp; sourceTree = "<group>"; };
-		46FD557D1ACB30CD003D0FD5 /* ps3eye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ps3eye.h; sourceTree = "<group>"; };
-		46FD55821ACB311B003D0FD5 /* libusb-1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libusb-1.0.a"; sourceTree = "<group>"; };
 		46FD55851ACB33EF003D0FD5 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		46FD55871ACB3400003D0FD5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		46FD55891ACB3421003D0FD5 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
@@ -431,6 +435,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46C163DE1ADF1EE800BAD956 /* libusb-1.0.a in Frameworks */,
 				46938B991ADD986D000CD7D7 /* libboost_system-mt.a in Frameworks */,
 				46938B9A1ADD986D000CD7D7 /* libboost_thread-mt.a in Frameworks */,
 				4669069D1AD4819F00D69129 /* OpenGL.framework in Frameworks */,
@@ -438,7 +443,6 @@
 				46FD558A1ACB3421003D0FD5 /* IOKit.framework in Frameworks */,
 				46FD55881ACB3400003D0FD5 /* Foundation.framework in Frameworks */,
 				46FD55861ACB33EF003D0FD5 /* Cocoa.framework in Frameworks */,
-				46FD55831ACB311B003D0FD5 /* libusb-1.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -921,9 +925,10 @@
 			path = src;
 			sourceTree = "<group>";
 		};
-		46FD55641ACB2CDC003D0FD5 /* PS3EyeDriver */ = {
+		46FD55641ACB2CDC003D0FD5 /* PS3EyePlugin */ = {
 			isa = PBXGroup;
 			children = (
+				46C163D61ADF1E6B00BAD956 /* README.md */,
 				46584E041AD457B0001E1908 /* frameworks */,
 				46FD557F1ACB30DF003D0FD5 /* src */,
 				46FD55801ACB30ED003D0FD5 /* dependencies */,
@@ -931,6 +936,7 @@
 				46FD55651ACB2CDC003D0FD5 /* Supporting Files */,
 				46FD55981ACB8C94003D0FD5 /* Driver Architecture.txt */,
 			);
+			name = PS3EyePlugin;
 			path = PS3EyeDriver;
 			sourceTree = "<group>";
 		};
@@ -949,8 +955,8 @@
 				46FD55901ACB5470003D0FD5 /* PS3EyePlugin.mm */,
 				46FD55931ACB5C0D003D0FD5 /* PS3EyeDriver.h */,
 				46FD55921ACB5C0D003D0FD5 /* PS3EyeDriver.mm */,
-				468761121ACDD26600594754 /* OFCVBridge.h */,
-				468761111ACDD26600594754 /* OFCVBridge.cpp */,
+				468761121ACDD26600594754 /* YUVBuffer.h */,
+				468761111ACDD26600594754 /* YUVBuffer.cpp */,
 				468761171ACE17D300594754 /* PS3EyeMisc.h */,
 				46FD55841ACB313F003D0FD5 /* backend */,
 				466906961AD477C400D69129 /* UnityInterop.h */,
@@ -961,9 +967,9 @@
 		46FD55801ACB30ED003D0FD5 /* dependencies */ = {
 			isa = PBXGroup;
 			children = (
+				46C163DC1ADF1ED900BAD956 /* libusb-1.0.a */,
 				46938B951ADD9854000CD7D7 /* libboost_system-mt.a */,
 				46938B961ADD9854000CD7D7 /* libboost_thread-mt.a */,
-				46FD55821ACB311B003D0FD5 /* libusb-1.0.a */,
 			);
 			name = dependencies;
 			sourceTree = "<group>";
@@ -979,9 +985,9 @@
 		46FD55841ACB313F003D0FD5 /* backend */ = {
 			isa = PBXGroup;
 			children = (
-				46FD557B1ACB30CD003D0FD5 /* libusb.h */,
-				46FD557C1ACB30CD003D0FD5 /* ps3eye.cpp */,
-				46FD557D1ACB30CD003D0FD5 /* ps3eye.h */,
+				46C163D81ADF1E8900BAD956 /* libusb.h */,
+				46C163D91ADF1E8900BAD956 /* ps3eye.cpp */,
+				46C163DA1ADF1E8900BAD956 /* ps3eye.h */,
 			);
 			name = backend;
 			sourceTree = "<group>";
@@ -1063,7 +1069,7 @@
 				464C5F431A8D3554000E57AD /* etc */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
-				46FD55641ACB2CDC003D0FD5 /* PS3EyeDriver */,
+				46FD55641ACB2CDC003D0FD5 /* PS3EyePlugin */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1084,6 +1090,8 @@
 				46F452F21A8A7F1400DD172A /* CameraCalibrator.h */,
 				46F452F11A8A7F1400DD172A /* CameraCalibrator.cpp */,
 				51E1B39D1A424B9F00D6BCA7 /* programSettings.h */,
+				4681642F1ADF074800D3FE2F /* Globals.h */,
+				4681642E1ADF074800D3FE2F /* Globals.cpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -1248,10 +1256,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46FD557E1ACB30CD003D0FD5 /* ps3eye.cpp in Sources */,
 				46FD55911ACB5470003D0FD5 /* PS3EyePlugin.mm in Sources */,
-				468761131ACDD26600594754 /* OFCVBridge.cpp in Sources */,
+				468761131ACDD26600594754 /* YUVBuffer.cpp in Sources */,
 				46FD55941ACB5C0D003D0FD5 /* PS3EyeDriver.mm in Sources */,
+				46C163DB1ADF1E8900BAD956 /* ps3eye.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1292,6 +1300,7 @@
 				46F452D81A89D06000DD172A /* OVR_LatencyTestImpl.cpp in Sources */,
 				46F452D11A89D06000DD172A /* OVR_System.cpp in Sources */,
 				46F4520E1A89D00100DD172A /* ofxTweakbarButton.cpp in Sources */,
+				468164301ADF074800D3FE2F /* Globals.cpp in Sources */,
 				46F452C41A89D06000DD172A /* OVR_Alg.cpp in Sources */,
 				46F452F31A8A7F1400DD172A /* CameraCalibrator.cpp in Sources */,
 				46F452151A89D00100DD172A /* ofxTweakbarSeparator.cpp in Sources */,
@@ -1377,6 +1386,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/PS3EyeDriver",
 					/usr/local/Cellar/boost/1.57.0/lib,
+					/usr/local/Cellar/libusb/1.0.9/lib,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -1430,6 +1440,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/PS3EyeDriver",
 					/usr/local/Cellar/boost/1.57.0/lib,
+					/usr/local/Cellar/libusb/1.0.9/lib,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;

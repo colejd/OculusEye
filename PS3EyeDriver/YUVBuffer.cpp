@@ -6,7 +6,7 @@
 //
 //
 
-#include "OFCVBridge.h"
+#include "YUVBuffer.h"
 
 /*
 //These functions optimize well, but are outdone by the matching macros (in OFCVBridge.h) on both debug and release.

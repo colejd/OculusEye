@@ -1,5 +1,8 @@
 #OculusEye
+
 OculusEye is an open-source wearable augmented reality platform with a focus on cost-effectiveness. The software portion of this project is based on OpenCV 3.0. The hardware is comprised of cheaply available parts: two Playstation 3 Eye cameras, and a [modular, 3d-printable mount](/etc/models).
+
+The main focus of the software portion of this project was the creation of an efficient dylib for using Playstation Eye cameras, and a program utilizing this through an AR-focused rendering pipeline using OpenCV.
 
 ![Photo of prototype](http://i.imgur.com/MxHzK2b.jpg)
 [![OculusEye Prototype Footage](http://img.youtube.com/vi/RTLH47_6cyU/0.jpg)](http://www.youtube.com/watch?v=RTLH47_6cyU)
@@ -35,7 +38,6 @@ This program is licensed under the MIT License. See [the license](LICENSE.txt) f
 
 #Credits
 This project was created with [OpenFrameworks 64-bit OSX branch](https://github.com/NickHardeman/openframeworks_osx_64) using:
-- [PS3EYEDriver](https://github.com/inspirit/PS3EYEDriver)
 - [ofxOculusRift](https://github.com/andreasmuller/ofxOculusRift)
 - [ofxTweakBar](https://github.com/roxlu/ofxTweakbar)
 - [OpenCV 3.0 Beta](http://opencv.org/)

@@ -5,6 +5,7 @@
 //  Created by Jonathan Cole on 3/31/15.
 //
 //
+//  Uses code from http://docs.unity3d.com/Manual/NativePluginInterface.html
 
 /**
  * Interface into PS3 Eye code.

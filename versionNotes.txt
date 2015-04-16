@@ -69,6 +69,10 @@ This one is much more major than the minor version number suggests. This bundle 
 -- v1.2.2 (4/14/15) ---------------------
 I've abandoned the driver's native threading in support of Boost's threading libraries. This will allow me to go multiplatform when the time comes.
 
+-- v1.3.0 (4/16/15) ---------------------
+This is the version I am submitting for my final Capstone report, barring any major issues. It includes a thorough code cleanup, more robust settings for Canny and stereo disparity mapping, renamed classes for clarity, and fleshed-out code comments.
+External dependencies have been removed from PS3EyePlugin. They may be downloaded separately, using information from the readme.
+
 -----------------------------------------
 
 
@@ -76,10 +80,7 @@ I've abandoned the driver's native threading in support of Boost's threading lib
 to do:
 - Add a field for setting a background color for "edges only" mode.
 - Load configuration (programSettings.h) from a text file
-- Add a nose
-- Use multiplatform threading library in PS3EyeDriver
-- Improve performance
-- Fix all the bugs
+- Add a nose (reduces nausea)
 - Fix USB hotplugging to allow for disconnection or at least connection of cameras during run time
 - Figure out a fix for horizontal banding in contour output when multithreading
 - Try SSE/SIMD instructions for YUV422 conversion (much, much faster)
@@ -89,11 +90,16 @@ to do:
 
 - Move Data folder into OculusEye.app
 
+perpetual:
+- Improve performance
+- Fix all the bugs
+
 optional:
 - Integrate PS Move API
 - Add microphone support from Eye cameras
 
 done:
+- Use multiplatform threading library in PS3EyeDriver
 - Refactor PS3 Eye driver code into a separate dylib (PS3EyePlugin.bundle)
 - Add camera swap support
 - Convert from YUV422 to RGB directly (formerly YUV422 -> RGBA -> RGB)
@@ -106,7 +112,7 @@ done:
 
 abandoned:
 - Reintegrate ofxCocoa (makes this a native OSX application that lives in the tray)
-    -> This was more for fun than anything. It wasn't useful and added unneeded complexity to the program.
+    -> This was more for fun than anything. It wasn't useful and added unnecessary complexity to the program.
 
 future:
 - Offload initial YUV422 to RGB conversion to Raspberry Pi located on hardware

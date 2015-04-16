@@ -1,5 +1,5 @@
 //
-//  OFCVBridge.h
+//  YUVBuffer.h
 //  OculusEye
 //
 //  Created by Jonathan Cole on 9/22/14.
@@ -13,8 +13,8 @@
 
 #include <stdint.h>
 
-#ifndef __ofCV__OFCVBridge__
-#define __ofCV__OFCVBridge__
+#ifndef __PS3EyeDriver__YUVBuffer__
+#define __PS3EyeDriver__YUVBuffer__
 
 //--------------------------------------------------------------
 #define _max(a, b) (((a) > (b)) ? (a) : (b))
@@ -81,4 +81,4 @@ class YUVBuffer {
 };
 
 
-#endif /* defined(__ofCV__OFCVBridge__) */
+#endif /* defined(__PS3EyeDriver__YUVBuffer__) */

@@ -51,17 +51,6 @@ public:
     float camFpsLastSampleTime = 0;
     float camFps = 0;
     
-    //Camera controls
-    bool autoWhiteBalance;
-    bool autoGain;
-    float gain;
-    float sharpness;
-    float exposure;
-    float brightness;
-    float contrast;
-    float hue;
-    float blueBalance;
-    float redBalance;
     //Raw video data array from PS Eye (RGBA888 color)
     unsigned char * rawPixelData;
     
@@ -81,29 +70,31 @@ public:
     int edgeThickness = 2;
     bool GPUEnabled = false;
     
+    //Is the camera initialized?
     bool initialized = false;
-    
-    bool doWarping;
     
     bool render = true;
     
-    //CVEyeThread thread;
-    
+    //Pull camera data for processing using OpenCV.
     void PullData();
     
+    //Perform erosion/dilution?
     bool doErosionDilution;
     int erosionIterations = 1;
     int dilutionIterations = 1;
+    //Downsampling ratio of the original image. 0.5 means resolution is cut in half.
     float downsampleRatio = 0.5f;
+    //Adaptive downsampling changes the downsample ratio depending on framerate.
     bool adaptiveDownsampling = false;
+    //Current state of adaptive downsampling.
     float adaptedDownsampleRatio = 0.5f;
     
+    //Number of pieces to break an image up for multithreaded contour detection.
     int imageSubdivisions = 1;
     bool drawContours = true;
     
+    //True if a sample image is loaded in lieu of camera data
     bool dummyImage = false;
-    
-    bool computeFrame = true;
     
     cv::Mat src_tmp;
     cv::UMat src, src_gray, dest;
@@ -111,15 +102,12 @@ public:
     
     string screenMessage = "";
     
+    //Used for synchronization between multiple CVEye instances
     bool sync_update = false;
     
     CameraCalibrator *calibrator;
     
     bool isLeftEye;
-    
-    //PS3EyeDriver* GetDriverForSide(bool isLeft);
-    
-    bool useColorCanny = false;
     
 private:
     int camIndex;

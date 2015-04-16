@@ -5,30 +5,21 @@
 //  Created by Jonathan Cole on 3/31/15.
 //
 //
+//  Uses code from http://docs.unity3d.com/Manual/NativePluginInterface.html
 
 #import "PS3EyePlugin.h"
 #import "UnityInterop.h"
 
-//C++ ---------------------------------------------------------
+// ==========================================================================
+// C++ (Unity-oriented static bindings for native interface)
+// ==========================================================================
 
-// --------------------------------------------------------------------------
-// Helper utilities
-
-
-// Prints a string
-/*
-static void DebugLog (const char* str)
-{
-#if UNITY_WIN
-    OutputDebugStringA (str);
-#else
-    printf ("%s", str);
-    //DebugLog(str);
-#endif
+void LogNative(const char *message){
+    printf("%s\n", message);
 }
-*/
 
 // --------------------------------------------------------------------------
+// Extern functions
 
 extern "C"{
 void InitDriver(){
@@ -113,15 +104,16 @@ void setRedBalance (float redBalance){
     return [[PS3EyePlugin sharedInstance] setRedBalance:redBalance];
 }
 
-//Called from Unity
+/**
+ * Called from Unity. Points DebugLog to the print function of Unity.
+ */
 void SetDebugLogFunction( FuncPtr fp )
 {
     DebugLog = fp;
 }
-
-void LogNative(const char *message){
-    printf("%s\n", message);
-}
+    
+// --------------------------------------------------------------------------
+// Unity functions
 
 void SetUnityTexturePointers(void *leftPtr, void *rightPtr){
     // A script calls this at initialization time; just remember the texture pointer here.
@@ -131,7 +123,8 @@ void SetUnityTexturePointers(void *leftPtr, void *rightPtr){
     right_TexturePointer = rightPtr;
     DebugLog("[PS3EyePlugin] Set texture pointers.");
 }
-    
+
+/* Altered by Jon */
 void UnitySetGraphicsDevice (void* device, int deviceType, int eventType)
 {
     // Set device type to -1, i.e. "not recognized by our plugin"
@@ -147,7 +140,8 @@ void UnitySetGraphicsDevice (void* device, int deviceType, int eventType)
     }
 #endif
 }
-    
+
+/* Altered by Jon */
 void UnityRenderEvent (int eventID)
 {
     // Unknown graphics device type? Do nothing.
@@ -161,6 +155,7 @@ void UnityRenderEvent (int eventID)
     
 }
 
+/* Altered by Jon */
 static void SetDefaultGraphicsState ()
 {
     
@@ -179,10 +174,12 @@ static void SetDefaultGraphicsState ()
 #endif
 }
 
+/* Altered by Jon */
+/**
+ * Copies pixel data from the camera to Unity Texture2D object.
+ */
 static void DoRendering (int eventID)
 {
-    
-
     
 #if SUPPORT_OPENGL
     // OpenGL case
@@ -228,6 +225,10 @@ static void DoRendering (int eventID)
 #endif
 }
 
+/* Altered by Jon */
+/**
+ * Writes the data from an RGB888 (byte) array to the specified Unity3D Texture2D objects.
+ */
 static void FillTextureFromCode(int width, int height, int stride, unsigned char* dst, EyeType side){
     
     //Fill
@@ -272,8 +273,9 @@ static void FillTextureFromCode(int width, int height, int stride, unsigned char
 
 
 
-
-//Objective-C --------------------------------------------------
+// ==========================================================================
+// Objective-C (native interface for plugin)
+// ==========================================================================
 
 @implementation PS3EyePlugin{
     //Private instance variables

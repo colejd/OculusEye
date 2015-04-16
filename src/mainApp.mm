@@ -7,7 +7,7 @@
 //
 
 #include "mainApp.h"
-
+#include "Globals.h"
 
 
 /**
@@ -95,6 +95,9 @@ void mainApp::setup(){
     
 }
 
+/**
+ * Loads and initializes PS3EyePlugin.
+ */
 void mainApp::LoadBundles(){
     NSBundle *appBundle;
     NSArray *bundlePaths;
@@ -172,7 +175,6 @@ void mainApp::CreateGUI(){
     ps3EyeSettings = ofxTweakbars::create("PS3 Eye Settings", "PS3 Eye Settings");
     ps3EyeSettingsStorage = new ofxTweakbarSimpleStorage(ps3EyeSettings);
     
-    //ps3EyeSettings->addSeparator("my_seperator") -> setGroup("Particle Settings");
     ps3EyeSettings -> addBool("autoWhiteBalance", autoWhiteBalance) -> setLabel("Auto White Balance");
     ps3EyeSettings -> addBool("autoGain", autoGain) -> setLabel("Auto Gain");
     ps3EyeSettings -> addFloat("gain", gain) -> setLabel("Gain") -> setMin("0") -> setMax("63");
@@ -229,9 +231,11 @@ void mainApp::CreateGUI(){
     cannySettingsStorage = new ofxTweakbarSimpleStorage(cannySettings);
     
     cannySettings -> addBool("Canny Edge Detection", doCanny) -> setLabel("Canny Edge Detection") -> setKey("e");
-    //cannySettings -> addBool("Use Color Canny", useColorCanny) -> setLabel("Use Color Canny");
+    cannySettings -> addList("Canny Type", &Globals::cannyType, "Greyscale, Hue, Color") -> setLabel("Canny Type");
+    cannySettings -> addBool("Canny Auto Thresholding", Globals::autoCannyThresholding) -> setLabel("Auto Canny thresholding");
     cannySettings -> addFloat("Canny Min Threshold", cannyMinThreshold) -> setLabel("Canny Min Threshold") -> setMin("0") -> setMax("100");
     cannySettings -> addFloat("Canny Ratio", cannyRatio) -> setLabel("Canny Ratio") -> setMin("2") -> setMax("3");
+    cannySettings -> addInt("MinContourLength", Globals::minContourLength) -> setLabel("Minimum Contour Length") -> setMin("0") -> setMax("100");
     cannySettings -> addColor3f("Edge Color", pickerColor) -> setLabel("Edge Color");
     cannySettings -> addBool("Draw Contours", drawContours) -> setLabel("Draw Contours") -> setGroup("Contour Settings");
     cannySettings -> addInt("Edge Thickness", edgeThickness) -> setLabel("Edge Thickness") -> setGroup("Contour Settings") -> setMin("-1") -> setMax("5");
@@ -242,7 +246,6 @@ void mainApp::CreateGUI(){
     cannySettings -> addBool("Adaptive Downsampling", adaptiveDownsampling) -> setLabel("Adaptive Downsampling") -> setGroup("Performance");
     cannySettings -> addInt("Subdivisions (Cores Used)", imageSubdivisions) -> setLabel("Subdivisions (Cores Used)") -> setMin("1") -> setMax("8") -> setGroup("Performance");
     cannySettings -> addBool("Show Edges Only", showEdgesOnly) -> setLabel("Show Edges Only");
-    cannySettings -> addList("Canny Type", cannyType, "Greyscale, Hue, Color");
     
     cannySettingsStorage -> retrieve();
     cannySettings -> load();
@@ -308,7 +311,8 @@ void mainApp::update()
 }
 
 /**
- * Called when both CVEye objects have a new frame ready.
+ * Called when both CVEye objects have a new frame ready
+ * (controlled by sync_update).
  */
 void mainApp::SynchronizedUpdate(){
     if(computeDisparityMap){
@@ -414,7 +418,8 @@ void mainApp::draw()
         
         //Make text for the image with information about the capture process
         std::ostringstream stringStream;
-        stringStream << " Calibrating... (press C to stop)\n";
+        stringStream << " Calibrating...\n";
+        stringStream << "(press C to stop)\n";
         stringStream << " Frames Captured: " << leftEye->calibrator->successes << "/" << leftEye->calibrator->numBoards;
         std::string caption = stringStream.str();
         
@@ -464,7 +469,7 @@ void mainApp::InitEyes(){
     
     
     //Pull default values from the camera hardware and update the GUI / CVEyes present
-    //if(eyePlugin){
+    if([eyeDriver LeftEyeInitialized] || [eyeDriver RightEyeInitialized]){
         autoWhiteBalance = [eyeDriver getAutoWhiteBalance];
         autoGain = [eyeDriver getAutoGain];
         gain = [eyeDriver getGain];
@@ -477,7 +482,7 @@ void mainApp::InitEyes(){
         redBalance = [eyeDriver getRedBalance];
         
         UpdateCameraSettings();
-    //}
+    }
     
     UpdateEyeValues(leftEye);
     UpdateEyeValues(rightEye);
@@ -521,7 +526,7 @@ void mainApp::DrawCVMat(const cv::Mat& mat, ofImageType type, int x, int y, int 
  */
 void mainApp::UpdateCameraSettings(){
     
-    if(eyeDriver){
+    if([eyeDriver LeftEyeInitialized] || [eyeDriver RightEyeInitialized]){
         [eyeDriver setAutoWhiteBalance:autoWhiteBalance];
         [eyeDriver setAutoGain:autoGain];
         [eyeDriver setGain:gain];
@@ -545,7 +550,6 @@ void mainApp::UpdateEyeValues(CVEye *eye){
     eye->cannyRatio = cannyRatio;
     eye->edgeThickness = edgeThickness;
     eye->showEdgesOnly = showEdgesOnly;
-    eye->doWarping = oculusRift.doWarping;
     eye->guiLineColor = cv::Scalar(pickerColor[0] * 255.0f, pickerColor[1] * 255.0f, pickerColor[2] * 255.0f);
     eye->doErosionDilution = doErosionDilution;
     eye->dilutionIterations = dilutionIterations;
@@ -557,7 +561,7 @@ void mainApp::UpdateEyeValues(CVEye *eye){
     ofSetVerticalSync(useVSync);
 }
 
-//Button callback to begin camera calibration from the GUI
+//GUI button callback - begin camera calibration
 void TW_CALL mainApp::calibrationButtonCallback(void* pApp) {
     mainApp* app = static_cast<mainApp*>(pApp);
     app->BeginCameraCalibration();
@@ -587,7 +591,7 @@ void mainApp::EndCameraCalibration(bool stopEarly){
 }
 
 /**
- * Button callback to toggle fullscreen
+ * GUI button callback - toggle fullscreen
  */
 void TW_CALL mainApp::fullscreenButtonCallback(void* pApp) {
     mainApp* app = static_cast<mainApp*>(pApp);

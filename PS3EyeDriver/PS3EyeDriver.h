@@ -5,6 +5,7 @@
 //  Created by Jonathan Cole on 3/31/15.
 //
 //
+//  Uses code from http://docs.unity3d.com/Manual/NativePluginInterface.html
 
 /**
  * Code for pulling camera data from the PS3 Eyes and giving them
@@ -19,7 +20,7 @@
 #include <assert.h>
 
 #include "ps3eye.h"
-#include "OFCVBridge.h"
+#include "YUVBuffer.h"
 
 #include "PS3EyeMisc.h"
 

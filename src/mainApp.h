@@ -57,14 +57,11 @@ public:
     bool useVSync;
 
     //PS3 Eye--------------
+    void LoadBundles();
+    NSBundle *eyeBundle;
+    id eyeDriver; //<PS3EyePlugin>
+    
     void InitEyes();
-    //ps3eyeUpdate threadUpdate;
-    int cam_width, cam_height;
-    //FPS variables
-    int camFrameCount = 0;
-    int camFpsLastSampleFrame = 0;
-    float camFpsLastSampleTime = 0;
-    float camFps = 0;
     //Camera controls
     bool autoWhiteBalance;
     bool autoGain;
@@ -149,12 +146,6 @@ public:
     StereoDepthMapper stereoMapper;
     bool computeDisparityMap = false;
     bool showDisparityMap = false;
-    
-    void LoadBundles();
-    NSBundle *eyeBundle;
-    id eyeDriver; //<PS3EyePlugin>
-    
-    int cannyType;
     
 private:
     string GetStdoutFromCommand(string cmd);

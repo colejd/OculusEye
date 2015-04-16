@@ -5,6 +5,7 @@
 //  Created by Jonathan Cole on 4/7/15.
 //
 //
+//  Uses code from http://docs.unity3d.com/Manual/NativePluginInterface.html
 
 #ifndef OculusEye_UnityInterop_h
 #define OculusEye_UnityInterop_h

@@ -7,6 +7,7 @@
 //
 
 #include "CVEye.h"
+#include "Globals.h"
 
 //Constructor
 CVEye::CVEye(const int _index, PS3EyePlugin *plugin, bool isLeft) {
@@ -241,20 +242,22 @@ void CVEye::shutdown(){
 void CVEye::ApplyCanny(cv::UMat &src, cv::UMat &src_gray, cv::UMat &dest){
     using namespace cv;
     //START_TIMER(cannyTimer);
-    UMat input_image;
-    if(useColorCanny){
-        std::vector<cv::Mat> channels;
-        cv::Mat hsv;
+    UMat input_image = src_gray;
+    
+    if(Globals::cannyType == Globals::CANNY_GRAYSCALE){
+        //input_image = src_gray;
+    }
+    else if(Globals::cannyType == Globals::CANNY_HUE){
+        std::vector<cv::UMat> channels;
+        cv::UMat hsv;
         cv::cvtColor( src, hsv, CV_RGB2HSV );
         cv::split(hsv, channels);
-        src_gray.getMat(0) = channels[0];
+        src_gray = channels[0];
         input_image = src_gray;
         hsv.release();
-        printf("Use color canny\n");
     }
-    else{
-        input_image = src_gray;
-        printf("Use greyscale canny\n");
+    else if(Globals::cannyType == Globals::CANNY_COLOR){
+        input_image = src;
     }
     
     adaptedDownsampleRatio = downsampleRatio;
@@ -296,6 +299,7 @@ void CVEye::ApplyCanny(cv::UMat &src, cv::UMat &src_gray, cv::UMat &dest){
     //bilateralFilter(src_gray_clone, src_gray, kernelLength, kernelLength*2, kernelLength/2);
     //src_gray_clone.release();
     
+    //Perform erosion and dilution if requested
     if(doErosionDilution){
         erode(input_image, input_image, Mat(), cv::Point(-1,-1), erosionIterations, BORDER_CONSTANT, morphologyDefaultBorderValue());
         dilate(input_image, input_image, Mat(), cv::Point(-1,-1), dilutionIterations, BORDER_CONSTANT, morphologyDefaultBorderValue());
@@ -306,21 +310,56 @@ void CVEye::ApplyCanny(cv::UMat &src, cv::UMat &src_gray, cv::UMat &dest){
     int highThreshold = lowThreshold * cannyRatio;
     int kernel_size = 3;
     
-    /*
-    cv::Mat temp;
-    int thresholdType = THRESH_OTSU | THRESH_BINARY; //THRESH_OTSU | THRESH_BINARY;
-    highThreshold = threshold(src_gray, temp, 0, 255, thresholdType);
-    lowThreshold = highThreshold * 0.1;
-    temp.release();
-     */
+    //Adjust the thresholds automatically if desired
+    if(Globals::autoCannyThresholding){
+        int thresholdType = THRESH_OTSU | THRESH_BINARY; //THRESH_OTSU | THRESH_BINARY;
+        cv::Mat temp;
+        if(Globals::cannyType == Globals::CANNY_COLOR){
+            cv::Mat input_gray;
+            cvtColor(input_image, input_gray, COLOR_RGB2GRAY);
+            highThreshold = threshold(input_gray, temp, 0, 255, thresholdType);
+            input_gray.release();
+        }
+        else{
+            highThreshold = threshold(input_image, temp, 0, 255, thresholdType);
+        }
+        lowThreshold = highThreshold * 0.1;
+        temp.release();
+    }
     
     //cv::ocl::setUseOpenCL(true);
     //contour_output = Scalar::all(0);
     //canny_output = Scalar::all(0);
-    Canny( input_image, canny_output, lowThreshold, highThreshold, kernel_size );
+    if(Globals::cannyType == Globals::CANNY_COLOR){
+        cv::UMat temp_gray;
+        cvtColor(input_image, temp_gray, COLOR_RGB2GRAY);
+        
+        std::vector<cv::UMat> channels;
+        cv::split(input_image, channels);
+        
+        //Separate the three color channels and perform Canny on each
+        Canny(channels[0], channels[0], lowThreshold, highThreshold, kernel_size);
+        Canny(channels[1], channels[1], lowThreshold, highThreshold, kernel_size);
+        Canny(channels[2], channels[2], lowThreshold, highThreshold, kernel_size);
+        //Also perform Canny on the grayscale version of the image
+        Canny(temp_gray, temp_gray, lowThreshold, highThreshold, kernel_size);
+        
+        //Merge the three color channels into one image
+        //merge(channels, canny_output);
+        bitwise_and(channels[0], channels[1], channels[1]);
+        bitwise_and(channels[1], channels[2], canny_output);
+        //cvtColor(canny_output, canny_output, COLOR_RGB2GRAY);
+        //Combine the merged image with the grayscale results for the final image
+        bitwise_or(canny_output, temp_gray, canny_output);
+        
+        temp_gray.release();
+    }
+    else{
+        Canny( input_image, canny_output, lowThreshold, highThreshold, kernel_size );
+    }
     //cv::ocl::setUseOpenCL(false);
     
-    //Black out the final image if we only want to see the edges
+    //Black out the final image if we only want to see the edges when they are drawn
     if(showEdgesOnly) dest = Scalar::all(0);
     
     //Detect contours in canny_output and draw it to the final image
@@ -356,10 +395,9 @@ void CVEye::ApplyCanny(cv::UMat &src, cv::UMat &src_gray, cv::UMat &dest){
         if(downsampleRatio < 1.0f)
             resize(contour_output, contour_output, cv::Size(CAMERA_WIDTH, CAMERA_HEIGHT), 0, 0, INTER_NEAREST);
         
-        //Overlay the detected contours onto the final image
-        //cvtColor(contour_output, contour_output, COLOR_RGB2GRAY);
+        //Overlay the detected contours onto the final image using its
+        //own data as a mask (this copies only the contours to the image)
         contour_output.copyTo(dest, contour_output);
-        //dest.setTo(guiLineColor, contour_output);
     }
     //Just draw the edges from canny_output to the final image
     else{
@@ -429,24 +467,28 @@ void ParallelCanny::operator ()(const cv::Range &range) const{
 void ParallelContourDetector::operator ()(const cv::Range &range) const{
     using namespace cv;
     
-    /*
-    vector< vector<cv::Point> > contourData;
-    vector<Vec4i> contourHierarchy;
-    findContours( src_gray, contourData, contourHierarchy, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE, cv::Point(0, 0) );
-    contour_output = Scalar::all(0);
-    drawContours(contour_output, contourData, -1, guiLineColor, edgeThickness, 8, contourHierarchy);
-     */
-    
     for(int i = range.start; i < range.end; i++){
         vector< vector<cv::Point> > contourData;
         vector<Vec4i> contourHierarchy;
         cv::UMat in(src_gray, cv::Rect(0, (src_gray.rows/subsections)*i, src_gray.cols, src_gray.rows/subsections));
-        cv::UMat out(out_gray, cv::Rect(0, (out_gray.rows/subsections)*i, out_gray.cols, out_gray.rows/subsections));
+        cv::UMat out(out_gray, cv::Rect(0, (out_gray.rows/subsections)*i, out_gray.cols, out_gray.rows/subsections) );
         try{
-            findContours( in, contourData, contourHierarchy, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE, cv::Point(0, 0) );
+            findContours( in, contourData, contourHierarchy, RETR_TREE, CHAIN_APPROX_SIMPLE, cv::Point(0, 0) );
             out = Scalar::all(0);
             Scalar color = eye.guiLineColor;
             //if(eye.rave) color = Scalar(rand()&255, rand()&255, rand()&255);
+            
+            //Prune contours smaller than a minimum length if desired
+            if(Globals::minContourLength > 0){
+                for (vector<vector<cv::Point> >::iterator it = contourData.begin(); it!=contourData.end(); )
+                {
+                    if (it->size()<Globals::minContourLength)
+                        it=contourData.erase(it);
+                    else
+                        ++it;
+                }
+            }
+            
             drawContours(out, contourData, -1, color, eye.edgeThickness, 8, contourHierarchy);
         }
         catch(Exception e){
