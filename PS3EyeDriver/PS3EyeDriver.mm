@@ -10,6 +10,7 @@
 #include "PS3EyeDriver.h"
 
 PS3EyeDriver::PS3EyeDriver(FuncPtr logPtr){
+    //Set the logging function
     Log = logPtr;
     Log("[PS3EyeDriver] Creating driver...");
     //printf("[PS3EyeDriver] Driver starting...\n");

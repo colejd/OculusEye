@@ -73,35 +73,68 @@ bool ThreadIsRunning(){
     return [[PS3EyePlugin sharedInstance] ThreadIsRunning];
 }
 
+/*------ Setters -----*/
 void setAutoWhiteBalance (bool autoWhiteBalance){
-    return [[PS3EyePlugin sharedInstance] setAutoWhiteBalance:autoWhiteBalance];
+    [[PS3EyePlugin sharedInstance] setAutoWhiteBalance:autoWhiteBalance];
 }
 void setAutoGain (bool autoGain){
-    return [[PS3EyePlugin sharedInstance] setAutoGain:autoGain];
+    [[PS3EyePlugin sharedInstance] setAutoGain:autoGain];
 }
 void setGain (float gain){
-    return [[PS3EyePlugin sharedInstance] setGain:gain];
+    [[PS3EyePlugin sharedInstance] setGain:gain];
 }
 void setSharpness (float sharpness){
-    return [[PS3EyePlugin sharedInstance] setSharpness:sharpness];
+    [[PS3EyePlugin sharedInstance] setSharpness:sharpness];
 }
 void setExposure (float exposure){
-    return [[PS3EyePlugin sharedInstance] setExposure:exposure];
+    [[PS3EyePlugin sharedInstance] setExposure:exposure];
 }
 void setBrightness (float brightness){
-    return [[PS3EyePlugin sharedInstance] setBrightness:brightness];
+    [[PS3EyePlugin sharedInstance] setBrightness:brightness];
 }
 void setContrast (float contrast){
-    return [[PS3EyePlugin sharedInstance] setContrast:contrast];
+    [[PS3EyePlugin sharedInstance] setContrast:contrast];
 }
 void setHue (float hue){ //huehuehuehuehue
-    return [[PS3EyePlugin sharedInstance] setHue:hue];
+    [[PS3EyePlugin sharedInstance] setHue:hue];
 }
 void setBlueBalance (float blueBalance){
-    return [[PS3EyePlugin sharedInstance] setBlueBalance:blueBalance];
+    [[PS3EyePlugin sharedInstance] setBlueBalance:blueBalance];
 }
 void setRedBalance (float redBalance){
-    return [[PS3EyePlugin sharedInstance] setRedBalance:redBalance];
+    [[PS3EyePlugin sharedInstance] setRedBalance:redBalance];
+}
+
+/*------ Getters -----*/
+bool getAutoWhiteBalance() {
+    return [[PS3EyePlugin sharedInstance] getAutoWhiteBalance];
+}
+bool getAutoGain() {
+    return [[PS3EyePlugin sharedInstance] getAutoGain];
+}
+uint8_t getGain() {
+    return [[PS3EyePlugin sharedInstance] getGain];
+}
+uint8_t getSharpness() {
+    return [[PS3EyePlugin sharedInstance] getSharpness];
+}
+uint8_t getExposure() {
+    return [[PS3EyePlugin sharedInstance] getExposure];
+}
+uint8_t getBrightness() {
+    return [[PS3EyePlugin sharedInstance] getBrightness];
+}
+uint8_t getContrast() {
+    return [[PS3EyePlugin sharedInstance] getContrast];
+}
+uint8_t getHue() { //huehuehuehuehue
+    return [[PS3EyePlugin sharedInstance] getHue];
+}
+uint8_t getBlueBalance() {
+    return [[PS3EyePlugin sharedInstance] getBlueBalance];
+}
+uint8_t getRedBalance() {
+    return [[PS3EyePlugin sharedInstance] getRedBalance];
 }
 
 /**
@@ -391,35 +424,35 @@ static PS3EyePlugin* sharedInstance = nil;
     driver->setAutoGain(autoGain, BOTH_EYES);
 }
 
--(void) setGain: (Byte) gain{
+-(void) setGain: (uint8_t) gain{
     driver->setGain(gain, BOTH_EYES);
 }
 
--(void) setSharpness: (Byte) sharpness{
+-(void) setSharpness: (uint8_t) sharpness{
     driver->setSharpness(sharpness, BOTH_EYES);
 }
 
--(void) setExposure: (Byte) exposure{
+-(void) setExposure: (uint8_t) exposure{
     driver->setExposure(exposure, BOTH_EYES);
 }
 
--(void) setBrightness: (Byte) brightness{
+-(void) setBrightness: (uint8_t) brightness{
     driver->setBrightness(brightness, BOTH_EYES);
 }
 
--(void) setContrast: (Byte) contrast{
+-(void) setContrast: (uint8_t) contrast{
     driver->setContrast(contrast, BOTH_EYES);
 }
 
--(void) setHue: (Byte) hue{ //huehuehuehuehue
+-(void) setHue: (uint8_t) hue{ //huehuehuehuehue
     driver->setHue(hue, BOTH_EYES);
 }
 
--(void) setBlueBalance: (Byte) blueBalance{
+-(void) setBlueBalance: (uint8_t) blueBalance{
     driver->setBlueBalance(blueBalance, BOTH_EYES);
 }
 
--(void) setRedBalance: (Byte) redBalance{
+-(void) setRedBalance: (uint8_t) redBalance{
     driver->setRedBalance(redBalance, BOTH_EYES);
 }
 
@@ -433,35 +466,35 @@ static PS3EyePlugin* sharedInstance = nil;
     return driver->leftEyeRef->getAutogain();
 }
 
--(Byte) getGain{
+-(uint8_t) getGain{
     return driver->leftEyeRef->getGain();
 }
 
--(Byte) getSharpness{
+-(uint8_t) getSharpness{
     return driver->leftEyeRef->getSharpness();
 }
 
--(Byte) getExposure{
+-(uint8_t) getExposure{
     return driver->leftEyeRef->getExposure();
 }
 
--(Byte) getBrightness{
+-(uint8_t) getBrightness{
     return driver->leftEyeRef->getBrightness();
 }
 
--(Byte) getContrast{
+-(uint8_t) getContrast{
     return driver->leftEyeRef->getContrast();
 }
 
--(Byte) getHue{ //hhhehehe
+-(uint8_t) getHue{ //hhhehehe
     return driver->leftEyeRef->getHue();
 }
 
--(Byte) getBlueBalance{
+-(uint8_t) getBlueBalance{
     return driver->leftEyeRef->getBlueBalance();
 }
 
--(Byte) getRedBalance{
+-(uint8_t) getRedBalance{
     return driver->leftEyeRef->getRedBalance();
 }
 

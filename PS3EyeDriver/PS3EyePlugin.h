@@ -58,7 +58,8 @@ extern "C" {
     bool RightEyeInitialized();
 
     bool ThreadIsRunning();
-
+    
+    /*------ Setters -----*/
     void setAutoWhiteBalance (bool autoWhiteBalance);
     void setAutoGain (bool autoGain);
     void setGain (float gain);
@@ -69,6 +70,18 @@ extern "C" {
     void setHue (float hue); //huehuehuehuehue
     void setBlueBalance (float blueBalance);
     void setRedBalance (float redBalance);
+    
+    /*------ Getters -----*/
+    bool getAutoWhiteBalance();
+    bool getAutoGain();
+    uint8_t getGain();
+    uint8_t getSharpness();
+    uint8_t getExposure();
+    uint8_t getBrightness();
+    uint8_t getContrast();
+    uint8_t getHue();
+    uint8_t getBlueBalance();
+    uint8_t getRedBalance();
     
     void SetUnityTexturePointers(void *leftPtr, void *rightPtr);
     
@@ -102,25 +115,25 @@ extern "C" {
 /*------ Setters -----*/
 -(void) setAutoWhiteBalance: (bool) autoWhiteBalance;
 -(void) setAutoGain: (bool) autoGain;
--(void) setGain: (Byte) gain;
--(void) setSharpness: (Byte) sharpness;
--(void) setExposure: (Byte) exposure;
--(void) setBrightness: (Byte) brightness;
--(void) setContrast: (Byte) contrast;
--(void) setHue: (Byte) hue; //huehuehuehuehue
--(void) setBlueBalance: (Byte) blueBalance;
--(void) setRedBalance: (Byte) redBalance;
+-(void) setGain: (uint8_t) gain;
+-(void) setSharpness: (uint8_t) sharpness;
+-(void) setExposure: (uint8_t) exposure;
+-(void) setBrightness: (uint8_t) brightness;
+-(void) setContrast: (uint8_t) contrast;
+-(void) setHue: (uint8_t) hue; //huehuehuehuehue
+-(void) setBlueBalance: (uint8_t) blueBalance;
+-(void) setRedBalance: (uint8_t) redBalance;
 
 /*------ Getters -----*/
 -(bool) getAutoWhiteBalance;
 -(bool) getAutoGain;
--(Byte) getGain;
--(Byte) getSharpness;
--(Byte) getExposure;
--(Byte) getBrightness;
--(Byte) getContrast;
--(Byte) getHue;
--(Byte) getBlueBalance;
--(Byte) getRedBalance;
+-(uint8_t) getGain;
+-(uint8_t) getSharpness;
+-(uint8_t) getExposure;
+-(uint8_t) getBrightness;
+-(uint8_t) getContrast;
+-(uint8_t) getHue;
+-(uint8_t) getBlueBalance;
+-(uint8_t) getRedBalance;
 
 @end
