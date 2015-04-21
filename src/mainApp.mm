@@ -158,6 +158,7 @@ void mainApp::CreateGUI(){
     generalSettingsBar -> addBool("showPerformanceGraph", showPerformanceGraph) -> setLabel("Show Performance Graph") -> setGroup("Debug");
     generalSettingsBar -> addBool("useVSync", useVSync) -> setLabel("Use VSync (caps at 60 FPS)");
     generalSettingsBar -> addButton("Toggle Fullscreen", mainApp::fullscreenButtonCallback, this) -> setKey("f");
+    generalSettingsBar -> addButton("Toggle Stereo Gui", mainApp::stereoGUIButtonCallback, this) -> setKey("g");
     //generalSettingsBar -> addBool("correctCameraDistortion", correctCameraDistortion) -> setLabel("Correct Camera Distortion");
     generalSettingsBar -> addButton("Calibrate", mainApp::calibrationButtonCallback, this);
     
@@ -165,6 +166,8 @@ void mainApp::CreateGUI(){
     generalSettingsBar -> load();
     generalSettingsStorage -> store();
     generalSettingsBar -> close();
+    
+    Globals::useStereoGUI = false;
     
     //Set settings menu properties
     generalSettingsBar -> setSize(400, 300);
@@ -339,7 +342,9 @@ void mainApp::draw()
         //Render into the left FBO.
         oculusRift.beginRenderSceneLeftEye();
         //Draw geometry here if you want
-        //ofxTweakbars::draw();
+        if(Globals::useStereoGUI){
+            ofxTweakbars::draw();
+        }
         oculusRift.endRenderSceneLeftEye();
     }
     if((rightEye->initialized || leftEye->dummyImage) && renderRightEye){
@@ -349,7 +354,9 @@ void mainApp::draw()
         //Render into the right FBO.
         oculusRift.beginRenderSceneRightEye();
         //Draw geometry here if you want
-        //ofxTweakbars::draw();
+        if(Globals::useStereoGUI){
+            ofxTweakbars::draw();
+        }
         oculusRift.endRenderSceneRightEye();
     }
     
@@ -406,7 +413,9 @@ void mainApp::draw()
     //mainFBO.draw(0, 0, ofGetWidth(), ofGetHeight());
     
     //Draw the GUI
-    ofxTweakbars::draw();
+    if(!Globals::useStereoGUI){
+        ofxTweakbars::draw();
+    }
     
     //If we're calibrating the camera, clear the screen and draw the calibration checkerboard and preview.
     if(calibrating){
@@ -633,6 +642,24 @@ void mainApp::SetBorderlessFullscreen(bool useFullscreen){
     //(see https://github.com/openframeworks/openFrameworks/issues/2174)
     [window makeFirstResponder:window.contentView];
     
+}
+
+//GUI button callback - toggle stereo GUI
+void TW_CALL mainApp::stereoGUIButtonCallback(void* pApp) {
+    mainApp* app = static_cast<mainApp*>(pApp);
+    app->ToggleStereoGUI();
+}
+
+void mainApp::ToggleStereoGUI(){
+    Globals::useStereoGUI = !Globals::useStereoGUI;
+    //Set up stereo gui
+    if(Globals::useStereoGUI){
+        ofxTweakbars::SetWindowSize(ofGetWidth()/2, ofGetHeight());
+    }
+    //Restore mono gui
+    else{
+        ofxTweakbars::SetWindowSize(ofGetWidth(), ofGetHeight());
+    }
 }
 
 //--------------------------------------------------------------

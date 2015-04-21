@@ -49,6 +49,11 @@ void ofxTweakbars::init() {
 
 }
 
+//Added by Jon
+void ofxTweakbars::SetWindowSize(int w, int h){
+    TwWindowSize(w, h);
+}
+
 bool ofxTweakbars::isVisible() {
 	return instance.visible;
 }

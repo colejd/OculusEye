@@ -133,6 +133,7 @@ public:
     
     static void TW_CALL fullscreenButtonCallback(void* pApp);
     static void TW_CALL calibrationButtonCallback(void* pApp);
+    static void TW_CALL stereoGUIButtonCallback(void* pApp);
     
     //Other---------------------
     void UpdateEyeValues(CVEye *eye);
@@ -146,6 +147,8 @@ public:
     StereoDepthMapper stereoMapper;
     bool computeDisparityMap = false;
     bool showDisparityMap = false;
+    
+    void ToggleStereoGUI();
     
 private:
     string GetStdoutFromCommand(string cmd);

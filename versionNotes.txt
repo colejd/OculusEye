@@ -78,6 +78,11 @@ External dependencies have been removed from PS3EyePlugin. They may be downloade
 
 
 to do:
+- Make GUI visible in stereo (synchronize mouse on both eye sides)
+    - Constrain GUI / mouse to left eye, duplicate for right eye
+    - Left side is interactive, right side is visual duplicate but not interactive
+- Color edges based on their depth (use stereoDepthMapper results as a mask)
+- Change PS3EyePlugin to build as a framework rather than a dylib
 - Add a field for setting a background color for "edges only" mode.
 - Load configuration (programSettings.h) from a text file
 - Add a nose (reduces nausea)

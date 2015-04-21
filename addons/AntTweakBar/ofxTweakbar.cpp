@@ -178,7 +178,7 @@ ofxTweakbar* ofxTweakbar::setHelp(std::string sLabel) {
     return this;
 }
 
-//Jon
+//Added by Jon
 /**
  * Sets text at the top of the help window.
  */

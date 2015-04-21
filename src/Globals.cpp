@@ -13,4 +13,5 @@ namespace Globals {
     CannyTypes cannyType;
     bool autoCannyThresholding;
     int minContourLength;
+    bool useStereoGUI = false;
 }

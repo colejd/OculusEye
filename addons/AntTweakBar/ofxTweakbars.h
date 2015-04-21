@@ -21,6 +21,10 @@ public:
 	bool isInitialized();
 	static bool isVisible();
 	void addTweakbarToList(string sName, ofxTweakbar* pBar); //only for global instance
+    
+    //Added by Jon
+    static void SetWindowSize(int w, int h);
+    
 private:
 	ofxTweakbars();
 	~ofxTweakbars(); 

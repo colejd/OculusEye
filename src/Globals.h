@@ -24,6 +24,8 @@ namespace Globals {
     
     //Minimum length of a contour before it is pruned.
     extern int minContourLength;
+    
+    extern bool useStereoGUI;
 }
 
 #endif /* defined(__OculusEye__Globals__) */
