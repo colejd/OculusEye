@@ -21,10 +21,10 @@ using namespace OVR;
 #define DTR = 0.0174532925f
 
 
-static float K0 = 1.0f;
-static float K1 = 0.22f;
-static float K2 = 0.24f;
-static float K3 = 0.0f;
+static float K0 = 1.0f;  //1.0f
+static float K1 = 0.22f; //0.22f
+static float K2 = 0.24f; //0.24f
+static float K3 = 0.0f;  //0.0f
 
 
 class ofxOculusRift : public ofCamera

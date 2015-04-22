@@ -82,17 +82,13 @@ I should stress that in this update, the code for ofxOculusRift was cleaned up t
 
 
 to do:
-- Make GUI visible in stereo (synchronize mouse on both eye sides)
-    - Constrain GUI / mouse to left eye, duplicate for right eye
-    - Left side is interactive, right side is visual duplicate but not interactive
 - Color edges based on their depth (use stereoDepthMapper results as a mask)
-- Change PS3EyePlugin to build as a framework rather than a dylib
+- Change PS3EyePlugin to build as a framework rather than a dylib (can ditch objective-c bindings)
 - Add a field for setting a background color for "edges only" mode.
 - Load configuration (programSettings.h) from a text file
-- Add a nose (reduces nausea)
 - Fix USB hotplugging to allow for disconnection or at least connection of cameras during run time
 - Figure out a fix for horizontal banding in contour output when multithreading
-- Try SSE/SIMD instructions for YUV422 conversion (much, much faster)
+- Try SSE/SIMD instructions for YUV422 conversion (much faster)
 - Clean up GUI code (use externs rather than duplicate variables)
 - Queue loaded frames into a circular buffer
 - Fix OpenGL buffer sizing in OfxOculusRift.cpp to resize to fit the window
@@ -108,6 +104,9 @@ optional:
 - Add microphone support from Eye cameras
 
 done:
+- Add a nose (reduces nausea)
+- Make GUI visible in stereo
+- Left side is interactive, right side is visual duplicate but not interactive
 - Use multiplatform threading library in PS3EyeDriver
 - Refactor PS3 Eye driver code into a separate dylib (PS3EyePlugin.bundle)
 - Add camera swap support

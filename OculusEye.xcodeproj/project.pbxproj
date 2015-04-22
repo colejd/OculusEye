@@ -920,8 +920,8 @@
 		46F452BE1A89D06000DD172A /* src */ = {
 			isa = PBXGroup;
 			children = (
-				46F452BF1A89D06000DD172A /* ofxOculusRift.cpp */,
 				46F452C01A89D06000DD172A /* ofxOculusRift.h */,
+				46F452BF1A89D06000DD172A /* ofxOculusRift.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
