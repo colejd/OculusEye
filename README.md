@@ -13,10 +13,12 @@ Controls:
 
 | Key    |  Effect                                      |
 |:------ |:-------------------------------------------- |
+| E      |  Toggle edge detection                       |
 | C      |  Begin / end camera calibration              |
+| R      |  Toggle Oculus Distortion                    |
 | F      |  Toggle fullscreen                           |
 | + / -  |  Increase / decrease interpupillary distance |
-| E      |  Toggle edge detection                       |
+| G      |  Toggle stereo GUI                           |
 | ESC    |  Quit                                        |
 
 You'll find toggles at the bottom-left to open windows that reveal various settings to play with.

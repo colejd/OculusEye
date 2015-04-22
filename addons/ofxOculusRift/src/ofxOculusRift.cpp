@@ -7,6 +7,8 @@
 //
 
 #include "ofxOculusRift.h"
+#include "ofxTweakbars.h" //Added by Jon
+#include "Globals.h"
 
 // ---------------------------------------------------------------------------------------------------------------------------------------------------
 //
@@ -43,6 +45,16 @@ bool ofxOculusRift::init( int _width, int _height, int _fboNumSamples )
 		eyeFboLeft.allocate( tmpSettings );
 		eyeFboRight.allocate( tmpSettings );
         ofSetLogLevel(OF_LOG_NOTICE);
+    
+        ofFbo::Settings guiFboSettings = ofFbo::Settings();
+        guiFboSettings.width			= _width/2;
+        guiFboSettings.height			= _height;
+        guiFboSettings.internalformat	= GL_RGBA;
+        guiFboSettings.textureTarget	= GL_TEXTURE_2D;
+        guiFboSettings.numSamples		= _fboNumSamples;
+        
+        guiFboLeft.allocate(guiFboSettings);
+        guiFboRight.allocate(guiFboSettings);
 	
 	ofEnableArbTex();
 	
@@ -93,7 +105,8 @@ void ofxOculusRift::beginRender( float _interOcularShift, ofFbo* _fbo  )
 	ofPushView();
 
 		_fbo->begin();
-		ofClear(0,0,0); // Todo: get the proper clear color
+        //Background color
+		ofClear(0,0,0);
 	
 		setupScreenPerspective( _interOcularShift, ofGetWindowWidth(), ofGetWindowHeight(), ofGetOrientation(), false, getFov(), getNearClip(), getFarClip()  );
 	
@@ -103,7 +116,7 @@ void ofxOculusRift::beginRender( float _interOcularShift, ofFbo* _fbo  )
 		ofPushMatrix();
 	
 			// flip for FBO
-			ofScale(1,1,1);
+			//ofScale(1,1,1);
 	
 			ofMultMatrix( getHeadsetViewOrientationMat() );
 			ofTranslate( getPosition() );
@@ -114,6 +127,7 @@ void ofxOculusRift::beginRender( float _interOcularShift, ofFbo* _fbo  )
 //
 void ofxOculusRift::endRender( ofFbo* _fbo )
 {
+        //ofxTweakbars::draw();
 		ofPopMatrix();
 		_fbo->end();
 	ofPopView();
@@ -125,51 +139,103 @@ void ofxOculusRift::endRender( ofFbo* _fbo )
 void ofxOculusRift::draw( ofVec2f pos, ofVec2f size )
 {
 	// Todo: rewrite this
-	
-	
-	ofPushView();
+    float backgroundHeight = 0.0f;
+    //eyeFboRight.draw( eyeFboLeft.getWidth(), 0.0f );
     
-        float backgroundHeight = 0.0f;
-		// draw into the new fbo we have made
-		ofSetColor( 255 );
-		glBindFramebuffer(GL_FRAMEBUFFER, framebufferID);
-			ofClear(0,0,0);
+    //Flip Rift FBO upside down
+    FlipCurrentFBO();
+    //ofSetColor(255);
     
-            //Draw left eye things------------------------------------//
-			eyeFboLeft.draw( 0.0f, 0.0f, ofGetWindowWidth() / 2.0f, ofGetWindowHeight());
-            if(leftBackground != NULL){
-                backgroundHeight = (ofGetWindowHeight()/2.0f) - (leftBackground->height / 2.0f);
-                leftBackground->draw(ipd, backgroundHeight, ofGetWindowWidth()/2.0f, leftBackground->height); //Added by Jon
+    
+    //Draw left eye things------------------------------------//
+    //beginRenderSceneLeftEye();
+    eyeFboLeft.begin();
+        //Flip left FBO upside down to draw OF image properly
+        FlipCurrentFBO();
+        if(leftBackground != NULL){
+            backgroundHeight = (ofGetWindowHeight()/2.0f) - (leftBackground->height / 2.0f);
+            leftBackground->draw(ipd, backgroundHeight); //Added by Jon
+        }
+        //Flip back for OpenGL things to draw properly
+        FlipCurrentFBO();
+        if(Globals::useStereoGUI){
+            ofxTweakbars::SetWindowSize((ofGetWindowWidth() / 2) - Globals::GUIConvergence, ofGetWindowHeight());
+            guiFboLeft.begin();
+            ofClear(0, 0, 0);
+            ofxTweakbars::draw();
+            guiFboLeft.end();
+            guiFboLeft.draw(Globals::GUIConvergence, 0);
+        }
+    eyeFboLeft.end();
+    
+    
+    //Draw right eye things------------------------------------//
+    eyeFboRight.begin();
+        //Flip right FBO upside down to draw OF image properly
+        FlipCurrentFBO();
+        if(rightBackground != NULL){
+            backgroundHeight = (ofGetWindowHeight()/2.0f) - (rightBackground->height / 2.0f);
+            rightBackground->draw(-ipd, backgroundHeight);//Added by Jon
+        }
+        //Flip back for OpenGL things to draw properly
+        FlipCurrentFBO();
+        if(Globals::useStereoGUI){
+            guiFboRight.begin();
+            ofClear(0, 0, 0);
+            ofxTweakbars::draw();
+            guiFboRight.end();
+            guiFboRight.draw(-Globals::GUIConvergence, 0);
+        }
+    eyeFboRight.end();
+    
+    
+    //If no warping is desired, draw the individual FBOs right into the Rift FBO.
+    if(!doWarping){
+        eyeFboLeft.draw( 0.0f, 0.0f );
+        eyeFboRight.draw( eyeFboLeft.getWidth(), 0.0f );
+    }
+	
+    //Otherwise push the individual FBOs through the distortion shader, then draw
+    //into the Rift FBO.
+    else{
+        ofPushView();
+        
+            ofSetColor( 255 );
+            glBindFramebuffer(GL_FRAMEBUFFER, framebufferID);
+                ofClear(0,0,0);
+        
+                eyeFboLeft.draw( 0.0f, 0.0f );
+                eyeFboRight.draw( eyeFboLeft.getWidth(), 0.0f );
+        
+            glBindFramebuffer(GL_FRAMEBUFFER, 0);
+            
+            ofSetMatrixMode(OF_MATRIX_PROJECTION);
+            ofLoadIdentityMatrix();
+            ofSetMatrixMode(OF_MATRIX_MODELVIEW);
+            ofLoadIdentityMatrix();
+            
+            ofSetColor( 255 );
+                
+            if( doWarping )
+            {
+                glEnable( GL_TEXTURE_2D );
+                glBindTexture(GL_TEXTURE_2D, colorTextureID);
+                
+                renderDistortedEyeNew( true,  0.0f, 0.0f, 0.5f, 1.0f);
+                renderDistortedEyeNew( false, 0.5f, 0.0f, 0.5f, 1.0f);
+                
+                ofScale(1, -1, 1);
+                ofTranslate(0, -ofGetWindowHeight(), 0);
+                
+                glDisable( GL_TEXTURE_2D );
             }
+        
+            
+        ofPopView();
+    }
     
-            //Draw right eye things-----------------------------------//
-			eyeFboRight.draw( ofGetWindowWidth() / 2.0f, 0.0f, ofGetWindowWidth() / 2.0f, ofGetWindowHeight());
-            if(rightBackground != NULL)
-                rightBackground->draw(ofGetWindowWidth() / 2.0 - ipd, backgroundHeight, ofGetWindowWidth()/2.0f, rightBackground->height);//Added by Jon
-	
-			// is this being drawn correctly?
-	
-		glBindFramebuffer(GL_FRAMEBUFFER, 0);
-		
-		ofSetMatrixMode(OF_MATRIX_PROJECTION);
-		ofLoadIdentityMatrix();
-		ofSetMatrixMode(OF_MATRIX_MODELVIEW);
-		ofLoadIdentityMatrix();
-		
-		ofSetColor( 255 );
-			
-		if( doWarping )
-		{
-			glEnable( GL_TEXTURE_2D );
-			glBindTexture(GL_TEXTURE_2D, colorTextureID);
-			
-			renderDistortedEyeNew( true,  0.0f, 0.0f, 0.5f, 1.0f);
-			renderDistortedEyeNew( false, 0.5f, 0.0f, 0.5f, 1.0f);
-			
-			glDisable( GL_TEXTURE_2D );
-		}
-		
-	ofPopView();
+    //Flip the entire Rift FBO back to normal (preserve other [external] GUI operations)
+    FlipCurrentFBO();
 
 	/*
 	glBegin(GL_TRIANGLE_STRIP);
@@ -180,21 +246,16 @@ void ofxOculusRift::draw( ofVec2f pos, ofVec2f size )
 	glEnd();
 	 */
 	
-	if( !doWarping )
-	{
-		ofSetColor(255);
-		eyeFboLeft.draw( 0.0f, 0.0f );
-		eyeFboRight.draw( eyeFboLeft.getWidth(), 0.0f );
-        
-        //Draw left eye background
-        if(leftBackground != NULL)
-            leftBackground->draw(ipd, backgroundHeight); //Added by Jon
-        //Draw right eye background
-        if(rightBackground != NULL)
-            rightBackground->draw(ofGetWindowWidth() / 2.0 - ipd, backgroundHeight);//Added by Jon
-	}
-	
 	needSensorReadingThisFrame = true;
+}
+
+//Added by Jon
+/**
+ * Flips the active FBO vertically.
+ */
+void ofxOculusRift::FlipCurrentFBO(){
+    ofScale(1, -1, 1);
+    ofTranslate(0, -ofGetWindowHeight(), 0);
 }
 
 // ---------------------------------------------------------------------------------------------------------------------------------------------------

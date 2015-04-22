@@ -26,6 +26,12 @@ namespace Globals {
     extern int minContourLength;
     
     extern bool useStereoGUI;
+    
+    extern int GUIConvergence;
+    
+    extern bool drawNose;
+    extern float noseScale;
+    extern int noseHeight;
 }
 
 #endif /* defined(__OculusEye__Globals__) */

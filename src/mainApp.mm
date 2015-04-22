@@ -88,6 +88,10 @@ void mainApp::setup(){
     
     eyeFPSGraph = PerformanceGraph("Eye FPS", ofGetWindowWidth() - 70, ofGetWindowHeight() - 15);
     
+    stereoMouseCursor.loadImage("cursor_mac_default.png");
+    noseLeft.loadImage("images/Nose_Left.png");
+    noseRight.loadImage("images/Nose_Right.png");
+    
     //Set up GUI
     CreateGUI();
     
@@ -152,7 +156,7 @@ void mainApp::CreateGUI(){
     generalSettingsBar -> setIconAlign(2); //1 = vertical, 2 = horizontal
     
     generalSettingsBar -> addBool("swapEyes", swapEyes) -> setLabel("Swap Eyes");
-    generalSettingsBar -> addBool("Rift Distortion", oculusRift.doWarping) -> setLabel("Rift Distortion") -> setGroup("Rift Settings");
+    generalSettingsBar -> addBool("Rift Distortion", oculusRift.doWarping) -> setLabel("Rift Distortion") -> setGroup("Rift Settings") -> setKey("r");
     generalSettingsBar -> addInt("Interpupillary -/+", oculusRift.ipd) -> setLabel("Interpupillary Distance [-/+]") -> setMin("0") -> setMax("100") -> setInc("=") -> setDecr("-") -> setGroup("Rift Settings");
     generalSettingsBar -> addBool("Draw Guides", drawGuides) -> setLabel("Draw Guides") -> setGroup("Debug");
     generalSettingsBar -> addBool("showPerformanceGraph", showPerformanceGraph) -> setLabel("Show Performance Graph") -> setGroup("Debug");
@@ -162,16 +166,20 @@ void mainApp::CreateGUI(){
     //generalSettingsBar -> addBool("correctCameraDistortion", correctCameraDistortion) -> setLabel("Correct Camera Distortion");
     generalSettingsBar -> addButton("Calibrate", mainApp::calibrationButtonCallback, this);
     
+    generalSettingsBar -> addInt("GUIConvergence", &Globals::GUIConvergence) -> setLabel("GUI Convergence") -> setMin("0") -> setMax("100");
+    
+    generalSettingsBar -> addBool("drawNose", Globals::drawNose) -> setLabel("Draw nose");
+    generalSettingsBar -> addInt("noseHeight", Globals::noseHeight) -> setLabel("Nose height (from bottom)") -> setMin("0") -> setMax("400");
+    generalSettingsBar -> addFloat("noseScale", Globals::noseScale) -> setLabel("Nose scale") -> setMin(0) -> setMax(2);
+    
     generalSettingsStorage -> retrieve();
     generalSettingsBar -> load();
     generalSettingsStorage -> store();
     generalSettingsBar -> close();
     
-    Globals::useStereoGUI = false;
-    
     //Set settings menu properties
     generalSettingsBar -> setSize(400, 300);
-    generalSettingsBar -> setColor(44, 44, 44, 180);
+    generalSettingsBar -> setColor(44, 44, 44, 220);
     generalSettingsBar -> setFontSize(2);
     
     //GUI page 2
@@ -196,7 +204,7 @@ void mainApp::CreateGUI(){
     //ps3EyeSettings -> open();
     
     ps3EyeSettings -> setSize(400, 300);
-    ps3EyeSettings -> setColor(44, 44, 44, 180);
+    ps3EyeSettings -> setColor(44, 44, 44, 220);
     ps3EyeSettings -> setFontSize(2);
     
     //Other Settings ----------------------------------
@@ -226,7 +234,7 @@ void mainApp::CreateGUI(){
     otherSettings -> close();
     
     otherSettings -> setSize(400, 300);
-    otherSettings -> setColor(44, 44, 44, 180);
+    otherSettings -> setColor(44, 44, 44, 220);
     otherSettings -> setFontSize(2);
     
     //Canny Settings ----------------------------------
@@ -256,7 +264,7 @@ void mainApp::CreateGUI(){
     cannySettings -> close();
     
     cannySettings -> setSize(400, 300);
-    cannySettings -> setColor(44, 44, 44, 180);
+    cannySettings -> setColor(44, 44, 44, 220);
     cannySettings -> setFontSize(2);
     
 }
@@ -343,7 +351,7 @@ void mainApp::draw()
         oculusRift.beginRenderSceneLeftEye();
         //Draw geometry here if you want
         if(Globals::useStereoGUI){
-            ofxTweakbars::draw();
+            //ofxTweakbars::draw();
         }
         oculusRift.endRenderSceneLeftEye();
     }
@@ -355,15 +363,18 @@ void mainApp::draw()
         oculusRift.beginRenderSceneRightEye();
         //Draw geometry here if you want
         if(Globals::useStereoGUI){
-            ofxTweakbars::draw();
+            //ofxTweakbars::draw();
         }
         oculusRift.endRenderSceneRightEye();
     }
     
     //Set opacity to full and draw both eyes at once.
     ofSetColor( 255 );
-    //TODO: set width/height to use actual current window width/height
     oculusRift.draw( ofVec2f(0,0), ofVec2f( ofGetWindowWidth(), ofGetWindowHeight() ) );
+    //Draw a nose
+    if(Globals::drawNose){
+        DrawNose();
+    }
     
     // STEP 2: DRAW USER GRAPHICS --------------------------------------------
 
@@ -434,6 +445,10 @@ void mainApp::draw()
         
         //Draw the camera view
         DrawCVMat(leftEye->dest.getMat(NULL), OF_IMAGE_COLOR, checkerboard.cols, 0, 240, 180, caption);
+    }
+    
+    if(Globals::useStereoGUI){
+        DrawStereoMouse();
     }
     
 }
@@ -654,10 +669,12 @@ void mainApp::ToggleStereoGUI(){
     Globals::useStereoGUI = !Globals::useStereoGUI;
     //Set up stereo gui
     if(Globals::useStereoGUI){
+        ofHideCursor();
         ofxTweakbars::SetWindowSize(ofGetWidth()/2, ofGetHeight());
     }
     //Restore mono gui
     else{
+        ofShowCursor();
         ofxTweakbars::SetWindowSize(ofGetWidth(), ofGetHeight());
     }
 }
@@ -742,6 +759,37 @@ void mainApp::windowResized(int w, int h){
  */
 void mainApp::dragEvent(ofDragInfo dragInfo){ 
 
+}
+
+void mainApp::DrawStereoMouse(){
+    //Draw the cursor at the mouse's position
+    stereoMouseCursor.draw(ofGetMouseX(), ofGetMouseY());
+    
+    //Draw the cursor where the mouse would appear on the other side,
+    //adjusted for convergence.
+    int otherSideX = ofGetMouseX();
+    //Right side of screen
+    if(ofGetMouseX() > ofGetWidth() / 2){
+        otherSideX -= ofGetWidth() / 2;
+        otherSideX += (Globals::GUIConvergence * 2);
+        if(otherSideX <= ofGetWidth() / 2)
+        stereoMouseCursor.draw(otherSideX, ofGetMouseY());
+    }
+    //Left side of screen
+    else{
+        otherSideX += ofGetWidth() / 2;
+        otherSideX -= (Globals::GUIConvergence * 2);
+        if(otherSideX > ofGetWidth() / 2)
+            stereoMouseCursor.draw(otherSideX, ofGetMouseY());
+    }
+}
+
+void mainApp::DrawNose(){
+    int y = (ofGetHeight() - noseLeft.height) - Globals::noseHeight;
+    int width = noseLeft.width * Globals::noseScale;
+    int height = noseLeft.height * Globals::noseScale;
+    noseLeft.draw(ofGetWidth()/2 - (noseLeft.width * Globals::noseScale), y, width, height);
+    noseRight.draw(ofGetWidth()/2, y, width, height);
 }
 
 //--------------------------------------------------------------

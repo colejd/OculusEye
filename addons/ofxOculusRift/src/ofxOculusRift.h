@@ -80,7 +80,12 @@ class ofxOculusRift : public ofCamera
         ofImage * leftBackground; //Added by Jon
         ofImage * rightBackground; //Added by Jon
     
-        int ipd = 0;
+        ofFbo guiFboLeft; //Jon
+        ofFbo guiFboRight; //Jon
+    
+        int ipd = 0; //Jon
+    
+        void FlipCurrentFBO(); //Jon
 		
 	private:
 	

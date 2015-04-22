@@ -24,6 +24,7 @@ int main(){
     
     mainApp * app = new mainApp();
     
+    
     // Make borderless and fullscreen
     // see https://gist.github.com/ofZach/7808368
     /*

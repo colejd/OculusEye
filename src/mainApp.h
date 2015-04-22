@@ -135,6 +135,13 @@ public:
     static void TW_CALL calibrationButtonCallback(void* pApp);
     static void TW_CALL stereoGUIButtonCallback(void* pApp);
     
+    void DrawStereoMouse();
+    ofImage stereoMouseCursor;
+    
+    void DrawNose();
+    ofImage noseLeft;
+    ofImage noseRight;
+    
     //Other---------------------
     void UpdateEyeValues(CVEye *eye);
     void UpdateCameraSettings();

@@ -14,4 +14,9 @@ namespace Globals {
     bool autoCannyThresholding;
     int minContourLength;
     bool useStereoGUI = false;
+    int GUIConvergence;
+    
+    bool drawNose;
+    float noseScale;
+    int noseHeight;
 }

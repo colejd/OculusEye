@@ -73,6 +73,10 @@ I've abandoned the driver's native threading in support of Boost's threading lib
 This is the version I am submitting for my final Capstone report, barring any major issues. It includes a thorough code cleanup, more robust settings for Canny and stereo disparity mapping, renamed classes for clarity, and fleshed-out code comments.
 External dependencies have been removed from PS3EyePlugin. They may be downloaded separately, using information from the readme.
 
+-- v1.4.0 (4/21/15) ---------------------
+I can't help myself sometimes. Added stereo 3d support for AntTweakBar (the GUI), and nose drawing for fun.
+I should stress that in this update, the code for ofxOculusRift was cleaned up to be more effective and readable. As a side effect, small bonuses have surfaced; for example, IPD adjustment no longer lets the right image overlap the left one.
+
 -----------------------------------------
 
 

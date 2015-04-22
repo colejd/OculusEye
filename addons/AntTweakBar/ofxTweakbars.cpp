@@ -2,6 +2,9 @@
 #include "ofxTweakbar.h"
 #include "ofMain.h"
 #include <GLUT/glut.h>
+
+#include "Globals.h"
+
 ofxTweakbars ofxTweakbars::instance = ofxTweakbars();
 
 ofxTweakbars::ofxTweakbars()
@@ -12,7 +15,7 @@ ofxTweakbars::ofxTweakbars()
 }
 
 ofxTweakbars::~ofxTweakbars() {
-    //TODO: Causes crash
+    //BUG: Causes crash on exit
     /* Jon
 	std::map<std::string, ofxTweakbar*>::iterator it = ofxTweakbars::bars.begin();
 	while(it != bars.end()) {
@@ -167,7 +170,22 @@ void ofxTweakbars::keyPressed(ofKeyEventArgs& rArgs) {
 }
 
 void ofxTweakbars::mouseMoved(ofMouseEventArgs& rArgs) {
-	TwMouseMotion(rArgs.x, rArgs.y);
+    int x = rArgs.x;
+    //Jon alterations:
+    //Alter the mouse value if we're using a stereo setup
+    if(Globals::useStereoGUI){
+        //Treat the right half of the screen as input for the left half
+        if(x > ofGetWidth() / 2){
+            x -= (ofGetWidth() / 2);
+            //Compensate for toe-in
+            x += Globals::GUIConvergence;
+        }
+        else{
+            //Compensate for toe-in
+            x -= Globals::GUIConvergence;
+        }
+    }
+	TwMouseMotion(x, rArgs.y);
 }
 
 void ofxTweakbars::mousePressed(ofMouseEventArgs& rArgs) {
@@ -183,7 +201,22 @@ void ofxTweakbars::mouseReleased(ofMouseEventArgs& rArgs) {
 }
 
 void ofxTweakbars::mouseDragged(ofMouseEventArgs& rArgs) {
-	TwMouseMotion(rArgs.x, rArgs.y);
+    int x = rArgs.x;
+    //Jon alterations:
+    //Alter the mouse value if we're using a stereo setup
+    if(Globals::useStereoGUI){
+        //Treat the right half of the screen as input for the left half
+        if(x > ofGetWidth() / 2){
+            x -= (ofGetWidth() / 2);
+            //Compensate for toe-in
+            x += Globals::GUIConvergence;
+        }
+        else{
+            //Compensate for toe-in
+            x -= Globals::GUIConvergence;
+        }
+    }
+	TwMouseMotion(x, rArgs.y);
 	//autoStore();
 }
 
