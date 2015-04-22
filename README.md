@@ -17,8 +17,9 @@ Controls:
 | C      |  Begin / end camera calibration              |
 | R      |  Toggle Oculus Distortion                    |
 | F      |  Toggle fullscreen                           |
-| + / -  |  Increase / decrease interpupillary distance |
+| S      |  Swap camera sides                           |
 | G      |  Toggle stereo GUI                           |
+| + / -  |  Increase / decrease interpupillary distance |
 | ESC    |  Quit                                        |
 
 You'll find toggles at the bottom-left to open windows that reveal various settings to play with.

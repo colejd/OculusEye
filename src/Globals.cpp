@@ -19,4 +19,5 @@ namespace Globals {
     bool drawNose;
     float noseScale;
     int noseHeight;
+    float GUIHeightScale;
 }

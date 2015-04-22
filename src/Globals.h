@@ -28,6 +28,7 @@ namespace Globals {
     extern bool useStereoGUI;
     
     extern int GUIConvergence;
+    extern float GUIHeightScale;
     
     extern bool drawNose;
     extern float noseScale;

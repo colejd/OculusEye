@@ -155,22 +155,21 @@ void mainApp::CreateGUI(){
                                         );
     generalSettingsBar -> setIconAlign(2); //1 = vertical, 2 = horizontal
     
-    generalSettingsBar -> addBool("swapEyes", swapEyes) -> setLabel("Swap Eyes");
+    generalSettingsBar -> addBool("swapEyes", swapEyes) -> setLabel("Swap Eyes") -> setKey("s");
     generalSettingsBar -> addBool("Rift Distortion", oculusRift.doWarping) -> setLabel("Rift Distortion") -> setGroup("Rift Settings") -> setKey("r");
     generalSettingsBar -> addInt("Interpupillary -/+", oculusRift.ipd) -> setLabel("Interpupillary Distance [-/+]") -> setMin("0") -> setMax("100") -> setInc("=") -> setDecr("-") -> setGroup("Rift Settings");
+    generalSettingsBar -> addBool("drawNose", Globals::drawNose) -> setLabel("Draw nose") -> setGroup("Nose Settings");
+    generalSettingsBar -> addInt("noseHeight", Globals::noseHeight) -> setLabel("Nose height (from bottom)") -> setMin("0") -> setMax("400") -> setGroup("Nose Settings");
+    generalSettingsBar -> addFloat("noseScale", Globals::noseScale) -> setLabel("Nose scale") -> setMin(0) -> setMax(2) -> setGroup("Nose Settings");
     generalSettingsBar -> addBool("Draw Guides", drawGuides) -> setLabel("Draw Guides") -> setGroup("Debug");
     generalSettingsBar -> addBool("showPerformanceGraph", showPerformanceGraph) -> setLabel("Show Performance Graph") -> setGroup("Debug");
     generalSettingsBar -> addBool("useVSync", useVSync) -> setLabel("Use VSync (caps at 60 FPS)");
     generalSettingsBar -> addButton("Toggle Fullscreen", mainApp::fullscreenButtonCallback, this) -> setKey("f");
-    generalSettingsBar -> addButton("Toggle Stereo Gui", mainApp::stereoGUIButtonCallback, this) -> setKey("g");
+    generalSettingsBar -> addButton("Toggle Stereo GUI", mainApp::stereoGUIButtonCallback, this) -> setKey("g");
     //generalSettingsBar -> addBool("correctCameraDistortion", correctCameraDistortion) -> setLabel("Correct Camera Distortion");
-    generalSettingsBar -> addButton("Calibrate", mainApp::calibrationButtonCallback, this);
-    
-    generalSettingsBar -> addInt("GUIConvergence", &Globals::GUIConvergence) -> setLabel("GUI Convergence") -> setMin("0") -> setMax("100");
-    
-    generalSettingsBar -> addBool("drawNose", Globals::drawNose) -> setLabel("Draw nose");
-    generalSettingsBar -> addInt("noseHeight", Globals::noseHeight) -> setLabel("Nose height (from bottom)") -> setMin("0") -> setMax("400");
-    generalSettingsBar -> addFloat("noseScale", Globals::noseScale) -> setLabel("Nose scale") -> setMin(0) -> setMax(2);
+    generalSettingsBar -> addButton("Calibrate Camera", mainApp::calibrationButtonCallback, this);
+    generalSettingsBar -> addInt("GUIConvergence", &Globals::GUIConvergence) -> setLabel("GUI Convergence") -> setMin("0") -> setMax("100") -> setGroup("GUI Adjustment");
+    generalSettingsBar -> addFloat("GUIHeightScale", &Globals::GUIHeightScale) -> setLabel("GUI Height Scale") -> setMin(0.3f) -> setMax(1.0f) -> setGroup("GUI Adjustment");
     
     generalSettingsStorage -> retrieve();
     generalSettingsBar -> load();
@@ -181,6 +180,8 @@ void mainApp::CreateGUI(){
     generalSettingsBar -> setSize(400, 300);
     generalSettingsBar -> setColor(44, 44, 44, 220);
     generalSettingsBar -> setFontSize(2);
+    
+    Globals::GUIHeightScale = 0.67;
     
     //GUI page 2
     ps3EyeSettings = ofxTweakbars::create("PS3 Eye Settings", "PS3 Eye Settings");
@@ -440,7 +441,7 @@ void mainApp::draw()
         std::ostringstream stringStream;
         stringStream << " Calibrating...\n";
         stringStream << "(press C to stop)\n";
-        stringStream << " Frames Captured: " << leftEye->calibrator->successes << "/" << leftEye->calibrator->numBoards;
+        stringStream << "Frames Captured: " << leftEye->calibrator->successes << "/" << leftEye->calibrator->numBoards;
         std::string caption = stringStream.str();
         
         //Draw the camera view
@@ -784,6 +785,9 @@ void mainApp::DrawStereoMouse(){
     }
 }
 
+/**
+ * Draws a nose to the screen.
+ */
 void mainApp::DrawNose(){
     int y = (ofGetHeight() - noseLeft.height) - Globals::noseHeight;
     int width = noseLeft.width * Globals::noseScale;

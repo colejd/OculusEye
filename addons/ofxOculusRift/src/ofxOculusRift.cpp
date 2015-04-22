@@ -48,7 +48,7 @@ bool ofxOculusRift::init( int _width, int _height, int _fboNumSamples )
     
         ofFbo::Settings guiFboSettings = ofFbo::Settings();
         guiFboSettings.width			= _width/2;
-        guiFboSettings.height			= _height;
+        guiFboSettings.height			= _height*0.66;
         guiFboSettings.internalformat	= GL_RGBA;
         guiFboSettings.textureTarget	= GL_TEXTURE_2D;
         guiFboSettings.numSamples		= _fboNumSamples;
@@ -138,9 +138,7 @@ void ofxOculusRift::endRender( ofFbo* _fbo )
 //
 void ofxOculusRift::draw( ofVec2f pos, ofVec2f size )
 {
-	// Todo: rewrite this
     float backgroundHeight = 0.0f;
-    //eyeFboRight.draw( eyeFboLeft.getWidth(), 0.0f );
     
     //Flip Rift FBO upside down
     FlipCurrentFBO();
@@ -159,12 +157,12 @@ void ofxOculusRift::draw( ofVec2f pos, ofVec2f size )
         //Flip back for OpenGL things to draw properly
         FlipCurrentFBO();
         if(Globals::useStereoGUI){
-            ofxTweakbars::SetWindowSize((ofGetWindowWidth() / 2) - Globals::GUIConvergence, ofGetWindowHeight());
+            ofxTweakbars::SetWindowSize((ofGetWindowWidth() / 2) - Globals::GUIConvergence, ofGetWindowHeight() * Globals::GUIHeightScale);
             guiFboLeft.begin();
             ofClear(0, 0, 0);
             ofxTweakbars::draw();
             guiFboLeft.end();
-            guiFboLeft.draw(Globals::GUIConvergence, 0);
+            guiFboLeft.draw(Globals::GUIConvergence, ofGetHeight() * (1.0 - Globals::GUIHeightScale));
         }
     eyeFboLeft.end();
     
@@ -184,7 +182,7 @@ void ofxOculusRift::draw( ofVec2f pos, ofVec2f size )
             ofClear(0, 0, 0);
             ofxTweakbars::draw();
             guiFboRight.end();
-            guiFboRight.draw(-Globals::GUIConvergence, 0);
+            guiFboRight.draw(-Globals::GUIConvergence, ofGetHeight() * (1.0 - Globals::GUIHeightScale));
         }
     eyeFboRight.end();
     
@@ -194,7 +192,6 @@ void ofxOculusRift::draw( ofVec2f pos, ofVec2f size )
         eyeFboLeft.draw( 0.0f, 0.0f );
         eyeFboRight.draw( eyeFboLeft.getWidth(), 0.0f );
     }
-	
     //Otherwise push the individual FBOs through the distortion shader, then draw
     //into the Rift FBO.
     else{
@@ -224,8 +221,7 @@ void ofxOculusRift::draw( ofVec2f pos, ofVec2f size )
                 renderDistortedEyeNew( true,  0.0f, 0.0f, 0.5f, 1.0f);
                 renderDistortedEyeNew( false, 0.5f, 0.0f, 0.5f, 1.0f);
                 
-                ofScale(1, -1, 1);
-                ofTranslate(0, -ofGetWindowHeight(), 0);
+                FlipCurrentFBO();
                 
                 glDisable( GL_TEXTURE_2D );
             }
@@ -376,8 +372,12 @@ void ofxOculusRift::renderDistortedEyeNew( bool _isLeftEye, float _x, float _y, 
 	
 	hmdWarpShader.setUniform2f("LensCenter", _x + (_w + DistortionXCenterOffset * 0.5f)*0.5f, _y + _h*0.5f );
 	hmdWarpShader.setUniform2f("ScreenCenter", _x + _w*0.5f, _y + _h*0.5f );
-	hmdWarpShader.setUniform2f("Scale", (_w/2.0f) * shaderScaleFactor, (_h/2.0f) * shaderScaleFactor * as );
-	hmdWarpShader.setUniform2f("ScaleIn", (2.0f/_w), (2.0f/_h) / as );
+	//hmdWarpShader.setUniform2f("Scale", (_w/2.0f) * shaderScaleFactor, (_h/2.0f) * shaderScaleFactor * as );
+	//hmdWarpShader.setUniform2f("ScaleIn", (2.0f/_w), (2.0f/_h) / as );
+    //Remove scale for better Rift distortion?
+    hmdWarpShader.setUniform2f("Scale", (_w/1.0f) * shaderScaleFactor, (_h/1.0f) * shaderScaleFactor * as );
+    hmdWarpShader.setUniform2f("ScaleIn", (1.0f/_w), (1.0f/_h) / as );
+    
 	hmdWarpShader.setUniform4f("HmdWarpParam", K0, K1, K2, K3 );
 	
 	if( _isLeftEye )
@@ -434,10 +434,9 @@ bool ofxOculusRift::initSensor()
 	if (pSensor) {  ofLog() << " [x] Sensor"; }
 	else {			ofLog() << " [ ] Sensor"; }
 	
-	ofLogVerbose() << "--------------------------" << endl;
-	
 	if (InfoLoaded)
 	{
+        ofLogVerbose() << "--------------------------" << endl;
 		ofLogVerbose() << " DisplayDeviceName: " << Info.DisplayDeviceName << endl;
 		ofLogVerbose() << " ProductName: " << Info.ProductName << endl;
 		ofLogVerbose() << " Manufacturer: " << Info.Manufacturer << endl;
@@ -476,7 +475,7 @@ void ofxOculusRift::clearSensor()
     
     //printf("OVR initialized: %i\n", OVR::System::IsInitialized());
 	
-    //TODO: Causes crashes on lab laptop when exiting
+    //BUG: Causes crashes on lab laptop when exiting
     //Disabled due to crashing issue:
     //https://developer.oculusvr.com/forums/viewtopic.php?f=20&t=11993&p=160998&hilit=system+destroy#p160998
 	//System::Destroy();
@@ -595,7 +594,7 @@ void ofxOculusRift::initFBO(int screenWidth, int screenHeight)
 	// initialize color texture
 	glBindTexture(GL_TEXTURE_2D, colorTextureID);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, screenWidth, screenHeight, 0,GL_RGBA, GL_INT, NULL );
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, screenWidth, screenHeight, 0, GL_RGBA, GL_INT, NULL );
 	//glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
 	//glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
 	
@@ -604,7 +603,7 @@ void ofxOculusRift::initFBO(int screenWidth, int screenHeight)
 	// initialize depth renderbuffer
 	glBindRenderbuffer(GL_RENDERBUFFER, depthRenderBufferID);
 	glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT24, screenWidth, screenHeight);
-	glFramebufferRenderbuffer(GL_FRAMEBUFFER,GL_DEPTH_ATTACHMENT,GL_RENDERBUFFER, depthRenderBufferID);
+	glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, depthRenderBufferID);
 	
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
