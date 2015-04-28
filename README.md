@@ -14,12 +14,13 @@ Controls:
 | Key    |  Effect                                      |
 |:------ |:-------------------------------------------- |
 | E      |  Toggle edge detection                       |
-| C      |  Begin / end camera calibration              |
 | R      |  Toggle Oculus Distortion                    |
 | F      |  Toggle fullscreen                           |
 | S      |  Swap camera sides                           |
 | G      |  Toggle stereo GUI                           |
+| N      |  Show / hide nose                            |
 | + / -  |  Increase / decrease interpupillary distance |
+| C      |  Begin / end camera calibration              |
 | ESC    |  Quit                                        |
 
 You'll find toggles at the bottom-left to open windows that reveal various settings to play with.

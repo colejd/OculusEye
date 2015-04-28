@@ -33,6 +33,10 @@ namespace Globals {
     extern bool drawNose;
     extern float noseScale;
     extern int noseHeight;
+    
+    extern bool useRandomLineColors;
+    
+    
 }
 
 #endif /* defined(__OculusEye__Globals__) */

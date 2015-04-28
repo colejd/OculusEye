@@ -189,7 +189,7 @@ void CVEye::update(){
                 calibrator->Update();
                 
                 //Do last
-                finalImage.setFromPixels(dest.getMat(NULL).data, CAMERA_WIDTH, CAMERA_HEIGHT, OF_IMAGE_COLOR);
+                finalImage.setFromPixels(dest.getMat(ACCESS_FAST).data, CAMERA_WIDTH, CAMERA_HEIGHT, OF_IMAGE_COLOR);
             }
             else if(doCanny){
                 
@@ -203,12 +203,12 @@ void CVEye::update(){
                 //computeFrame = !computeFrame;
                 
                 //Do last
-                finalImage.setFromPixels(dest.getMat(NULL).data, CAMERA_WIDTH, CAMERA_HEIGHT, OF_IMAGE_COLOR);
+                finalImage.setFromPixels(dest.getMat(ACCESS_FAST).data, CAMERA_WIDTH, CAMERA_HEIGHT, OF_IMAGE_COLOR);
                 
             }
             //If no effects are applied, just put the raw video in the output image.
             else{
-                finalImage.setFromPixels(src.getMat(0).data, CAMERA_WIDTH, CAMERA_HEIGHT, OF_IMAGE_COLOR);
+                finalImage.setFromPixels(src.getMat(ACCESS_FAST).data, CAMERA_WIDTH, CAMERA_HEIGHT, OF_IMAGE_COLOR);
             }
             
         }
@@ -281,6 +281,7 @@ void CVEye::ApplyCanny(cv::UMat &src, cv::UMat &src_gray, cv::UMat &dest){
     //Downsample the image to a smaller size
     if(downsampleRatio < 1.0f){
         resize(input_image, input_image, cv::Size(), adaptedDownsampleRatio, adaptedDownsampleRatio, INTER_AREA); //#1
+        //pyrDown(input_image, input_image);
     }
     resize(canny_output, canny_output, input_image.size());
     resize(contour_output, contour_output, input_image.size());
@@ -364,36 +365,16 @@ void CVEye::ApplyCanny(cv::UMat &src, cv::UMat &src_gray, cv::UMat &dest){
     
     //Detect contours in canny_output and draw it to the final image
     if(drawContours){
+        
+        //Parallel contour detection, outputs to contour_output
         cv::parallel_for_(cv::Range(0, imageSubdivisions), ParallelContourDetector(canny_output, contour_output, imageSubdivisions, *this));
         
-        //The C method for finding/drawing contours.
-        /*
-        CvMemStorage *mem;
-        mem = cvCreateMemStorage(0);
-        CvSeq *contours = 0;
-        //Find contours in canny_output
-        IplImage convertedCanny = canny_output.getMat(0).clone();
-        cvFindContours(&convertedCanny, mem, &contours, sizeof(CvContour), CV_RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE, cvPoint(0,0));
-        //Draw contours in contour_output
-        IplImage convertedContours = *cvCreateImage(cvSize(contour_output.size().width, contour_output.size().height), 8, 3);
-        cvZero(&convertedContours);
-        cvDrawContours(&convertedContours, contours, CV_RGB(1, 0, 0), CV_RGB(0, 0, 0), -1, CV_FILLED, 8, cvPoint(0,0));
-        //printf("%s\n", type2str(finalContours.type()).c_str());
-        //printf("%i\n", finalContours.rows * finalContours.cols );
-        
-        //Convert image back to UMat
-        
-        Mat finalContours;
-        finalContours.create(contour_output.rows, contour_output.cols, CV_8UC3);
-        finalContours = cvarrToMat(&convertedContours);
-        finalContours.clone().copyTo(contour_output);
-        finalContours.release();
-         */
-        
-        
         //Upsample contour_output image to the size of dest
-        if(downsampleRatio < 1.0f)
+        if(downsampleRatio < 1.0f){
             resize(contour_output, contour_output, cv::Size(CAMERA_WIDTH, CAMERA_HEIGHT), 0, 0, INTER_NEAREST);
+            //pyrUp(contour_output, contour_output);
+            
+        }
         
         //Overlay the detected contours onto the final image using its
         //own data as a mask (this copies only the contours to the image)
@@ -402,6 +383,7 @@ void CVEye::ApplyCanny(cv::UMat &src, cv::UMat &src_gray, cv::UMat &dest){
     //Just draw the edges from canny_output to the final image
     else{
         resize(canny_output, canny_output, cv::Size(CAMERA_WIDTH, CAMERA_HEIGHT), 0, 0, INTER_NEAREST);
+        //pyrUp(canny_output, canny_output);
         dest.setTo(guiLineColor, canny_output);
     }
     
@@ -473,10 +455,12 @@ void ParallelContourDetector::operator ()(const cv::Range &range) const{
         cv::UMat in(src_gray, cv::Rect(0, (src_gray.rows/subsections)*i, src_gray.cols, src_gray.rows/subsections));
         cv::UMat out(out_gray, cv::Rect(0, (out_gray.rows/subsections)*i, out_gray.cols, out_gray.rows/subsections) );
         try{
+            //C++ API
+            
             findContours( in, contourData, contourHierarchy, RETR_TREE, CHAIN_APPROX_SIMPLE, cv::Point(0, 0) );
             out = Scalar::all(0);
             Scalar color = eye.guiLineColor;
-            //if(eye.rave) color = Scalar(rand()&255, rand()&255, rand()&255);
+            if(Globals::useRandomLineColors) color = Scalar(rand()&255, rand()&255, rand()&255);
             
             //Prune contours smaller than a minimum length if desired
             if(Globals::minContourLength > 0){
@@ -490,6 +474,48 @@ void ParallelContourDetector::operator ()(const cv::Range &range) const{
             }
             
             drawContours(out, contourData, -1, color, eye.edgeThickness, 8, contourHierarchy);
+             
+            //END C++ API
+            
+            //C API
+            /*
+            CvMemStorage *mem;
+            mem = cvCreateMemStorage(0);
+            CvSeq *contours = 0;
+            //Find contours in canny_output
+            //IplImage convertedCanny = (in.getMat(ACCESS_READ));
+            //IplImage* convertedCanny = new IplImage(in.getMat(0));
+            IplImage* convertedCanny = cvCloneImage(&(IplImage)*(&in.getMat(ACCESS_READ)));
+            cvFindContours(&convertedCanny, mem, &contours, sizeof(CvContour), CV_RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE, cvPoint(0,0));
+            //Draw contours in contour_output
+            IplImage* convertedContours = cvCreateImage(cvSize(out.size().width, out.size().height), 8, 3);
+            cvZero(convertedContours);
+            
+            cv::Scalar lineColor = cv::Scalar(255, 0, 0);
+            cv::Scalar holeColor = cv::Scalar(0, 0, 0);
+            int thickness = 1;
+            cvDrawContours(convertedContours, contours, lineColor,
+                           holeColor,
+                           100, thickness);
+            //printf("%s\n", type2str(finalContours.type()).c_str());
+            //printf("%i\n", finalContours.rows * finalContours.cols );
+            
+            //Convert image back to UMat
+            
+            Mat finalContours;
+            finalContours.create(out.rows, out.cols, CV_8UC3);
+            finalContours = cvarrToMat(convertedContours);
+            finalContours.copyTo(out);
+            finalContours.release();
+            
+            //cvRelease(contours);
+            
+            cvClearMemStorage(mem);
+            cvReleaseImage(&convertedContours);
+            cvReleaseImage(&convertedCanny);
+            //cvReleaseImage(&(&convertedCanny));
+            //END C API
+             */
         }
         catch(Exception e){
             printf("[CVEye] ParallelContourDetector error.\n");

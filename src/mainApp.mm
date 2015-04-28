@@ -158,7 +158,7 @@ void mainApp::CreateGUI(){
     generalSettingsBar -> addBool("swapEyes", swapEyes) -> setLabel("Swap Eyes") -> setKey("s");
     generalSettingsBar -> addBool("Rift Distortion", oculusRift.doWarping) -> setLabel("Rift Distortion") -> setGroup("Rift Settings") -> setKey("r");
     generalSettingsBar -> addInt("Interpupillary -/+", oculusRift.ipd) -> setLabel("Interpupillary Distance [-/+]") -> setMin("0") -> setMax("100") -> setInc("=") -> setDecr("-") -> setGroup("Rift Settings");
-    generalSettingsBar -> addBool("drawNose", Globals::drawNose) -> setLabel("Draw nose") -> setGroup("Nose Settings");
+    generalSettingsBar -> addBool("drawNose", Globals::drawNose) -> setLabel("Draw nose") -> setGroup("Nose Settings") -> setKey("n");
     generalSettingsBar -> addInt("noseHeight", Globals::noseHeight) -> setLabel("Nose height (from bottom)") -> setMin("0") -> setMax("400") -> setGroup("Nose Settings");
     generalSettingsBar -> addFloat("noseScale", Globals::noseScale) -> setLabel("Nose scale") -> setMin(0) -> setMax(2) -> setGroup("Nose Settings");
     generalSettingsBar -> addBool("Draw Guides", drawGuides) -> setLabel("Draw Guides") -> setGroup("Debug");
@@ -187,8 +187,8 @@ void mainApp::CreateGUI(){
     ps3EyeSettings = ofxTweakbars::create("PS3 Eye Settings", "PS3 Eye Settings");
     ps3EyeSettingsStorage = new ofxTweakbarSimpleStorage(ps3EyeSettings);
     
-    ps3EyeSettings -> addBool("autoWhiteBalance", autoWhiteBalance) -> setLabel("Auto White Balance");
-    ps3EyeSettings -> addBool("autoGain", autoGain) -> setLabel("Auto Gain");
+    ps3EyeSettings -> addBool("autoWhiteBalance", autoWhiteBalance) -> setLabel("Auto White Balance Adjustment");
+    ps3EyeSettings -> addBool("autoGain", autoGain) -> setLabel("Auto Gain Adjustment");
     ps3EyeSettings -> addFloat("gain", gain) -> setLabel("Gain") -> setMin("0") -> setMax("63");
     ps3EyeSettings -> addFloat("sharpness", sharpness) -> setLabel("Sharpness") -> setMin("0") -> setMax("63");
     ps3EyeSettings -> addFloat("exposure", exposure) -> setLabel("Exposure") -> setMin("0") -> setMax("255");
@@ -258,6 +258,7 @@ void mainApp::CreateGUI(){
     cannySettings -> addBool("Adaptive Downsampling", adaptiveDownsampling) -> setLabel("Adaptive Downsampling") -> setGroup("Performance");
     cannySettings -> addInt("Subdivisions (Cores Used)", imageSubdivisions) -> setLabel("Subdivisions (Cores Used)") -> setMin("1") -> setMax("8") -> setGroup("Performance");
     cannySettings -> addBool("Show Edges Only", showEdgesOnly) -> setLabel("Show Edges Only");
+    //cannySettings -> addBool("Use Random Contour Colors", Globals::useRandomLineColors) -> setLabel("Use Random Contour Colors");
     
     cannySettingsStorage -> retrieve();
     cannySettings -> load();
@@ -691,6 +692,7 @@ void mainApp::keyPressed(int key){
 
     }
     UpdateEyeValues(leftEye);
+    UpdateEyeValues(rightEye);
     UpdateCameraSettings();
     
 }
@@ -700,6 +702,7 @@ void mainApp::keyPressed(int key){
  */
 void mainApp::keyReleased(int key){
     UpdateEyeValues(leftEye);
+    UpdateEyeValues(rightEye);
     UpdateCameraSettings();
 }
 

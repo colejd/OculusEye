@@ -20,4 +20,6 @@ namespace Globals {
     float noseScale;
     int noseHeight;
     float GUIHeightScale;
+    
+    bool useRandomLineColors;
 }

@@ -9,6 +9,7 @@
 #include "ofMain.h"
 #include "mainApp.h"
 #include "ofAppGlutWindow.h"
+#include "programSettings.h"
 
 //#include "ofxCocoa.h"
 //#include <Cocoa/Cocoa.h>
@@ -17,7 +18,7 @@
 int main(){
     
     //ofSetCurrentRenderer(ofGLProgrammableRenderer::TYPE);
-    ofSetupOpenGL(1280, 800, OF_WINDOW); // Can be OF_WINDOW, OF_FULLSCREEN, or OF_GAME_MODE
+    ofSetupOpenGL(DEFAULT_RES_X, DEFAULT_RES_Y, OF_WINDOW); // Can be OF_WINDOW, OF_FULLSCREEN, or OF_GAME_MODE
     
     //Possible fix for ATI cards
     glewExperimental= GL_TRUE;
