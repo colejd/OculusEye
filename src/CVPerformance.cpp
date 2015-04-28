@@ -72,7 +72,9 @@ void PerformanceGraph::Draw(){
     box.addVertex(xpos + (sizeLimit * xScale), ypos - (60.0f * yScale));
     box.addVertex(xpos, ypos - (60.0f * yScale));
     box.addVertex(xpos, ypos);
-    box.draw();          
+    box.draw();
+    
+    ofSetColor(255);
                   
                   
 }

@@ -15,6 +15,16 @@
  */
 void mainApp::setup(){
     
+    ofDisableArbTex();
+        ofFbo::Settings tmpSettings = ofFbo::Settings();
+        tmpSettings.width			= TARGET_RES_X;
+        tmpSettings.height			= TARGET_RES_Y;
+        tmpSettings.internalformat	= GL_RGBA;
+        tmpSettings.textureTarget	= GL_TEXTURE_2D;
+        tmpSettings.numSamples		= 0;
+        mainFbo.allocate(tmpSettings);
+    ofEnableArbTex();
+    
     LoadBundles();
     
     //Set the minimum type of log that is printed (lower priority logs will be ignored)
@@ -157,7 +167,7 @@ void mainApp::CreateGUI(){
     
     generalSettingsBar -> addBool("swapEyes", swapEyes) -> setLabel("Swap Eyes") -> setKey("s");
     generalSettingsBar -> addBool("Rift Distortion", oculusRift.doWarping) -> setLabel("Rift Distortion") -> setGroup("Rift Settings") -> setKey("r");
-    generalSettingsBar -> addInt("Interpupillary -/+", oculusRift.ipd) -> setLabel("Interpupillary Distance [-/+]") -> setMin("0") -> setMax("100") -> setInc("=") -> setDecr("-") -> setGroup("Rift Settings");
+    generalSettingsBar -> addInt("Interpupillary -/+", oculusRift.ipd) -> setLabel("Interpupillary Distance [-/+]") -> setMin("-150") -> setMax("150") -> setInc("=") -> setDecr("-") -> setGroup("Rift Settings");
     generalSettingsBar -> addBool("drawNose", Globals::drawNose) -> setLabel("Draw nose") -> setGroup("Nose Settings") -> setKey("n");
     generalSettingsBar -> addInt("noseHeight", Globals::noseHeight) -> setLabel("Nose height (from bottom)") -> setMin("0") -> setMax("400") -> setGroup("Nose Settings");
     generalSettingsBar -> addFloat("noseScale", Globals::noseScale) -> setLabel("Nose scale") -> setMin(0) -> setMax(2) -> setGroup("Nose Settings");
@@ -341,54 +351,101 @@ void mainApp::SynchronizedUpdate(){
  */
 void mainApp::draw()
 {
-    //mainFBO.begin();
+    ofSetColor(255);
     
-    // STEP 1: DRAW CAMERA OUTPUT --------------------------------------------
-    //Perform OpenCV operations on each eye and queue the results
-    //to be drawn on their respective sides
-    if((leftEye->initialized || leftEye->dummyImage) && renderLeftEye){
-        //Queue the left CVEye's image data into the oculusRift FBO.
-        oculusRift.leftBackground = &getImageForSide(LEFT);
-        //Render into the left FBO.
-        oculusRift.beginRenderSceneLeftEye();
-        //Draw geometry here if you want
-        if(Globals::useStereoGUI){
-            //ofxTweakbars::draw();
-        }
-        oculusRift.endRenderSceneLeftEye();
-    }
-    if((rightEye->initialized || leftEye->dummyImage) && renderRightEye){
+    ofScale(1, -1, 1);
+    ofTranslate(0, -ofGetWindowHeight(), 0);
+    ofClear(0);
+    
+    mainFbo.begin();
+        ofSetColor(255);
+        ofClear(0);
+        ofScale(1, -1, 1);
+        ofTranslate(0, -ofGetWindowHeight(), 0);
         
-        //Queue the right CVEye's image data into the oculusRift FBO.
-        oculusRift.rightBackground = &getImageForSide(RIGHT);
-        //Render into the right FBO.
-        oculusRift.beginRenderSceneRightEye();
-        //Draw geometry here if you want
-        if(Globals::useStereoGUI){
-            //ofxTweakbars::draw();
+        // STEP 1: DRAW CAMERA OUTPUT --------------------------------------------
+        //Perform OpenCV operations on each eye and queue the results
+        //to be drawn on their respective sides
+        if((leftEye->initialized || leftEye->dummyImage) && renderLeftEye){
+            //Queue the left CVEye's image data into the oculusRift FBO.
+            oculusRift.leftBackground = &getImageForSide(LEFT);
+            //Render into the left FBO.
+            oculusRift.beginRenderSceneLeftEye();
+            //Draw geometry here if you want
+            if(Globals::useStereoGUI){
+                //ofxTweakbars::draw();
+            }
+            oculusRift.endRenderSceneLeftEye();
         }
-        oculusRift.endRenderSceneRightEye();
-    }
-    
-    //Set opacity to full and draw both eyes at once.
-    ofSetColor( 255 );
-    oculusRift.draw( ofVec2f(0,0), ofVec2f( ofGetWindowWidth(), ofGetWindowHeight() ) );
-    //Draw a nose
-    if(Globals::drawNose){
-        DrawNose();
-    }
-    
-    // STEP 2: DRAW USER GRAPHICS --------------------------------------------
+        if((rightEye->initialized || leftEye->dummyImage) && renderRightEye){
+            
+            //Queue the right CVEye's image data into the oculusRift FBO.
+            oculusRift.rightBackground = &getImageForSide(RIGHT);
+            //Render into the right FBO.
+            oculusRift.beginRenderSceneRightEye();
+            //Draw geometry here if you want
+            if(Globals::useStereoGUI){
+                //ofxTweakbars::draw();
+            }
+            oculusRift.endRenderSceneRightEye();
+        }
+        
+        //Set opacity to full and draw both eyes at once.
+        ofSetColor( 255 );
+        oculusRift.draw( ofVec2f(0,0), ofVec2f( ofGetWindowWidth(), ofGetWindowHeight() ) );
+        //Draw a nose
+        if(Globals::drawNose){
+            DrawNose();
+        }
+        
+        // STEP 2: DRAW USER GRAPHICS --------------------------------------------
 
-    if(showDisparityMap){
-        DrawCVMat(stereoMapper.stereoMap, OF_IMAGE_GRAYSCALE, 0, 0, "Disparity Map");
-    }
+        if(showDisparityMap){
+            DrawCVMat(stereoMapper.stereoMap, OF_IMAGE_GRAYSCALE, 0, 0, "Disparity Map");
+        }
+        
+        //mainFBO.end();
+        //mainFBO.draw(0, 0, ofGetWidth(), ofGetHeight());
+        
+        //Draw the GUI
+        if(!Globals::useStereoGUI){
+            ofxTweakbars::draw();
+        }
+        
+        //If we're calibrating the camera, clear the screen and draw the calibration checkerboard and preview.
+        if(calibrating){
+            ofClear(0);
+
+            //Load and draw the checkerboard
+            cv::Mat checkerboard = cv::imread("../../../data/images/CalibrationCheckerboard.png", cv::IMREAD_ANYCOLOR);
+            DrawCVMat(checkerboard, OF_IMAGE_COLOR, 0, 0);
+            
+            //Make text for the image with information about the capture process
+            std::ostringstream stringStream;
+            stringStream << " Calibrating...\n";
+            stringStream << "(press C to stop)\n";
+            stringStream << "Frames Captured: " << leftEye->calibrator->successes << "/" << leftEye->calibrator->numBoards;
+            std::string caption = stringStream.str();
+            
+            //Draw the camera view
+            DrawCVMat(leftEye->dest.getMat(NULL), OF_IMAGE_COLOR, checkerboard.cols, 0, 240, 180, caption);
+        }
+        
+        if(Globals::useStereoGUI){
+            DrawStereoMouse();
+        }
+    mainFbo.end();
+    mainFbo.draw(0, 0, ofGetWindowWidth(), ofGetWindowHeight());
+    
+    ofScale(1, -1, 1);
+    ofTranslate(0, -ofGetWindowHeight(), 0);
+    
     
     // STEP 3: DRAW DEBUG (topmost layer) ------------------------------------
-
+    
     //Draw debug text in top-right
     string str = "app fps: ";
-	str += ofToString(ofGetFrameRate(), 2) + "\n";
+    str += ofToString(ofGetFrameRate(), 2) + "\n";
     //if(leftEye->initialized || leftEye->dummyImage) str += "left eye fps: " + ofToString(leftEye->camFps, 2) + "\n";
     if(leftEye->screenMessage != "") str += "left eye: " + leftEye->screenMessage + "\n";
     //if(rightEye->initialized || leftEye->dummyImage) str += "right eye fps: " + ofToString(rightEye->camFps, 2) + "\n";
@@ -420,37 +477,6 @@ void mainApp::draw()
         eyeFPSGraph.SetPosition(ofGetWindowWidth() - 70, ofGetWindowHeight() - 15);
         eyeFPSGraph.Enqueue((leftEye->camFps + rightEye->camFps) / 2.0f);
         eyeFPSGraph.Draw();
-    }
-    
-    //mainFBO.end();
-    //mainFBO.draw(0, 0, ofGetWidth(), ofGetHeight());
-    
-    //Draw the GUI
-    if(!Globals::useStereoGUI){
-        ofxTweakbars::draw();
-    }
-    
-    //If we're calibrating the camera, clear the screen and draw the calibration checkerboard and preview.
-    if(calibrating){
-        ofClear(0);
-
-        //Load and draw the checkerboard
-        cv::Mat checkerboard = cv::imread("../../../data/images/CalibrationCheckerboard.png", cv::IMREAD_ANYCOLOR);
-        DrawCVMat(checkerboard, OF_IMAGE_COLOR, 0, 0);
-        
-        //Make text for the image with information about the capture process
-        std::ostringstream stringStream;
-        stringStream << " Calibrating...\n";
-        stringStream << "(press C to stop)\n";
-        stringStream << "Frames Captured: " << leftEye->calibrator->successes << "/" << leftEye->calibrator->numBoards;
-        std::string caption = stringStream.str();
-        
-        //Draw the camera view
-        DrawCVMat(leftEye->dest.getMat(NULL), OF_IMAGE_COLOR, checkerboard.cols, 0, 240, 180, caption);
-    }
-    
-    if(Globals::useStereoGUI){
-        DrawStereoMouse();
     }
     
 }
@@ -645,12 +671,13 @@ void mainApp::SetBorderlessFullscreen(bool useFullscreen){
         [window setLevel:NSFloatingWindowLevel];
         window.level = NSMainMenuWindowLevel + 1;
         ofSetWindowShape(TARGET_RES_X, TARGET_RES_Y);
-        ofSetWindowPosition(0, 1); //Set it one pixel down from true fullscreen to fool OpenGL into giving me more FPS when using VSync
+        ofSetWindowPosition(RIFT_MONITOR_X, 1); //Set it one pixel down from true fullscreen to fool OpenGL into giving me more FPS when using VSync
     }
     //Windowed
     else{
         window.level = NSMainMenuWindowLevel - 1;
         ofSetWindowPosition(0,200);
+        ofSetWindowShape(DEFAULT_RES_X, DEFAULT_RES_Y);
         [window setStyleMask: NSResizableWindowMask| NSClosableWindowMask | NSMiniaturizableWindowMask | NSTitledWindowMask];
         [window makeKeyAndOrderFront:nil];
     }

@@ -83,6 +83,8 @@ class ofxOculusRift : public ofCamera
         ofFbo guiFboLeft; //Jon
         ofFbo guiFboRight; //Jon
     
+        ofFbo windowFbo; //Jon
+    
         int ipd = 0; //Jon
     
         void FlipCurrentFBO(); //Jon

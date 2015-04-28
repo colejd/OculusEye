@@ -157,6 +157,8 @@ public:
     
     void ToggleStereoGUI();
     
+    ofFbo mainFbo;
+    
 private:
     string GetStdoutFromCommand(string cmd);
 };

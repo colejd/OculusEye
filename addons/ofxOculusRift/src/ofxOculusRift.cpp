@@ -9,6 +9,7 @@
 #include "ofxOculusRift.h"
 #include "ofxTweakbars.h" //Added by Jon
 #include "Globals.h"
+#include "programSettings.h"
 
 // ---------------------------------------------------------------------------------------------------------------------------------------------------
 //
@@ -55,6 +56,14 @@ bool ofxOculusRift::init( int _width, int _height, int _fboNumSamples )
         
         guiFboLeft.allocate(guiFboSettings);
         guiFboRight.allocate(guiFboSettings);
+    
+        ofFbo::Settings windowFboSettings = ofFbo::Settings();
+        windowFboSettings.width             = _width;
+        windowFboSettings.height			= _height;
+        windowFboSettings.internalformat	= GL_RGBA;
+        windowFboSettings.textureTarget     = GL_TEXTURE_2D;
+        windowFboSettings.numSamples		= _fboNumSamples;
+        windowFbo.allocate(windowFboSettings);
 	
 	ofEnableArbTex();
 	
@@ -102,6 +111,8 @@ void ofxOculusRift::endRenderSceneRightEye()
 //
 void ofxOculusRift::beginRender( float _interOcularShift, ofFbo* _fbo  )
 {
+    windowFbo.begin();
+    ofClear(255);
 	ofPushView();
 
 		_fbo->begin();
@@ -131,7 +142,7 @@ void ofxOculusRift::endRender( ofFbo* _fbo )
 		ofPopMatrix();
 		_fbo->end();
 	ofPopView();
-
+    windowFbo.end();
 }
 
 // ---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -139,6 +150,8 @@ void ofxOculusRift::endRender( ofFbo* _fbo )
 void ofxOculusRift::draw( ofVec2f pos, ofVec2f size )
 {
     float backgroundHeight = 0.0f;
+    
+    windowFbo.begin();
     
     //Flip Rift FBO upside down
     FlipCurrentFBO();
@@ -151,18 +164,18 @@ void ofxOculusRift::draw( ofVec2f pos, ofVec2f size )
         //Flip left FBO upside down to draw OF image properly
         FlipCurrentFBO();
         if(leftBackground != NULL){
-            backgroundHeight = (ofGetWindowHeight()/2.0f) - (leftBackground->height / 2.0f);
-            leftBackground->draw(ipd, backgroundHeight); //Added by Jon
+            backgroundHeight = (eyeFboLeft.getHeight()/2.0f) - (leftBackground->height / 2.0f);
+            leftBackground->draw((eyeFboLeft.getWidth() - leftBackground->width) + ipd, backgroundHeight); //Added by Jon
         }
         //Flip back for OpenGL things to draw properly
         FlipCurrentFBO();
         if(Globals::useStereoGUI){
-            ofxTweakbars::SetWindowSize((ofGetWindowWidth() / 2) - Globals::GUIConvergence, ofGetWindowHeight() * Globals::GUIHeightScale);
+            ofxTweakbars::SetWindowSize((ofGetWindowWidth() / 2) - Globals::GUIConvergence, guiFboLeft.getHeight() * Globals::GUIHeightScale);
             guiFboLeft.begin();
             ofClear(0, 0, 0);
             ofxTweakbars::draw();
             guiFboLeft.end();
-            guiFboLeft.draw(Globals::GUIConvergence, ofGetHeight() * (1.0 - Globals::GUIHeightScale));
+            guiFboLeft.draw(Globals::GUIConvergence, eyeFboLeft.getHeight() * (1.0 - Globals::GUIHeightScale));
         }
     eyeFboLeft.end();
     
@@ -172,7 +185,7 @@ void ofxOculusRift::draw( ofVec2f pos, ofVec2f size )
         //Flip right FBO upside down to draw OF image properly
         FlipCurrentFBO();
         if(rightBackground != NULL){
-            backgroundHeight = (ofGetWindowHeight()/2.0f) - (rightBackground->height / 2.0f);
+            backgroundHeight = (eyeFboRight.getHeight()/2.0f) - (rightBackground->height / 2.0f);
             rightBackground->draw(-ipd, backgroundHeight);//Added by Jon
         }
         //Flip back for OpenGL things to draw properly
@@ -182,7 +195,7 @@ void ofxOculusRift::draw( ofVec2f pos, ofVec2f size )
             ofClear(0, 0, 0);
             ofxTweakbars::draw();
             guiFboRight.end();
-            guiFboRight.draw(-Globals::GUIConvergence, ofGetHeight() * (1.0 - Globals::GUIHeightScale));
+            guiFboRight.draw(-Globals::GUIConvergence, eyeFboRight.getHeight() * (1.0 - Globals::GUIHeightScale));
         }
     eyeFboRight.end();
     
@@ -210,21 +223,21 @@ void ofxOculusRift::draw( ofVec2f pos, ofVec2f size )
             ofLoadIdentityMatrix();
             ofSetMatrixMode(OF_MATRIX_MODELVIEW);
             ofLoadIdentityMatrix();
-            
+        
+            //Clear
             ofSetColor( 255 );
-                
-            if( doWarping )
-            {
-                glEnable( GL_TEXTURE_2D );
-                glBindTexture(GL_TEXTURE_2D, colorTextureID);
-                
-                renderDistortedEyeNew( true,  0.0f, 0.0f, 0.5f, 1.0f);
-                renderDistortedEyeNew( false, 0.5f, 0.0f, 0.5f, 1.0f);
-                
-                FlipCurrentFBO();
-                
-                glDisable( GL_TEXTURE_2D );
-            }
+        
+            //Start drawing the warped fbo
+            glEnable( GL_TEXTURE_2D );
+            glBindTexture(GL_TEXTURE_2D, colorTextureID);
+        
+            renderDistortedEyeNew( true,  0.0f, 0.0f, 0.5f, 1.0f);
+            renderDistortedEyeNew( false, 0.5f, 0.0f, 0.5f, 1.0f);
+            
+            FlipCurrentFBO();
+            
+            glDisable( GL_TEXTURE_2D );
+            //Done drawing the warped fbo
         
             
         ofPopView();
@@ -241,6 +254,9 @@ void ofxOculusRift::draw( ofVec2f pos, ofVec2f size )
 		glTexCoord2f(pos.x+size.x,	pos.y+size.y);   glVertex2f(0.0f, 1.0f);
 	glEnd();
 	 */
+    
+    windowFbo.end();
+    windowFbo.draw(0, 0, ofGetWindowWidth(), ofGetWindowHeight());
 	
 	needSensorReadingThisFrame = true;
 }

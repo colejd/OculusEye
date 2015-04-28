@@ -16,12 +16,16 @@
 
 // Do fullscreen on launch? (Screen resolution changes from DEFAULT_RES to TARGET_RES)
 #define LAUNCH_FULLSCREEN false
+
 // Native screen resolution
 #define DEFAULT_RES_X 1280
 #define DEFAULT_RES_Y 800
-// Desired screen resolution
-#define TARGET_RES_X 1920
-#define TARGET_RES_Y 1080
+
+// Rift screen resolution
+#define TARGET_RES_X 1280
+#define TARGET_RES_Y 800
+
+#define RIFT_MONITOR_X 0
 
 // Values to be requested from the Playstation Eye cameras.
 // Illegal values for fps will fall back to the next lowest supported value.
@@ -31,8 +35,8 @@
 #define CAMERA_HEIGHT 480
 #define CAMERA_FPS 60
 
-// The highest framerate allowed (capped to 60 when vsync is enabled).
-#define TARGET_FRAMERATE 9999 //9999
+// The highest framerate allowed (capped to monitor refresh rate when vsync is enabled).
+#define TARGET_FRAMERATE 75 //9999
 //Enable/disable OpenCL support through UMats (freezes at Canny processing at the moment)
 #define USE_OPENCL false
 
