@@ -1375,16 +1375,15 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
 					"$(PROJECT_DIR)/PS3EyeDriver/src/**",
-					/usr/local/Cellar/boost/1.57.0/include,
 				);
 				INFOPLIST_FILE = PS3EyeDriver/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PS3EyeDriver",
-					/usr/local/Cellar/boost/1.57.0/lib,
-					/usr/local/Cellar/libusb/1.0.9/lib,
+					/usr/local/lib,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -1429,16 +1428,15 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
 					"$(PROJECT_DIR)/PS3EyeDriver/src/**",
-					/usr/local/Cellar/boost/1.57.0/include,
 				);
 				INFOPLIST_FILE = PS3EyeDriver/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PS3EyeDriver",
-					/usr/local/Cellar/boost/1.57.0/lib,
-					/usr/local/Cellar/libusb/1.0.9/lib,
+					/usr/local/lib,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
