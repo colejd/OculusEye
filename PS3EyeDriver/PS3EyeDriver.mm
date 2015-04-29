@@ -8,6 +8,9 @@
 //  Uses code from http://docs.unity3d.com/Manual/NativePluginInterface.html
 
 #include "PS3EyeDriver.h"
+#include <boost/thread.hpp>
+
+boost::thread cameraPollingThread;
 
 PS3EyeDriver::PS3EyeDriver(FuncPtr logPtr){
     //Set the logging function

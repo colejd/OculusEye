@@ -11,8 +11,6 @@
 		4669069D1AD4819F00D69129 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 466906981AD4816C00D69129 /* OpenGL.framework */; };
 		468164301ADF074800D3FE2F /* Globals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4681642E1ADF074800D3FE2F /* Globals.cpp */; };
 		468761131ACDD26600594754 /* YUVBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 468761111ACDD26600594754 /* YUVBuffer.cpp */; };
-		46938B971ADD9854000CD7D7 /* libboost_system-mt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46938B951ADD9854000CD7D7 /* libboost_system-mt.a */; };
-		46938B981ADD9854000CD7D7 /* libboost_thread-mt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46938B961ADD9854000CD7D7 /* libboost_thread-mt.a */; };
 		46938B991ADD986D000CD7D7 /* libboost_system-mt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46938B951ADD9854000CD7D7 /* libboost_system-mt.a */; };
 		46938B9A1ADD986D000CD7D7 /* libboost_thread-mt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46938B961ADD9854000CD7D7 /* libboost_thread-mt.a */; };
 		46C163DB1ADF1E8900BAD956 /* ps3eye.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46C163D91ADF1E8900BAD956 /* ps3eye.cpp */; };
@@ -451,8 +449,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46938B971ADD9854000CD7D7 /* libboost_system-mt.a in Frameworks */,
-				46938B981ADD9854000CD7D7 /* libboost_thread-mt.a in Frameworks */,
 				46CB21431AC37958009DD011 /* libzlib.a in Frameworks */,
 				46F452051A89D00100DD172A /* libAntTweakBar.a in Frameworks */,
 				46CB21311AC37958009DD011 /* libopencv_calib3d.a in Frameworks */,
@@ -1592,7 +1588,6 @@
 					"$(OF_CORE_HEADERS)",
 					"$(PROJECT_DIR)/addons/AntTweakBar/include/**",
 					"$(PROJECT_DIR)/addons/ofxOculusRift/**",
-					/usr/local/Cellar/boost/1.57.0/include,
 				);
 				ICON = "$(ICON_NAME_DEBUG)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
@@ -1609,7 +1604,6 @@
 					"$(PROJECT_DIR)/addons/OpenCV-3.0-03.25.15/lib",
 					"$(PROJECT_DIR)/addons/OpenCV-3.0-03.25.15/tbb",
 					"$(PROJECT_DIR)/addons/OpenCV-3.0-03.25.15/tbb-4.2.4",
-					/usr/local/Cellar/boost/1.57.0/lib,
 				);
 				LLVM_LTO = NO;
 				OF_CORE_LIBS = "$(LIB_POCO_1) $(LIB_POCO_2) $(LIB_POCO_3) $(LIB_POCO_4) $(LIB_POCO_5) $(LIB_POCO_6) $(LIB_POCO_7) $(LIB_POCO_8) $(LIB_POCO_9) $(LIB_POCO_10) $(LIB_TESS) $(LIB_GLEW) $(LIB_CAIRO1) $(LIB_CAIRO2) $(LIB_CAIRO3) $(LIB_FMODEX) $(LIB_RTAUDIO) $(LIB_OPENSSL1) $(LIB_OPENSSL2) $(LIB_GLFW) $(LIB_FREEIMAGE) $(LIB_FREETYPE)";
@@ -1646,7 +1640,6 @@
 					"$(OF_CORE_HEADERS)",
 					"$(PROJECT_DIR)/addons/AntTweakBar/include/**",
 					"$(PROJECT_DIR)/addons/ofxOculusRift/**",
-					/usr/local/Cellar/boost/1.57.0/include,
 				);
 				ICON = "$(ICON_NAME_RELEASE)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
@@ -1663,7 +1656,6 @@
 					"$(PROJECT_DIR)/addons/OpenCV-3.0-03.25.15/lib",
 					"$(PROJECT_DIR)/addons/OpenCV-3.0-03.25.15/tbb",
 					"$(PROJECT_DIR)/addons/OpenCV-3.0-03.25.15/tbb-4.2.4",
-					/usr/local/Cellar/boost/1.57.0/lib,
 				);
 				LLVM_LTO = NO;
 				OF_CORE_LIBS = "$(LIB_POCO_1) $(LIB_POCO_2) $(LIB_POCO_3) $(LIB_POCO_4) $(LIB_POCO_5) $(LIB_POCO_6) $(LIB_POCO_7) $(LIB_POCO_8) $(LIB_POCO_9) $(LIB_POCO_10) $(LIB_TESS) $(LIB_GLEW) $(LIB_CAIRO1) $(LIB_CAIRO2) $(LIB_CAIRO3) $(LIB_FMODEX) $(LIB_RTAUDIO) $(LIB_OPENSSL1) $(LIB_OPENSSL2) $(LIB_GLFW) $(LIB_FREEIMAGE) $(LIB_FREETYPE)";

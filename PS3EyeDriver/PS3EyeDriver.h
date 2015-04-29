@@ -24,8 +24,6 @@
 
 #include "PS3EyeMisc.h"
 
-#include <boost/thread.hpp>
-
 #define CAMERA_WIDTH 640
 #define CAMERA_HEIGHT 480
 #define CAMERA_FPS 60
@@ -81,7 +79,6 @@ public:
     void setBlueBalance(float blueBalance, EyeType whichSide);
     void setRedBalance(float redBalance, EyeType whichSide);
     
-    boost::thread cameraPollingThread;
     void CameraPollThread();
     
 private:
