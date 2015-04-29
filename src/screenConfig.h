@@ -12,10 +12,11 @@
  * Based on code from http://forum.openframeworks.cc/t/change-screen-resolution-with-objective-c/5175
  */
 
-#include <CoreVideo/CVDisplayLink.h>
-
 #ifndef __ofCV__screenConfig__
 #define __ofCV__screenConfig__
+
+
+#include <CoreVideo/CVDisplayLink.h>
 
 //#include <iostream>
 
@@ -28,5 +29,8 @@ size_t displayBitsPerPixelForMode(CGDisplayModeRef mode);
 CGDisplayModeRef bestMatchForMode(screenMode screenMode);
 CGDisplayModeRef bestMatchForParameters(int width, int height, int depth);
 void changeScreenRes(int h, int v);
+
+
+
 
 #endif /* defined(__ofCV__screenConfig__) */

@@ -7,6 +7,9 @@
 //
 //  Uses code from http://docs.unity3d.com/Manual/NativePluginInterface.html
 
+#ifndef __OculusEye__PS3EyePlugin__
+#define __OculusEye__PS3EyePlugin__
+
 /**
  * Interface into PS3 Eye code.
  */
@@ -137,3 +140,5 @@ extern "C" {
 -(uint8_t) getRedBalance;
 
 @end
+
+#endif

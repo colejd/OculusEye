@@ -11,10 +11,10 @@
  * This module is for color conversion from YUV422 to RGB888.
  */
 
-#include <stdint.h>
-
 #ifndef __PS3EyeDriver__YUVBuffer__
 #define __PS3EyeDriver__YUVBuffer__
+
+#include <stdint.h>
 
 //--------------------------------------------------------------
 #define _max(a, b) (((a) > (b)) ? (a) : (b))
