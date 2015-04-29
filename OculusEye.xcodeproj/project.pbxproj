@@ -195,6 +195,7 @@
 		46004F181AF1742D00C0E21A /* libboost_system-mt.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libboost_system-mt.a"; path = "/usr/local/Cellar/boost/1.57.0/lib/libboost_system-mt.a"; sourceTree = "<absolute>"; };
 		46004F191AF1742D00C0E21A /* libboost_thread-mt.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libboost_thread-mt.a"; path = "/usr/local/Cellar/boost/1.57.0/lib/libboost_thread-mt.a"; sourceTree = "<absolute>"; };
 		46004F1A1AF1742D00C0E21A /* libusb-1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libusb-1.0.a"; path = "/usr/local/Cellar/libusb/1.0.18/lib/libusb-1.0.a"; sourceTree = "<absolute>"; };
+		46004F1E1AF17CB100C0E21A /* libusb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libusb.h; path = backend/libusb.h; sourceTree = "<group>"; };
 		464C5F451A8D3554000E57AD /* model_notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = model_notes.txt; sourceTree = "<group>"; };
 		464C5F461A8D3554000E57AD /* mountingback.stl */ = {isa = PBXFileReference; lastKnownFileType = file; path = mountingback.stl; sourceTree = "<group>"; };
 		464C5F471A8D3554000E57AD /* mountingbracket.stl */ = {isa = PBXFileReference; lastKnownFileType = file; path = mountingbracket.stl; sourceTree = "<group>"; };
@@ -981,6 +982,7 @@
 		46FD55841ACB313F003D0FD5 /* backend */ = {
 			isa = PBXGroup;
 			children = (
+				46004F1E1AF17CB100C0E21A /* libusb.h */,
 				46C163D91ADF1E8900BAD956 /* ps3eye.cpp */,
 				46C163DA1ADF1E8900BAD956 /* ps3eye.h */,
 			);
