@@ -128,7 +128,7 @@
 		519909391A23B2BD008021BE /* CVEye.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5199092C1A23B2BD008021BE /* CVEye.mm */; };
 		5199093A1A23B2BD008021BE /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5199092E1A23B2BD008021BE /* main.mm */; };
 		5199093B1A23B2BD008021BE /* mainApp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5199092F1A23B2BD008021BE /* mainApp.mm */; };
-		5199093E1A23B2BD008021BE /* screenConfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 519909371A23B2BD008021BE /* screenConfig.cpp */; };
+		5199093E1A23B2BD008021BE /* screenConfig.mm in Sources */ = {isa = PBXBuildFile; fileRef = 519909371A23B2BD008021BE /* screenConfig.mm */; };
 		51E1B39F1A42778F00D6BCA7 /* CVPerformance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51E1B39E1A42778F00D6BCA7 /* CVPerformance.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
@@ -411,7 +411,7 @@
 		5199092E1A23B2BD008021BE /* main.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = main.mm; sourceTree = "<group>"; };
 		5199092F1A23B2BD008021BE /* mainApp.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = mainApp.mm; sourceTree = "<group>"; };
 		519909301A23B2BD008021BE /* mainApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mainApp.h; sourceTree = "<group>"; };
-		519909371A23B2BD008021BE /* screenConfig.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = screenConfig.cpp; sourceTree = "<group>"; };
+		519909371A23B2BD008021BE /* screenConfig.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = screenConfig.mm; sourceTree = "<group>"; };
 		519909381A23B2BD008021BE /* screenConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = screenConfig.h; sourceTree = "<group>"; };
 		519909461A23BE0D008021BE /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		519909841A2581B1008021BE /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
@@ -1079,7 +1079,7 @@
 				5199092D1A23B2BD008021BE /* CVEye.h */,
 				5199092C1A23B2BD008021BE /* CVEye.mm */,
 				519909381A23B2BD008021BE /* screenConfig.h */,
-				519909371A23B2BD008021BE /* screenConfig.cpp */,
+				519909371A23B2BD008021BE /* screenConfig.mm */,
 				51A88EB51A3F7EEF00D73FA2 /* CVPerformance.h */,
 				51E1B39E1A42778F00D6BCA7 /* CVPerformance.cpp */,
 				46F452EF1A89E49E00DD172A /* StereoDepthMapper.h */,
@@ -1322,7 +1322,7 @@
 				46F452CD1A89D06000DD172A /* OVR_String.cpp in Sources */,
 				46F4520F1A89D00100DD172A /* ofxTweakbarColor3f.cpp in Sources */,
 				46F4520D1A89D00100DD172A /* ofxTweakbarBool.cpp in Sources */,
-				5199093E1A23B2BD008021BE /* screenConfig.cpp in Sources */,
+				5199093E1A23B2BD008021BE /* screenConfig.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -36,7 +36,6 @@ namespace Globals {
     
     extern bool useRandomLineColors;
     
-    
 }
 
 #endif /* defined(__OculusEye__Globals__) */

@@ -134,6 +134,9 @@ public:
     static void TW_CALL fullscreenButtonCallback(void* pApp);
     static void TW_CALL calibrationButtonCallback(void* pApp);
     static void TW_CALL stereoGUIButtonCallback(void* pApp);
+    static void TW_CALL saveOutputFramesButtonCallback(void *pApp);
+    
+    void saveOutputFrames();
     
     void DrawStereoMouse();
     ofImage stereoMouseCursor;

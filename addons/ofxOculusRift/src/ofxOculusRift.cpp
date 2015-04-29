@@ -49,7 +49,7 @@ bool ofxOculusRift::init( int _width, int _height, int _fboNumSamples )
     
         ofFbo::Settings guiFboSettings = ofFbo::Settings();
         guiFboSettings.width			= _width/2;
-        guiFboSettings.height			= _height*0.66;
+        guiFboSettings.height			= _height;
         guiFboSettings.internalformat	= GL_RGBA;
         guiFboSettings.textureTarget	= GL_TEXTURE_2D;
         guiFboSettings.numSamples		= _fboNumSamples;
@@ -157,6 +157,10 @@ void ofxOculusRift::draw( ofVec2f pos, ofVec2f size )
     FlipCurrentFBO();
     //ofSetColor(255);
     
+    double scale_x = (double)TARGET_RES_X / (double)DEFAULT_RES_X;
+    double scale_y = (double)TARGET_RES_Y / (double)DEFAULT_RES_Y;
+    
+    //printf("Scale: x = %f, y = %f\n", scale_x, scale_y);
     
     //Draw left eye things------------------------------------//
     //beginRenderSceneLeftEye();
@@ -164,8 +168,8 @@ void ofxOculusRift::draw( ofVec2f pos, ofVec2f size )
         //Flip left FBO upside down to draw OF image properly
         FlipCurrentFBO();
         if(leftBackground != NULL){
-            backgroundHeight = (eyeFboLeft.getHeight()/2.0f) - (leftBackground->height / 2.0f);
-            leftBackground->draw((eyeFboLeft.getWidth() - leftBackground->width) + ipd, backgroundHeight); //Added by Jon
+            backgroundHeight = (eyeFboLeft.getHeight()/2.0f) - ((leftBackground->height * scale_y) / 2.0f);
+            leftBackground->draw((eyeFboLeft.getWidth() - (leftBackground->width * scale_x)) + ipd, backgroundHeight, leftBackground->width * scale_x, leftBackground->height * scale_y); //Added by Jon
         }
         //Flip back for OpenGL things to draw properly
         FlipCurrentFBO();
@@ -185,8 +189,8 @@ void ofxOculusRift::draw( ofVec2f pos, ofVec2f size )
         //Flip right FBO upside down to draw OF image properly
         FlipCurrentFBO();
         if(rightBackground != NULL){
-            backgroundHeight = (eyeFboRight.getHeight()/2.0f) - (rightBackground->height / 2.0f);
-            rightBackground->draw(-ipd, backgroundHeight);//Added by Jon
+            backgroundHeight = (eyeFboRight.getHeight()/2.0f) - ((rightBackground->height * scale_y) / 2.0f);
+            rightBackground->draw(-ipd, backgroundHeight, rightBackground->width * scale_x, rightBackground-> height * scale_y);//Added by Jon
         }
         //Flip back for OpenGL things to draw properly
         FlipCurrentFBO();
@@ -212,7 +216,7 @@ void ofxOculusRift::draw( ofVec2f pos, ofVec2f size )
         
             ofSetColor( 255 );
             glBindFramebuffer(GL_FRAMEBUFFER, framebufferID);
-                ofClear(0,0,0);
+                ofClear(0);
         
                 eyeFboLeft.draw( 0.0f, 0.0f );
                 eyeFboRight.draw( eyeFboLeft.getWidth(), 0.0f );
@@ -244,7 +248,7 @@ void ofxOculusRift::draw( ofVec2f pos, ofVec2f size )
     }
     
     //Flip the entire Rift FBO back to normal (preserve other [external] GUI operations)
-    FlipCurrentFBO();
+    //FlipCurrentFBO();
 
 	/*
 	glBegin(GL_TRIANGLE_STRIP);

@@ -13,13 +13,12 @@
 #include "OVR.h"
 using namespace OVR;
 #include <iostream>
-//#include "programSettings.h"
+#include "programSettings.h"
 
 //#define STD_GRAV 9.81 // What SHOULD work with Rift, but off by 1000
 #define STD_GRAV 0.00981  // This gives nice 1.00G on Z with Rift face down !!!
 
 #define DTR = 0.0174532925f
-
 
 static float K0 = 1.0f;  //1.0f
 static float K1 = 0.22f; //0.22f

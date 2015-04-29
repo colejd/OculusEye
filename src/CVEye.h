@@ -17,7 +17,8 @@
 #include "programSettings.h"
 #include "CameraCalibrator.h"
 
-#include "../PS3EyeDriver/PS3EyePlugin.h"
+#include <PS3EyePlugin.h>
+//#include "../PS3EyeDriver/PS3EyePlugin.h"
 //#include "../PS3EyeDriver/PS3EyeDriver.h"
 
 #include <opencv/cv.h>
@@ -108,6 +109,8 @@ public:
     CameraCalibrator *calibrator;
     
     bool isLeftEye;
+    
+    bool outputFrameSteps = false;
     
 private:
     int camIndex;

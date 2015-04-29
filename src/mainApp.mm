@@ -180,6 +180,7 @@ void mainApp::CreateGUI(){
     generalSettingsBar -> addButton("Calibrate Camera", mainApp::calibrationButtonCallback, this);
     generalSettingsBar -> addInt("GUIConvergence", &Globals::GUIConvergence) -> setLabel("GUI Convergence") -> setMin("0") -> setMax("100") -> setGroup("GUI Adjustment");
     generalSettingsBar -> addFloat("GUIHeightScale", &Globals::GUIHeightScale) -> setLabel("GUI Height Scale") -> setMin(0.3f) -> setMax(1.0f) -> setGroup("GUI Adjustment");
+    generalSettingsBar -> addButton("Save output frames", mainApp::saveOutputFramesButtonCallback, this) -> setKey("o");
     
     generalSettingsStorage -> retrieve();
     generalSettingsBar -> load();
@@ -353,15 +354,15 @@ void mainApp::draw()
 {
     ofSetColor(255);
     
-    ofScale(1, -1, 1);
-    ofTranslate(0, -ofGetWindowHeight(), 0);
-    ofClear(0);
+    //ofScale(1, -1, 1);
+    //ofTranslate(0, -ofGetHeight(), 0);
+    ofClear(255);
     
-    mainFbo.begin();
+    //mainFbo.begin();
         ofSetColor(255);
         ofClear(0);
-        ofScale(1, -1, 1);
-        ofTranslate(0, -ofGetWindowHeight(), 0);
+        //ofScale(1, -1, 1);
+        //ofTranslate(0, -ofGetHeight(), 0);
         
         // STEP 1: DRAW CAMERA OUTPUT --------------------------------------------
         //Perform OpenCV operations on each eye and queue the results
@@ -392,7 +393,7 @@ void mainApp::draw()
         
         //Set opacity to full and draw both eyes at once.
         ofSetColor( 255 );
-        oculusRift.draw( ofVec2f(0,0), ofVec2f( ofGetWindowWidth(), ofGetWindowHeight() ) );
+        oculusRift.draw( ofVec2f(0,0), ofVec2f( TARGET_RES_X, TARGET_RES_Y ) );
         //Draw a nose
         if(Globals::drawNose){
             DrawNose();
@@ -430,15 +431,11 @@ void mainApp::draw()
             //Draw the camera view
             DrawCVMat(leftEye->dest.getMat(NULL), OF_IMAGE_COLOR, checkerboard.cols, 0, 240, 180, caption);
         }
-        
-        if(Globals::useStereoGUI){
-            DrawStereoMouse();
-        }
-    mainFbo.end();
-    mainFbo.draw(0, 0, ofGetWindowWidth(), ofGetWindowHeight());
+    //mainFbo.end();
+    //mainFbo.draw(0, 0, 1280, ofGetHeight());
     
-    ofScale(1, -1, 1);
-    ofTranslate(0, -ofGetWindowHeight(), 0);
+    //ofScale(1, -1, 1);
+    //ofTranslate(0, -ofGetHeight(), 0);
     
     
     // STEP 3: DRAW DEBUG (topmost layer) ------------------------------------
@@ -477,6 +474,10 @@ void mainApp::draw()
         eyeFPSGraph.SetPosition(ofGetWindowWidth() - 70, ofGetWindowHeight() - 15);
         eyeFPSGraph.Enqueue((leftEye->camFps + rightEye->camFps) / 2.0f);
         eyeFPSGraph.Draw();
+    }
+    
+    if(Globals::useStereoGUI){
+        DrawStereoMouse();
     }
     
 }
@@ -665,21 +666,27 @@ void mainApp::ToggleBorderlessFullscreen(){
  */
 void mainApp::SetBorderlessFullscreen(bool useFullscreen){
     NSWindow *window = (NSWindow *)ofGetCocoaWindow();
+    //Enable fullscreen in another Space
+    [window setCollectionBehavior:(NSWindowCollectionBehaviorFullScreenPrimary)];
+    //[window toggleFullScreen:nil];
+    
+    
     //Fullscreen
     if(useFullscreen){
         [window setStyleMask:NSBorderlessWindowMask];
-        [window setLevel:NSFloatingWindowLevel];
+        //[window setLevel:NSFloatingWindowLevel];
         window.level = NSMainMenuWindowLevel + 1;
         ofSetWindowShape(TARGET_RES_X, TARGET_RES_Y);
         ofSetWindowPosition(RIFT_MONITOR_X, 1); //Set it one pixel down from true fullscreen to fool OpenGL into giving me more FPS when using VSync
     }
     //Windowed
     else{
-        window.level = NSMainMenuWindowLevel - 1;
+        window.level = 0;
+        //window.level = NSMainMenuWindowLevel - 1;
         ofSetWindowPosition(0,200);
         ofSetWindowShape(DEFAULT_RES_X, DEFAULT_RES_Y);
         [window setStyleMask: NSResizableWindowMask| NSClosableWindowMask | NSMiniaturizableWindowMask | NSTitledWindowMask];
-        [window makeKeyAndOrderFront:nil];
+        //[window makeKeyAndOrderFront:nil];
     }
     isBorderlessFullscreen = useFullscreen;
     //Focus is lost due to a bug in OpenFrameworks; this returns focus to the window
@@ -706,6 +713,15 @@ void mainApp::ToggleStereoGUI(){
         ofShowCursor();
         ofxTweakbars::SetWindowSize(ofGetWidth(), ofGetHeight());
     }
+}
+
+void TW_CALL mainApp::saveOutputFramesButtonCallback(void* pApp){
+    mainApp* app = static_cast<mainApp*>(pApp);
+    app->saveOutputFrames();
+}
+
+void mainApp::saveOutputFrames(){
+    leftEye->outputFrameSteps = true;
 }
 
 //--------------------------------------------------------------
@@ -800,17 +816,17 @@ void mainApp::DrawStereoMouse(){
     //adjusted for convergence.
     int otherSideX = ofGetMouseX();
     //Right side of screen
-    if(ofGetMouseX() > ofGetWidth() / 2){
-        otherSideX -= ofGetWidth() / 2;
+    if(ofGetMouseX() > ofGetWindowWidth() / 2){
+        otherSideX -= ofGetWindowWidth() / 2;
         otherSideX += (Globals::GUIConvergence * 2);
-        if(otherSideX <= ofGetWidth() / 2)
+        if(otherSideX <= ofGetWindowWidth() / 2)
         stereoMouseCursor.draw(otherSideX, ofGetMouseY());
     }
     //Left side of screen
     else{
-        otherSideX += ofGetWidth() / 2;
+        otherSideX += ofGetWindowWidth() / 2;
         otherSideX -= (Globals::GUIConvergence * 2);
-        if(otherSideX > ofGetWidth() / 2)
+        if(otherSideX > ofGetWindowWidth() / 2)
             stereoMouseCursor.draw(otherSideX, ofGetMouseY());
     }
 }

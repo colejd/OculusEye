@@ -46,7 +46,7 @@ bool CVEye::init(const int _width, const int _height){
         
         Mat image;
         image = cv::imread("../../../data/images/SampleImage.png", CV_LOAD_IMAGE_COLOR);
-        //Imread gives us BGR, convert it to RGB (it might be the other way around)
+        //Imread gives us BGR -- convert it to RGB (it might be the other way around)
         cv::cvtColor(image, image, COLOR_BGR2RGB);
         rawPixelData = image.data;
         image.release();
@@ -155,7 +155,7 @@ void CVEye::update(){
             sync_update = isNewFrame;
         }
         
-        //Continue if we have new camera data or a default image to display
+        //Continue if we have new image from the camera or a default image to display
         if(computeFrame)
         {
             
@@ -178,7 +178,19 @@ void CVEye::update(){
             
             //Move src_tmp (cv::Mat) into src (cv::UMat). A better way of doing this doesn't exist yet (February 2015)
             src_tmp.copyTo(src);
+            
+            if(outputFrameSteps){
+                cvtColor(src, src, COLOR_RGB2BGR);
+                imwrite("../../../output_frames/1_src.png", src);
+                cvtColor(src, src, COLOR_RGB2BGR);
+            }
+            
             cvtColor(src, src_gray, cv::COLOR_RGB2GRAY);
+            
+            if(outputFrameSteps){
+                imwrite("../../../output_frames/2_src_gray.png", src_gray);
+            }
+            
             src.copyTo(dest);
             
             //-----------------------------------------------
@@ -204,7 +216,6 @@ void CVEye::update(){
                 
                 //Do last
                 finalImage.setFromPixels(dest.getMat(ACCESS_FAST).data, CAMERA_WIDTH, CAMERA_HEIGHT, OF_IMAGE_COLOR);
-                
             }
             //If no effects are applied, just put the raw video in the output image.
             else{
@@ -227,6 +238,8 @@ void CVEye::update(){
     
     //If there is no eye reference, keep trying to make one.
     //else init(width, height);
+    
+    outputFrameSteps = false;
 }
 
 void CVEye::draw(ofVec2f pos, ofVec2f size){
@@ -283,6 +296,11 @@ void CVEye::ApplyCanny(cv::UMat &src, cv::UMat &src_gray, cv::UMat &dest){
         resize(input_image, input_image, cv::Size(), adaptedDownsampleRatio, adaptedDownsampleRatio, INTER_AREA); //#1
         //pyrDown(input_image, input_image);
     }
+    
+    if(outputFrameSteps){
+        imwrite("../../../output_frames/3_resized.png", input_image);
+    }
+    
     resize(canny_output, canny_output, input_image.size());
     resize(contour_output, contour_output, input_image.size());
     
@@ -290,6 +308,10 @@ void CVEye::ApplyCanny(cv::UMat &src, cv::UMat &src_gray, cv::UMat &dest){
     int blurScale = 3;
     //Box filter blur
     blur( input_image, input_image, cv::Size(blurScale, blurScale) );
+    
+    if(outputFrameSteps){
+        imwrite("../../../output_frames/4_blurred.png", input_image);
+    }
     
     //Gaussian blur
     //cv::GaussianBlur(src_gray, src_gray, cv::Size(7,7), 1.5, 1.5);
@@ -303,7 +325,13 @@ void CVEye::ApplyCanny(cv::UMat &src, cv::UMat &src_gray, cv::UMat &dest){
     //Perform erosion and dilution if requested
     if(doErosionDilution){
         erode(input_image, input_image, Mat(), cv::Point(-1,-1), erosionIterations, BORDER_CONSTANT, morphologyDefaultBorderValue());
+        if(outputFrameSteps){
+            imwrite("../../../output_frames/5_eroded.png", input_image);
+        }
         dilate(input_image, input_image, Mat(), cv::Point(-1,-1), dilutionIterations, BORDER_CONSTANT, morphologyDefaultBorderValue());
+        if(outputFrameSteps){
+            imwrite("../../../output_frames/6_diluted.png", input_image);
+        }
     }
     
     int edgeThresh = 1;
@@ -358,6 +386,9 @@ void CVEye::ApplyCanny(cv::UMat &src, cv::UMat &src_gray, cv::UMat &dest){
     else{
         Canny( input_image, canny_output, lowThreshold, highThreshold, kernel_size );
     }
+    if(outputFrameSteps){
+        imwrite("../../../output_frames/7_canny_output.png", canny_output);
+    }
     //cv::ocl::setUseOpenCL(false);
     
     //Black out the final image if we only want to see the edges when they are drawn
@@ -376,6 +407,10 @@ void CVEye::ApplyCanny(cv::UMat &src, cv::UMat &src_gray, cv::UMat &dest){
             
         }
         
+        if(outputFrameSteps){
+            imwrite("../../../output_frames/8_contour_output_resized.png", contour_output);
+        }
+        
         //Overlay the detected contours onto the final image using its
         //own data as a mask (this copies only the contours to the image)
         contour_output.copyTo(dest, contour_output);
@@ -385,6 +420,12 @@ void CVEye::ApplyCanny(cv::UMat &src, cv::UMat &src_gray, cv::UMat &dest){
         resize(canny_output, canny_output, cv::Size(CAMERA_WIDTH, CAMERA_HEIGHT), 0, 0, INTER_NEAREST);
         //pyrUp(canny_output, canny_output);
         dest.setTo(guiLineColor, canny_output);
+    }
+    
+    if(outputFrameSteps){
+        cvtColor(dest, dest, COLOR_RGB2BGR);
+        imwrite("../../../output_frames/9_final.png", dest);
+        cvtColor(dest, dest, COLOR_BGR2RGB);
     }
     
     //STOP_TIMER(cannyTimer);
