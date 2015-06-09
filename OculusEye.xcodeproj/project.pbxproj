@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		46004F1B1AF1742D00C0E21A /* libboost_system-mt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46004F181AF1742D00C0E21A /* libboost_system-mt.a */; };
-		46004F1C1AF1742D00C0E21A /* libboost_thread-mt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46004F191AF1742D00C0E21A /* libboost_thread-mt.a */; };
-		46004F1D1AF1742D00C0E21A /* libusb-1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46004F1A1AF1742D00C0E21A /* libusb-1.0.a */; };
 		4669069C1AD4819C00D69129 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4669069A1AD4817200D69129 /* GLUT.framework */; };
 		4669069D1AD4819F00D69129 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 466906981AD4816C00D69129 /* OpenGL.framework */; };
 		468164301ADF074800D3FE2F /* Globals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4681642E1ADF074800D3FE2F /* Globals.cpp */; };
@@ -130,6 +127,9 @@
 		5199093B1A23B2BD008021BE /* mainApp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5199092F1A23B2BD008021BE /* mainApp.mm */; };
 		5199093E1A23B2BD008021BE /* screenConfig.mm in Sources */ = {isa = PBXBuildFile; fileRef = 519909371A23B2BD008021BE /* screenConfig.mm */; };
 		51E1B39F1A42778F00D6BCA7 /* CVPerformance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51E1B39E1A42778F00D6BCA7 /* CVPerformance.cpp */; };
+		51E7F5B11AF198B400FE6E4E /* libboost_system.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E7F5AE1AF198B400FE6E4E /* libboost_system.a */; };
+		51E7F5B21AF198B400FE6E4E /* libboost_thread.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E7F5AF1AF198B400FE6E4E /* libboost_thread.a */; };
+		51E7F5B31AF198B400FE6E4E /* libusb-1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E7F5B01AF198B400FE6E4E /* libusb-1.0.a */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 /* End PBXBuildFile section */
@@ -192,9 +192,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		46004F181AF1742D00C0E21A /* libboost_system-mt.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libboost_system-mt.a"; path = "/usr/local/Cellar/boost/1.57.0/lib/libboost_system-mt.a"; sourceTree = "<absolute>"; };
-		46004F191AF1742D00C0E21A /* libboost_thread-mt.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libboost_thread-mt.a"; path = "/usr/local/Cellar/boost/1.57.0/lib/libboost_thread-mt.a"; sourceTree = "<absolute>"; };
-		46004F1A1AF1742D00C0E21A /* libusb-1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libusb-1.0.a"; path = "/usr/local/Cellar/libusb/1.0.18/lib/libusb-1.0.a"; sourceTree = "<absolute>"; };
 		46004F1E1AF17CB100C0E21A /* libusb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libusb.h; path = backend/libusb.h; sourceTree = "<group>"; };
 		464C5F451A8D3554000E57AD /* model_notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = model_notes.txt; sourceTree = "<group>"; };
 		464C5F461A8D3554000E57AD /* mountingback.stl */ = {isa = PBXFileReference; lastKnownFileType = file; path = mountingback.stl; sourceTree = "<group>"; };
@@ -422,6 +419,9 @@
 		51B2FDD21A3109BA00246487 /* OculusEyeDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OculusEyeDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51E1B39D1A424B9F00D6BCA7 /* programSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = programSettings.h; sourceTree = "<group>"; };
 		51E1B39E1A42778F00D6BCA7 /* CVPerformance.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CVPerformance.cpp; sourceTree = "<group>"; };
+		51E7F5AE1AF198B400FE6E4E /* libboost_system.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_system.a; path = ../../../../../../../../../../usr/local/lib/libboost_system.a; sourceTree = "<group>"; };
+		51E7F5AF1AF198B400FE6E4E /* libboost_thread.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_thread.a; path = ../../../../../../../../../../usr/local/lib/libboost_thread.a; sourceTree = "<group>"; };
+		51E7F5B01AF198B400FE6E4E /* libusb-1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libusb-1.0.a"; path = "../../../../../../../../../../usr/local/Cellar/libusb/1.0.19/lib/libusb-1.0.a"; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
@@ -434,12 +434,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46004F1B1AF1742D00C0E21A /* libboost_system-mt.a in Frameworks */,
-				46004F1C1AF1742D00C0E21A /* libboost_thread-mt.a in Frameworks */,
-				46004F1D1AF1742D00C0E21A /* libusb-1.0.a in Frameworks */,
+				51E7F5B31AF198B400FE6E4E /* libusb-1.0.a in Frameworks */,
+				51E7F5B11AF198B400FE6E4E /* libboost_system.a in Frameworks */,
 				4669069D1AD4819F00D69129 /* OpenGL.framework in Frameworks */,
 				4669069C1AD4819C00D69129 /* GLUT.framework in Frameworks */,
 				46FD558A1ACB3421003D0FD5 /* IOKit.framework in Frameworks */,
+				51E7F5B21AF198B400FE6E4E /* libboost_thread.a in Frameworks */,
 				46FD55881ACB3400003D0FD5 /* Foundation.framework in Frameworks */,
 				46FD55861ACB33EF003D0FD5 /* Cocoa.framework in Frameworks */,
 			);
@@ -964,9 +964,9 @@
 		46FD55801ACB30ED003D0FD5 /* dependencies */ = {
 			isa = PBXGroup;
 			children = (
-				46004F181AF1742D00C0E21A /* libboost_system-mt.a */,
-				46004F191AF1742D00C0E21A /* libboost_thread-mt.a */,
-				46004F1A1AF1742D00C0E21A /* libusb-1.0.a */,
+				51E7F5AE1AF198B400FE6E4E /* libboost_system.a */,
+				51E7F5AF1AF198B400FE6E4E /* libboost_thread.a */,
+				51E7F5B01AF198B400FE6E4E /* libusb-1.0.a */,
 			);
 			name = dependencies;
 			sourceTree = "<group>";
@@ -1384,8 +1384,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/PS3EyeDriver",
 					/usr/local/lib,
-					/usr/local/Cellar/boost/1.57.0/lib,
-					/usr/local/Cellar/libusb/1.0.18/lib,
+					/usr/local/Cellar/libusb/1.0.19/lib,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -1439,8 +1438,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/PS3EyeDriver",
 					/usr/local/lib,
-					/usr/local/Cellar/boost/1.57.0/lib,
-					/usr/local/Cellar/libusb/1.0.18/lib,
+					/usr/local/Cellar/libusb/1.0.19/lib,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;

@@ -22,10 +22,10 @@
 #define DEFAULT_RES_Y 800
 
 // Rift screen resolution
-#define TARGET_RES_X 1920
-#define TARGET_RES_Y 1080
+#define TARGET_RES_X 1280
+#define TARGET_RES_Y 800
 
-#define RIFT_MONITOR_X 1280
+#define RIFT_MONITOR_X 0
 
 // Values to be requested from the Playstation Eye cameras.
 // Illegal values for fps will fall back to the next lowest supported value.
